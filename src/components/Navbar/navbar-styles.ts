@@ -26,7 +26,7 @@ export const NavbarBottom = styled.div`
   }
 
   & .navigation-links {
-    border: 1px solid violet;
+    /* border: 1px solid violet; */
   }
 
   & .nav-item {
@@ -43,16 +43,47 @@ export const NavbarContainer = styled.nav`
 `
 
 export const NavigationLinks = styled.ul`
+  padding: 0;
   display: flex;
   list-style: none;
-
-  & li {
-    margin-right: 1rem;
-  }
 
   & a {
     color: #fff;
   }
+`
+
+export const NavigationItem = styled.li`
+  margin-left: 1rem;
+  width: 60px;
+  /* outline: 1px solid olivedrab; */
+  text-align: center;
+  max-height: 70px;
+
+  & p {
+    text-transform: uppercase;
+    color: ${colors.green};
+    text-align: center;
+    font-size: 14px;
+  }
+
+  & a {
+    text-decoration: none;
+    display: block;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+`
+
+export const NavigationIcon = styled.img`
+  height: 45px;
+  width: 45px;
+  /* background-color: ${colors.lightBrown}; */
+  border-radius: 50%;
+  margin: 0 auto;
+  object-fit: cover;
+  outline: 1px solid red;
 `
 
 export const SearchInput = styled.input`

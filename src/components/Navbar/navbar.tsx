@@ -1,11 +1,13 @@
 import * as React from "react"
 import { Link } from "react-router-dom"
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import {
   NavbarContainer,
   NavbarTop,
   NavbarBottom,
   NavigationLinks,
+  NavigationItem,
+  NavigationIcon,
   SearchInput,
   PageTitle
 } from "./navbar-styles"
@@ -16,39 +18,49 @@ const SearchIconSvg = styled(SearchIcon)`
   left: -30px;
   height: 30%;
 `
+class Navbar extends React.Component<any, any> {
+  menuItems: string[] = ["timeline", "diagram", "list", "compare", "map"]
 
-const Navbar = () => {
-  return (
-    <NavbarContainer className="main-navbar">
-      <NavbarTop />
-      <NavbarBottom>
-        <PageTitle>Idea Heritage Center</PageTitle>
-        <div className="nav-item navbar-search">
-          <SearchIconSvg />
-          <SearchInput type="text" placeholder="Search" />
-        </div>
-        <div className="nav-item navigation-links">
-          <NavigationLinks>
-            <li>
-              <Link to="/">Main</Link>
-            </li>
-            <li>
-              <Link to="/timeline">Timeline</Link>
-            </li>
-            <li>
-              <Link to="/diagram">Diagram</Link>
-            </li>
-            <li>
-              <Link to="/list">List</Link>
-            </li>
-            <li>
-              <Link to="/compare">Compare</Link>
-            </li>
-          </NavigationLinks>
-        </div>
-      </NavbarBottom>
-    </NavbarContainer>
-  )
+  generateLinks = () => {
+    return this.menuItems.map((item, index) => {
+      const itemLink = `./../../static/icons/MODE_${item}.svg`
+      return (
+        <NavigationItem key={index}>
+          <Link to={`/${item}`}>
+            <NavigationIcon
+              src={require(`./../../static/icons/MODE_${item}.svg`)}
+              style={
+                {
+                  // backgroundImage: `url(http://franchise.carolsaundersswimschool.co.uk/wp-content/uploads/2017/02/img-placeholder.png)`,
+                  // backgroundImage: `url('./../../static/icons/MODE_${item}.svg')`,
+                }
+              }
+            />
+            <p>{item}</p>
+          </Link>
+        </NavigationItem>
+      )
+    })
+  }
+
+  render() {
+    return (
+      <NavbarContainer className="main-navbar">
+        <NavbarTop />
+        <NavbarBottom>
+          <PageTitle>Idea Heritage Center</PageTitle>
+          <div className="nav-item navbar-search">
+            <SearchIconSvg />
+            <SearchInput type="text" placeholder="Search" />
+          </div>
+          <div className="nav-item navigation-links">
+            {/* <PageTitle>view</PageTitle> */}
+            <NavigationLinks>{this.generateLinks()}</NavigationLinks>
+          </div>
+        </NavbarBottom>
+      </NavbarContainer>
+    )
+  }
 }
 
 export default Navbar
