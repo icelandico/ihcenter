@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Map, TileLayer } from "react-leaflet"
+import { Map, TileLayer, Marker, Popup } from "react-leaflet"
 import { mapSettings } from "./map-utils"
 
 class MapComponent extends React.Component {
@@ -14,6 +14,9 @@ class MapComponent extends React.Component {
           url={mapSettings.mainTile}
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
+        <Marker position={mapSettings.coordinates}>
+          <Popup>The Best Karl Was born here!</Popup>
+        </Marker>
       </Map>
     )
   }
