@@ -11,7 +11,7 @@ class MapComponent extends React.Component {
         style={{ height: "100%" }}
       >
         <TileLayer
-          url={mapSettings.tile}
+          url={mapSettings.mainTile}
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
       </Map>
