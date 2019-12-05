@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
+import { observer, inject } from "mobx-react"
 import {
   NavbarContainer,
   NavbarTop,
@@ -44,10 +45,14 @@ class Navbar extends React.Component<any, any> {
   }
 
   render() {
+    const { store } = this.props
+
     return (
       <NavbarContainer className="main-navbar">
         <NavbarTop />
         <NavbarBottom>
+          <button onClick={e => store.getCharacterList()}>{store.names}</button>
+
           <PageTitle>Idea Heritage Center</PageTitle>
           <div className="nav-item navbar-search">
             <SearchIconSvg />
@@ -63,4 +68,4 @@ class Navbar extends React.Component<any, any> {
   }
 }
 
-export default Navbar
+export default inject("store")(observer(Navbar))
