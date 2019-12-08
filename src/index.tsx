@@ -2,13 +2,21 @@ import React from "react"
 import ReactDOM from "react-dom"
 import "./index.css"
 import { BrowserRouter } from "react-router-dom"
+import { Provider } from "mobx-react"
 import App from "./views/App"
 import * as serviceWorker from "./serviceWorker"
+// import { createStore } from "../stores/createStore"
+// import { StoreProvider } from "./store/StoreProvider"
+import CharacterStore from "./store/models/character"
+
+// const store = CharacterStore.create({})
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <Provider store={CharacterStore}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById("root")
 )
 
