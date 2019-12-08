@@ -1,9 +1,9 @@
 import * as React from "react"
 import { Map, TileLayer, Marker, Popup } from "react-leaflet"
 import { observer, inject } from "mobx-react"
-import { marker } from "leaflet"
 import { mapSettings } from "./map-utils"
 import CharactersStore from "../../store/models/character"
+import { CharacterTypes } from "../../types/models-types"
 
 export interface Props {
   store?: typeof CharactersStore
@@ -11,14 +11,13 @@ export interface Props {
 
 export interface State {}
 
-const showMarkers = (character: any, index: number) => {
+const showMarkers = (character: CharacterTypes, index: number) => {
   const coords = character.coords
     .split(",")
     .map((coordinate: string) => Number(coordinate))
-  console.log(character)
-  const markerCoords = [coords[0], coords[1]]
+  const markerCoords: [number, number] = [coords[0], coords[1]]
   return (
-    <Marker key={index} position={[coords[0], coords[1]]}>
+    <Marker key={index} position={markerCoords}>
       <Popup>{character.fullName}</Popup>
     </Marker>
   )
@@ -43,7 +42,9 @@ class MapComponent extends React.Component<Props, State> {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
         {characters.length > 0
-          ? characters.map((character: object, i) => showMarkers(character, i))
+          ? characters.map((character: CharacterTypes, i) =>
+              showMarkers(character, i)
+            )
           : null}
 
         <Marker position={mapSettings.coordinates}>

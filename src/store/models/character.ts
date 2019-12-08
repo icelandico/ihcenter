@@ -22,10 +22,8 @@ const CharacterStore = types
   })
   .actions(self => ({
     getAllCharacters: flow(function*() {
-      const allCharacters: any[] = []
-      const response = yield fetch("http://localhost:1337/characters")
+      const response = yield fetch(apiUrls.characters)
       const characters = yield response.json()
-      // self.characters = characters
       applySnapshot(self.characters, characters)
     })
   }))

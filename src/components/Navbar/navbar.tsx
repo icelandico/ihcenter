@@ -24,7 +24,6 @@ class Navbar extends React.Component<any, any> {
 
   generateLinks = () => {
     return this.menuItems.map((item, index) => {
-      const itemLink = `./../../static/icons/MODE_${item}.svg`
       return (
         <NavigationItem key={index}>
           <Link to={`/${item}`}>
