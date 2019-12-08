@@ -1,14 +1,8 @@
-import { types, Instance } from "mobx-state-tree"
-// import { CharacterStore, CharacterListModel } from "./models/character"
+import { types } from "mobx-state-tree"
+import CharacterStore from "./models/character"
 
-// export type RootStoreModel = Instance<typeof RootStore>
+const RootStore = types.model("RootStore", {
+  characterStore: types.optional(CharacterStore, {})
+})
 
-// export type RootStoreEnv = {
-//   characterList: CharacterListModel
-// }
-
-// const RootStore = types.model("RootStore", {
-//   characterList: CharacterStore
-// })
-
-// export default RootStore
+export const rootStore = RootStore.create()

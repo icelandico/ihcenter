@@ -27,8 +27,5 @@ const CharacterStore = types
       applySnapshot(self.characters, characters)
     })
   }))
-  .create({
-    characters: []
-  })
 
 export default CharacterStore
