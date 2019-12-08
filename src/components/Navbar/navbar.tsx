@@ -45,14 +45,10 @@ class Navbar extends React.Component<any, any> {
   }
 
   render() {
-    const { store } = this.props
-
     return (
       <NavbarContainer className="main-navbar">
         <NavbarTop />
         <NavbarBottom>
-          <button onClick={e => store.getCharacterList()}>{store.names}</button>
-
           <PageTitle>Idea Heritage Center</PageTitle>
           <div className="nav-item navbar-search">
             <SearchIconSvg />
