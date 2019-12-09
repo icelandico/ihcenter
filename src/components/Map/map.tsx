@@ -4,6 +4,8 @@ import { observer, inject } from "mobx-react"
 import { mapSettings } from "./map-utils"
 import { CharacterTypes } from "../../types/models-types"
 import { rootStore } from "../../store/RootStore"
+import L from "leaflet"
+import icon from "./../../components/MapIcons/map-icon"
 
 export interface Props {
   store?: typeof rootStore
@@ -17,7 +19,7 @@ const showMarkers = (character: CharacterTypes, index: number) => {
     .map((coordinate: string) => Number(coordinate))
   const markerCoords: [number, number] = [coords[0], coords[1]]
   return (
-    <Marker key={index} position={markerCoords}>
+    <Marker icon={icon} key={index} position={markerCoords}>
       <Popup>{character.fullName}</Popup>
     </Marker>
   )
@@ -46,10 +48,6 @@ class MapComponent extends React.Component<Props, State> {
               showMarkers(character, i)
             )
           : null}
-
-        <Marker position={mapSettings.coordinates}>
-          <Popup>The Best Karl Was born here!</Popup>
-        </Marker>
       </Map>
     )
   }
