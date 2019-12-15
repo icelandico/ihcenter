@@ -13,3 +13,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.leaflet-div-icon {
+  width: 30px!important;
+  height: 30px!important;
+  border-radius: 50%;
+  background-image: url("./static/icons/person.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.leaflet-div-icon:before {
+  
+}

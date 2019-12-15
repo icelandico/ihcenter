@@ -1,7 +1,9 @@
 import * as React from "react"
 import { Marker, Popup } from "react-leaflet"
 import { observer, inject } from "mobx-react"
-import { CharacterTypes } from "../../types/models-types"
+import styled from "styled-components"
+import L from "leaflet"
+import ReactDOMServer from "react-dom/server"
 import { rootStore } from "../../store/RootStore"
 import { icon, iconClicked } from "../MapIcons/map-icon"
 
@@ -12,13 +14,50 @@ export interface Props {
   name: string
 }
 
-export interface State {}
+const divMarker = styled.div`
+  width: 100px;
+  height: 70px;
+  border-radius: 50%;
+  background-image: url("./../../static/icons/person.svg");
+`
+
+const customIcon = L.divIcon({
+  html: ReactDOMServer.renderToString(<div className="custom-marker" />)
+})
+
+export interface State {
+  clicked: boolean
+}
 
 class MapMarker extends React.Component<Props, State> {
+  state = {
+    clicked: false
+  }
+
+  chooseIcon = () => {
+    const { clicked } = this.state
+    return clicked ? iconClicked : icon
+  }
+
+  switchIcon = () => {
+    const { clicked } = this.state
+    this.setState({
+      clicked: !clicked
+    })
+  }
+
   render() {
     const { key, position, name } = this.props
     return (
-      <Marker icon={icon} key={key} position={position}>
+      <Marker
+        // icon={customIcon}
+        icon={this.chooseIcon()}
+        key={key}
+        position={position}
+        iconAnchor={[0, 0]}
+        iconSize={[40, 40]}
+        onClick={this.switchIcon}
+      >
         <Popup>{name}</Popup>
       </Marker>
     )
