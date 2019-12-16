@@ -42,7 +42,7 @@ class MapComponent extends React.Component<Props, State> {
         style={{ height: "100%" }}
       >
         <TileLayer
-          url={mapSettings.mainTile}
+          url={mapSettings.osmTile}
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
         {characterStore.characters.length > 0

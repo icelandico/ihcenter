@@ -7,11 +7,15 @@ import ReactDOMServer from "react-dom/server"
 import { rootStore } from "../../store/RootStore"
 import { icon, iconClicked } from "../MapIcons/map-icon"
 
-export interface Props {
+interface Props {
   store?: typeof rootStore
   key: number
   position: [number, number]
   name: string
+}
+
+interface State {
+  clicked: boolean
 }
 
 const divMarker = styled.div`
@@ -24,10 +28,6 @@ const divMarker = styled.div`
 const customIcon = L.divIcon({
   html: ReactDOMServer.renderToString(<div className="custom-marker" />)
 })
-
-export interface State {
-  clicked: boolean
-}
 
 class MapMarker extends React.Component<Props, State> {
   state = {
@@ -50,16 +50,13 @@ class MapMarker extends React.Component<Props, State> {
     const { key, position, name } = this.props
     return (
       <Marker
-        // icon={customIcon}
         icon={this.chooseIcon()}
         key={key}
         position={position}
         iconAnchor={[0, 0]}
         iconSize={[40, 40]}
         onClick={this.switchIcon}
-      >
-        <Popup>{name}</Popup>
-      </Marker>
+      />
     )
   }
 }
