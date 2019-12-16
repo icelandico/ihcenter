@@ -19,10 +19,12 @@ interface State {
 }
 
 const divMarker = styled.div`
-  width: 100px;
-  height: 70px;
+  width: 30px !important;
+  height: 30px !important;
   border-radius: 50%;
-  background-image: url("./../../static/icons/person.svg");
+  background-image: url("./static/icons/person.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
 `
 
 const customIcon = L.divIcon({
