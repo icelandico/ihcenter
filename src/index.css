@@ -25,16 +25,35 @@ code {
   z-index: 1;
 }
 
-.leaflet-div-icon:before {
-  width: 0; 
-  height: 0; 
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-top: 15px solid #f00;
-  content: "";
-  position: absolute;
-  top: 105%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: -1;
+.leaflet-div-icon .marker-icon {
+   position: absolute;
+   width: 25px;
+   height: 25px;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%) rotate(45deg);
+   background-size: cover;
+   border-radius: 50%;
 }
+
+.custom-marker {
+  width: 30px;
+  height: 30px;
+  border-radius: 50% 50% 50% 0;
+  background: #ffeaca;
+  position: absolute;
+  transform: rotate(-45deg);
+  left: 50%;
+  top: 50%;
+  margin: -15px 0 0 -15px;
+}
+
+/* .custom-marker::after {
+    content: '';
+    width: 24px;
+    height: 24px;
+    margin: 3px 0 0 3px;
+    background: #fff;
+    position: absolute;
+    border-radius: 50%;
+ } */

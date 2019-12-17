@@ -12,6 +12,7 @@ interface Props {
   key: number
   position: [number, number]
   name: string
+  image: string
 }
 
 interface State {
@@ -28,7 +29,18 @@ const divMarker = styled.div`
 `
 
 const customIcon = L.divIcon({
-  html: ReactDOMServer.renderToString(<div className="custom-marker" />)
+  html: ReactDOMServer.renderToString(
+    <div className="custom-marker">
+      <div
+        className="marker-icon"
+        style={{
+          backgroundImage:
+            "url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Karl_Marx.jpg/205px-Karl_Marx.jpg')"
+        }}
+      />
+    </div>
+  ),
+  iconAnchor: [15, 30]
 })
 
 class MapMarker extends React.Component<Props, State> {
@@ -38,7 +50,7 @@ class MapMarker extends React.Component<Props, State> {
 
   chooseIcon = () => {
     const { clicked } = this.state
-    return clicked ? iconClicked : icon
+    return clicked ? customIcon : icon
   }
 
   switchIcon = () => {
@@ -49,16 +61,18 @@ class MapMarker extends React.Component<Props, State> {
   }
 
   render() {
-    const { key, position, name } = this.props
+    const { key, position } = this.props
     return (
-      <Marker
-        icon={this.chooseIcon()}
-        key={key}
-        position={position}
-        iconAnchor={[0, 0]}
-        iconSize={[40, 40]}
-        onClick={this.switchIcon}
-      />
+      <>
+        <Marker
+          icon={this.chooseIcon()}
+          key={key}
+          position={position}
+          iconAnchor={[0, 0]}
+          iconSize={[40, 40]}
+          onClick={this.switchIcon}
+        />
+      </>
     )
   }
 }

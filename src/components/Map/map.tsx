@@ -29,6 +29,7 @@ class MapComponent extends React.Component<Props, State> {
         key={index}
         position={markerCoords}
         name={character.fullName}
+        image={character.imageUrl}
       />
     )
   }
@@ -42,7 +43,7 @@ class MapComponent extends React.Component<Props, State> {
         style={{ height: "100%" }}
       >
         <TileLayer
-          url={mapSettings.osmTile}
+          url={mapSettings.mainTile}
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
         {characterStore.characters.length > 0

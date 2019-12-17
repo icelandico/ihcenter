@@ -9,8 +9,8 @@ export const Character = types.model("Character", {
   fullName: types.optional(types.string, ""),
   // birth: types.optional(types.string, ""),
   // death: types.optional(types.string, ""),
-  coords: types.maybeNull(types.string)
-  // imageUrl: types.optional(types.string, ""),
+  coords: types.maybeNull(types.string),
+  imageUrl: types.maybeNull(types.string)
   // wikipediaLink: types.optional(types.string, ""),
   // description: types.optional(types.string, ""),
   // nationality: types.model()
