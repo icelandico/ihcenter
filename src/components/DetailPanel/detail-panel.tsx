@@ -10,6 +10,7 @@ export interface Props {
 export interface State { }
 
 const DetailPanel = () => {
+  const { store } = this.props.store
   return (
     <div className="content-main">
       <div className="content-list-info" />

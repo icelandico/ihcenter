@@ -19,8 +19,7 @@ export const Character = types.model("Character", {
 const CharacterStore = types
   .model("CharacterStore", {
     characters: types.optional(types.array(Character), []),
-    chosenCharacter: types.maybe(types.reference(Character)),
-    clicked: types.boolean
+    chosenCharacter: types.maybe(types.reference(Character))
   })
   .actions(self => ({
     getAllCharacters: flow(function* () {
