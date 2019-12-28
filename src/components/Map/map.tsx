@@ -1,17 +1,16 @@
 import * as React from "react"
-import { Map, TileLayer, Marker, Popup } from "react-leaflet"
+import { Map, TileLayer } from "react-leaflet"
 import { observer, inject } from "mobx-react"
 import { mapSettings } from "./map-utils"
 import { CharacterTypes } from "../../types/models-types"
 import { rootStore } from "../../store/RootStore"
-import { icon, iconClicked } from "../MapIcons/map-icon"
 import MapMarker from "../Marker/marker"
 
 export interface Props {
   store?: typeof rootStore
 }
 
-export interface State {}
+export interface State { }
 
 class MapComponent extends React.Component<Props, State> {
   async componentDidMount() {
@@ -19,14 +18,16 @@ class MapComponent extends React.Component<Props, State> {
     await store.characterStore.getAllCharacters()
   }
 
-  showMarkers = (character: CharacterTypes, index: number) => {
+  showMarkers = (character: CharacterTypes) => {
     const coords = character.coords
       .split(",")
       .map((coordinate: string) => Number(coordinate))
     const markerCoords: [number, number] = [coords[0], coords[1]]
     return (
       <MapMarker
-        key={index}
+        key={character.id}
+        character={character}
+        id={character.id}
         position={markerCoords}
         name={character.fullName}
         image={character.imageUrl}
@@ -47,9 +48,9 @@ class MapComponent extends React.Component<Props, State> {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
         {characterStore.characters.length > 0
-          ? characterStore.characters.map((character: CharacterTypes, i) =>
-              this.showMarkers(character, i)
-            )
+          ? characterStore.characters.map((character: CharacterTypes) =>
+            this.showMarkers(character)
+          )
           : null}
         {/* </MapMarker> */}
       </Map>

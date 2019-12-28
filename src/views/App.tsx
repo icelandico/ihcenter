@@ -3,6 +3,7 @@ import "./App.css"
 import { Route } from "react-router-dom"
 import Routes from "../routing/Routes"
 import Navbar from "../components/Navbar/navbar"
+import DetailPanel from "../components/DetailPanel/detail-panel"
 
 const App: React.FC = () => {
   return (
@@ -26,10 +27,7 @@ const App: React.FC = () => {
       <div className="right">
         <div className="top-menu" />
         <div className="content-container-r">
-          <div className="content-main">
-            <div className="content-list-info" />
-            <div className="content-main-info" />
-          </div>
+          <DetailPanel />
           <div className="content-lower" />
         </div>
       </div>

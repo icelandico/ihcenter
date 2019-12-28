@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Marker, Popup } from "react-leaflet"
+import { Marker } from "react-leaflet"
 import { observer, inject } from "mobx-react"
 import L from "leaflet"
 import ReactDOMServer from "react-dom/server"
@@ -9,7 +9,9 @@ import DefaultIcon from "../../static/icons/person.svg"
 
 interface Props {
   store?: typeof rootStore
+  character: any
   key: number
+  id: number
   position: [number, number]
   name: string
   image: string
@@ -30,7 +32,7 @@ class MapMarker extends React.Component<Props, State> {
         <div
           className="marker-icon"
           style={{
-            backgroundImage: `url(${this.props.image || DefaultIcon})`
+            backgroundImage: `url(${this.props.character.image || DefaultIcon})`
           }}
         />
       </div>
@@ -44,6 +46,8 @@ class MapMarker extends React.Component<Props, State> {
   }
 
   switchIcon = () => {
+    const { store } = this.props
+    store.characterStore.toggle(this.props.character)
     const { clicked } = this.state
     this.setState({
       clicked: !clicked

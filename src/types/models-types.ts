@@ -1,5 +1,5 @@
 export interface CharacterTypes {
-  id: number
+  id: any
   fullName: string
   coords: string
   imageUrl: string
