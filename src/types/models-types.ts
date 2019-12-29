@@ -3,4 +3,5 @@ export interface CharacterTypes {
   fullName: string
   coords: string
   imageUrl: string
+  description: string
 }

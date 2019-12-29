@@ -108,17 +108,34 @@
   padding: 1rem;
   display: flex;
   height: 100%;
+  font-family: "Alegreya";
 }
 
 .content-list-info {
   width: 40%;
-  /* outline: 3px solid black; */
+  outline: 3px solid black;
+  max-height: -webkit-fill-available;
+  padding: 12px;
 }
 
 .content-main-info {
-  /* outline: 3px solid black; */
+  outline: 1px solid #007260;
   width: 60%;
+  position: relative;
+  z-index: 100;
 }
+
+.content-main-info::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    /* box-shadow: inset 0px -65px 55px 0px rgba(0, 57, 63, 0.9); */
+    background: linear-gradient(transparent 0, rgba(0, 57, 63, 1));
+}
+
 
 .content-lower {
   height: 60px;
