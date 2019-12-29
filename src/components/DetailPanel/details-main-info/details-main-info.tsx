@@ -6,7 +6,9 @@ import {
   ElementTitle,
   MainImage,
   DetailsContainer,
-  DetailsText
+  DetailsTopContainer,
+  DetailsText,
+  ElementDate
 } from "./details-main-info-styles"
 
 export interface Props {
@@ -20,8 +22,26 @@ const DetailMainInfo = (props: Props) => {
   const { details } = props
   return (
     <div className="content-list-info content-main-info">
-      <MainImage />
-      <ElementTitle>{details ? details.fullName : "Element Name"}</ElementTitle>
+      <MainImage
+        style={{
+          backgroundImage: `url(${
+            details
+              ? details.imageUrl
+              : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6x-rKSUYJJ6aa673JE2ZsjVcvhoIL6v3tAI_1X8Br56U4VrrL&s"
+            })`
+        }}
+      />
+      <DetailsTopContainer>
+        <ElementTitle>
+          {details ? details.fullName : "Element Name"}
+        </ElementTitle>
+        <ElementDate>
+          {details
+            ? `${details.birth} - ${details.death}`
+            : "1 I 1897 – 03 III 1985"}
+        </ElementDate>
+      </DetailsTopContainer>
+
       <DetailsContainer>
         {/* <DetailsText>{details && details.description}</DetailsText> */}
         <DetailsText>

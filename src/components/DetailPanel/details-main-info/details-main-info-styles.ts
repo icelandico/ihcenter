@@ -1,9 +1,22 @@
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import { colors } from "../../../styles/colors"
+
+export const DetailsTopContainer = styled.div`
+  margin-top: -40px;
+`
 
 export const ElementTitle = styled.h1`
   text-align: center;
   font-size: 24px;
+  border-bottom: 1px solid ${colors.lightBrown};
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+`
+
+export const ElementDate = styled.p`
+  text-align: center;
+  font-size: 16px;
+  color: ${colors.lightBrown};
 `
 
 export const MainImage = styled.div`
@@ -19,11 +32,10 @@ export const MainImage = styled.div`
 `
 
 export const DetailsContainer = styled.div`
-  max-height: 50%;
+  max-height: 60%;
   overflow-y: scroll;
   position: absolute;
   bottom: 0;
-  height: 300px;
   scrollbar-width: thin;
   scrollbar-color: teal red;
 

@@ -7,8 +7,8 @@ export type CharacterListModel = Instance<typeof CharacterStore>
 export const Character = types.model("Character", {
   id: types.identifierNumber,
   fullName: types.optional(types.string, ""),
-  // birth: types.optional(types.string, ""),
-  // death: types.optional(types.string, ""),
+  birth: types.optional(types.string, ""),
+  death: types.optional(types.string, ""),
   coords: types.maybeNull(types.string),
   imageUrl: types.maybeNull(types.string),
   // wikipediaLink: types.optional(types.string, ""),
