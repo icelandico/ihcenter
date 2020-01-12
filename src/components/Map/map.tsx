@@ -2,7 +2,7 @@ import * as React from "react"
 import { Map, TileLayer } from "react-leaflet"
 import { observer, inject } from "mobx-react"
 import { mapSettings } from "./map-utils"
-import { CharacterTypes } from "../../types/models-types"
+import { ArticleTypes } from "../../types/models-types"
 import { rootStore } from "../../store/RootStore"
 import MapMarker from "../Marker/marker"
 
@@ -30,8 +30,8 @@ class MapComponent extends React.Component<Props, State> {
     })
   }
 
-  showMarkers = (character: CharacterTypes) => {
-    const coords = character.coords
+  showMarkers = (character: ArticleTypes) => {
+    const coords = character.startCoords
       .split(",")
       .map((coordinate: string) => Number(coordinate))
     const markerCoords: [number, number] = [coords[0], coords[1]]
@@ -41,7 +41,7 @@ class MapComponent extends React.Component<Props, State> {
         character={character}
         id={character.id}
         position={markerCoords}
-        name={character.fullName}
+        name={character.name}
         image={character.imageUrl}
       />
     )
@@ -60,9 +60,9 @@ class MapComponent extends React.Component<Props, State> {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
         {characterStore.characters.length > 0
-          ? characterStore.characters.map((character: CharacterTypes) =>
-              this.showMarkers(character)
-            )
+          ? characterStore.characters.map((character: ArticleTypes) =>
+            character.startCoords ? this.showMarkers(character) : null
+          )
           : null}
         {/* </MapMarker> */}
       </Map>

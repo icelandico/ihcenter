@@ -1,9 +1,9 @@
-export interface CharacterTypes {
+export interface ArticleTypes {
   id: number
-  birth: string
-  death: string
-  fullName: string
-  coords: string
+  startDate: string
+  endDate: string
+  name: string
+  startCoords: string
   imageUrl: string
   description: string
 }

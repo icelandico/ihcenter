@@ -1,6 +1,6 @@
 import * as React from "react"
 import { observer, inject } from "mobx-react"
-import { CharacterTypes } from "../../../types/models-types"
+import { ArticleTypes } from "../../../types/models-types"
 import { rootStore } from "../../../store/RootStore"
 import {
   ElementTitle,
@@ -13,7 +13,7 @@ import {
 
 export interface Props {
   store?: typeof rootStore
-  details: CharacterTypes
+  details: ArticleTypes
 }
 
 export interface State { }
@@ -38,12 +38,10 @@ const DetailMainInfo = (props: Props) => {
         }}
       />
       <DetailsTopContainer>
-        <ElementTitle>
-          {details ? details.fullName : "Element Name"}
-        </ElementTitle>
+        <ElementTitle>{details ? details.name : "Element Name"}</ElementTitle>
         <ElementDate>
           {details
-            ? `${getDate(details.birth)} - ${getDate(details.death)}`
+            ? `${getDate(details.startDate)} - ${getDate(details.endDate)}`
             : "1 I 1897 – 03 III 1985"}
         </ElementDate>
       </DetailsTopContainer>

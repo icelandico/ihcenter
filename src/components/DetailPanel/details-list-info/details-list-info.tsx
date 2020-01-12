@@ -1,11 +1,11 @@
 import * as React from "react"
 import { observer, inject } from "mobx-react"
 import { rootStore } from "../../../store/RootStore"
-import { CharacterTypes } from "../../../types/models-types"
+import { ArticleTypes } from "../../../types/models-types"
 
 export interface Props {
   store?: typeof rootStore
-  details: CharacterTypes
+  details: ArticleTypes
 }
 
 export interface State { }
