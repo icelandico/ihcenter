@@ -10,12 +10,24 @@ export interface Props {
   store?: typeof rootStore
 }
 
-export interface State { }
+export interface State {
+  currentClicked: any
+}
 
 class MapComponent extends React.Component<Props, State> {
+  state = {
+    currentClicked: ""
+  }
+
   async componentDidMount() {
     const { store } = this.props
     await store.characterStore.getAllCharacters()
+  }
+
+  changeClicked = (character: any) => {
+    this.setState({
+      currentClicked: character
+    })
   }
 
   showMarkers = (character: CharacterTypes) => {
@@ -49,8 +61,8 @@ class MapComponent extends React.Component<Props, State> {
         />
         {characterStore.characters.length > 0
           ? characterStore.characters.map((character: CharacterTypes) =>
-            this.showMarkers(character)
-          )
+              this.showMarkers(character)
+            )
           : null}
         {/* </MapMarker> */}
       </Map>

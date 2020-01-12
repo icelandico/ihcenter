@@ -1,4 +1,5 @@
 import { types, Instance, flow, applySnapshot } from "mobx-state-tree"
+import { getDefaultDecoratorFromObjectOptions } from "mobx/lib/internal"
 import { apiUrls } from "../api/api"
 
 export type CharacterModel = Instance<typeof Character>
@@ -28,7 +29,17 @@ const CharacterStore = types
       applySnapshot(self.characters, characters)
     }),
     toggle(character: CharacterModel) {
+      console.log(character.id)
       self.chosenCharacter = character
+    },
+    getDate(dateType: string) {
+      const matchDate = dateType.match(/\d+/g)
+      const date = {
+        day: matchDate[2],
+        month: matchDate[1],
+        year: matchDate[0]
+      }
+      return date
     }
   }))
 

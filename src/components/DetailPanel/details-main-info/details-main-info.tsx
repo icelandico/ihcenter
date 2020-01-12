@@ -20,12 +20,18 @@ export interface State { }
 
 const DetailMainInfo = (props: Props) => {
   const { details } = props
+
+  const getDate = (date: string) => {
+    const formattedDate = props.store.characterStore.getDate(date)
+    return `${formattedDate.day} ${formattedDate.month} ${formattedDate.year}`
+  }
+
   return (
     <div className="content-list-info content-main-info">
       <MainImage
         style={{
           backgroundImage: `url(${
-            details
+            details && details.imageUrl
               ? details.imageUrl
               : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6x-rKSUYJJ6aa673JE2ZsjVcvhoIL6v3tAI_1X8Br56U4VrrL&s"
             })`
@@ -37,7 +43,7 @@ const DetailMainInfo = (props: Props) => {
         </ElementTitle>
         <ElementDate>
           {details
-            ? `${details.birth} - ${details.death}`
+            ? `${getDate(details.birth)} - ${getDate(details.death)}`
             : "1 I 1897 – 03 III 1985"}
         </ElementDate>
       </DetailsTopContainer>

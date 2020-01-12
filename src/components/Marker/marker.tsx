@@ -32,7 +32,8 @@ class MapMarker extends React.Component<Props, State> {
         <div
           className="marker-icon"
           style={{
-            backgroundImage: `url(${this.props.character.image || DefaultIcon})`
+            backgroundImage: `url(${this.props.character.imageUrl ||
+              DefaultIcon})`
           }}
         />
       </div>
