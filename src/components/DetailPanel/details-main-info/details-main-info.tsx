@@ -22,8 +22,11 @@ const DetailMainInfo = (props: Props) => {
   const { details } = props
 
   const getDate = (date: string) => {
-    const formattedDate = props.store.characterStore.getDate(date)
-    return `${formattedDate.day} ${formattedDate.month} ${formattedDate.year}`
+    if (date) {
+      const formattedDate = props.store.characterStore.getDate(date)
+      return `${formattedDate.day} ${formattedDate.month} ${formattedDate.year}`
+    }
+    return "??-??-??"
   }
 
   return (

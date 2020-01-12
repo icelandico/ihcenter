@@ -1,5 +1,4 @@
 import { types, Instance, flow, applySnapshot } from "mobx-state-tree"
-import { getDefaultDecoratorFromObjectOptions } from "mobx/lib/internal"
 import { apiUrls } from "../api/api"
 
 export type CharacterModel = Instance<typeof Character>
@@ -8,8 +7,8 @@ export type CharacterListModel = Instance<typeof CharacterStore>
 export const Character = types.model("Character", {
   id: types.identifierNumber,
   name: types.optional(types.string, ""),
-  startDate: types.maybeNull(types.string),
-  endDate: types.maybeNull(types.string),
+  startDate: types.optional(types.maybeNull(types.string), "No Date"),
+  endDate: types.optional(types.maybeNull(types.string), "No Date"),
   startCoords: types.maybeNull(types.string),
   imageUrl: types.maybeNull(types.string),
   // wikipediaLink: types.optional(types.string, ""),
