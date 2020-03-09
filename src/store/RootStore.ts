@@ -1,8 +1,8 @@
 import { types } from "mobx-state-tree"
-import CharacterStore from "./models/character"
+import ArticleStore from "./models/article"
 
 const RootStore = types.model("RootStore", {
-  characterStore: types.optional(CharacterStore, {})
+  articleStore: types.optional(ArticleStore, {})
 })
 
 export const rootStore = RootStore.create()

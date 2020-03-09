@@ -9,10 +9,9 @@ export interface Props {
   store?: typeof rootStore
 }
 
-export interface State { }
-
 const DetailPanel = (props: Props) => {
-  const details = props.store.characterStore.chosenCharacter
+  const { store } = props
+  const details = store.articleStore.chosenArticle
   return (
     <div className="content-main">
       <DetailListInfo details={details} />

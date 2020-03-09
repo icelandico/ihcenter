@@ -9,12 +9,9 @@ import DefaultIcon from "../../static/icons/person.svg"
 
 interface Props {
   store?: typeof rootStore
-  character: any
+  article: any
   key: number
-  id: number
   position: [number, number]
-  name: string
-  image: string
 }
 
 interface State {
@@ -32,8 +29,8 @@ class MapMarker extends React.Component<Props, State> {
         <div
           className="marker-icon"
           style={{
-            backgroundImage: `url(${this.props.character.imageUrl ||
-              DefaultIcon})`
+            backgroundImage: `
+            url(${this.props.article.imageUrl || DefaultIcon})`
           }}
         />
       </div>
@@ -47,8 +44,9 @@ class MapMarker extends React.Component<Props, State> {
   }
 
   switchIcon = () => {
+    const { article } = this.props
     const { store } = this.props
-    store.characterStore.toggle(this.props.character)
+    store.articleStore.toggle(article)
     const { clicked } = this.state
     this.setState({
       clicked: !clicked

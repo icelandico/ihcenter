@@ -21,34 +21,27 @@ class MapComponent extends React.Component<Props, State> {
 
   async componentDidMount() {
     const { store } = this.props
-    await store.characterStore.getAllCharacters()
+    await store.articleStore.getAllArticles()
   }
 
-  changeClicked = (character: any) => {
+  changeClicked = (article: any) => {
     this.setState({
-      currentClicked: character
+      currentClicked: article
     })
   }
 
-  showMarkers = (character: ArticleTypes) => {
-    const coords = character.startCoords
+  showMarkers = (article: ArticleTypes) => {
+    const coords = article.startCoords
       .split(",")
       .map((coordinate: string) => Number(coordinate))
     const markerCoords: [number, number] = [coords[0], coords[1]]
     return (
-      <MapMarker
-        key={character.id}
-        character={character}
-        id={character.id}
-        position={markerCoords}
-        name={character.name}
-        image={character.imageUrl}
-      />
+      <MapMarker key={article.id} article={article} position={markerCoords} />
     )
   }
 
   render() {
-    const { characterStore } = rootStore
+    const { articleStore } = rootStore
     return (
       <Map
         center={mapSettings.coordinates}
@@ -59,9 +52,9 @@ class MapComponent extends React.Component<Props, State> {
           url={mapSettings.mainTile}
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
-        {characterStore.characters.length > 0
-          ? characterStore.characters.map((character: ArticleTypes) =>
-            character.startCoords ? this.showMarkers(character) : null
+        {articleStore.articles.length > 0
+          ? articleStore.articles.map((article: ArticleTypes) =>
+            article.startCoords ? this.showMarkers(article) : null
           )
           : null}
         {/* </MapMarker> */}

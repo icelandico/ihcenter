@@ -132,6 +132,7 @@
     left: 0;
     right: 0;
     height: 100px;
+    pointer-events: none;
     /* box-shadow: inset 0px -65px 55px 0px rgba(0, 57, 63, 0.9); */
     background: linear-gradient(transparent 0, rgba(0, 57, 63, 1));
 }

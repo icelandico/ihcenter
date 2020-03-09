@@ -8,8 +8,6 @@ export interface Props {
   details: ArticleTypes
 }
 
-export interface State { }
-
 const DetailListInfo = (props: Props) => {
   return <div className="content-list-info" />
 }

@@ -1,34 +1,34 @@
 import { types, Instance, flow, applySnapshot } from "mobx-state-tree"
 import { apiUrls } from "../api/api"
 
-export type CharacterModel = Instance<typeof Character>
-export type CharacterListModel = Instance<typeof CharacterStore>
+export type ArticleModel = Instance<typeof Article>
+export type ArticleListModel = Instance<typeof ArticleStore>
 
-export const Character = types.model("Character", {
+export const Article = types.model("Article", {
   id: types.identifierNumber,
   name: types.optional(types.string, ""),
   startDate: types.optional(types.maybeNull(types.string), "No Date"),
   endDate: types.optional(types.maybeNull(types.string), "No Date"),
   startCoords: types.maybeNull(types.string),
   imageUrl: types.maybeNull(types.string),
-  // wikipediaLink: types.optional(types.string, ""),
+  wikipediaLink: types.optional(types.string, ""),
   description: types.maybeNull(types.string)
   // nationality: types.model()
 })
 
-const CharacterStore = types
-  .model("CharacterStore", {
-    characters: types.optional(types.array(Character), []),
-    chosenCharacter: types.maybe(types.reference(Character))
+const ArticleStore = types
+  .model("ArticleStore", {
+    articles: types.optional(types.array(Article), []),
+    chosenArticle: types.maybe(types.reference(Article))
   })
   .actions(self => ({
-    getAllCharacters: flow(function* () {
-      const response = yield fetch(apiUrls.characters)
-      const characters = yield response.json()
-      applySnapshot(self.characters, characters)
+    getAllArticles: flow(function* () {
+      const response = yield fetch(apiUrls.articles)
+      const articles = yield response.json()
+      applySnapshot(self.articles, articles)
     }),
-    toggle(character: CharacterModel) {
-      self.chosenCharacter = character
+    toggle(article: ArticleModel) {
+      self.chosenArticle = article
     },
     getDate(dateType: string) {
       const matchDate = dateType.match(/\d+/g)
@@ -41,4 +41,4 @@ const CharacterStore = types
     }
   }))
 
-export default CharacterStore
+export default ArticleStore

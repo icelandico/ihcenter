@@ -16,14 +16,12 @@ export interface Props {
   details: ArticleTypes
 }
 
-export interface State { }
-
 const DetailMainInfo = (props: Props) => {
   const { details } = props
 
   const getDate = (date: string) => {
     if (date) {
-      const formattedDate = props.store.characterStore.getDate(date)
+      const formattedDate = props.store.articleStore.getDate(date)
       return `${formattedDate.day} ${formattedDate.month} ${formattedDate.year}`
     }
     return "??-??-??"
