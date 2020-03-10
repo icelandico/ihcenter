@@ -1,5 +1,6 @@
 import * as React from "react"
 import { observer, inject } from "mobx-react"
+import { Link } from "react-router-dom"
 import { ArticleTypes } from "../../../types/models-types"
 import { rootStore } from "../../../store/RootStore"
 import {
@@ -8,7 +9,8 @@ import {
   DetailsContainer,
   DetailsTopContainer,
   DetailsText,
-  ElementDate
+  ElementDate,
+  DetailsWikipedia
 } from "./details-main-info-styles"
 
 export interface Props {
@@ -41,10 +43,17 @@ const DetailMainInfo = (props: Props) => {
       />
       <DetailsTopContainer>
         <ElementTitle>{details ? details.name : "Element Name"}</ElementTitle>
+        <a
+          href={details ? details.wikipediaLink : ""}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <DetailsWikipedia />
+        </a>
         <ElementDate>
           {details
             ? `${getDate(details.startDate)} - ${getDate(details.endDate)}`
-            : "1 I 1897 – 03 III 1985"}
+            : "1 I 1000 – 1 XII 2020"}
         </ElementDate>
       </DetailsTopContainer>
 

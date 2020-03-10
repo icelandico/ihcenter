@@ -6,4 +6,5 @@ export interface ArticleTypes {
   startCoords: string
   imageUrl: string
   description: string
+  wikipediaLink: string
 }

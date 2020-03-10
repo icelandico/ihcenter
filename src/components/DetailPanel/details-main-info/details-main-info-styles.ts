@@ -1,7 +1,9 @@
 import styled from "styled-components"
 import { colors } from "../../../styles/colors"
+import wikiIcon from "../../../static/icons/wiki.svg"
 
 export const DetailsTopContainer = styled.div`
+  position: relative;
   margin-top: -40px;
 `
 
@@ -66,4 +68,20 @@ export const DetailsText = styled.p`
   font-size: 16px;
   color: ${colors.lightBrown};
   padding-bottom: 2rem;
+`
+
+export const DetailsWikipedia = styled.div`
+  position: absolute;
+  height: 3rem;
+  width: 3rem;
+  background-image: url(${wikiIcon});
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  bottom: 1.8rem;
+  border-radius: 50%;
+
+  &:hover {
+    cursor: pointer;
+  }
 `
