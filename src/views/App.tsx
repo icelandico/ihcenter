@@ -3,7 +3,7 @@ import "./App.css"
 import { Route } from "react-router-dom"
 import Routes from "../routing/Routes"
 import Navbar from "../components/Navbar/navbar"
-import DetailPanel from "../components/DetailPanel/detail-panel"
+import DetailPanel from "../components/DetailPanel"
 
 const App: React.FC = () => {
   return (

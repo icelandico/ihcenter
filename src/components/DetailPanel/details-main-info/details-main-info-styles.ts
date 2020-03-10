@@ -38,6 +38,7 @@ export const DetailsContainer = styled.div`
   bottom: 0;
   scrollbar-width: thin;
   scrollbar-color: teal red;
+  margin-bottom: 1rem;
 
   &::-webkit-scrollbar-track {
     background: gray;
@@ -64,4 +65,5 @@ export const DetailsContainer = styled.div`
 export const DetailsText = styled.p`
   font-size: 16px;
   color: ${colors.lightBrown};
+  padding-bottom: 2rem;
 `

@@ -1,6 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import "./styles/index.css"
+import "./styles/base.css"
 import { BrowserRouter } from "react-router-dom"
 import { Provider } from "mobx-react"
 import App from "./views/App"

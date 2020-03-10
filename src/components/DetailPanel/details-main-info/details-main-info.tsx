@@ -20,6 +20,7 @@ const DetailMainInfo = (props: Props) => {
   const { details } = props
 
   const getDate = (date: string) => {
+    console.log(details)
     if (date) {
       const formattedDate = props.store.articleStore.getDate(date)
       return `${formattedDate.day} ${formattedDate.month} ${formattedDate.year}`
@@ -50,7 +51,9 @@ const DetailMainInfo = (props: Props) => {
       <DetailsContainer>
         {/* <DetailsText>{details && details.description}</DetailsText> */}
         <DetailsText>
-          Lorem ipsum dolor sit amet, vis et omnis dicit. His reque dicit no.
+          {details
+            ? details.description
+            : `Lorem ipsum dolor sit amet, vis et omnis dicit. His reque dicit no
           Eam et eros vivendum splendide, at mel semper eloquentiam, per ei
           dolor intellegam. Nam ferri impedit facilisi ex, falli error aperiri
           sed in. Ex detracto electram mei. Ne simul tempor his, ei diam esse
@@ -71,7 +74,7 @@ const DetailMainInfo = (props: Props) => {
           dissentiunt et. No mea modus iudico, per cu dico laudem abhorreant.
           Est deleniti invidunt no, in his viris elaboraret. No nam solum
           ancillae, nec no inani labore dissentiunt. Et nibh nusquam scribentur
-          ius, eos in habeo verear civibus.
+          ius, eos in habeo verear civibus.`}
         </DetailsText>
       </DetailsContainer>
     </div>
