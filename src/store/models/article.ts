@@ -1,5 +1,6 @@
 import { types, Instance, flow, applySnapshot } from "mobx-state-tree"
 import { apiUrls } from "../api/api"
+import ImageDetails from "./image"
 
 export type ArticleModel = Instance<typeof Article>
 export type ArticleListModel = Instance<typeof ArticleStore>
@@ -12,8 +13,15 @@ export const Article = types.model("Article", {
   startCoords: types.maybeNull(types.string),
   imageUrl: types.maybeNull(types.string),
   wikipediaLink: types.optional(types.string, ""),
-  description: types.maybeNull(types.string)
-  // nationality: types.model()
+  description: types.maybeNull(types.string),
+  image: types.union(ImageDetails, types.maybeNull(types.number)),
+  nationality: types.union(
+    types.model({
+      id: types.identifierNumber,
+      flag: types.maybeNull(types.number)
+    }),
+    types.maybeNull(types.number)
+  )
 })
 
 const ArticleStore = types
