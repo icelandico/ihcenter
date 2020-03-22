@@ -10,9 +10,7 @@ export const DetailsTopContainer = styled.div`
 export const ElementTitle = styled.h1`
   text-align: center;
   font-size: 2.4rem;
-  border-bottom: 1px solid ${colors.lightBrown};
-  padding-bottom: 1rem;
-  margin: 0 auto 1rem;
+  margin: 0 auto;
   width: 75%;
 `
 
@@ -20,6 +18,21 @@ export const ElementDate = styled.p`
   text-align: center;
   font-size: 1.6rem;
   color: ${colors.lightBrown};
+`
+
+export const ElementLink = styled.a`
+  position: absolute;
+  height: 3rem;
+  width: 3rem;
+  background-image: url(${wikiIcon});
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 export const MainImage = styled.div`
@@ -37,10 +50,9 @@ export const MainImage = styled.div`
 export const DetailsContainer = styled.div`
   height: 62%;
   overflow-y: scroll;
-  position: absolute;
-  bottom: 0;
-  margin-bottom: 1rem;
-  padding: 0 1rem;
+  margin-top: 2rem;
+  padding-right: 1rem;
+  text-align: justify;
 
   &::-webkit-scrollbar {
     width: 0.5rem;
@@ -63,18 +75,17 @@ export const DetailsText = styled.p`
   padding-bottom: 2rem;
 `
 
-export const DetailsWikipedia = styled.div`
-  position: absolute;
+export const WikiLinkContainer = styled.div`
   height: 3rem;
-  width: 3rem;
-  background-image: url(${wikiIcon});
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  bottom: 1.8rem;
-  border-radius: 50%;
+  width: 100%;
+  position: relative;
 
-  &:hover {
-    cursor: pointer;
+  &:before {
+    content: "";
+    width: 90%;
+    border: 1px solid ${colors.lightBrown};
+    position: absolute;
+    right: 0;
+    top: 50%;
   }
 `

@@ -3,6 +3,7 @@ interface Urls {
 }
 
 export const apiUrls: Urls = {
+  baseUrl: "http://icelandico.usermd.net/",
   articles: "http://icelandico.usermd.net/characters",
   ideas: "http://icelandico.usermd.net/ideas",
   literature: "http://icelandico.usermd.net/literature",

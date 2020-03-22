@@ -9,9 +9,11 @@ import {
   DetailsContainer,
   DetailsTopContainer,
   DetailsText,
+  ElementLink,
   ElementDate,
-  DetailsWikipedia
+  WikiLinkContainer
 } from "./details-main-info-styles"
+import { apiUrls } from "../../../store/api/api"
 
 export interface Props {
   store?: typeof rootStore
@@ -22,7 +24,6 @@ const DetailMainInfo = (props: Props) => {
   const { details } = props
 
   const getDate = (date: string) => {
-    console.log(details)
     if (date) {
       const formattedDate = props.store.articleStore.getDate(date)
       return `${formattedDate.day} ${formattedDate.month} ${formattedDate.year}`
@@ -35,21 +36,22 @@ const DetailMainInfo = (props: Props) => {
       <MainImage
         style={{
           backgroundImage: `url(${
-            details && details.imageUrl
-              ? details.imageUrl
+            details && details.image
+              ? `${apiUrls.baseUrl}${details.image.url}`
               : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6x-rKSUYJJ6aa673JE2ZsjVcvhoIL6v3tAI_1X8Br56U4VrrL&s"
             })`
         }}
       />
       <DetailsTopContainer>
         <ElementTitle>{details ? details.name : "Element Name"}</ElementTitle>
-        <a
-          href={details ? details.wikipediaLink : ""}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <DetailsWikipedia />
-        </a>
+        <WikiLinkContainer>
+          <ElementLink
+            href={details ? details.wikipediaLink : ""}
+            target="_blank"
+            rel="noopener noreferrer"
+          />
+        </WikiLinkContainer>
+        {/* <a target="_blank" rel="noopener noreferrer" /> */}
         <ElementDate>
           {details
             ? `${getDate(details.startDate)} - ${getDate(details.endDate)}`

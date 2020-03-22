@@ -7,4 +7,6 @@ export interface ArticleTypes {
   imageUrl: string
   description: string
   wikipediaLink: string
+  image: any
+  nationality: any
 }

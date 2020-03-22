@@ -6,10 +6,12 @@ import ReactDOMServer from "react-dom/server"
 import { rootStore } from "../../store/RootStore"
 import { icon } from "../MapIcons/map-icon"
 import DefaultIcon from "../../static/icons/person.svg"
+import { ArticleTypes } from "../../types/models-types"
+import { apiUrls } from "../../store/api/api"
 
 interface Props {
   store?: typeof rootStore
-  article: any
+  article: ArticleTypes
   key: number
   position: [number, number]
 }
@@ -29,8 +31,11 @@ class MapMarker extends React.Component<Props, State> {
         <div
           className="marker-icon"
           style={{
-            backgroundImage: `
-            url(${this.props.article.imageUrl || DefaultIcon})`
+            backgroundImage: `url(${
+              this.props.article && this.props.article.image
+                ? `${apiUrls.baseUrl}${this.props.article.image.url}`
+                : DefaultIcon
+            })`
           }}
         />
       </div>
