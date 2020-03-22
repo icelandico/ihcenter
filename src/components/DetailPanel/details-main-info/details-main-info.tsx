@@ -1,6 +1,5 @@
 import * as React from "react"
 import { observer, inject } from "mobx-react"
-import { Link } from "react-router-dom"
 import { ArticleTypes } from "../../../types/models-types"
 import { rootStore } from "../../../store/RootStore"
 import {
@@ -30,7 +29,7 @@ const DetailMainInfo = (props: Props) => {
     }
     return "??-??-??"
   }
-
+  console.log("Details", details)
   return (
     <div className="content-list-info content-main-info">
       <MainImage
@@ -51,7 +50,6 @@ const DetailMainInfo = (props: Props) => {
             rel="noopener noreferrer"
           />
         </WikiLinkContainer>
-        {/* <a target="_blank" rel="noopener noreferrer" /> */}
         <ElementDate>
           {details
             ? `${getDate(details.startDate)} - ${getDate(details.endDate)}`
@@ -60,7 +58,6 @@ const DetailMainInfo = (props: Props) => {
       </DetailsTopContainer>
 
       <DetailsContainer>
-        {/* <DetailsText>{details && details.description}</DetailsText> */}
         <DetailsText>
           {details
             ? details.description

@@ -5,7 +5,7 @@ interface Colors {
 export const colors: Colors = {
   white: "#fff",
   darkGreen: "#00393f",
-  green: "#007261",
+  green: "#007260",
   lightBrown: "#feeaca",
   red: "#c33200",
   darkBlue: "#007da6",

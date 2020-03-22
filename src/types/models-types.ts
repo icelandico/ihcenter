@@ -9,4 +9,6 @@ export interface ArticleTypes {
   wikipediaLink: string
   image: any
   nationality: any
+  startPlace: string
+  EndPlace: string
 }

@@ -18,10 +18,19 @@ export const Article = types.model("Article", {
   nationality: types.union(
     types.model({
       id: types.identifierNumber,
-      flag: types.maybeNull(types.number)
+      name: types.maybeNull(types.string),
+      flag: types.union(
+        types.model({
+          id: types.identifierNumber,
+          url: types.maybeNull(types.string)
+        }),
+        types.maybeNull(types.number)
+      )
     }),
     types.maybeNull(types.number)
-  )
+  ),
+  startPlace: types.maybeNull(types.string),
+  EndPlace: types.maybeNull(types.string)
 })
 
 const ArticleStore = types

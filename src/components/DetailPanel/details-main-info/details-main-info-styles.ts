@@ -9,7 +9,7 @@ export const DetailsTopContainer = styled.div`
 
 export const ElementTitle = styled.h1`
   text-align: center;
-  font-size: 2.4rem;
+  font-size: 2rem;
   margin: 0 auto;
   width: 75%;
 `

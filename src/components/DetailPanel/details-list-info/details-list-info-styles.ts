@@ -1,6 +1,6 @@
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import { colors } from "../../../styles/colors"
 
-export const DetailsListStyles = styled.div`
-  height: 100%;
+export const DetailsContainer = styled.div`
+  border-top: 1px solid ${colors.green};
 `
