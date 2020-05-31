@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components"
+import { NavLink } from "react-router-dom"
 import { colors } from "../../styles/colors"
 
 export const Home = styled.div`
@@ -64,6 +65,7 @@ export const NavigationItem = styled.li`
     color: ${colors.green};
     text-align: center;
     font-size: 14px;
+    margin-top: 5px;
   }
 
   & a {
@@ -77,13 +79,24 @@ export const NavigationItem = styled.li`
 `
 
 export const NavigationIcon = styled.img`
-  height: 45px;
-  width: 45px;
+  height: 35px;
+  width: 35px;
   /* background-color: ${colors.lightBrown}; */
   border-radius: 50%;
   margin: 0 auto;
   object-fit: cover;
-  outline: 1px solid red;
+  // outline: 1px solid red;
+`
+const activeClassName = "highlighted"
+
+export const NaviLink = styled(NavLink).attrs({ activeClassName })`
+  &.${activeClassName} {
+    ${NavigationIcon} {
+      border: 0px solid ${colors.green};
+      border-radius: 50%;
+      box-shadow: ${colors.green} 0 0 0 5px;
+    }
+  }
 `
 
 export const SearchInput = styled.input`

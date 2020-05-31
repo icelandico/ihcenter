@@ -10,7 +10,8 @@ import {
   NavigationItem,
   NavigationIcon,
   SearchInput,
-  PageTitle
+  PageTitle,
+  NaviLink
 } from "./navbar-styles"
 import { ReactComponent as SearchIcon } from "../../static/icons/SEARCH.svg"
 
@@ -19,14 +20,15 @@ const SearchIconSvg = styled(SearchIcon)`
   left: -30px;
   height: 30%;
 `
+
 class Navbar extends React.Component<any, any> {
   menuItems: string[] = ["timeline", "diagram", "list", "compare", "map"]
 
   generateLinks = () => {
     return this.menuItems.map((item, index) => {
       return (
-        <NavigationItem key={index}>
-          <Link to={`/${item}`}>
+        <NavigationItem key={`nav-${index + 1}`}>
+          <NaviLink to={`/${item}`}>
             <NavigationIcon
               src={require(`./../../static/icons/MODE_${item}.svg`)}
               style={
@@ -37,7 +39,7 @@ class Navbar extends React.Component<any, any> {
               }
             />
             <p>{item}</p>
-          </Link>
+          </NaviLink>
         </NavigationItem>
       )
     })
