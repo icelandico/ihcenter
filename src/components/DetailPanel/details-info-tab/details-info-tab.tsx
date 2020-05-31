@@ -1,5 +1,10 @@
 import * as React from "react"
-import { TabContainer, TabIcon } from "./details-info-tab-styles"
+import {
+  TabContainer,
+  TabIcon,
+  TabText,
+  TabExtraIcon
+} from "./details-info-tab-styles"
 import Default from "../../../static/flags/Ukraine.svg"
 
 interface Props {
@@ -8,10 +13,12 @@ interface Props {
   text?: string
   round?: boolean
   border?: boolean
+  founder?: boolean
+  founderIconUrl?: string
 }
 
 const DetailsInfoTab = (props: Props) => {
-  const { iconUrl, text, round, border } = props
+  const { iconUrl, text, round, border, founder, founderIconUrl } = props
 
   return (
     <TabContainer>
@@ -21,8 +28,16 @@ const DetailsInfoTab = (props: Props) => {
         style={{
           backgroundImage: `url(${iconUrl || `${Default}`})`
         }}
-      />
-      <p>{text}</p>
+      >
+        {founder && (
+          <TabExtraIcon
+            style={{
+              backgroundImage: `url(${founderIconUrl || `${Default}`})`
+            }}
+          />
+        )}
+      </TabIcon>
+      <TabText>{text}</TabText>
     </TabContainer>
   )
 }

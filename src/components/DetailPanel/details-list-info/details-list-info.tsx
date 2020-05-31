@@ -5,7 +5,7 @@ import { ArticleTypes } from "../../../types/models-types"
 import { apiUrls } from "../../../store/api/api"
 import DetailsInfoTab from "../details-info-tab/details-info-tab"
 import Fields from "../../../static/icons/fields.svg"
-import MainIdeas from "../../../static/icons/current_founder.svg"
+import FounderIcon from "../../../static/icons/current_founder_.svg"
 import Ideas from "../../../static/icons/current.svg"
 import Politics from "../../../static/icons/politics.svg"
 import ConnectedPerson from "../../../static/icons/person.svg"
@@ -26,7 +26,7 @@ const DetailListInfo = (props: Props) => {
         border
       />
       <DetailsInfoTab iconUrl={Fields} />
-      <DetailsInfoTab iconUrl={MainIdeas} />
+      <DetailsInfoTab iconUrl={Ideas} founder founderIconUrl={FounderIcon} />
       <DetailsInfoTab iconUrl={Ideas} />
       <DetailsInfoTab iconUrl={Politics} />
       <DetailsInfoTab iconUrl={ConnectedPerson} round />

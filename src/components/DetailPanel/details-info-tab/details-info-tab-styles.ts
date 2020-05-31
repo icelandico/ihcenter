@@ -2,23 +2,38 @@ import styled from "styled-components"
 import { colors } from "../../../styles/colors"
 
 export const TabContainer = styled.div`
-  border-top: 1px solid ${colors.green};
   padding: 1rem 0;
-  position: relative;
   margin: 0 auto 3rem;
-  width: 85%;
+  display: flex;
 `
 
 export const TabIcon = styled.div<{ round: boolean; border: boolean }>`
-  position: absolute;
-  top: 0;
-  left: -3.5rem;
   height: 2.5rem;
-  width: 2.5rem;
+  min-width: 2.5rem;
   border: ${props =>
     props.border ? `2px solid ${colors.lightBrown}` : "none"};
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   border-radius: ${props => (props.round ? "50%" : "unset")};
+  position: relative;
+`
+
+export const TabExtraIcon = styled.span`
+  position: absolute;
+  transform: translate(70%, -50%);
+  content: "";
+  height: 2rem;
+  width: 2rem;
+`
+
+export const TabText = styled.p`
+  flex-grow: 1;
+  height: 2.5rem;
+  width: 100%;
+  border-top: 1px solid ${colors.green};
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-left: 1rem;
 `
