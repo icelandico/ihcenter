@@ -1,5 +1,6 @@
 import * as React from "react"
 import { observer, inject } from "mobx-react"
+import { $mobx } from "mobx"
 import { ArticleTypes } from "../../../types/models-types"
 import { rootStore } from "../../../store/RootStore"
 import {
@@ -29,7 +30,7 @@ const DetailMainInfo = (props: Props) => {
     }
     return "??-??-??"
   }
-  console.log("Details", details)
+
   return (
     <div className="content-list-info content-main-info">
       <MainImage
@@ -38,7 +39,7 @@ const DetailMainInfo = (props: Props) => {
             details && details.image
               ? `${apiUrls.baseUrl}${details.image.url}`
               : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6x-rKSUYJJ6aa673JE2ZsjVcvhoIL6v3tAI_1X8Br56U4VrrL&s"
-            })`
+          })`
         }}
       />
       <DetailsTopContainer>

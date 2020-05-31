@@ -19,7 +19,7 @@ interface Props {
 
 const DetailsInfoTab = (props: Props) => {
   const { iconUrl, text, round, border, founder, founderIconUrl } = props
-
+  console.log("is founder", founder)
   return (
     <TabContainer>
       <TabIcon

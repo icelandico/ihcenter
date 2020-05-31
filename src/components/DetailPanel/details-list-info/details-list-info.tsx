@@ -19,6 +19,7 @@ export interface Props {
 const DetailListInfo = (props: Props) => {
   const { details } = props
   const flagDetails = details && details.nationality && details.nationality.flag
+  const precursor = details && !!details.precursor.length
   return (
     <div className="content-list-info content-list-info-detailed">
       <DetailsInfoTab
@@ -26,7 +27,11 @@ const DetailListInfo = (props: Props) => {
         border
       />
       <DetailsInfoTab iconUrl={Fields} />
-      <DetailsInfoTab iconUrl={Ideas} founder founderIconUrl={FounderIcon} />
+      <DetailsInfoTab
+        iconUrl={Ideas}
+        founder={precursor}
+        founderIconUrl={FounderIcon}
+      />
       <DetailsInfoTab iconUrl={Ideas} />
       <DetailsInfoTab iconUrl={Politics} />
       <DetailsInfoTab iconUrl={ConnectedPerson} round />

@@ -1,6 +1,5 @@
 import * as React from "react"
 import { observer, inject } from "mobx-react"
-import { ArticleTypes } from "../../types/models-types"
 import { rootStore } from "../../store/RootStore"
 import DetailListInfo from "./details-list-info/details-list-info"
 import DetailMainInfo from "./details-main-info/details-main-info"

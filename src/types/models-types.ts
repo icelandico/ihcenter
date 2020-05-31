@@ -11,4 +11,5 @@ export interface ArticleTypes {
   nationality: any
   startPlace: string
   EndPlace: string
+  precursor: any
 }
