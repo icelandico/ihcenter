@@ -14,6 +14,7 @@ interface Props {
   article: ArticleTypes
   key: number
   position: [number, number]
+  clicked: boolean
 }
 
 type MarkerIcon = DivIcon | Icon
