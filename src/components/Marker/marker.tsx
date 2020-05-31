@@ -1,7 +1,7 @@
-import * as React from "react"
+import React, { useState } from "react"
 import { Marker } from "react-leaflet"
 import { observer, inject } from "mobx-react"
-import L from "leaflet"
+import L, { DivIcon, Icon } from "leaflet"
 import ReactDOMServer from "react-dom/server"
 import { rootStore } from "../../store/RootStore"
 import { icon } from "../MapIcons/map-icon"
@@ -16,63 +16,55 @@ interface Props {
   position: [number, number]
 }
 
-interface State {
-  clicked: boolean
-}
+type MarkerIcon = DivIcon | Icon
 
-class MapMarker extends React.Component<Props, State> {
-  state = {
-    clicked: false
-  }
+const MapMarker = (props: Props) => {
+  const [isMarkerClicked, setClickedMarker] = useState<boolean>(false)
 
-  customIcon = L.divIcon({
-    html: ReactDOMServer.renderToString(
-      <div className="custom-marker">
-        <div
-          className="marker-icon"
-          style={{
-            backgroundImage: `url(${
-              this.props.article && this.props.article.image
-                ? `${apiUrls.baseUrl}${this.props.article.image.url}`
-                : DefaultIcon
-            })`
-          }}
-        />
-      </div>
-    ),
-    iconAnchor: [15, 30]
-  })
-
-  chooseIcon = () => {
-    const { clicked } = this.state
-    return clicked ? this.customIcon : icon
-  }
-
-  switchIcon = () => {
-    const { article } = this.props
-    const { store } = this.props
-    store.articleStore.toggle(article)
-    const { clicked } = this.state
-    this.setState({
-      clicked: !clicked
+  const customIcon = (): DivIcon => {
+    const divIcon = L.divIcon({
+      html: ReactDOMServer.renderToString(
+        <div className="custom-marker">
+          <div
+            className="marker-icon"
+            style={{
+              backgroundImage: `url(${
+                props.article && props.article.image
+                  ? `${apiUrls.baseUrl}${props.article.image.url}`
+                  : DefaultIcon
+              })`
+            }}
+          />
+        </div>
+      ),
+      iconAnchor: [15, 30]
     })
+    return divIcon
   }
 
-  render() {
-    const { key, position } = this.props
-    return (
-      <>
-        <Marker
-          icon={this.chooseIcon()}
-          key={key}
-          position={position}
-          iconAnchor={[0, 0]}
-          iconSize={[40, 40]}
-          onClick={this.switchIcon}
-        />
-      </>
-    )
+  const chooseIcon = (): MarkerIcon => {
+    return isMarkerClicked ? customIcon() : icon
   }
+
+  const switchIcon = () => {
+    const { article } = props
+    const { store } = props
+    store.articleStore.toggle(article)
+    setClickedMarker(!isMarkerClicked)
+  }
+
+  const { key, position } = props
+
+  return (
+    <Marker
+      icon={chooseIcon()}
+      key={key}
+      position={position}
+      iconAnchor={[0, 0]}
+      iconSize={[40, 40]}
+      onClick={switchIcon}
+    />
+  )
 }
 
 export default inject("store")(observer(MapMarker))

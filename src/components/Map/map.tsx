@@ -54,8 +54,8 @@ class MapComponent extends React.Component<Props, State> {
         />
         {articleStore.articles.length > 0
           ? articleStore.articles.map((article: ArticleTypes) =>
-            article.startCoords ? this.showMarkers(article) : null
-          )
+              article.startCoords ? this.showMarkers(article) : null
+            )
           : null}
         {/* </MapMarker> */}
       </Map>

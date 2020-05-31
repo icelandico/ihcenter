@@ -12,7 +12,7 @@ interface Props {
 
 const DetailsInfoTab = (props: Props) => {
   const { iconUrl, text, round, border } = props
-  console.log("Icon url: ", iconUrl)
+
   return (
     <TabContainer>
       <TabIcon
