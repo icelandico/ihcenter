@@ -20,11 +20,14 @@ const DetailListInfo = (props: Props) => {
   const { details } = props
   const flagDetails = details && details.nationality && details.nationality.flag
   const precursor = details && !!details.precursor.length
+
   return (
+    details &&
     <div className="content-list-info content-list-info-detailed">
       <DetailsInfoTab
         iconUrl={flagDetails ? `${apiUrls.baseUrl}/${flagDetails.url}` : null}
         border
+        content={details ? details.nationality.name : "Nationality"}
       />
       <DetailsInfoTab iconUrl={Fields} />
       <DetailsInfoTab

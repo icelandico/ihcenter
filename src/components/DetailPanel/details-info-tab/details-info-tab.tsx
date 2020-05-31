@@ -10,7 +10,7 @@ import Default from "../../../static/flags/Ukraine.svg"
 interface Props {
   iconUrl?: string
   icon?: string
-  text?: string
+  content?: string
   round?: boolean
   border?: boolean
   founder?: boolean
@@ -18,8 +18,8 @@ interface Props {
 }
 
 const DetailsInfoTab = (props: Props) => {
-  const { iconUrl, text, round, border, founder, founderIconUrl } = props
-  console.log("is founder", founder)
+  const { iconUrl, content, round, border, founder, founderIconUrl } = props
+
   return (
     <TabContainer>
       <TabIcon
@@ -37,7 +37,7 @@ const DetailsInfoTab = (props: Props) => {
           />
         )}
       </TabIcon>
-      <TabText>{text}</TabText>
+      <TabText>{content}</TabText>
     </TabContainer>
   )
 }

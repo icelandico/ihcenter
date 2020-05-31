@@ -36,4 +36,6 @@ export const TabText = styled.p`
   background-position: center;
   background-repeat: no-repeat;
   margin-left: 1rem;
+  padding: 1rem 0;
+  font-size: 14px;
 `
