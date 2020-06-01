@@ -22,24 +22,25 @@ const DetailListInfo = (props: Props) => {
   const precursor = details && !!details.precursor.length
 
   return (
-    details &&
-    <div className="content-list-info content-list-info-detailed">
-      <DetailsInfoTab
-        iconUrl={flagDetails ? `${apiUrls.baseUrl}/${flagDetails.url}` : null}
-        border
-        content={details ? details.nationality.name : "Nationality"}
-      />
-      <DetailsInfoTab iconUrl={Fields} />
-      <DetailsInfoTab
-        iconUrl={Ideas}
-        founder={precursor}
-        founderIconUrl={FounderIcon}
-      />
-      <DetailsInfoTab iconUrl={Ideas} />
-      <DetailsInfoTab iconUrl={Politics} />
-      <DetailsInfoTab iconUrl={ConnectedPerson} round />
-      <DetailsInfoTab iconUrl={Literature} round />
-    </div>
+    details && (
+      <div className="content-list-info content-list-info-detailed">
+        <DetailsInfoTab
+          iconUrl={flagDetails ? `${apiUrls.baseUrl}/${flagDetails.url}` : null}
+          border
+          content={details ? details.nationality.name : "Nationality"}
+        />
+        <DetailsInfoTab iconUrl={Fields} />
+        <DetailsInfoTab
+          iconUrl={Ideas}
+          founder={precursor}
+          founderIconUrl={FounderIcon}
+        />
+        <DetailsInfoTab iconUrl={Ideas} />
+        <DetailsInfoTab iconUrl={Politics} />
+        <DetailsInfoTab iconUrl={ConnectedPerson} round />
+        <DetailsInfoTab iconUrl={Literature} round />
+      </div>
+    )
   )
 }
 

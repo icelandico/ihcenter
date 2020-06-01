@@ -22,15 +22,37 @@ const SearchIconSvg = styled(SearchIcon)`
 `
 
 class Navbar extends React.Component<any, any> {
-  menuItems: string[] = ["timeline", "diagram", "list", "compare", "map"]
+  // menuItems: string[] = ["timeline", "diagram", "list", "compare", "map"]
+  menuItems: any[] = [
+    {
+      name: "timeline",
+      route: "/timeline"
+    },
+    {
+      name: "diagram",
+      route: "/diagram"
+    },
+    {
+      name: "list",
+      route: "/list"
+    },
+    {
+      name: "compare",
+      route: "/compare"
+    },
+    {
+      name: "map",
+      route: ""
+    }
+  ]
 
   generateLinks = () => {
     return this.menuItems.map((item, index) => {
       return (
         <NavigationItem key={`nav-${index + 1}`}>
-          <NaviLink to={`/${item}`}>
+          <NaviLink to={`${item.route}`} exact>
             <NavigationIcon
-              src={require(`./../../static/icons/MODE_${item}.svg`)}
+              src={require(`./../../static/icons/MODE_${item.name}.svg`)}
               style={
                 {
                   // backgroundImage: `url(http://franchise.carolsaundersswimschool.co.uk/wp-content/uploads/2017/02/img-placeholder.png)`,
@@ -38,7 +60,7 @@ class Navbar extends React.Component<any, any> {
                 }
               }
             />
-            <p>{item}</p>
+            <p>{item.name}</p>
           </NaviLink>
         </NavigationItem>
       )

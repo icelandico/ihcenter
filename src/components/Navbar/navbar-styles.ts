@@ -87,12 +87,12 @@ export const NavigationIcon = styled.img`
   object-fit: cover;
   // outline: 1px solid red;
 `
+
 const activeClassName = "highlighted"
 
 export const NaviLink = styled(NavLink).attrs({ activeClassName })`
   &.${activeClassName} {
     ${NavigationIcon} {
-      border: 0px solid ${colors.green};
       border-radius: 50%;
       box-shadow: ${colors.green} 0 0 0 5px;
     }
