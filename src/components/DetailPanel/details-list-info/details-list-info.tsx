@@ -20,7 +20,7 @@ const DetailListInfo = (props: Props) => {
   const { details } = props
   const flagDetails = details && details.nationality && details.nationality.flag
   const precursor = details && !!details.precursor.length
-
+  console.log("Details", details)
   return (
     details && (
       <div className="content-list-info content-list-info-detailed">

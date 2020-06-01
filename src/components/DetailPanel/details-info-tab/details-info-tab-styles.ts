@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { colors } from "../../../styles/colors"
 
 export const TabContainer = styled.div`
-  padding: 1rem 0;
+  padding: 0;
   margin: 0 auto 3rem;
   display: flex;
 `
@@ -27,7 +27,7 @@ export const TabExtraIcon = styled.span`
   width: 2rem;
 `
 
-export const TabText = styled.p`
+export const TabContent = styled.div`
   flex-grow: 1;
   height: 2.5rem;
   width: 100%;

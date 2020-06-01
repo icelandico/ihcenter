@@ -2,7 +2,7 @@ import * as React from "react"
 import {
   TabContainer,
   TabIcon,
-  TabText,
+  TabContent,
   TabExtraIcon
 } from "./details-info-tab-styles"
 import Default from "../../../static/flags/Ukraine.svg"
@@ -37,7 +37,7 @@ const DetailsInfoTab = (props: Props) => {
           />
         )}
       </TabIcon>
-      <TabText>{content}</TabText>
+      <TabContent>{content}</TabContent>
     </TabContainer>
   )
 }
