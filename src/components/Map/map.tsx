@@ -5,6 +5,7 @@ import { mapSettings } from "./utils"
 import { ArticleTypes } from "../../types/models-types"
 import { rootStore } from "../../store/RootStore"
 import MapMarker from "../Marker/marker"
+import Loader from "../shared/Loader/loader"
 
 interface Props {
   store?: typeof rootStore
@@ -45,11 +46,13 @@ class MapComponent extends React.Component<Props, State> {
           url={mapSettings.mainTile}
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
-        {articleStore.articles.length
-          ? articleStore.articles.map((article: ArticleTypes) =>
-              article.startCoords ? this.showMarkers(article) : null
-            )
-          : null}
+        {articleStore.articles.length ? (
+          articleStore.articles.map((article: ArticleTypes) =>
+            article.startCoords ? this.showMarkers(article) : null
+          )
+        ) : (
+          <Loader />
+        )}
       </Map>
     )
   }

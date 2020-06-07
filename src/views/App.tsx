@@ -29,7 +29,7 @@ const App: React.FC = () => {
         <div className="top-menu" />
         <div className="content-container-r">
           <DetailPanel />
-          <div className="content-lower"><Loader/></div>
+          <div className="content-lower" />
         </div>
       </div>
     </div>

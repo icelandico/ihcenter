@@ -6,12 +6,25 @@ const loaderKeyframes = keyframes`
   80%,
   100% {
     box-shadow: 0 0;
-  height: 4em;
+    height: 4rem;
   }
   40% {
-    box-shadow: 0 -2em;
-  height: 5em;
+    box-shadow: 0 -2rem;
+    height: 5rem;
 }
+`
+
+export const LoaderContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1001;
 `
 
 export const LoaderC = styled.div`
@@ -21,21 +34,22 @@ export const LoaderC = styled.div`
     background: ${colors.lightBrown};
     -webkit-animation: ${loaderKeyframes} 1s infinite ease-in-out;
     animation: ${loaderKeyframes} 1s infinite ease-in-out;
-    width: 1em;
-    height: 4em;
+    width: 1rem;
+    height: 4rem;
   }
 
   & {
-    color: ${colors.white};
-    text-indent: -9999em;
-    margin: 88px auto;
+    color: ${colors.lightBrown};
+    text-indent: -9999rem;
+    margin: 8.8rem auto;
     position: relative;
-    font-size: 11px;
+    font-size: 1.1rem;
     -webkit-transform: translateZ(0);
     -ms-transform: translateZ(0);
     transform: translateZ(0);
     -webkit-animation-delay: -0.16s;
     animation-delay: -0.16s;
+    align-self: center;
   }
 
   &::after,

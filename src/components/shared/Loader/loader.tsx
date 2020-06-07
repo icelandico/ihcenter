@@ -1,10 +1,16 @@
 import * as React from "react"
-import { LoaderC } from "./loader-styles"
+import { LoaderC, LoaderContainer } from "./loader-styles"
 
-interface Props {}
+interface Props {
+  transparent?: boolean
+}
 
 const Loader: React.FC<Props> = () => {
-  return <LoaderC />
+  return (
+    <LoaderContainer>
+      <LoaderC />
+    </LoaderContainer>
+  )
 }
 
 export default Loader
