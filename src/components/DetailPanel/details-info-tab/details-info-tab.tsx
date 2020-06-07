@@ -5,7 +5,7 @@ import {
   TabContent,
   TabExtraIcon
 } from "./details-info-tab-styles"
-import Default from "../../../static/flags/Ukraine.svg"
+import Default from "../../../static/flags/Default.svg"
 
 interface Props {
   iconUrl?: string

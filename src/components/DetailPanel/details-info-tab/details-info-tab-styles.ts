@@ -3,7 +3,7 @@ import { colors } from "../../../styles/colors"
 
 export const TabContainer = styled.div`
   padding: 0;
-  margin: 0 auto 3rem;
+  margin: 0 auto 2rem;
   display: flex;
 `
 
