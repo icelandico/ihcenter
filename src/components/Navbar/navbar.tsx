@@ -1,6 +1,4 @@
 import * as React from "react"
-import { Link } from "react-router-dom"
-import styled from "styled-components"
 import { observer, inject } from "mobx-react"
 import {
   NavbarContainer,
@@ -11,18 +9,11 @@ import {
   NavigationIcon,
   SearchInput,
   PageTitle,
-  NaviLink
+  NaviLink,
+  SearchIconSvg
 } from "./navbar-styles"
-import { ReactComponent as SearchIcon } from "../../static/icons/SEARCH.svg"
-
-const SearchIconSvg = styled(SearchIcon)`
-  position: absolute;
-  left: -30px;
-  height: 30%;
-`
 
 class Navbar extends React.Component<any, any> {
-  // menuItems: string[] = ["timeline", "diagram", "list", "compare", "map"]
   menuItems: any[] = [
     {
       name: "timeline",

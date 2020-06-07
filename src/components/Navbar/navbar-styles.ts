@@ -1,6 +1,13 @@
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import { NavLink } from "react-router-dom"
 import { colors } from "../../styles/colors"
+import { ReactComponent as SearchIcon } from "../../static/icons/SEARCH.svg"
+
+export const SearchIconSvg = styled(SearchIcon)`
+  position: absolute;
+  left: -3rem;
+  height: 30%;
+`
 
 export const Home = styled.div`
   width: 100%;
@@ -20,17 +27,12 @@ export const NavbarBottom = styled.div`
   padding-left: 4.5rem;
   padding-right: 1rem;
 
-  & .navbar-search {
-    /* border: 1px solid goldenrod; */
+  .navbar-search {
     width: 26%;
     position: relative;
   }
 
-  & .navigation-links {
-    /* border: 1px solid violet; */
-  }
-
-  & .nav-item {
+  .nav-item {
     display: flex;
     align-items: center;
     height: 100%;
@@ -81,11 +83,9 @@ export const NavigationItem = styled.li`
 export const NavigationIcon = styled.img`
   height: 35px;
   width: 35px;
-  /* background-color: ${colors.lightBrown}; */
   border-radius: 50%;
   margin: 0 auto;
   object-fit: cover;
-  // outline: 1px solid red;
 `
 
 const activeClassName = "highlighted"
@@ -110,13 +110,6 @@ export const SearchInput = styled.input`
   &::placeholder {
     color: ${colors.green};
   }
-`
-
-export const SearchIconSvg = css`
-  position: absolute;
-  left: -20px;
-  width: 100%;
-  height: 100%;
 `
 
 export const PageTitle = styled.h1`
