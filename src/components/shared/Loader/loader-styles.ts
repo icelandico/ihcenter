@@ -27,7 +27,7 @@ export const LoaderContainer = styled.div`
   z-index: 1001;
 `
 
-export const LoaderC = styled.div`
+export const LoaderElements = styled.div`
   &,
   &::after,
   &::before {
