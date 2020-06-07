@@ -13,6 +13,7 @@ import {
   SearchIconSvg
 } from "./navbar-styles"
 import { menuItems } from "../../routing/routeConfig"
+import Loader from "../shared/Loader/loader";
 
 const Navbar: React.FC = () => {
   const generateLinks = () => {

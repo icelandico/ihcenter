@@ -4,6 +4,7 @@ import { Route } from "react-router-dom"
 import Routes from "../routing/Routes"
 import Navbar from "../components/Navbar/navbar"
 import DetailPanel from "../components/DetailPanel"
+import Loader from "../components/shared/Loader/loader";
 
 const App: React.FC = () => {
   return (
@@ -28,7 +29,7 @@ const App: React.FC = () => {
         <div className="top-menu" />
         <div className="content-container-r">
           <DetailPanel />
-          <div className="content-lower" />
+          <div className="content-lower"><Loader/></div>
         </div>
       </div>
     </div>
