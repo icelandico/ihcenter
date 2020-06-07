@@ -17,7 +17,7 @@ interface Props {
   founderIconUrl?: string
 }
 
-const DetailsInfoTab = (props: Props) => {
+const DetailsInfoTab: React.FC<Props> = props => {
   const { iconUrl, content, round, border, founder, founderIconUrl } = props
 
   return (

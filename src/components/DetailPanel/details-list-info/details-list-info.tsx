@@ -16,7 +16,7 @@ export interface Props {
   details: ArticleTypes
 }
 
-const DetailListInfo = (props: Props) => {
+const DetailListInfo: React.FC<Props> = (props: Props) => {
   const { details } = props
   const flagDetails = details && details.nationality && details.nationality.flag
   const precursor = details && !!details.precursor.length

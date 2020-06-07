@@ -19,7 +19,7 @@ interface Props {
 
 type MarkerIcon = DivIcon | Icon
 
-const MapMarker = (props: Props) => {
+const MapMarker: React.FC<Props> = props => {
   const [isMarkerClicked, setClickedMarker] = useState<boolean>(false)
 
   const customIcon = (): DivIcon => {

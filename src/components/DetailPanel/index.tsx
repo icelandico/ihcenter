@@ -8,7 +8,7 @@ export interface Props {
   store?: typeof rootStore
 }
 
-const DetailPanel = (props: Props) => {
+const DetailPanel: React.FC<Props> = props => {
   const { store } = props
   const details = store.articleStore.chosenArticle
   return (
