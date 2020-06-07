@@ -9,7 +9,6 @@ const Routes = () => {
       <Route exact path="/" component={HomePage} />
       <Route path="/timeline" component={Timeline} />
       <Route path="/diagram" component={Timeline} />
-      {/*<Route exact path="/map" component={HomePage} />*/}
     </Switch>
   )
 }

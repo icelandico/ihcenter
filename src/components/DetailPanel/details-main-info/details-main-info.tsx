@@ -1,6 +1,5 @@
 import * as React from "react"
 import { observer, inject } from "mobx-react"
-import { $mobx } from "mobx"
 import { ArticleTypes } from "../../../types/models-types"
 import { rootStore } from "../../../store/RootStore"
 import {
@@ -20,7 +19,7 @@ export interface Props {
   details: ArticleTypes
 }
 
-const DetailMainInfo = (props: Props) => {
+const DetailMainInfo: React.FC<Props> = props => {
   const { details } = props
 
   const getDate = (date: string) => {
