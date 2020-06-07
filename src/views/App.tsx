@@ -4,7 +4,6 @@ import { Route } from "react-router-dom"
 import Routes from "../routing/Routes"
 import Navbar from "../components/Navbar/navbar"
 import DetailPanel from "../components/DetailPanel"
-import Loader from "../components/shared/Loader/loader";
 
 const App: React.FC = () => {
   return (
