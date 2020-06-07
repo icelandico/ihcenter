@@ -13,6 +13,7 @@ import {
   WikiLinkContainer
 } from "./details-main-info-styles"
 import { apiUrls } from "../../../store/api/api"
+import { formatDate } from "../../../utils/formatDate"
 
 export interface Props {
   store?: typeof rootStore
@@ -21,14 +22,6 @@ export interface Props {
 
 const DetailMainInfo: React.FC<Props> = props => {
   const { details } = props
-
-  const getDate = (date: string) => {
-    if (date) {
-      const formattedDate = props.store.articleStore.getDate(date)
-      return `${formattedDate.day} ${formattedDate.month} ${formattedDate.year}`
-    }
-    return "??-??-??"
-  }
 
   return (
     <div className="content-list-info content-main-info">
@@ -51,9 +44,8 @@ const DetailMainInfo: React.FC<Props> = props => {
           />
         </WikiLinkContainer>
         <ElementDate>
-          {details
-            ? `${getDate(details.startDate)} - ${getDate(details.endDate)}`
-            : "1 I 1000 – 1 XII 2020"}
+          {details &&
+            `${formatDate(details.startDate)} - ${formatDate(details.endDate)}`}
         </ElementDate>
       </DetailsTopContainer>
 

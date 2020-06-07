@@ -48,15 +48,6 @@ const ArticleStore = types
     }),
     toggle(article: ArticleModel) {
       self.chosenArticle = article
-    },
-    getDate(dateType: string) {
-      const matchDate = dateType.match(/\d+/g)
-      const date = {
-        day: matchDate[2],
-        month: matchDate[1],
-        year: matchDate[0]
-      }
-      return date
     }
   }))
 
