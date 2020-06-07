@@ -12,33 +12,12 @@ import {
   NaviLink,
   SearchIconSvg
 } from "./navbar-styles"
+import { menuItems } from "./../../routing/routeConfig"
 
 class Navbar extends React.Component<any, any> {
-  menuItems: any[] = [
-    {
-      name: "timeline",
-      route: "/timeline"
-    },
-    {
-      name: "diagram",
-      route: "/diagram"
-    },
-    {
-      name: "list",
-      route: "/list"
-    },
-    {
-      name: "compare",
-      route: "/compare"
-    },
-    {
-      name: "map",
-      route: ""
-    }
-  ]
 
   generateLinks = () => {
-    return this.menuItems.map((item, index) => {
+    return menuItems.map((item, index) => {
       return (
         <NavigationItem key={`nav-${index + 1}`}>
           <NaviLink to={`${item.route}`} exact>
