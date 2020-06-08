@@ -3,7 +3,7 @@ import { colors } from "../../../styles/colors"
 
 export const TabContainer = styled.div`
   padding: 0;
-  margin: 0 auto 2rem;
+  margin: 0 auto 1rem;
   display: flex;
 `
 
@@ -29,14 +29,14 @@ export const TabExtraIcon = styled.span`
 
 export const TabContent = styled.div`
   flex-grow: 1;
-  min-height: 2.5rem;
+  height: auto;
   width: 100%;
   border-top: 1px solid ${colors.green};
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   margin-left: 1rem;
-  padding: 1rem 0;
+  padding-top: 1rem;
   font-size: 14px;
 
 `
