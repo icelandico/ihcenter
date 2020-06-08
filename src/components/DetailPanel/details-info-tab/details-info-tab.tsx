@@ -10,7 +10,7 @@ import Default from "../../../static/flags/Default.svg"
 interface Props {
   iconUrl?: string
   icon?: string
-  content?: string
+  content?: JSX.Element
   round?: boolean
   border?: boolean
   founder?: boolean

@@ -10,10 +10,22 @@ import Ideas from "../../../static/icons/current.svg"
 import Politics from "../../../static/icons/politics.svg"
 import ConnectedPerson from "../../../static/icons/person.svg"
 import Literature from "../../../static/icons/text.svg"
+import { ReactComponent as Born } from "../../../static/icons/icon_born.svg"
+import SvgIcon from "../../shared/SvgIcon/svgIcon"
 
 export interface Props {
   store?: typeof rootStore
   details: ArticleTypes
+}
+
+const renderGeneralInfo = (details: ArticleTypes) => {
+  return (
+    <div>
+      <span>{details ? details.nationality.name : "Nationality"}</span>
+      <SvgIcon Icon={Born} />
+      <span>{details.nationality.name}</span>
+    </div>
+  )
 }
 
 const DetailListInfo: React.FC<Props> = props => {
@@ -27,7 +39,7 @@ const DetailListInfo: React.FC<Props> = props => {
         <DetailsInfoTab
           iconUrl={flagDetails ? `${apiUrls.baseUrl}/${flagDetails.url}` : null}
           border
-          content={details ? details.nationality.name : "Nationality"}
+          content={renderGeneralInfo(details)}
         />
         <DetailsInfoTab iconUrl={Fields} />
         <DetailsInfoTab
