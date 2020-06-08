@@ -29,8 +29,12 @@ const renderGeneralInfo = (details: ArticleTypes) => {
       <DetailsTopItem>
         {nationality},{"  "}
       </DetailsTopItem>
-      <DetailsTopItem><SvgIcon Icon={Born} /> <span>{details.startPlace || "Born"},{" "}</span></DetailsTopItem>
-      <DetailsTopItem><SvgIcon Icon={Dead} /> <span>{details.EndPlace || "Died"}</span></DetailsTopItem>
+      <DetailsTopItem>
+        <SvgIcon Icon={Born} /> <span>{details.startPlace || "Born"}, </span>
+      </DetailsTopItem>
+      <DetailsTopItem>
+        <SvgIcon Icon={Dead} /> <span>{details.EndPlace || "Died"}</span>
+      </DetailsTopItem>
     </DetailsTop>
   )
 }
