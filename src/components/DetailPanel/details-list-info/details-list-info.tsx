@@ -11,7 +11,9 @@ import Politics from "../../../static/icons/politics.svg"
 import ConnectedPerson from "../../../static/icons/person.svg"
 import Literature from "../../../static/icons/text.svg"
 import { ReactComponent as Born } from "../../../static/icons/icon_born.svg"
+import { ReactComponent as Dead } from "../../../static/icons/icon_dead.svg"
 import SvgIcon from "../../shared/SvgIcon/svgIcon"
+import { DetailsTop, DetailsTopItem } from "./details-list-info-styles"
 
 export interface Props {
   store?: typeof rootStore
@@ -19,12 +21,17 @@ export interface Props {
 }
 
 const renderGeneralInfo = (details: ArticleTypes) => {
+  const nationality = details.nationality
+    ? details.nationality.name
+    : "Global guy"
   return (
-    <div>
-      <span>{details ? details.nationality.name : "Nationality"}</span>
-      <SvgIcon Icon={Born} />
-      <span>{details.nationality.name}</span>
-    </div>
+    <DetailsTop>
+      <DetailsTopItem>
+        {nationality},{"  "}
+      </DetailsTopItem>
+      <DetailsTopItem><SvgIcon Icon={Born} /> <span>{details.startPlace || "Born"},{" "}</span></DetailsTopItem>
+      <DetailsTopItem><SvgIcon Icon={Dead} /> <span>{details.EndPlace || "Died"}</span></DetailsTopItem>
+    </DetailsTop>
   )
 }
 

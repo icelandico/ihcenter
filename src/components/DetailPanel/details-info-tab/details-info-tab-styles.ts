@@ -29,7 +29,7 @@ export const TabExtraIcon = styled.span`
 
 export const TabContent = styled.div`
   flex-grow: 1;
-  height: 2.5rem;
+  min-height: 2.5rem;
   width: 100%;
   border-top: 1px solid ${colors.green};
   background-size: cover;
@@ -38,4 +38,5 @@ export const TabContent = styled.div`
   margin-left: 1rem;
   padding: 1rem 0;
   font-size: 14px;
+
 `
