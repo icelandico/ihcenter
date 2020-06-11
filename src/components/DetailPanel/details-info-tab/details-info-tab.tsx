@@ -15,6 +15,7 @@ interface Props {
   border?: boolean
   founder?: boolean
   founderIconUrl?: string
+  tabId: string
 }
 
 const DetailsInfoTab: React.FC<Props> = props => {

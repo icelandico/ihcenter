@@ -11,6 +11,7 @@ export interface Props {
 const DetailPanel: React.FC<Props> = props => {
   const { store } = props
   const details = store.articleStore.chosenArticle
+  console.log("Details", details)
   return (
     <div className="content-main">
       <DetailListInfo details={details} />

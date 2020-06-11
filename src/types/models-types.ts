@@ -1,3 +1,5 @@
+import { Profession } from "./model-details-types"
+
 export interface ArticleTypes {
   id: number
   startDate: string
@@ -12,4 +14,5 @@ export interface ArticleTypes {
   startPlace: string
   EndPlace: string
   precursor: any
+  professions?: Profession[]
 }

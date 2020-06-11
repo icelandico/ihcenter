@@ -14,6 +14,7 @@ import { ReactComponent as Born } from "../../../static/icons/icon_born.svg"
 import { ReactComponent as Dead } from "../../../static/icons/icon_dead.svg"
 import SvgIcon from "../../shared/SvgIcon/svgIcon"
 import { DetailsTop, DetailsTopItem } from "./details-list-info-styles"
+import { Profession } from "../../../types/model-details-types"
 
 export interface Props {
   store?: typeof rootStore
@@ -39,6 +40,22 @@ const renderGeneralInfo = (details: ArticleTypes) => {
   )
 }
 
+const renderTextInfo = (details: ArticleTypes) => {
+  const professionsList = details.professions
+  return (
+    <div>
+      {professionsList.map((item: Profession, idx: number) => {
+        return (
+          <span>
+            {item.name}
+            {idx < professionsList.length - 1 ? ", " : ""}
+          </span>
+        )
+      })}
+    </div>
+  )
+}
+
 const DetailListInfo: React.FC<Props> = props => {
   const { details } = props
   const flagDetails = details && details.nationality && details.nationality.flag
@@ -48,20 +65,30 @@ const DetailListInfo: React.FC<Props> = props => {
     details && (
       <div className="content-list-info content-list-info-detailed">
         <DetailsInfoTab
+          tabId="baseInfo"
           iconUrl={flagDetails ? `${apiUrls.baseUrl}/${flagDetails.url}` : null}
           border
           content={renderGeneralInfo(details)}
         />
-        <DetailsInfoTab iconUrl={Fields} />
         <DetailsInfoTab
+          tabId="professions"
+          iconUrl={Fields}
+          content={renderTextInfo(details)}
+        />
+        <DetailsInfoTab
+          tabId="mainIdeas"
           iconUrl={Ideas}
           founder={precursor}
           founderIconUrl={FounderIcon}
         />
-        <DetailsInfoTab iconUrl={Ideas} />
-        <DetailsInfoTab iconUrl={Politics} />
-        <DetailsInfoTab iconUrl={ConnectedPerson} round />
-        <DetailsInfoTab iconUrl={Literature} round />
+        <DetailsInfoTab tabId="ideas" iconUrl={Ideas} />
+        <DetailsInfoTab tabId="politics" iconUrl={Politics} />
+        <DetailsInfoTab
+          tabId="connectedPeople"
+          iconUrl={ConnectedPerson}
+          round
+        />
+        <DetailsInfoTab tabId="literature" iconUrl={Literature} round />
       </div>
     )
   )
