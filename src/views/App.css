@@ -71,7 +71,7 @@
   -webkit-box-shadow: 0px 0px 40px 0px rgba(0,57,63,0.8);
   -moz-box-shadow: 0px 0px 40px 0px rgba(0,57,63,0.8);
   box-shadow: 0px 0px 40px 0px rgba(0,57,63,0.8);
-  outline: 1px solid brown;
+  /*outline: 1px solid brown;*/
   width: 100%;
 }
 
@@ -96,7 +96,7 @@
 
 .content-container-r {
   flex-basis: 70%;
-  outline: 0.1rem solid red;
+  outline: 0.1rem solid #007260;
 }
 
 .content-main {
@@ -111,14 +111,14 @@
 }
 
 .content-list-info {
-  width: 40%;
-  outline: 0.1rem solid black;
+  width: 45%;
+  /*outline: 0.1rem solid black;*/
   max-height: -webkit-fill-available;
   padding: 0 1.2rem;
 }
 
 .content-list-info-detailed {
-  padding: 0 0.5rem;
+  padding: 0 2rem 0 0.5rem;
 }
 
 .content-main-info {
