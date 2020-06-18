@@ -1,8 +1,6 @@
 import { types, Instance, flow, applySnapshot } from "mobx-state-tree"
 import { apiUrls } from "../api/api"
-import ImageDetails from "./image"
-import IdeaDetails from "./idea"
-import ProfessionDetails from "./profession"
+import { IdeaDetails, ImageDetails, ProfessionDetails } from "./articleDetails"
 
 export type ArticleModel = Instance<typeof Article>
 

@@ -13,7 +13,7 @@ import { ReactComponent as Born } from "../../../static/icons/icon_born.svg"
 import { ReactComponent as Dead } from "../../../static/icons/icon_dead.svg"
 import SvgIcon from "../../shared/SvgIcon/svgIcon"
 import { DetailsTop, DetailsTopItem } from "./details-list-info-styles"
-import { Profession } from "../../../types/model-details-types"
+import { Profession } from "../../../store/models/types"
 import { ArticleModel } from "../../../store/models/article"
 
 export interface Props {
