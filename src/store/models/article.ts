@@ -5,7 +5,6 @@ import IdeaDetails from "./idea"
 import ProfessionDetails from "./profession"
 
 export type ArticleModel = Instance<typeof Article>
-export type ArticleListModel = Instance<typeof ArticleStore>
 
 export const Article = types.model("Article", {
   id: types.identifierNumber,
@@ -13,23 +12,28 @@ export const Article = types.model("Article", {
   startDate: types.optional(types.maybeNull(types.string), "No Date"),
   endDate: types.optional(types.maybeNull(types.string), "No Date"),
   startCoords: types.maybeNull(types.string),
-  imageUrl: types.maybeNull(types.string),
   wikipediaLink: types.optional(types.string, ""),
   description: types.maybeNull(types.string),
-  image: types.union(ImageDetails, types.maybeNull(types.number)),
-  nationality: types.union(
+  image: types.maybeNull(ImageDetails),
+  nationality: types.optional(
     types.model({
       id: types.identifierNumber,
       name: types.maybeNull(types.string),
-      flag: types.union(
+      // flag: types.union(
+      //   types.model({
+      //     id: types.identifierNumber,
+      //     url: types.maybeNull(types.string)
+      //   }),
+      //   types.maybeNull(types.number)
+      // )
+      flag: types.maybeNull(
         types.model({
           id: types.identifierNumber,
           url: types.maybeNull(types.string)
-        }),
-        types.maybeNull(types.number)
+        })
       )
     }),
-    types.maybeNull(types.number)
+    ""
   ),
   startPlace: types.maybeNull(types.string),
   EndPlace: types.maybeNull(types.string),

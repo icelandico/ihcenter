@@ -14,5 +14,5 @@ export interface ArticleTypes {
   startPlace: string
   EndPlace: string
   precursor: any
-  professions?: Profession[]
+  professions: Profession[]
 }

@@ -8,10 +8,11 @@ import { icon } from "../MapIcons/map-icon"
 import DefaultIcon from "../../static/icons/person.svg"
 import { ArticleTypes } from "../../types/models-types"
 import { apiUrls } from "../../store/api/api"
+import { ArticleModel } from "../../store/models/article"
 
 interface Props {
   store?: typeof rootStore
-  article: ArticleTypes
+  article: ArticleModel
   key: number
   position: [number, number]
   clicked: boolean
@@ -23,6 +24,7 @@ const MapMarker: React.FC<Props> = props => {
   const [isMarkerClicked, setClickedMarker] = useState<boolean>(false)
 
   const customIcon = (): DivIcon => {
+    console.log(props.article)
     const divIcon = L.divIcon({
       html: ReactDOMServer.renderToString(
         <div className="custom-marker">

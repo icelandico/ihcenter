@@ -1,7 +1,6 @@
 import * as React from "react"
 import { observer, inject } from "mobx-react"
 import { rootStore } from "../../../store/RootStore"
-import { ArticleTypes } from "../../../types/models-types"
 import { apiUrls } from "../../../store/api/api"
 import DetailsInfoTab from "../details-info-tab/details-info-tab"
 import Fields from "../../../static/icons/fields.svg"
@@ -15,13 +14,14 @@ import { ReactComponent as Dead } from "../../../static/icons/icon_dead.svg"
 import SvgIcon from "../../shared/SvgIcon/svgIcon"
 import { DetailsTop, DetailsTopItem } from "./details-list-info-styles"
 import { Profession } from "../../../types/model-details-types"
+import { ArticleModel } from "../../../store/models/article"
 
 export interface Props {
   store?: typeof rootStore
-  details: ArticleTypes
+  details: ArticleModel
 }
 
-const renderGeneralInfo = (details: ArticleTypes) => {
+const renderGeneralInfo = (details: ArticleModel) => {
   const nationality = details.nationality
     ? details.nationality.name
     : "Global guy"
@@ -40,7 +40,7 @@ const renderGeneralInfo = (details: ArticleTypes) => {
   )
 }
 
-const renderTextInfo = (details: ArticleTypes) => {
+const renderTextInfo = (details: ArticleModel) => {
   const professionsList = details.professions
   return (
     <div>

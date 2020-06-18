@@ -14,10 +14,11 @@ import {
 } from "./details-main-info-styles"
 import { apiUrls } from "../../../store/api/api"
 import { formatDate } from "../../../utils/formatDate"
+import { ArticleModel } from "../../../store/models/article";
 
 export interface Props {
   store?: typeof rootStore
-  details: ArticleTypes
+  details: ArticleModel
 }
 
 const DetailMainInfo: React.FC<Props> = props => {
