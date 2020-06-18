@@ -15,25 +15,17 @@ export const Article = types.model("Article", {
   wikipediaLink: types.optional(types.string, ""),
   description: types.maybeNull(types.string),
   image: types.maybeNull(ImageDetails),
-  nationality: types.optional(
+  nationality: types.maybeNull(
     types.model({
       id: types.identifierNumber,
       name: types.maybeNull(types.string),
-      // flag: types.union(
-      //   types.model({
-      //     id: types.identifierNumber,
-      //     url: types.maybeNull(types.string)
-      //   }),
-      //   types.maybeNull(types.number)
-      // )
       flag: types.maybeNull(
         types.model({
           id: types.identifierNumber,
           url: types.maybeNull(types.string)
         })
       )
-    }),
-    ""
+    })
   ),
   startPlace: types.maybeNull(types.string),
   EndPlace: types.maybeNull(types.string),
