@@ -20,24 +20,33 @@ export const Article = types.model("Article", {
   description: types.maybeNull(types.string),
   image: types.maybeNull(ImageDetails),
   nationality: types.maybeNull(
-    types.model({
-      id: types.identifierNumber,
-      name: types.maybeNull(types.string),
-      flag: types.maybeNull(
-        types.model({
-          id: types.identifierNumber,
-          url: types.maybeNull(types.string)
-        })
-      )
-    })
-  ),
+      types.model({
+        id: types.identifierNumber,
+        name: types.maybeNull(types.string),
+        flag: types.maybeNull(
+          types.model({
+            id: types.identifierNumber,
+            url: types.maybeNull(types.string)
+          })
+        )
+      })),
   startPlace: types.maybeNull(types.string),
   EndPlace: types.maybeNull(types.string),
   precursor: types.optional(types.array(IdeaDetails), []),
   professions: types.optional(types.array(ProfessionDetails), []),
   ideas: types.optional(types.array(IdeaDetails), []),
   mainideas: types.optional(types.array(MainIdeaDetails), []),
-  writings: types.optional(types.array(WritingsDetails), [])
+  writings: types.optional(types.array(WritingsDetails), []),
+  articles: types.optional(
+    types.array(
+      types.model("ArticleS", {
+        id: types.number,
+        type: types.string,
+        name: types.string
+      })
+    ),
+    []
+  )
 })
 
 const ArticleStore = types

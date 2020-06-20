@@ -94,6 +94,7 @@ const DetailListInfo: React.FC<Props> = props => {
           tabId="connectedPeople"
           iconUrl={ConnectedPerson}
           round
+          content={renderTextInfo(details, "articles")}
         />
         <DetailsInfoTab
           tabId="literature"
