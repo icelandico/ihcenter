@@ -119,6 +119,7 @@
 
 .content-list-info-detailed {
   padding: 0 2rem 0 0.5rem;
+  overflow-x: scroll;
 }
 
 .content-main-info {

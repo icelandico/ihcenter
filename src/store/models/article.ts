@@ -28,7 +28,8 @@ export const Article = types.model("Article", {
   startPlace: types.maybeNull(types.string),
   EndPlace: types.maybeNull(types.string),
   precursor: types.optional(types.array(IdeaDetails), []),
-  professions: types.optional(types.array(ProfessionDetails), [])
+  professions: types.optional(types.array(ProfessionDetails), []),
+  ideas: types.optional(types.array(IdeaDetails), [])
 })
 
 const ArticleStore = types

@@ -40,15 +40,17 @@ const renderGeneralInfo = (details: ArticleModel) => {
   )
 }
 
-const renderTextInfo = (details: ArticleModel) => {
-  const professionsList = details.professions
+type ArticleOptions = ArticleModel & { [key: string]: any }
+
+const renderTextInfo = (details: ArticleOptions, specificDetail: string) => {
+  const detailsList = details[specificDetail]
   return (
     <div>
-      {professionsList.map((item: Profession, idx: number) => {
+      {detailsList.map((item: Profession, idx: number) => {
         return (
           <span>
             {item.name}
-            {idx < professionsList.length - 1 ? ", " : ""}
+            {idx < detailsList.length - 1 ? ", " : ""}
           </span>
         )
       })}
@@ -73,13 +75,14 @@ const DetailListInfo: React.FC<Props> = props => {
         <DetailsInfoTab
           tabId="professions"
           iconUrl={Fields}
-          content={renderTextInfo(details)}
+          content={renderTextInfo(details, "professions")}
         />
         <DetailsInfoTab
           tabId="mainIdeas"
           iconUrl={Ideas}
           founder={precursor}
           founderIconUrl={FounderIcon}
+          content={renderTextInfo(details, "ideas")}
         />
         <DetailsInfoTab tabId="ideas" iconUrl={Ideas} />
         <DetailsInfoTab tabId="politics" iconUrl={Politics} />
