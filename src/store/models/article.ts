@@ -4,7 +4,8 @@ import {
   IdeaDetails,
   ImageDetails,
   MainIdeaDetails,
-  ProfessionDetails
+  ProfessionDetails,
+  WritingsDetails
 } from "./articleDetails"
 
 export type ArticleModel = Instance<typeof Article>
@@ -36,7 +37,7 @@ export const Article = types.model("Article", {
   professions: types.optional(types.array(ProfessionDetails), []),
   ideas: types.optional(types.array(IdeaDetails), []),
   mainideas: types.optional(types.array(MainIdeaDetails), []),
-  writings: types.optional(types.array(MainIdeaDetails), [])
+  writings: types.optional(types.array(WritingsDetails), [])
 })
 
 const ArticleStore = types

@@ -6,7 +6,7 @@ export const IdeaDetails = types.model("IdeaDetails", {
   wikipediaLink: types.string
 })
 
-export const MainIdeaDetails = types.model("IdeaDetails", {
+export const MainIdeaDetails = types.model("MainIdeaDetails", {
   id: types.identifierNumber,
   name: types.string,
   description: types.string,
@@ -21,4 +21,12 @@ export const ImageDetails = types.model("ImageDetails", {
 export const ProfessionDetails = types.model("ProfessionDetails", {
   id: types.identifierNumber,
   name: types.string
+})
+
+export const WritingsDetails = types.model("WritingsDetails", {
+  id: types.identifierNumber,
+  title: types.string,
+  description: types.string,
+  publicated: types.maybeNull(types.string),
+  fragments: types.maybeNull(types.string)
 })
