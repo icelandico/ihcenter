@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import { colors } from "../../styles/colors"
 import { fonts } from "../../styles/font"
 
@@ -10,5 +10,5 @@ export const DetailsMainContainer = styled.div`
   padding: 1rem;
   display: flex;
   height: 100%;
-  font-family: ${fonts.base}
+  font-family: ${fonts.base};
 `

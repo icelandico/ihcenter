@@ -12,7 +12,7 @@ import Literature from "../../../static/icons/text.svg"
 import { ReactComponent as Born } from "../../../static/icons/icon_born.svg"
 import { ReactComponent as Dead } from "../../../static/icons/icon_dead.svg"
 import SvgIcon from "../../shared/SvgIcon/svgIcon"
-import { DetailsTop, DetailsTopItem } from "./details-list-info-styles"
+import { DetailsTop, DetailsTopItem, DetailedContentTab } from "./details-list-info-styles"
 import { Profession } from "../../../store/models/types"
 import { ArticleModel } from "../../../store/models/article"
 
@@ -82,16 +82,21 @@ const DetailListInfo: React.FC<Props> = props => {
           iconUrl={Ideas}
           founder={precursor}
           founderIconUrl={FounderIcon}
+          content={renderTextInfo(details, "mainideas")}
+        />
+        <DetailsInfoTab
+          tabId="ideas"
+          iconUrl={Ideas}
           content={renderTextInfo(details, "ideas")}
         />
-        <DetailsInfoTab tabId="ideas" iconUrl={Ideas} />
         <DetailsInfoTab tabId="politics" iconUrl={Politics} />
         <DetailsInfoTab
           tabId="connectedPeople"
           iconUrl={ConnectedPerson}
           round
         />
-        <DetailsInfoTab tabId="literature" iconUrl={Literature} round />
+        <DetailsInfoTab tabId="literature" iconUrl={Literature} round content={renderTextInfo(details, "writings")}
+        />
       </div>
     )
   )

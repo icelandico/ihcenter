@@ -6,6 +6,13 @@ export const IdeaDetails = types.model("IdeaDetails", {
   wikipediaLink: types.string
 })
 
+export const MainIdeaDetails = types.model("IdeaDetails", {
+  id: types.identifierNumber,
+  name: types.string,
+  description: types.string,
+  wikipediaLink: types.string
+})
+
 export const ImageDetails = types.model("ImageDetails", {
   id: types.identifierNumber,
   url: types.string
