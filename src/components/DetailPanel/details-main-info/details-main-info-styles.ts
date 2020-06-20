@@ -49,7 +49,7 @@ export const MainImage = styled.div`
 
 export const DetailsContainer = styled.div`
   height: 62%;
-  overflow-y: scroll;
+  overflow-y: auto;
   margin-top: 2rem;
   padding-right: 1rem;
   text-align: justify;
