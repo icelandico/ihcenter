@@ -3,6 +3,7 @@ import { observer, inject } from "mobx-react"
 import { rootStore } from "../../store/RootStore"
 import DetailListInfo from "./details-list-info/details-list-info"
 import DetailMainInfo from "./details-main-info/details-main-info"
+import { DetailsMainContainer } from "./index-styles"
 
 export interface Props {
   store?: typeof rootStore
@@ -11,12 +12,11 @@ export interface Props {
 const DetailPanel: React.FC<Props> = props => {
   const { store } = props
   const details = store.articleStore.chosenArticle
-  console.log("Details", details)
   return (
-    <div className="content-main">
+    <DetailsMainContainer>
       <DetailListInfo details={details} />
       <DetailMainInfo details={details} />
-    </div>
+    </DetailsMainContainer>
   )
 }
 
