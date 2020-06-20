@@ -38,9 +38,9 @@ export const Article = types.model("Article", {
   ideas: types.optional(types.array(IdeaDetails), []),
   mainideas: types.optional(types.array(MainIdeaDetails), []),
   writings: types.optional(types.array(WritingsDetails), []),
-  articles: types.optional(
+  connected: types.optional(
     types.array(
-      types.model("ArticleS", {
+      types.model("Related", {
         id: types.number,
         type: types.string,
         name: types.string
@@ -58,7 +58,13 @@ const ArticleStore = types
   .actions(self => ({
     getAllArticles: flow(function*() {
       const response = yield fetch(apiUrls.articles)
-      const articles = yield response.json()
+      const articles = yield response.json();
+      const finalArticles = articles.map((article: any) =>
+        Object.assign(article, {
+          connected: article.otherObjects.concat(article.articles)
+        })
+      );
+      console.log("Artcles", finalArticles)
       applySnapshot(self.articles, articles)
     }),
     toggle(article: ArticleModel) {
