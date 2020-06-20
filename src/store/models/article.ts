@@ -20,16 +20,17 @@ export const Article = types.model("Article", {
   description: types.maybeNull(types.string),
   image: types.maybeNull(ImageDetails),
   nationality: types.maybeNull(
-      types.model({
-        id: types.identifierNumber,
-        name: types.maybeNull(types.string),
-        flag: types.maybeNull(
-          types.model({
-            id: types.identifierNumber,
-            url: types.maybeNull(types.string)
-          })
-        )
-      })),
+    types.model({
+      id: types.identifierNumber,
+      name: types.maybeNull(types.string),
+      flag: types.maybeNull(
+        types.model({
+          id: types.identifierNumber,
+          url: types.maybeNull(types.string)
+        })
+      )
+    })
+  ),
   startPlace: types.maybeNull(types.string),
   EndPlace: types.maybeNull(types.string),
   precursor: types.optional(types.array(IdeaDetails), []),
