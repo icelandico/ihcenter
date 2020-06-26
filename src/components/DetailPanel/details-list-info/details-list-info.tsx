@@ -8,6 +8,9 @@ import FounderIcon from "../../../static/icons/current_founder_.svg"
 import MainIdeas from "../../../static/icons/current.svg"
 import Ideas from "../../../static/icons/idea.svg"
 import Politics from "../../../static/icons/politics.svg"
+import Events from "../../../static/icons/events.svg"
+import Influences from "../../../static/icons/influences.svg"
+import Influenced from "../../../static/icons/influenced.svg"
 import ConnectedPerson from "../../../static/icons/person.svg"
 import Literature from "../../../static/icons/text.svg"
 import { ReactComponent as Born } from "../../../static/icons/icon_born.svg"
@@ -91,6 +94,9 @@ const DetailListInfo: React.FC<Props> = props => {
           content={renderTextInfo(details, "ideas")}
         />
         <DetailsInfoTab tabId="politics" iconUrl={Politics} />
+        <DetailsInfoTab tabId="events" iconUrl={Events} />
+        <DetailsInfoTab tabId="influences" iconUrl={Influences} />
+        <DetailsInfoTab tabId="influenced" iconUrl={Influenced} />
         <DetailsInfoTab
           tabId="connectedPeople"
           iconUrl={ConnectedPerson}
