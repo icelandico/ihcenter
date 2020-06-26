@@ -5,14 +5,15 @@ import { apiUrls } from "../../../store/api/api"
 import DetailsInfoTab from "../details-info-tab/details-info-tab"
 import Fields from "../../../static/icons/fields.svg"
 import FounderIcon from "../../../static/icons/current_founder_.svg"
-import Ideas from "../../../static/icons/current.svg"
+import MainIdeas from "../../../static/icons/current.svg"
+import Ideas from "../../../static/icons/idea.svg"
 import Politics from "../../../static/icons/politics.svg"
 import ConnectedPerson from "../../../static/icons/person.svg"
 import Literature from "../../../static/icons/text.svg"
 import { ReactComponent as Born } from "../../../static/icons/icon_born.svg"
 import { ReactComponent as Dead } from "../../../static/icons/icon_dead.svg"
 import SvgIcon from "../../shared/SvgIcon/svgIcon"
-import { DetailsTop, DetailsTopItem, DetailedContentTab } from "./details-list-info-styles"
+import { DetailsTop, DetailsTopItem } from "./details-list-info-styles"
 import { Profession } from "../../../store/models/types"
 import { ArticleModel } from "../../../store/models/article"
 
@@ -79,7 +80,7 @@ const DetailListInfo: React.FC<Props> = props => {
         />
         <DetailsInfoTab
           tabId="mainIdeas"
-          iconUrl={Ideas}
+          iconUrl={MainIdeas}
           founder={precursor}
           founderIconUrl={FounderIcon}
           content={renderTextInfo(details, "mainideas")}
