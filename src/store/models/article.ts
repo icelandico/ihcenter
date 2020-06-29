@@ -40,7 +40,17 @@ export const Article = types.model("Article", {
   ideas: types.optional(types.array(IdeaDetails), []),
   mainideas: types.optional(types.array(MainIdeaDetails), []),
   writings: types.optional(types.array(WritingsDetails), []),
-  connected: types.optional(
+  influenced: types.optional(
+    types.array(
+      types.model("Related", {
+        id: types.number,
+        type: types.string,
+        name: types.string
+      })
+    ),
+    []
+  ),
+  influences: types.optional(
     types.array(
       types.model("Related", {
         id: types.number,

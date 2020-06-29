@@ -140,13 +140,17 @@ const renderPerson = (details: ArticleModel): JSX.Element => {
       />
       <DetailsInfoTab tabId="politics" iconUrl={Politics} />
       <DetailsInfoTab tabId="events" iconUrl={Events} />
-      <DetailsInfoTab tabId="influences" extend={3.5} iconUrl={Influences} />
-      <DetailsInfoTab tabId="influenced" extend={3.5} iconUrl={Influenced} />
       <DetailsInfoTab
-        tabId="connectedPeople"
-        iconUrl={ConnectedPerson}
-        round
-        content={renderTextInfo(details, "connected")}
+        tabId="influences"
+        extend={3.5}
+        iconUrl={Influences}
+        content={renderTextInfo(details, "influences")}
+      />
+      <DetailsInfoTab
+        tabId="influenced"
+        extend={3.5}
+        iconUrl={Influenced}
+        content={renderTextInfo(details, "influenced")}
       />
       <DetailsInfoTab
         tabId="literature"

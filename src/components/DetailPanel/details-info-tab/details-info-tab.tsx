@@ -27,30 +27,34 @@ const DetailsInfoTab: React.FC<Props> = props => {
     border,
     extend,
     founder,
-    founderIconUrl
+    founderIconUrl,
+    tabId
   } = props
 
-  return (
-    <TabContainer>
-      <TabIcon
-        round={round}
-        border={border}
-        extend={extend}
-        style={{
-          backgroundImage: `url(${iconUrl || `${Default}`})`
-        }}
-      >
-        {founder && (
-          <TabExtraIcon
-            style={{
-              backgroundImage: `url(${founderIconUrl || `${Default}`})`
-            }}
-          />
-        )}
-      </TabIcon>
-      <TabContent>{content}</TabContent>
-    </TabContainer>
-  )
+  if (content && content.props.children.length) {
+    return (
+      <TabContainer id={tabId}>
+        <TabIcon
+          round={round}
+          border={border}
+          extend={extend}
+          style={{
+            backgroundImage: `url(${iconUrl || `${Default}`})`
+          }}
+        >
+          {founder && (
+            <TabExtraIcon
+              style={{
+                backgroundImage: `url(${founderIconUrl || `${Default}`})`
+              }}
+            />
+          )}
+        </TabIcon>
+        <TabContent>{content}</TabContent>
+      </TabContainer>
+    )
+  }
+  return null
 }
 
 export default DetailsInfoTab
