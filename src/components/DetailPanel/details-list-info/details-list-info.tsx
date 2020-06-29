@@ -47,7 +47,6 @@ type ArticleOptions = ArticleModel & { [key: string]: any }
 
 const renderTextInfo = (details: ArticleOptions, specificDetail: string) => {
   const detailsList = details[specificDetail]
-  console.log("Details List", detailsList)
   return (
     <div>
       {detailsList &&
@@ -164,7 +163,6 @@ const renderPerson = (details: ArticleModel): JSX.Element => {
 
 const DetailListInfo: React.FC<Props> = props => {
   const { details } = props
-  console.log("object type", details ? details.type : "no details")
   return (
     <div className="content-list-info content-list-info-detailed">
       {details && renderTypeDetails(details)}

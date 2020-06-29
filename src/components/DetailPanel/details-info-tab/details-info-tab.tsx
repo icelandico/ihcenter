@@ -30,8 +30,8 @@ const DetailsInfoTab: React.FC<Props> = props => {
     founderIconUrl,
     tabId
   } = props
-
-  if (content && content.props.children.length) {
+  console.log("Content", tabId, content)
+  if (content && content.props.children && content.props.children.length) {
     return (
       <TabContainer id={tabId}>
         <TabIcon
