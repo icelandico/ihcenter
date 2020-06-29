@@ -46,9 +46,7 @@ const DetailMainInfo: React.FC<Props> = props => {
 
   return (
     <div className="content-list-info content-main-info">
-      <MainImage
-        style={{backgroundImage: `url(${renderImage(details)}`}}
-      />
+      <MainImage style={{ backgroundImage: `url(${renderImage(details)}` }} />
       <DetailsTopContainer>
         <ElementTitle>{details ? details.name : "Element Name"}</ElementTitle>
         <WikiLinkContainer>
