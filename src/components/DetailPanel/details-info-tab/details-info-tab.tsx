@@ -32,8 +32,8 @@ const DetailsInfoTab: React.FC<Props> = props => {
     tabId,
     fontColor
   } = props
-  console.log("Content", tabId, content)
-  if (content && content.props.children && content.props.children.length) {
+
+  const renderTabContainer = () => {
     return (
       <TabContainer id={tabId}>
         <TabIcon
@@ -56,7 +56,11 @@ const DetailsInfoTab: React.FC<Props> = props => {
       </TabContainer>
     )
   }
-  return null
+
+  const isContent =
+    content && content.props.children && content.props.children.length
+
+  return isContent ? renderTabContainer() : null
 }
 
 export default DetailsInfoTab
