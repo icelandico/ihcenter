@@ -123,6 +123,7 @@ const renderPerson = (details: ArticleModel): JSX.Element => {
       <DetailsInfoTab
         tabId="professions"
         iconUrl={Fields}
+        fontColor="darkBlue"
         content={renderTextInfo(details, "professions")}
       />
       <DetailsInfoTab
@@ -130,16 +131,19 @@ const renderPerson = (details: ArticleModel): JSX.Element => {
         iconUrl={MainIdeas}
         founder={precursor}
         founderIconUrl={FounderIcon}
+        fontColor="woodBrown"
         content={renderTextInfo(details, "mainideas")}
       />
       <DetailsInfoTab
         tabId="ideas"
         iconUrl={Ideas}
+        fontColor="woodBrown"
         content={renderTextInfo(details, "ideas")}
       />
       <DetailsInfoTab
         tabId="politics"
         iconUrl={Politics}
+        fontColor="regularRed"
         content={renderTextInfo(details, "relatedOrg")}
       />
       <DetailsInfoTab tabId="events" iconUrl={Events} />
@@ -159,6 +163,7 @@ const renderPerson = (details: ArticleModel): JSX.Element => {
         tabId="literature"
         iconUrl={Literature}
         round
+        fontColor="lightBrown"
         content={renderTextInfo(details, "writings")}
       />
     </>

@@ -17,6 +17,7 @@ interface Props {
   founderIconUrl?: string
   tabId: string
   extend?: number
+  fontColor?: string
 }
 
 const DetailsInfoTab: React.FC<Props> = props => {
@@ -28,7 +29,8 @@ const DetailsInfoTab: React.FC<Props> = props => {
     extend,
     founder,
     founderIconUrl,
-    tabId
+    tabId,
+    fontColor
   } = props
   console.log("Content", tabId, content)
   if (content && content.props.children && content.props.children.length) {
@@ -50,7 +52,7 @@ const DetailsInfoTab: React.FC<Props> = props => {
             />
           )}
         </TabIcon>
-        <TabContent>{content}</TabContent>
+        <TabContent fontColor={fontColor}>{content}</TabContent>
       </TabContainer>
     )
   }
