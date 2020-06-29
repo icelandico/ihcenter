@@ -137,7 +137,11 @@ const renderPerson = (details: ArticleModel): JSX.Element => {
         iconUrl={Ideas}
         content={renderTextInfo(details, "ideas")}
       />
-      <DetailsInfoTab tabId="politics" iconUrl={Politics} />
+      <DetailsInfoTab
+        tabId="politics"
+        iconUrl={Politics}
+        content={renderTextInfo(details, "relatedOrg")}
+      />
       <DetailsInfoTab tabId="events" iconUrl={Events} />
       <DetailsInfoTab
         tabId="influences"
