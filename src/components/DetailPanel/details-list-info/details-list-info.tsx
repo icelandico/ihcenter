@@ -50,67 +50,121 @@ const renderTextInfo = (details: ArticleOptions, specificDetail: string) => {
   const detailsList = details[specificDetail]
   return (
     <div>
-      {detailsList.map((item: Profession, idx: number) => {
-        return (
-          <span>
-            {item.name}
-            {idx < detailsList.length - 1 ? ", " : ""}
-          </span>
-        )
-      })}
+      {detailsList &&
+        detailsList.map((item: Profession, idx: number) => {
+          return (
+            <span>
+              {item.name}
+              {idx < detailsList.length - 1 ? ", " : ""}
+            </span>
+          )
+        })}
     </div>
+  )
+}
+
+const renderTypeDetails = (details: ArticleModel): JSX.Element => {
+  const { type } = details
+  switch (type) {
+    case "person":
+      return renderPerson(details)
+    case "event":
+      return renderEvent(details)
+    case "organisation":
+      return renderOrganisation(details)
+    default:
+      return renderPerson(details)
+  }
+}
+
+const renderEvent = (details: ArticleModel): JSX.Element => {
+  const flagDetails = details && details.nationality && details.nationality.flag
+  return (
+    <>
+      <DetailsInfoTab
+        tabId="baseInfo"
+        iconUrl={flagDetails ? `${apiUrls.baseUrl}/${flagDetails.url}` : null}
+        border
+        content={renderGeneralInfo(details)}
+      />
+    </>
+  )
+}
+
+const renderOrganisation = (details: ArticleModel): JSX.Element => {
+  const flagDetails = details && details.nationality && details.nationality.flag
+  return (
+    <>
+      <DetailsInfoTab
+        tabId="baseInfo"
+        iconUrl={flagDetails ? `${apiUrls.baseUrl}/${flagDetails.url}` : null}
+        border
+        content={renderGeneralInfo(details)}
+      />
+      <DetailsInfoTab
+        tabId="relatedPerson"
+        iconUrl={Influences}
+        content={renderTextInfo(details, "relatedPerson")}
+      />
+    </>
+  )
+}
+
+const renderPerson = (details: ArticleModel): JSX.Element => {
+  const flagDetails = details && details.nationality && details.nationality.flag
+  const precursor = details && !!details.precursor.length
+  return (
+    <>
+      <DetailsInfoTab
+        tabId="baseInfo"
+        iconUrl={flagDetails ? `${apiUrls.baseUrl}/${flagDetails.url}` : null}
+        border
+        content={renderGeneralInfo(details)}
+      />
+      <DetailsInfoTab
+        tabId="professions"
+        iconUrl={Fields}
+        content={renderTextInfo(details, "professions")}
+      />
+      <DetailsInfoTab
+        tabId="mainIdeas"
+        iconUrl={MainIdeas}
+        founder={precursor}
+        founderIconUrl={FounderIcon}
+        content={renderTextInfo(details, "mainideas")}
+      />
+      <DetailsInfoTab
+        tabId="ideas"
+        iconUrl={Ideas}
+        content={renderTextInfo(details, "ideas")}
+      />
+      <DetailsInfoTab tabId="politics" iconUrl={Politics} />
+      <DetailsInfoTab tabId="events" iconUrl={Events} />
+      <DetailsInfoTab tabId="influences" extend={3.5} iconUrl={Influences} />
+      <DetailsInfoTab tabId="influenced" extend={3.5} iconUrl={Influenced} />
+      <DetailsInfoTab
+        tabId="connectedPeople"
+        iconUrl={ConnectedPerson}
+        round
+        content={renderTextInfo(details, "connected")}
+      />
+      <DetailsInfoTab
+        tabId="literature"
+        iconUrl={Literature}
+        round
+        content={renderTextInfo(details, "writings")}
+      />
+    </>
   )
 }
 
 const DetailListInfo: React.FC<Props> = props => {
   const { details } = props
-  const flagDetails = details && details.nationality && details.nationality.flag
-  const precursor = details && !!details.precursor.length
-  console.log("Details", details)
+  console.log("object type", details ? details.type : "no details")
   return (
-    details && (
-      <div className="content-list-info content-list-info-detailed">
-        <DetailsInfoTab
-          tabId="baseInfo"
-          iconUrl={flagDetails ? `${apiUrls.baseUrl}/${flagDetails.url}` : null}
-          border
-          content={renderGeneralInfo(details)}
-        />
-        <DetailsInfoTab
-          tabId="professions"
-          iconUrl={Fields}
-          content={renderTextInfo(details, "professions")}
-        />
-        <DetailsInfoTab
-          tabId="mainIdeas"
-          iconUrl={MainIdeas}
-          founder={precursor}
-          founderIconUrl={FounderIcon}
-          content={renderTextInfo(details, "mainideas")}
-        />
-        <DetailsInfoTab
-          tabId="ideas"
-          iconUrl={Ideas}
-          content={renderTextInfo(details, "ideas")}
-        />
-        <DetailsInfoTab tabId="politics" iconUrl={Politics} />
-        <DetailsInfoTab tabId="events" iconUrl={Events} />
-        <DetailsInfoTab tabId="influences" iconUrl={Influences} />
-        <DetailsInfoTab tabId="influenced" iconUrl={Influenced} />
-        <DetailsInfoTab
-          tabId="connectedPeople"
-          iconUrl={ConnectedPerson}
-          round
-          content={renderTextInfo(details, "connected")}
-        />
-        <DetailsInfoTab
-          tabId="literature"
-          iconUrl={Literature}
-          round
-          content={renderTextInfo(details, "writings")}
-        />
-      </div>
-    )
+    <div className="content-list-info content-list-info-detailed">
+      {details && renderTypeDetails(details)}
+    </div>
   )
 }
 

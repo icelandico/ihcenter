@@ -16,16 +16,26 @@ interface Props {
   founder?: boolean
   founderIconUrl?: string
   tabId: string
+  extend?: number
 }
 
 const DetailsInfoTab: React.FC<Props> = props => {
-  const { iconUrl, content, round, border, founder, founderIconUrl } = props
+  const {
+    iconUrl,
+    content,
+    round,
+    border,
+    extend,
+    founder,
+    founderIconUrl
+  } = props
 
   return (
     <TabContainer>
       <TabIcon
         round={round}
         border={border}
+        extend={extend}
         style={{
           backgroundImage: `url(${iconUrl || `${Default}`})`
         }}

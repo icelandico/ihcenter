@@ -70,6 +70,7 @@ const ArticleStore = types
         ...el,
         ident: `${el.type}-${el.id}`
       }))
+      console.log("Articles", articlesWithIds)
       applySnapshot(self.articles, articlesWithIds)
     }),
     toggle(article: ArticleModel) {

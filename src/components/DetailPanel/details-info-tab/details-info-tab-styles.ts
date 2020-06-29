@@ -7,8 +7,12 @@ export const TabContainer = styled.div`
   display: flex;
 `
 
-export const TabIcon = styled.div<{ round: boolean; border: boolean }>`
-  height: 2.5rem;
+export const TabIcon = styled.div<{
+  round: boolean
+  border: boolean
+  extend: number
+}>`
+  height: ${props => (props.extend ? `${props.extend}rem` : "2.5rem")};
   min-width: 2.5rem;
   border: ${props =>
     props.border ? `2px solid ${colors.lightBrown}` : "none"};
