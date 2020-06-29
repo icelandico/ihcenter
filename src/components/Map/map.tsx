@@ -27,7 +27,7 @@ class MapComponent extends React.Component<Props, State> {
     return (
       <MapMarker
         clicked={false}
-        key={article.id}
+        key={`${article.type}-${article.id}`}
         article={article}
         position={markerCoords}
       />

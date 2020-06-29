@@ -1,5 +1,5 @@
 import { types, Instance, flow, applySnapshot } from "mobx-state-tree"
-import { apiUrls } from "../api/api"
+import { apiUrls, apiEndpoints } from "../api/api"
 import {
   IdeaDetails,
   ImageDetails,
@@ -11,7 +11,7 @@ import {
 export type ArticleModel = Instance<typeof Article>
 
 export const Article = types.model("Article", {
-  id: types.identifierNumber,
+  id: types.number,
   name: types.optional(types.string, ""),
   startDate: types.optional(types.maybeNull(types.string), "No Date"),
   endDate: types.optional(types.maybeNull(types.string), "No Date"),
@@ -31,6 +31,8 @@ export const Article = types.model("Article", {
       )
     })
   ),
+  type: types.string,
+  ident: types.identifier,
   startPlace: types.maybeNull(types.string),
   EndPlace: types.maybeNull(types.string),
   precursor: types.optional(types.array(IdeaDetails), []),
@@ -57,17 +59,21 @@ const ArticleStore = types
   })
   .actions(self => ({
     getAllArticles: flow(function*() {
-      const response = yield fetch(apiUrls.articles)
-      const articles = yield response.json();
-      const finalArticles = articles.map((article: any) =>
-        Object.assign(article, {
-          connected: article.otherObjects.concat(article.articles)
-        })
-      );
-      console.log("Artcles", finalArticles)
-      applySnapshot(self.articles, articles)
+      const response = yield Promise.all(
+        apiEndpoints.map(url => fetch(url).then(response => response.json()))
+      )
+      const articles = response.reduce(
+        (prevSet: [], nextSet: []) => prevSet.concat(nextSet),
+        []
+      )
+      const articlesWithIds = articles.map((el: ArticleModel) => ({
+        ...el,
+        ident: `${el.type}-${el.id}`
+      }))
+      applySnapshot(self.articles, articlesWithIds)
     }),
     toggle(article: ArticleModel) {
+      console.log("article", article)
       self.chosenArticle = article
     }
   }))

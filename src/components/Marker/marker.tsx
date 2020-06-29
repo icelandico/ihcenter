@@ -12,7 +12,7 @@ import { ArticleModel } from "../../store/models/article"
 interface Props {
   store?: typeof rootStore
   article: ArticleModel
-  key: number
+  key: string
   position: [number, number]
   clicked: boolean
 }
