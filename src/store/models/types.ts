@@ -1,4 +1,5 @@
 import { Instance } from "mobx-state-tree"
-import { ProfessionDetails } from "./articleDetails"
+import {BaseInfoDetails, WritingsDetails} from "./articleDetails"
 
-export type Profession = Instance<typeof ProfessionDetails>
+export type BaseInfo = Instance<typeof BaseInfoDetails>
+export type Writing = Instance<typeof WritingsDetails>

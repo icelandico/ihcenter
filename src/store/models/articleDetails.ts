@@ -18,7 +18,7 @@ export const ImageDetails = types.model("ImageDetails", {
   url: types.string
 })
 
-export const ProfessionDetails = types.model("ProfessionDetails", {
+export const BaseInfoDetails = types.model("BaseInfoDetails", {
   id: types.identifierNumber,
   name: types.string
 })

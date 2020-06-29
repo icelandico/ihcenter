@@ -4,7 +4,7 @@ import {
   IdeaDetails,
   ImageDetails,
   MainIdeaDetails,
-  ProfessionDetails,
+  BaseInfoDetails,
   WritingsDetails
 } from "./articleDetails"
 
@@ -36,7 +36,7 @@ export const Article = types.model("Article", {
   startPlace: types.maybeNull(types.string),
   EndPlace: types.maybeNull(types.string),
   precursor: types.optional(types.array(IdeaDetails), []),
-  professions: types.optional(types.array(ProfessionDetails), []),
+  professions: types.optional(types.array(BaseInfoDetails), []),
   ideas: types.optional(types.array(IdeaDetails), []),
   mainideas: types.optional(types.array(MainIdeaDetails), []),
   writings: types.optional(types.array(WritingsDetails), []),
