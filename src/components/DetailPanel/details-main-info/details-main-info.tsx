@@ -13,11 +13,32 @@ import {
 } from "./details-main-info-styles"
 import { apiUrls } from "../../../store/api/api"
 import { formatDate } from "../../../utils/formatDate"
-import { ArticleModel } from "../../../store/models/article";
+import { ArticleModel } from "../../../store/models/article"
+import EventIcon from "../../../static/icons/event.svg"
+import PoliticsIcon from "../../../static/icons/politics.svg"
 
 export interface Props {
   store?: typeof rootStore
   details: ArticleModel
+}
+
+const renderImage = (details: ArticleModel): string => {
+  if (!details)
+    return "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6x-rKSUYJJ6aa673JE2ZsjVcvhoIL6v3tAI_1X8Br56U4VrrL&s"
+  if (details && details.image) {
+    return `${apiUrls.baseUrl}${details.image.url}`
+  }
+  const { type } = details
+  switch (type) {
+    case "person":
+      return `${apiUrls.baseUrl}${details.image.url}`
+    case "event":
+      return EventIcon
+    case "organisation":
+      return PoliticsIcon
+    default:
+      return EventIcon
+  }
 }
 
 const DetailMainInfo: React.FC<Props> = props => {
@@ -26,13 +47,7 @@ const DetailMainInfo: React.FC<Props> = props => {
   return (
     <div className="content-list-info content-main-info">
       <MainImage
-        style={{
-          backgroundImage: `url(${
-            details && details.image
-              ? `${apiUrls.baseUrl}${details.image.url}`
-              : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6x-rKSUYJJ6aa673JE2ZsjVcvhoIL6v3tAI_1X8Br56U4VrrL&s"
-          })`
-        }}
+        style={{backgroundImage: `url(${renderImage(details)}`}}
       />
       <DetailsTopContainer>
         <ElementTitle>{details ? details.name : "Element Name"}</ElementTitle>
