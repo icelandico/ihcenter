@@ -6,13 +6,14 @@ type Props = {
 }
 
 export const SvgContainer = styled.div`
-  height: ${(p: Props) => (p.height ? `${p.width}rem` : "3rem")};
-  width: ${(p: Props) => (p.width ? `${p.width}rem` : "3rem")};
+  height: auto;
+  width: 100%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
   & svg {
-    height: auto;
+    height: ${(p: Props) => (p.height ? `${p.width}rem` : "1.25rem")};
+    width: ${(p: Props) => (p.width ? `${p.width}rem` : "1.25rem")};
   }
 `

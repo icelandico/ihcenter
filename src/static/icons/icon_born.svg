@@ -1,7 +1,7 @@
 <svg id="Warstwa_1" data-name="Warstwa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 5.45">
   <defs>
     <style>
-      .cls-1{fill:#fff}
+      .cls-1{fill:#fff; stroke: #fff; stroke-width: 0.2}
     </style>
   </defs>
   <path class="cls-1" d="M0 2.47h6v.5H0z"/>

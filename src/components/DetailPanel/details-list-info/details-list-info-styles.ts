@@ -1,9 +1,4 @@
 import styled from "styled-components"
-import { colors } from "../../../styles/colors"
-
-export const DetailsContainer = styled.div`
-  border-top: 1px solid ${colors.green};
-`
 
 export const DetailsTop = styled.div<{
   column: boolean
@@ -20,7 +15,7 @@ export const DetailsTopItem = styled.div`
   margin: 0 0.5rem 0.5rem 0;
 
   & svg {
-    margin: 0.5rem;
+    margin: 0.5rem 0;
   }
 `
 
