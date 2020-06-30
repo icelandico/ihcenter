@@ -31,7 +31,7 @@ export const TabExtraIcon = styled.span`
   width: 2rem;
 `
 
-export const TabContent = styled.div<{ fontColor?: string }>`
+export const TabContent = styled.div<{ fontColor?: string, sansFont?: boolean }>`
   flex-grow: 1;
   height: auto;
   width: 100%;
@@ -42,5 +42,7 @@ export const TabContent = styled.div<{ fontColor?: string }>`
   margin-left: 1rem;
   padding-top: 1rem;
   font-size: 1.4rem;
+  font-family: "Alegreya Sans", sans-serif;
   color: ${props => colors[props.fontColor] || "currentColor"};
+  font-style: ${props => (props.sansFont ? "italic" : "normal")};
 `

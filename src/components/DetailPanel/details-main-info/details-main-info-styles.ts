@@ -12,12 +12,15 @@ export const ElementTitle = styled.h1`
   font-size: 2rem;
   margin: 0 auto;
   width: 75%;
+  font-family: "Alegreya", sans-serif;
+  font-weight: 800;
 `
 
 export const ElementDate = styled.p`
   text-align: center;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: ${colors.lightBrown};
+  font-family: "Krub", sans-serif;
 `
 
 export const ElementLink = styled.a`
@@ -73,6 +76,7 @@ export const DetailsText = styled.p`
   font-size: 1.5rem;
   color: ${colors.lightBrown};
   padding-bottom: 2rem;
+  font-family: "Alegreya", sans-serif;
 `
 
 export const WikiLinkContainer = styled.div`

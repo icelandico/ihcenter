@@ -41,7 +41,9 @@ const renderGeneralInfo = (details: ArticleModel) => {
       </DetailsTopItem>
       <DetailsTopItem>
         <SvgIcon Icon={Dead} />{" "}
-        <span style={{ marginLeft: "0.5rem" }}>{details.EndPlace || "Died"}</span>
+        <span style={{ marginLeft: "0.5rem" }}>
+          {details.EndPlace || "Died"}
+        </span>
       </DetailsTopItem>
     </DetailsTop>
   )
@@ -169,6 +171,7 @@ const renderPerson = (details: ArticleModel): JSX.Element => {
         iconUrl={Literature}
         round
         fontColor="lightBrown"
+        sansFont
         content={renderTextInfo(details, "writings")}
       />
     </>
