@@ -29,7 +29,7 @@ const renderGeneralInfo = (details: ArticleModel) => {
     ? details.nationality.name
     : "Global guy"
   return (
-    <DetailsTop>
+    <DetailsTop column>
       <DetailsTopItem>
         {nationality},{"  "}
       </DetailsTopItem>
@@ -118,6 +118,7 @@ const renderPerson = (details: ArticleModel): JSX.Element => {
         tabId="baseInfo"
         iconUrl={flagDetails ? `${apiUrls.baseUrl}/${flagDetails.url}` : null}
         border
+        column
         content={renderGeneralInfo(details)}
       />
       <DetailsInfoTab

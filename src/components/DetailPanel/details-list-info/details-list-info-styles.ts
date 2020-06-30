@@ -5,10 +5,13 @@ export const DetailsContainer = styled.div`
   border-top: 1px solid ${colors.green};
 `
 
-export const DetailsTop = styled.div`
+export const DetailsTop = styled.div<{
+  column: boolean
+}>`
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
+  flex-direction: ${props => (props.column ? `column` : "row")};
+  align-items: flex-start;
 `
 
 export const DetailsTopItem = styled.div`

@@ -1,13 +1,10 @@
-<svg id="Warstwa_1" data-name="Warstwa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6.81 6.81" preserveAspectRatio="none" width="100%" height="100%">
+<svg id="Warstwa_1" data-name="Warstwa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 5.45">
   <defs>
-    <clipPath id="clip-path" transform="translate(-508.16 -380.42)">
-      <path fill="none" d="M508.16 380.42h6.81v6.81h-6.81z"/>
-    </clipPath>
     <style>
-      .cls-3{fill:none;stroke:#ffeaca}
+      .cls-1{fill:#fff}
     </style>
   </defs>
-  <g clip-path="url(#clip-path)">
-    <path class="cls-3" d="M0 3.41h6.81M3.41 6.81V0M1 5.82L5.82 1M5.82 5.82L1 1"/>
-  </g>
+  <path class="cls-1" d="M0 2.47h6v.5H0z"/>
+  <path class="cls-1" transform="rotate(-60 -20.104 1087.54)" d="M927.93 564.88h6v.5h-6z"/>
+  <path class="cls-1" transform="rotate(-29.9 -586.126 2021.564)" d="M930.69 562.13h.5v6h-.5z"/>
 </svg>

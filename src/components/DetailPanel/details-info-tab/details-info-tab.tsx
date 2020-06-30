@@ -18,6 +18,7 @@ interface Props {
   tabId: string
   extend?: number
   fontColor?: string
+  column?: boolean
 }
 
 const DetailsInfoTab: React.FC<Props> = props => {
