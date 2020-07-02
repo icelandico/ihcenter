@@ -93,15 +93,41 @@ export class TabGenerator extends React.Component {
   }
 
   renderEvent = (details: ArticleModel): JSX.Element => {
+    const eventConfig = [
+      "baseInfo",
+      "profession",
+      "mainIdeas",
+      "ideas",
+      "politics",
+      "events",
+      "influences",
+      "influenced",
+      "literature"
+    ]
     return <>A</>
   }
 
   renderOrganisation = (details: ArticleModel): JSX.Element => {
-    return <>A</>
+    const organisationConfig = [
+      "baseInfo",
+      "mainIdeas",
+      "ideas",
+      "politics",
+      "events",
+      "influences",
+      "influenced",
+      "literature"
+    ]
+    return (
+      <>
+        {organisationConfig.map((element: string) => {
+          return this.getProperFunction(element)
+        })}
+      </>
+    )
   }
 
   renderPerson = (): JSX.Element => {
-    console.log("Render person")
     const personConfig = [
       "baseInfo",
       "profession",
