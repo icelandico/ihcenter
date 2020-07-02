@@ -31,7 +31,10 @@ export const TabExtraIcon = styled.span`
   width: 2rem;
 `
 
-export const TabContent = styled.div<{ fontColor?: string, sansFont?: boolean }>`
+export const TabContent = styled.div<{
+  fontColor?: string
+  sansFont?: boolean
+}>`
   flex-grow: 1;
   height: auto;
   width: 100%;

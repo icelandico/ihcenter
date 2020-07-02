@@ -18,6 +18,7 @@ import SvgIcon from "../../shared/SvgIcon/svgIcon"
 import { DetailsTop, DetailsTopItem } from "./details-list-info-styles"
 import { BaseInfo, Writing } from "../../../store/models/types"
 import { ArticleModel } from "../../../store/models/article"
+import { TabGenerator } from "../details-info-tab/details-info-tab-specific"
 
 export interface Props {
   store?: typeof rootStore
@@ -69,114 +70,116 @@ const renderTextInfo = (details: ArticleOptions, specificDetail: string) => {
 }
 
 const renderTypeDetails = (details: ArticleModel): JSX.Element => {
+  const tabGenerator = new TabGenerator(details)
   const { type } = details
   switch (type) {
     case "person":
-      return renderPerson(details)
+      return tabGenerator.renderPerson()
     case "event":
-      return renderEvent(details)
+      return tabGenerator.renderEvent(details)
     case "organisation":
-      return renderOrganisation(details)
+      return tabGenerator.renderOrganisation(details)
     default:
-      return renderPerson(details)
+      return tabGenerator.renderPerson()
   }
 }
 
-const renderEvent = (details: ArticleModel): JSX.Element => {
-  const flagDetails = details && details.nationality && details.nationality.flag
-  return (
-    <>
-      <DetailsInfoTab
-        tabId="baseInfo"
-        iconUrl={flagDetails ? `${apiUrls.baseUrl}/${flagDetails.url}` : null}
-        border
-        content={renderGeneralInfo(details)}
-      />
-    </>
-  )
-}
+// const renderEvent = (details: ArticleModel): JSX.Element => {
+//   const flagDetails = details && details.nationality && details.nationality.flag
+//   return (
+//     <>
+//       <DetailsInfoTab
+//         tabId="baseInfo"
+//         iconUrl={flagDetails ? `${apiUrls.baseUrl}/${flagDetails.url}` : null}
+//         border
+//         content={renderGeneralInfo(details)}
+//       />
+//     </>
+//   )
+// }
 
-const renderOrganisation = (details: ArticleModel): JSX.Element => {
-  const flagDetails = details && details.nationality && details.nationality.flag
-  return (
-    <>
-      <DetailsInfoTab
-        tabId="baseInfo"
-        iconUrl={flagDetails ? `${apiUrls.baseUrl}/${flagDetails.url}` : null}
-        border
-        content={renderGeneralInfo(details)}
-      />
-      <DetailsInfoTab
-        tabId="relatedPerson"
-        iconUrl={Influences}
-        content={renderTextInfo(details, "relatedPerson")}
-      />
-    </>
-  )
-}
+// const renderOrganisation = (details: ArticleModel): JSX.Element => {
+//   const flagDetails = details && details.nationality && details.nationality.flag
+//   return (
+//     <>
+//       <DetailsInfoTab
+//         tabId="baseInfo"
+//         iconUrl={flagDetails ? `${apiUrls.baseUrl}/${flagDetails.url}` : null}
+//         border
+//         content={renderGeneralInfo(details)}
+//       />
+//       <DetailsInfoTab
+//         tabId="relatedPerson"
+//         iconUrl={Influences}
+//         content={renderTextInfo(details, "relatedPerson")}
+//       />
+//     </>
+//   )
+// }
 
-const renderPerson = (details: ArticleModel): JSX.Element => {
-  const flagDetails = details && details.nationality && details.nationality.flag
-  const precursor = details && !!details.precursor.length
-  return (
-    <>
-      <DetailsInfoTab
-        tabId="baseInfo"
-        iconUrl={flagDetails ? `${apiUrls.baseUrl}/${flagDetails.url}` : null}
-        border
-        column
-        content={renderGeneralInfo(details)}
-      />
-      <DetailsInfoTab
-        tabId="professions"
-        iconUrl={Fields}
-        fontColor="darkBlue"
-        content={renderTextInfo(details, "professions")}
-      />
-      <DetailsInfoTab
-        tabId="mainIdeas"
-        iconUrl={MainIdeas}
-        founder={precursor}
-        founderIconUrl={FounderIcon}
-        fontColor="woodBrown"
-        content={renderTextInfo(details, "mainideas")}
-      />
-      <DetailsInfoTab
-        tabId="ideas"
-        iconUrl={Ideas}
-        fontColor="woodBrown"
-        content={renderTextInfo(details, "ideas")}
-      />
-      <DetailsInfoTab
-        tabId="politics"
-        iconUrl={Politics}
-        fontColor="regularRed"
-        content={renderTextInfo(details, "relatedOrg")}
-      />
-      <DetailsInfoTab tabId="events" iconUrl={Events} />
-      <DetailsInfoTab
-        tabId="influences"
-        extend={3.5}
-        iconUrl={Influences}
-        content={renderTextInfo(details, "influences")}
-      />
-      <DetailsInfoTab
-        tabId="influenced"
-        extend={3.5}
-        iconUrl={Influenced}
-        content={renderTextInfo(details, "influenced")}
-      />
-      <DetailsInfoTab
-        tabId="literature"
-        iconUrl={Literature}
-        round
-        fontColor="lightBrown"
-        sansFont
-        content={renderTextInfo(details, "writings")}
-      />
-    </>
-  )
-}
+// const renderPerson = (details: ArticleModel): JSX.Element => {
+//   const flagDetails = details && details.nationality && details.nationality.flag
+//   const precursor = details && !!details.precursor.length
+//
+//   return (
+//     <>
+//       <DetailsInfoTab
+//         tabId="baseInfo"
+//         iconUrl={flagDetails ? `${apiUrls.baseUrl}/${flagDetails.url}` : null}
+//         border
+//         column
+//         content={renderGeneralInfo(details)}
+//       />
+//       <DetailsInfoTab
+//         tabId="professions"
+//         iconUrl={Fields}
+//         fontColor="darkBlue"
+//         content={renderTextInfo(details, "professions")}
+//       />
+//       <DetailsInfoTab
+//         tabId="mainIdeas"
+//         iconUrl={MainIdeas}
+//         founder={precursor}
+//         founderIconUrl={FounderIcon}
+//         fontColor="woodBrown"
+//         content={renderTextInfo(details, "mainideas")}
+//       />
+//       <DetailsInfoTab
+//         tabId="ideas"
+//         iconUrl={Ideas}
+//         fontColor="woodBrown"
+//         content={renderTextInfo(details, "ideas")}
+//       />
+//       <DetailsInfoTab
+//         tabId="politics"
+//         iconUrl={Politics}
+//         fontColor="regularRed"
+//         content={renderTextInfo(details, "relatedOrg")}
+//       />
+//       <DetailsInfoTab tabId="events" iconUrl={Events} />
+//       <DetailsInfoTab
+//         tabId="influences"
+//         extend={3.5}
+//         iconUrl={Influences}
+//         content={renderTextInfo(details, "influences")}
+//       />
+//       <DetailsInfoTab
+//         tabId="influenced"
+//         extend={3.5}
+//         iconUrl={Influenced}
+//         content={renderTextInfo(details, "influenced")}
+//       />
+//       <DetailsInfoTab
+//         tabId="literature"
+//         iconUrl={Literature}
+//         round
+//         fontColor="lightBrown"
+//         sansFont
+//         content={renderTextInfo(details, "writings")}
+//       />
+//     </>
+//   )
+// }
 
 const DetailListInfo: React.FC<Props> = props => {
   const { details } = props

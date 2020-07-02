@@ -19,10 +19,3 @@ export const DetailsTopItem = styled.div`
     margin: 0.5rem 0;
   }
 `
-
-export const DetailedContentTab = styled.div`
-  padding: 0 2rem 0 0.5rem;
-  overflow-y: auto;
-  width: 45%;
-  max-height: -webkit-fill-available;
-`
