@@ -7,10 +7,10 @@ type Props = {
 
 export const SvgContainer = styled.div`
   height: auto;
-  width: 100%;
+  width: auto;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 
   & svg {
     height: ${(p: Props) => (p.height ? `${p.width}rem` : "1.25rem")};
