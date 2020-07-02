@@ -76,9 +76,9 @@ const renderTypeDetails = (details: ArticleModel): JSX.Element => {
     case "person":
       return tabGenerator.renderPerson()
     case "event":
-      return tabGenerator.renderEvent(details)
+      return tabGenerator.renderEvent()
     case "organisation":
-      return tabGenerator.renderOrganisation(details)
+      return tabGenerator.renderOrganisation()
     default:
       return tabGenerator.renderPerson()
   }

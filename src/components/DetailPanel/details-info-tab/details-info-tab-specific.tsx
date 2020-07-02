@@ -92,7 +92,7 @@ export class TabGenerator extends React.Component {
     )
   }
 
-  renderEvent = (details: ArticleModel): JSX.Element => {
+  renderEvent = (): JSX.Element => {
     const eventConfig = [
       "baseInfo",
       "profession",
@@ -107,15 +107,14 @@ export class TabGenerator extends React.Component {
     return <>A</>
   }
 
-  renderOrganisation = (details: ArticleModel): JSX.Element => {
+  renderOrganisation = (): JSX.Element => {
     const organisationConfig = [
       "baseInfo",
       "mainIdeas",
       "ideas",
       "politics",
       "events",
-      "influences",
-      "influenced",
+      "relatedPersons",
       "literature"
     ]
     return (

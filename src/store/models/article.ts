@@ -70,6 +70,16 @@ export const Article = types.model("Article", {
     ),
     []
   ),
+  relatedPerson: types.optional(
+    types.array(
+      types.model("RelatedPersons", {
+        id: types.number,
+        type: types.string,
+        name: types.string
+      })
+    ),
+    []
+  )
 })
 
 const ArticleStore = types
