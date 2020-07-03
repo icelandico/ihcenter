@@ -4,6 +4,7 @@ import { Route } from "react-router-dom"
 import Routes from "../routing/Routes"
 import Navbar from "../components/Navbar/navbar"
 import DetailPanel from "../components/DetailPanel"
+import Timeline from "../components/Timeline"
 
 const App: React.FC = () => {
   return (
@@ -20,7 +21,7 @@ const App: React.FC = () => {
           </div>
         </div>
         <Route exact path="/">
-          <div className="map-timeline" />
+          <Timeline />
         </Route>
       </div>
 
