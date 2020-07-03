@@ -54,7 +54,7 @@
 }
 
 .main-content-container {
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 0;
   display: flex;
   flex-basis: 70%;
   width: 100%;
