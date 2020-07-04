@@ -7,9 +7,9 @@ import {
   TimelineFrames,
   TimelineFrameLeft,
   TimelineFrameRight,
-  TimelineDatePicker,
   TimelineYearLine
 } from "./index-styles"
+import TimelineDatePicker from "./timeline-date-picker/timeline-date-picker"
 
 interface Props {}
 

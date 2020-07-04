@@ -47,12 +47,6 @@ export const TimelineFrameRight = styled(TimelineFrame)`
   background-image: url(${DatePaneRight});
 `
 
-export const TimelineDatePicker = styled.div`
-  height: 3rem;
-  background-color: #ccc;
-  opacity: 0.1;
-`
-
 export const TimelineYearLine = styled.div`
   height: 100%;
   outline: 1px solid red;
