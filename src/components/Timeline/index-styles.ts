@@ -1,10 +1,12 @@
 import styled from "styled-components"
 import { colors } from "../../styles/colors"
 import { fonts } from "../../styles/font"
+import DatePaneRight from "../../static/icons/date_r.svg"
+import DatePaneLeft from "../../static/icons/date_l.svg"
 
 export const TimelineContainer = styled.div`
   display: flex;
-  min-height: 9rem;
+  min-height: 7rem;
   //outline: 1px solid rgb(196, 177, 8);
   width: 100%;
   z-index: 5;
@@ -17,7 +19,6 @@ export const TimelineMenu = styled.div`
 
 export const TimelineContent = styled.div`
   width: 100%;
-  //background-color: #a98daa;
   border-top: 1px solid ${colors.green};
   position: relative;
 `
@@ -31,19 +32,17 @@ export const TimelineFrames = styled.div`
   height: 100%;
 `
 
-export const TimelineFrameLeft = styled.div`
-  width: 49%;
-  border-right: 1px solid red;
-  border-bottom: 1px solid red;
- -webkit-mask-image: radial-gradient(circle 10px at 100% 100%, transparent 0, transparent 20px, black 21px);
+const TimelineFrame = styled.div`
+  width: 49.5%;
+  background-size: contain;
+  background-repeat: no-repeat;
 `
 
-export const TimelineFrameRight = styled.div`
-  width: 49%;
-  border-left: 1px solid red;
-  border-bottom: 1px solid red;
-  background-color: #ccc;
-  -webkit-mask-image: radial-gradient(circle 10px at 0 100%, transparent 0, transparent 20px, black 21px);
-  background-image: url("../../static/icons/date_r.svg");
-  background-size: contain;
+export const TimelineFrameLeft = styled(TimelineFrame)`
+  background-image: url(${DatePaneLeft});
+  background-position: 100%;
+`
+
+export const TimelineFrameRight = styled(TimelineFrame)`
+  background-image: url(${DatePaneRight});
 `
