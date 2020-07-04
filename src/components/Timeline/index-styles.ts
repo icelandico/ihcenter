@@ -6,10 +6,9 @@ import DatePaneLeft from "../../static/icons/date_l.svg"
 
 export const TimelineContainer = styled.div`
   display: flex;
-  min-height: 7rem;
-  //outline: 1px solid rgb(196, 177, 8);
   width: 100%;
   z-index: 5;
+  height: auto;
 `
 
 export const TimelineMenu = styled.div`
@@ -18,6 +17,7 @@ export const TimelineMenu = styled.div`
 `
 
 export const TimelineContent = styled.div`
+  min-height: 7rem;
   width: 100%;
   border-top: 1px solid ${colors.green};
   position: relative;
@@ -45,4 +45,18 @@ export const TimelineFrameLeft = styled(TimelineFrame)`
 
 export const TimelineFrameRight = styled(TimelineFrame)`
   background-image: url(${DatePaneRight});
+`
+
+export const TimelineDatePicker = styled.div`
+  height: 3rem;
+  background-color: #ccc;
+  opacity: 0.1;
+`
+
+export const TimelineYearLine = styled.div`
+  height: 100%;
+  outline: 1px solid red;
+  background-color: darksalmon;
+  opacity: 0.1;
+
 `

@@ -6,9 +6,10 @@ import {
   TimelineContent,
   TimelineFrames,
   TimelineFrameLeft,
-  TimelineFrameRight
+  TimelineFrameRight,
+  TimelineDatePicker,
+  TimelineYearLine
 } from "./index-styles"
-import DateRight from "../../static/icons/date_r.svg"
 
 interface Props {}
 
@@ -21,6 +22,8 @@ const Timeline: React.FC<Props> = props => {
           <TimelineFrameLeft />
           <TimelineFrameRight />
         </TimelineFrames>
+        <TimelineYearLine />
+        <TimelineDatePicker />
       </TimelineContent>
     </TimelineContainer>
   )
