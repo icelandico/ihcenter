@@ -24,7 +24,7 @@ export const NavbarBottom = styled.div`
   border-top: 1px solid ${colors.green};
   display: flex;
   justify-content: space-between;
-  padding-left: 4.5rem;
+  padding-left: 5%;
   padding-right: 1rem;
 
   .navbar-search {
