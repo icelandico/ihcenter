@@ -1,4 +1,4 @@
-import * as React from "react"
+import React, { useState } from "react"
 import { inject, observer } from "mobx-react"
 import {
   ArrowLeft,
@@ -9,11 +9,13 @@ import {
 interface Props {}
 
 const TimelineDatePicker: React.FC<Props> = props => {
+  const [currentYear, setYear] = useState(1845)
+
   return (
     <TimelineDateContainer>
-      <ArrowLeft />
-        <TimelineDate>1845</TimelineDate>
-      <ArrowRight />
+      <ArrowLeft onClick={() => setYear(currentYear - 1)} />
+      <TimelineDate>{currentYear}</TimelineDate>
+      <ArrowRight onClick={() => setYear(currentYear + 1)} />
     </TimelineDateContainer>
   )
 }

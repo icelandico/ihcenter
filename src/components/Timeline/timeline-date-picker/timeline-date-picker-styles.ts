@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import { colors } from "../../../styles/colors"
-import { fonts } from "../../../styles/font"
 
 export const TimelineDateContainer = styled.div`
   height: 4rem;
@@ -16,10 +15,11 @@ export const TimelineDateContainer = styled.div`
 
 export const TimelineDate = styled.p`
   font-size: 36px;
+  margin: 0 1rem;
 `
 
 const TimeArrow = styled.div`
-  padding: 0.5rem;
+  padding: 0.75rem;
   box-shadow: 1px -1px 0 1px ${colors.lightbrown} inset;
   -webkit-box-shadow: 2px -2px ${colors.lightbrown} inset;
   border: solid transparent;
