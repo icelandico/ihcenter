@@ -10,10 +10,16 @@ import {
   TimelineYearLine
 } from "./index-styles"
 import TimelineDatePicker from "./timeline-date-picker/timeline-date-picker"
+import { rootStore } from "../../store/RootStore"
 
-interface Props {}
+interface Props {
+  store?: typeof rootStore
+}
 
 const Timeline: React.FC<Props> = props => {
+  const { store } = props
+  const currentYear = store.articleStore.currentYear
+
   return (
     <TimelineContainer>
       <TimelineMenu />
@@ -23,7 +29,7 @@ const Timeline: React.FC<Props> = props => {
           <TimelineFrameRight />
         </TimelineFrames>
         <TimelineYearLine />
-        <TimelineDatePicker />
+        <TimelineDatePicker currentYear={currentYear} />
       </TimelineContent>
     </TimelineContainer>
   )

@@ -16,7 +16,6 @@ interface Urls {
 
 export const apiUrls: Urls = {
   baseUrl: "http://icelandico.usermd.net/"
-
 }
 
 export const apiEndpoints = [

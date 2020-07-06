@@ -5,17 +5,21 @@ import {
   ArrowRight, TimelineDate,
   TimelineDateContainer
 } from "./timeline-date-picker-styles"
+import { rootStore } from "../../../store/RootStore"
 
-interface Props {}
+interface Props {
+  store?: typeof rootStore
+  currentYear: number
+}
 
 const TimelineDatePicker: React.FC<Props> = props => {
-  const [currentYear, setYear] = useState(1845)
+  const { store, currentYear } = props
 
   return (
     <TimelineDateContainer>
-      <ArrowLeft onClick={() => setYear(currentYear - 1)} />
+      <ArrowLeft onClick={() => store.articleStore.decrementYear()} />
       <TimelineDate>{currentYear}</TimelineDate>
-      <ArrowRight onClick={() => setYear(currentYear + 1)} />
+      <ArrowRight onClick={() => store.articleStore.incrementYear()} />
     </TimelineDateContainer>
   )
 }

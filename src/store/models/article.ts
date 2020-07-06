@@ -85,7 +85,8 @@ export const Article = types.model("Article", {
 const ArticleStore = types
   .model("ArticleStore", {
     articles: types.optional(types.array(Article), []),
-    chosenArticle: types.maybe(types.reference(Article))
+    chosenArticle: types.maybe(types.reference(Article)),
+    currentYear: types.optional(types.number, 1845)
   })
   .actions(self => ({
     getAllArticles: flow(function*() {
@@ -100,12 +101,16 @@ const ArticleStore = types
         ...el,
         ident: `${el.type}-${el.id}`
       }))
-      console.log("Articles", articlesWithIds)
       applySnapshot(self.articles, articlesWithIds)
     }),
     toggle(article: ArticleModel) {
-      console.log("article", article)
       self.chosenArticle = article
+    },
+    incrementYear() {
+      self.currentYear += 1
+    },
+    decrementYear() {
+      self.currentYear -= 1
     }
   }))
 
