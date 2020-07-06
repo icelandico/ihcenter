@@ -14,5 +14,5 @@ export const colors: Colors = {
   lightGreen: "#00aa60",
   indianRed: "#ff6c64",
   teal: "#00abbe",
-  darkYellow: "#ffdc65",
+  darkYellow: "#ffdc65"
 }

@@ -1,0 +1,10 @@
+<svg data-name="Warstwa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.5 51.87">
+  <defs>
+    <clipPath id="a" transform="translate(-973.9 -558.74)">
+      <path fill="none" d="M973.9 558.74h27.5v51.87h-27.5z"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#a)">
+    <path d="M.5 0v39.37s12 0 12 12h15" stroke="#007260" fill="none"/>
+  </g>
+</svg>
