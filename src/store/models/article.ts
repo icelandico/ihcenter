@@ -16,7 +16,7 @@ export const Article = types.model("Article", {
   startDate: types.optional(types.maybeNull(types.string), "No Date"),
   endDate: types.optional(types.maybeNull(types.string), "No Date"),
   startCoords: types.maybeNull(types.string),
-  wikipediaLink: types.optional(types.string, ""),
+  wikipediaLink: types.maybeNull(types.string),
   description: types.maybeNull(types.string),
   image: types.maybeNull(ImageDetails),
   nationality: types.maybeNull(
@@ -36,6 +36,7 @@ export const Article = types.model("Article", {
   startPlace: types.maybeNull(types.string),
   EndPlace: types.maybeNull(types.string),
   precursor: types.optional(types.array(IdeaDetails), []),
+  ideaPrecursor: types.optional(types.array(IdeaDetails), []),
   professions: types.optional(types.array(BaseInfoDetails), []),
   ideas: types.optional(types.array(IdeaDetails), []),
   mainideas: types.optional(types.array(MainIdeaDetails), []),

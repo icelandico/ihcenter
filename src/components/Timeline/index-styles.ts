@@ -52,5 +52,4 @@ export const TimelineYearLine = styled.div`
   outline: 1px solid red;
   background-color: darksalmon;
   opacity: 0.1;
-
 `

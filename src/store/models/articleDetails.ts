@@ -3,14 +3,14 @@ import { types } from "mobx-state-tree"
 export const IdeaDetails = types.model("IdeaDetails", {
   id: types.identifierNumber,
   name: types.string,
-  wikipediaLink: types.string
+  wikipediaLink: types.optional(types.string, "")
 })
 
 export const MainIdeaDetails = types.model("MainIdeaDetails", {
   id: types.identifierNumber,
   name: types.string,
   description: types.string,
-  wikipediaLink: types.string
+  wikipediaLink: types.optional(types.string, "")
 })
 
 export const ImageDetails = types.model("ImageDetails", {

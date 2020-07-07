@@ -51,7 +51,7 @@ const DetailMainInfo: React.FC<Props> = props => {
         <ElementTitle>{details ? details.name : "Element Name"}</ElementTitle>
         <WikiLinkContainer>
           <ElementLink
-            href={details ? details.wikipediaLink : ""}
+            href={details && details.wikipediaLink ? details.wikipediaLink : ""}
             target="_blank"
             rel="noopener noreferrer"
           />

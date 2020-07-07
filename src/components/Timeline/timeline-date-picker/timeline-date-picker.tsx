@@ -2,7 +2,8 @@ import React from "react"
 import { inject, observer } from "mobx-react"
 import {
   ArrowLeft,
-  ArrowRight, TimelineDate,
+  ArrowRight,
+  TimelineDate,
   TimelineDateContainer
 } from "./timeline-date-picker-styles"
 import { rootStore } from "../../../store/RootStore"
