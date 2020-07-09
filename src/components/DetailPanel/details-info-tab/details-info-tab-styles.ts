@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { colors } from "../../../styles/colors"
+import { fonts } from "../../../styles/font"
 
 export const TabContainer = styled.div`
   padding: 0;
@@ -32,8 +33,9 @@ export const TabExtraIcon = styled.span`
 `
 
 export const TabContent = styled.div<{
+  font?: string
   fontColor?: string
-  sansFont?: boolean
+  italicFont?: boolean
 }>`
   flex-grow: 1;
   height: auto;
@@ -45,7 +47,7 @@ export const TabContent = styled.div<{
   margin-left: 1rem;
   padding-top: 1rem;
   font-size: 1.4rem;
-  font-family: "Alegreya Sans", sans-serif;
+  font-family: ${props => props.font || fonts.base}, sans-serif;
   color: ${props => colors[props.fontColor] || "currentColor"};
-  font-style: ${props => (props.sansFont ? "italic" : "normal")};
+  font-style: ${props => (props.italicFont ? "italic" : "normal")};
 `

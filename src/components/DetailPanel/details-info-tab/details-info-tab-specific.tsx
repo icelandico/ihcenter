@@ -19,6 +19,7 @@ import {
 } from "../details-list-info/details-list-info-styles"
 import { BaseInfo, Writing } from "../../../store/models/types"
 import { ArticleModel } from "../../../store/models/article"
+import { fonts } from "../../../styles/font"
 
 type ArticleOptions = ArticleModel & { [key: string]: any }
 
@@ -254,7 +255,7 @@ export class TabGenerator extends React.Component {
         iconUrl={Literature}
         round
         fontColor="lightBrown"
-        sansFont
+        italicFont
         content={this.renderTextInfo(details, "writings")}
       />
     )

@@ -18,8 +18,9 @@ interface Props {
   tabId: string
   extend?: number
   fontColor?: string
+  font?: string
   column?: boolean
-  sansFont?: boolean
+  italicFont?: boolean
 }
 
 const DetailsInfoTab: React.FC<Props> = props => {
@@ -32,8 +33,9 @@ const DetailsInfoTab: React.FC<Props> = props => {
     founder,
     founderIconUrl,
     tabId,
+    font,
     fontColor,
-    sansFont
+    italicFont
   } = props
 
   const renderTabContainer = () => {
@@ -55,7 +57,7 @@ const DetailsInfoTab: React.FC<Props> = props => {
             />
           )}
         </TabIcon>
-        <TabContent sansFont={sansFont} fontColor={fontColor}>
+        <TabContent font={font} italicFont={italicFont} fontColor={fontColor}>
           {content}
         </TabContent>
       </TabContainer>

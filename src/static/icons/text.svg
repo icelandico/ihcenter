@@ -1,1 +1,19 @@
-<svg id="Warstwa_1" data-name="Warstwa 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16.34 16.09"><defs><style>.cls-1,.cls-5,.cls-6{fill:none;}.cls-2{fill:#00393f;}.cls-3{clip-path:url(#clip-path);}.cls-4{fill:#007260;}.cls-5{stroke:#00393f;stroke-width:0.73px;}.cls-6{stroke:#ffeaca;}</style><clipPath id="clip-path" transform="translate(-963.6 -529.02)"><path class="cls-1" d="M964.1,537.07a7.55,7.55,0,1,0,7.54-7.55,7.55,7.55,0,0,0-7.54,7.55"/></clipPath></defs><title>text</title><path class="cls-2" d="M971.64,544.61a7.55,7.55,0,1,0-7.54-7.54,7.55,7.55,0,0,0,7.54,7.54" transform="translate(-963.6 -529.02)"/><g class="cls-3"><polygon class="cls-4" points="5.61 4.33 5.61 15.16 10.48 15.16 14.42 13.14 15.64 10.72 15.64 4.33 5.61 4.33"/><line class="cls-5" x1="7.82" y1="6.53" x2="12.07" y2="6.53"/><line class="cls-5" x1="7.82" y1="9.1" x2="16.34" y2="9.1"/><line class="cls-5" x1="7.82" y1="11.67" x2="15.28" y2="11.67"/></g><path class="cls-6" d="M971.64,544.61a7.55,7.55,0,1,0-7.54-7.54A7.55,7.55,0,0,0,971.64,544.61Z" transform="translate(-963.6 -529.02)"/></svg>
+<svg id="Warstwa_1" data-name="Warstwa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.08 16.59">
+  <defs>
+    <clipPath id="clip-path" transform="translate(-953.86 -514.25)">
+      <path class="cls-1" d="M953.86 514.25h16.08v16.08h-16.08z"/>
+    </clipPath>
+    <clipPath id="clip-path-2" transform="translate(-953.86 -514.25)">
+      <path class="cls-1" d="M954.36 522.3a7.54 7.54 0 107.54-7.55 7.55 7.55 0 00-7.54 7.55"/>
+    </clipPath>
+    <style>
+      .cls-1,.cls-6{fill:none}.cls-2{clip-path:url(#clip-path)}.cls-6{stroke:#00393f;stroke-width:.73px}
+    </style>
+  </defs>
+  <path d="M961.9 529.84a7.55 7.55 0 10-7.54-7.54 7.55 7.55 0 007.54 7.54" transform="translate(-953.86 -514.25)" fill="#00393f"/>
+  <g clip-path="url(#clip-path-2)">
+    <path fill="#007260" d="M3.54 4.59h9v12h-9z"/>
+    <path class="cls-6" d="M5.04 6.95h6M5.04 9.24h6M5.04 11.54h6"/>
+  </g>
+  <path d="M961.9 529.84a7.55 7.55 0 10-7.54-7.54 7.55 7.55 0 007.54 7.54z" transform="translate(-953.86 -514.25)" stroke="#007260" fill="none"/>
+</svg>

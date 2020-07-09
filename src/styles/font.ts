@@ -3,5 +3,7 @@ interface Fonts {
 }
 
 export const fonts: Fonts = {
-  base: "Allegreya"
+  base: "Allegreya",
+  baseSans: "Allegreya Sans",
+  second: "Krub"
 }
