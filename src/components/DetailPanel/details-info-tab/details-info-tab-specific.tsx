@@ -196,6 +196,7 @@ export class TabGenerator extends React.Component {
         founder={mainPrecursor}
         founderIconUrl={FounderIcon}
         fontColor="woodBrown"
+        font={fonts.baseSans}
         content={this.renderTextInfo(details, "mainideas")}
       />
     )

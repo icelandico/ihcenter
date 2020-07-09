@@ -88,7 +88,7 @@ const ArticleStore = types
     articles: types.optional(types.array(Article), []),
     chosenArticle: types.maybe(types.reference(Article)),
     currentYear: types.optional(types.number, 1845),
-    // openMarkers: types.optional(types.array, [])
+    openMarkers: types.optional(types.array(types.string), [])
   })
   .actions(self => ({
     getAllArticles: flow(function*() {
@@ -106,7 +106,9 @@ const ArticleStore = types
       applySnapshot(self.articles, articlesWithIds)
     }),
     toggle(article: ArticleModel) {
+      self.openMarkers.push(article.ident)
       self.chosenArticle = article
+      console.log("Opened", self.openMarkers)
     },
     incrementYear() {
       self.currentYear += 1

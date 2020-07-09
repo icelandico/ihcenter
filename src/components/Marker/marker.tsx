@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Marker } from "react-leaflet"
+import { Marker, Popup } from "react-leaflet"
 import { observer, inject } from "mobx-react"
 import L, { DivIcon, Icon } from "leaflet"
 import ReactDOMServer from "react-dom/server"
@@ -44,14 +44,15 @@ const MapMarker: React.FC<Props> = props => {
   }
 
   const chooseIcon = (): MarkerIcon => {
-    return isMarkerClicked ? customIcon() : icon
+    // return isMarkerClicked ? customIcon() : icon
+    return icon
   }
 
   const switchIcon = () => {
     const { article } = props
     const { store } = props
-    store.articleStore.toggle(article)
     setClickedMarker(!isMarkerClicked)
+    store.articleStore.toggle(article)
   }
 
   const { key, position } = props
@@ -64,7 +65,25 @@ const MapMarker: React.FC<Props> = props => {
       iconAnchor={[0, 0]}
       iconSize={[40, 40]}
       onClick={switchIcon}
-    />
+    >
+      <Popup style={{ background: "transparent" }}>
+        <div className="custom-marker">
+          <div
+            className="marker-icon"
+            style={{
+              // width: "100%",
+              // height: "100%",
+              // backgroundSize: "cover",
+              backgroundImage: `url(${
+                props.article && props.article.image
+                  ? `${apiUrls.baseUrl}${props.article.image.url}`
+                  : DefaultIcon
+              })`
+            }}
+          />
+        </div>
+      </Popup>
+    </Marker>
   )
 }
 
