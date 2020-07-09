@@ -7,7 +7,7 @@ export const DetailsTop = styled.div<{
   flex-wrap: wrap;
   flex-direction: ${props => (props.column ? `column` : "row")};
   align-items: flex-start;
-  font-family: "Krub";
+  font-family: "Alegreya Sans", sans-serif;
 `
 
 export const DetailsTopItem = styled.div`
