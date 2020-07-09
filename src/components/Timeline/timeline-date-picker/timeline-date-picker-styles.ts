@@ -16,6 +16,8 @@ export const TimelineDateContainer = styled.div`
 export const TimelineDate = styled.p`
   font-size: 36px;
   margin: 0 1rem;
+  font-family: "Krub", sans-serif;
+  font-weight: 200;
 `
 
 const TimeArrow = styled.div`

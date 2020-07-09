@@ -87,7 +87,8 @@ const ArticleStore = types
   .model("ArticleStore", {
     articles: types.optional(types.array(Article), []),
     chosenArticle: types.maybe(types.reference(Article)),
-    currentYear: types.optional(types.number, 1845)
+    currentYear: types.optional(types.number, 1845),
+    // openMarkers: types.optional(types.array, [])
   })
   .actions(self => ({
     getAllArticles: flow(function*() {
