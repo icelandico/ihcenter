@@ -14,7 +14,7 @@ import {
 import { apiUrls } from "../../../store/api/api"
 import { formatDate } from "../../../utils/formatDate"
 import { ArticleModel } from "../../../store/models/article"
-import EventIcon from "../../../static/icons/event.svg"
+import EventIcon from "../../../static/icons/events.svg"
 import PoliticsIcon from "../../../static/icons/politics.svg"
 
 export interface Props {
