@@ -24,7 +24,7 @@ import { fonts } from "../../../styles/font"
 type ArticleOptions = ArticleModel & { [key: string]: any }
 
 interface IDetailsType {
-  [key: string]: any
+  [key: string]: JSX.Element
 }
 
 export class TabGenerator extends React.Component {
