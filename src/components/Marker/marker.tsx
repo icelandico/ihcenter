@@ -25,20 +25,9 @@ const MapMarker: React.FC<Props> = props => {
   const customIcon = (): DivIcon => {
     const divIcon = L.divIcon({
       html: ReactDOMServer.renderToString(
-        <div className="custom-marker">
-          <div
-            className="marker-icon"
-            style={{
-              backgroundImage: `url(${
-                props.article && props.article.image
-                  ? `${apiUrls.baseUrl}${props.article.image.url}`
-                  : DefaultIcon
-              })`
-            }}
-          />
-        </div>
+        <div className="custom-base-marker" />
       ),
-      iconAnchor: [15, 30]
+      iconAnchor: [15, 15]
     })
     return divIcon
   }
@@ -59,7 +48,7 @@ const MapMarker: React.FC<Props> = props => {
 
   return (
     <Marker
-      icon={chooseIcon()}
+      icon={customIcon()}
       key={key}
       position={position}
       iconAnchor={[0, 0]}
@@ -67,13 +56,10 @@ const MapMarker: React.FC<Props> = props => {
       onClick={switchIcon}
     >
       <Popup style={{ background: "transparent" }}>
-        <div className="custom-marker">
+        <div className="custom-opened-marker">
           <div
             className="marker-icon"
             style={{
-              // width: "100%",
-              // height: "100%",
-              // backgroundSize: "cover",
               backgroundImage: `url(${
                 props.article && props.article.image
                   ? `${apiUrls.baseUrl}${props.article.image.url}`

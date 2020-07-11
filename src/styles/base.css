@@ -36,7 +36,7 @@ code {
   border-radius: 50%;
 }
 
-.custom-marker {
+.custom-opened-marker {
   width: 30px;
   height: 30px;
   border-radius: 50% 50% 50% 0;
@@ -46,6 +46,18 @@ code {
   left: 50%;
   top: 50%;
   margin: -15px 0 0 -15px;
+}
+
+.custom-base-marker {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 8px solid #ffeaca;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .marker-icon {
@@ -69,4 +81,9 @@ code {
 
 .leaflet-popup-tip-container {
   display: none;
+}
+
+.leaflet-div-icon {
+  background: transparent;
+  border: none;
 }
