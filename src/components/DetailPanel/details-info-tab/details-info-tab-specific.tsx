@@ -203,6 +203,7 @@ export class TabGenerator extends React.Component {
   }
 
   ideasDetails = (details: ArticleModel) => {
+    console.log("details", details)
     const ideaPrecursor = details && !!details.ideaPrecursor.length
     return (
       <DetailsInfoTab
@@ -211,6 +212,7 @@ export class TabGenerator extends React.Component {
         founder={ideaPrecursor}
         founderIconUrl={FounderIcon}
         fontColor="woodBrown"
+        font={fonts.baseSans}
         content={this.renderTextInfo(details, "ideas")}
       />
     )
@@ -222,6 +224,7 @@ export class TabGenerator extends React.Component {
         tabId="politics"
         iconUrl={Politics}
         fontColor="regularRed"
+        font={fonts.baseSans}
         content={this.renderTextInfo(details, "relatedOrg")}
       />
     )
@@ -233,6 +236,7 @@ export class TabGenerator extends React.Component {
         tabId="influences"
         extend={3.5}
         iconUrl={Influences}
+        font={fonts.base}
         content={this.renderTextInfo(details, "influences")}
       />
     )
@@ -244,6 +248,7 @@ export class TabGenerator extends React.Component {
         tabId="influenced"
         extend={3.5}
         iconUrl={Influenced}
+        font={fonts.base}
         content={this.renderTextInfo(details, "influenced")}
       />
     )
