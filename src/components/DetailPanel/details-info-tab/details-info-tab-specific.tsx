@@ -196,6 +196,7 @@ export class TabGenerator extends React.Component {
       <DetailsInfoTab
         tabId="relatedPersons"
         iconUrl={Influences}
+        extend={3.5}
         content={this.renderTextInfo(details, "relatedPerson")}
       />
     )

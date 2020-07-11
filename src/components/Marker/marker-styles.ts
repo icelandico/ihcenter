@@ -25,7 +25,7 @@ export const CustomPopup = styled.div<{
   transform: rotate(-45deg);
   left: 50%;
   top: 50%;
-  margin: -12px 0 0 -15px;
+  margin: -15px 0 0 -14.5px;
 
   div {
     width: 100%;
