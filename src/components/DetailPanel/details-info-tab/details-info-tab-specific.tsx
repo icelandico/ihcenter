@@ -130,7 +130,7 @@ export class TabGenerator extends React.Component {
   renderPerson = (): JSX.Element => {
     const personConfig = [
       "baseInfo",
-      "profession",
+      "professions",
       "mainIdeas",
       "ideas",
       "politics",
@@ -177,6 +177,7 @@ export class TabGenerator extends React.Component {
   }
 
   professionsDetails = (details: ArticleModel) => {
+    console.log("Professions", details)
     return (
       <DetailsInfoTab
         tabId="professions"
@@ -204,7 +205,7 @@ export class TabGenerator extends React.Component {
 
   ideasDetails = (details: ArticleModel) => {
     const ideaPrecursor = details && !!details.ideaPrecursor.length
-    console.log("Simple Idea precursor", ideaPrecursor)
+
     return (
       <DetailsInfoTab
         tabId="ideas"
