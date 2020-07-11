@@ -17,6 +17,12 @@ export const formatDate = (date: string) => {
   return "??-??-??"
 }
 
+export const getYear = (date: string) => {
+  console.log("Date publication")
+  const fullYear = date ? new Date(date).getFullYear() : ""
+  return fullYear
+}
+
 const romanizeMonth = (original: string): string => {
   const numerals = [
     ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"],

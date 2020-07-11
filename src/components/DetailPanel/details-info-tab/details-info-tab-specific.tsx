@@ -15,11 +15,13 @@ import { ReactComponent as Dead } from "../../../static/icons/icon_dead.svg"
 import SvgIcon from "../../shared/SvgIcon/svgIcon"
 import {
   DetailsTop,
-  DetailsTopItem
+  DetailsTopItem,
+  WritingsList, WritingsTitle, WritingsYear
 } from "../details-list-info/details-list-info-styles"
 import { BaseInfo, Writing } from "../../../store/models/types"
 import { ArticleModel } from "../../../store/models/article"
 import { fonts } from "../../../styles/font"
+import { getYear } from "../../../utils/formatDate"
 
 type ArticleOptions = ArticleModel & { [key: string]: any }
 
@@ -78,9 +80,10 @@ export class TabGenerator extends React.Component {
 
   renderTextInfo = (details: ArticleOptions, specificDetail: string) => {
     const detailsList = details[specificDetail]
-    return (
-      <div>
-        {detailsList &&
+    if (specificDetail !== "writings") {
+      return (
+        <div>
+          {detailsList &&
           detailsList.map((item: BaseInfo & Writing, idx: number) => {
             return (
               <span>
@@ -89,8 +92,25 @@ export class TabGenerator extends React.Component {
               </span>
             )
           })}
-      </div>
-    )
+        </div>
+      )
+    } else {
+      return (
+        <WritingsList>
+          {detailsList &&
+            detailsList.map((item: Writing, idx: number) => {
+            return (
+              <li>
+                <WritingsTitle>{item.title}</WritingsTitle>
+
+                {item.publicated && <WritingsYear>({getYear(item.publicated)})</WritingsYear>}
+              </li>
+            )
+          })}
+        </WritingsList>
+      )
+    }
+
   }
 
   renderEvent = (): JSX.Element => {
