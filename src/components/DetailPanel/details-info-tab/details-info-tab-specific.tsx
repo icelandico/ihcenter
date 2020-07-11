@@ -149,7 +149,13 @@ export class TabGenerator extends React.Component {
   }
 
   eventsDetails = (details: ArticleModel) => {
-    return <DetailsInfoTab tabId="events" iconUrl={Events} />
+    return (
+      <DetailsInfoTab
+        tabId="relatedEvents"
+        iconUrl={Events}
+        content={this.renderTextInfo(details, "relatedEvent")}
+      />
+    )
   }
 
   baseInfoDetails = (details: ArticleModel): JSX.Element => {
@@ -177,7 +183,6 @@ export class TabGenerator extends React.Component {
   }
 
   professionsDetails = (details: ArticleModel) => {
-    console.log("Professions", details)
     return (
       <DetailsInfoTab
         tabId="professions"

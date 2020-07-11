@@ -80,6 +80,16 @@ export const Article = types.model("Article", {
       })
     ),
     []
+  ),
+  relatedEvent: types.optional(
+    types.array(
+      types.model("RelatedEvent", {
+        id: types.number,
+        type: types.string,
+        name: types.string
+      })
+    ),
+    []
   )
 })
 
@@ -102,6 +112,7 @@ const ArticleStore = types
         ...el,
         ident: `${el.type}-${el.id}`
       }))
+      console.log("All articles", articlesWithIds)
       applySnapshot(self.articles, articlesWithIds)
     }),
     toggle(article: ArticleModel) {

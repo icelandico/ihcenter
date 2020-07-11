@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import { colors } from "../../styles/colors"
-import { fonts } from "../../styles/font"
 import DatePaneRight from "../../static/icons/date_r.svg"
 import DatePaneLeft from "../../static/icons/date_l.svg"
 
