@@ -13,11 +13,20 @@ export const TimelineDateContainer = styled.div`
 
 `
 
-export const TimelineDate = styled.p`
+export const TimelineDate = styled.input`
   font-size: 36px;
   margin: 0 1rem;
+  padding: 0;
   font-family: "Krub", sans-serif;
   font-weight: 200;
+  border: none;
+  width: 8rem;
+  background: transparent;
+  color: ${colors.lightBrown};
+
+  &:focus {
+    outline: 1px solid ${colors.lightBrown};
+  }
 `
 
 const TimeArrow = styled.div`
@@ -28,7 +37,7 @@ const TimeArrow = styled.div`
   border-width: 0 0 1rem 1rem;
   transition: 0.2s;
   cursor: pointer;
-  
+
   &:hover {
     box-shadow: 2px -2px 0 2px ${colors.lightbrown} inset;
     -webkit-box-shadow: 4px -4px ${colors.lightbrown} inset;
@@ -41,8 +50,3 @@ export const ArrowLeft = styled(TimeArrow)`
 export const ArrowRight = styled(TimeArrow)`
   transform: rotate(225deg);
 `
-// export const TimelineDateContainer = styled.div`
-//   height: 3rem;
-//   background-color: #ccc;
-//   opacity: 0.1;
-// `

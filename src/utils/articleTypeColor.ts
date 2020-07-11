@@ -8,6 +8,8 @@ export const chooseColor = (type: string) => {
       return colors.purple
     case "organisation":
       return colors.regularRed
+    case "writings":
+      return colors.green
     default:
       return colors.lightBrown
   }

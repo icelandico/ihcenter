@@ -7,7 +7,7 @@ export const CustomMarker = styled.div<{
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 8px solid ${props => props.color};
+  border-top: 10px solid ${props => props.color};
   position: absolute;
   left: 50%;
   top: 50%;

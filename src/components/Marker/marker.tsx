@@ -1,17 +1,17 @@
 import React, { useState } from "react"
 import { Marker, Popup } from "react-leaflet"
 import { observer, inject } from "mobx-react"
-import L, { DivIcon, Icon } from "leaflet"
+import L, { DivIcon } from "leaflet"
 import ReactDOMServer from "react-dom/server"
 import { rootStore } from "../../store/RootStore"
 import PersonIcon from "../../static/icons/person.svg"
 import EventsIcon from "../../static/icons/events.svg"
+import WritingsIcon from "../../static/icons/text.svg"
 import OrganisationsIcon from "../../static/icons/politics.svg"
 import { apiUrls } from "../../store/api/api"
 import { ArticleModel } from "../../store/models/article"
 import { CustomMarker, CustomPopup } from "./marker-styles"
 import { chooseColor } from "../../utils/articleTypeColor"
-import {colors} from "../../styles/colors"
 
 interface Props {
   store?: typeof rootStore
@@ -30,6 +30,8 @@ export const chooseIcon = (type: string) => {
       return EventsIcon
     case "organisation":
       return OrganisationsIcon
+    case "writing":
+      return WritingsIcon
     default:
       return PersonIcon
   }

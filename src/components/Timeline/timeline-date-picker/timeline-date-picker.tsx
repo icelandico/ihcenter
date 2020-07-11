@@ -19,7 +19,11 @@ const TimelineDatePicker: React.FC<Props> = props => {
   return (
     <TimelineDateContainer>
       <ArrowLeft onClick={() => store.articleStore.decrementYear()} />
-      <TimelineDate>{currentYear}</TimelineDate>
+      <TimelineDate
+        min="1790"
+        onChange={e => store.articleStore.setYear(e.target.value)}
+        value={currentYear}
+      />
       <ArrowRight onClick={() => store.articleStore.incrementYear()} />
     </TimelineDateContainer>
   )

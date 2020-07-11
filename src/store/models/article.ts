@@ -123,6 +123,9 @@ const ArticleStore = types
     },
     decrementYear() {
       self.currentYear -= 1
+    },
+    setYear(year: string) {
+      self.currentYear = parseInt(year, 10)
     }
   }))
 
