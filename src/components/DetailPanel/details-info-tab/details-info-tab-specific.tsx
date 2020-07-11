@@ -203,8 +203,8 @@ export class TabGenerator extends React.Component {
   }
 
   ideasDetails = (details: ArticleModel) => {
-    console.log("details", details)
     const ideaPrecursor = details && !!details.ideaPrecursor.length
+    console.log("Simple Idea precursor", ideaPrecursor)
     return (
       <DetailsInfoTab
         tabId="ideas"
