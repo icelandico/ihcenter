@@ -59,18 +59,6 @@ const MapMarker: React.FC<Props> = props => {
       onClick={switchIcon}
     >
       <Popup style={{ background: "transparent" }}>
-        {/*<div className="custom-opened-marker">*/}
-        {/*  <div*/}
-        {/*    className="marker-icon"*/}
-        {/*    style={{*/}
-        {/*      backgroundImage: `url(${*/}
-        {/*        props.article && props.article.image*/}
-        {/*          ? `${apiUrls.baseUrl}${props.article.image.url}`*/}
-        {/*          : DefaultIcon*/}
-        {/*      })`*/}
-        {/*    }}*/}
-        {/*  />*/}
-        {/*</div>*/}
         <CustomPopup color={chooseColor(props.type)}>
           <div
             color={chooseColor(props.type)}
