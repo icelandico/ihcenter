@@ -8,6 +8,8 @@ import { icon } from "../MapIcons/map-icon"
 import DefaultIcon from "../../static/icons/person.svg"
 import { apiUrls } from "../../store/api/api"
 import { ArticleModel } from "../../store/models/article"
+import { CustomMarker, CustomPopup } from "./marker-styles"
+import { chooseColor } from "../../utils/articleTypeColor"
 
 interface Props {
   store?: typeof rootStore
@@ -15,6 +17,7 @@ interface Props {
   key: string
   position: [number, number]
   clicked: boolean
+  type: string
 }
 
 type MarkerIcon = DivIcon | Icon
@@ -25,7 +28,7 @@ const MapMarker: React.FC<Props> = props => {
   const customIcon = (): DivIcon => {
     const divIcon = L.divIcon({
       html: ReactDOMServer.renderToString(
-        <div className="custom-base-marker" />
+        <CustomMarker color={chooseColor(props.type)} />
       ),
       iconAnchor: [15, 15]
     })
@@ -56,9 +59,21 @@ const MapMarker: React.FC<Props> = props => {
       onClick={switchIcon}
     >
       <Popup style={{ background: "transparent" }}>
-        <div className="custom-opened-marker">
+        {/*<div className="custom-opened-marker">*/}
+        {/*  <div*/}
+        {/*    className="marker-icon"*/}
+        {/*    style={{*/}
+        {/*      backgroundImage: `url(${*/}
+        {/*        props.article && props.article.image*/}
+        {/*          ? `${apiUrls.baseUrl}${props.article.image.url}`*/}
+        {/*          : DefaultIcon*/}
+        {/*      })`*/}
+        {/*    }}*/}
+        {/*  />*/}
+        {/*</div>*/}
+        <CustomPopup color={chooseColor(props.type)}>
           <div
-            className="marker-icon"
+            color={chooseColor(props.type)}
             style={{
               backgroundImage: `url(${
                 props.article && props.article.image
@@ -67,7 +82,7 @@ const MapMarker: React.FC<Props> = props => {
               })`
             }}
           />
-        </div>
+        </CustomPopup>
       </Popup>
     </Marker>
   )

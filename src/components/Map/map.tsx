@@ -30,6 +30,7 @@ class MapComponent extends React.Component<Props, State> {
         key={`${article.type}-${article.id}`}
         article={article}
         position={markerCoords}
+        type={article.type}
       />
     )
   }
