@@ -18,8 +18,7 @@ export const formatDate = (date: string) => {
 }
 
 export const getYear = (date: string) => {
-  console.log("Date publication")
-  const fullYear = date ? new Date(date).getFullYear() : ""
+  const fullYear = new Date(date).getFullYear()
   return fullYear
 }
 
