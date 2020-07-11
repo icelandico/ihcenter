@@ -80,37 +80,36 @@ export class TabGenerator extends React.Component {
 
   renderTextInfo = (details: ArticleOptions, specificDetail: string) => {
     const detailsList = details[specificDetail]
-    if (specificDetail !== "writings") {
-      return (
-        <div>
-          {detailsList &&
+    return (
+      <div>
+        {detailsList &&
           detailsList.map((item: BaseInfo & Writing, idx: number) => {
-            return (
-              <span>
-                {item.name || item.title}
-                {idx < detailsList.length - 1 ? ", " : ""}
-              </span>
-            )
-          })}
-        </div>
-      )
-    } else {
-      return (
-        <WritingsList>
-          {detailsList &&
-            detailsList.map((item: Writing, idx: number) => {
+          return (
+            <span>
+              {item.name || item.title}
+              {idx < detailsList.length - 1 ? ", " : ""}
+            </span>
+          )
+        })}
+      </div>
+    )
+  }
+
+  renderWritingsInfo = (details: ArticleOptions, specificDetail: string) => {
+    const detailsList = details[specificDetail]
+    return (
+      <WritingsList>
+        {detailsList &&
+          detailsList.map((item: Writing, idx: number) => {
             return (
               <li>
                 <WritingsTitle>{item.title}</WritingsTitle>
-
                 {item.publicated && <WritingsYear>({getYear(item.publicated)})</WritingsYear>}
               </li>
             )
           })}
-        </WritingsList>
-      )
-    }
-
+      </WritingsList>
+    )
   }
 
   renderEvent = (): JSX.Element => {
@@ -288,7 +287,7 @@ export class TabGenerator extends React.Component {
         round
         fontColor="lightBrown"
         italicFont
-        content={this.renderTextInfo(details, "writings")}
+        content={this.renderWritingsInfo(details, "writings")}
       />
     )
   }
