@@ -4,12 +4,14 @@ import { observer, inject } from "mobx-react"
 import L, { DivIcon, Icon } from "leaflet"
 import ReactDOMServer from "react-dom/server"
 import { rootStore } from "../../store/RootStore"
-import { icon } from "../MapIcons/map-icon"
-import DefaultIcon from "../../static/icons/person.svg"
+import PersonIcon from "../../static/icons/person.svg"
+import EventsIcon from "../../static/icons/events.svg"
+import OrganisationsIcon from "../../static/icons/politics.svg"
 import { apiUrls } from "../../store/api/api"
 import { ArticleModel } from "../../store/models/article"
 import { CustomMarker, CustomPopup } from "./marker-styles"
 import { chooseColor } from "../../utils/articleTypeColor"
+import {colors} from "../../styles/colors"
 
 interface Props {
   store?: typeof rootStore
@@ -20,7 +22,18 @@ interface Props {
   type: string
 }
 
-type MarkerIcon = DivIcon | Icon
+export const chooseIcon = (type: string) => {
+  switch (type) {
+    case "person":
+      return PersonIcon
+    case "event":
+      return EventsIcon
+    case "organisation":
+      return OrganisationsIcon
+    default:
+      return PersonIcon
+  }
+}
 
 const MapMarker: React.FC<Props> = props => {
   const [isMarkerClicked, setClickedMarker] = useState<boolean>(false)
@@ -33,11 +46,6 @@ const MapMarker: React.FC<Props> = props => {
       iconAnchor: [15, 15]
     })
     return divIcon
-  }
-
-  const chooseIcon = (): MarkerIcon => {
-    // return isMarkerClicked ? customIcon() : icon
-    return icon
   }
 
   const switchIcon = () => {
@@ -66,7 +74,7 @@ const MapMarker: React.FC<Props> = props => {
               backgroundImage: `url(${
                 props.article && props.article.image
                   ? `${apiUrls.baseUrl}${props.article.image.url}`
-                  : DefaultIcon
+                  : chooseIcon(props.type)
               })`
             }}
           />
