@@ -7,6 +7,7 @@ import {
   BaseInfoDetails,
   WritingsDetails
 } from "./articleDetails"
+import { getYear } from "../../utils/formatDate"
 
 export type ArticleModel = Instance<typeof Article>
 
@@ -97,7 +98,7 @@ const ArticleStore = types
   .model("ArticleStore", {
     articles: types.optional(types.array(Article), []),
     chosenArticle: types.maybe(types.reference(Article)),
-    currentYear: types.optional(types.number, 1845)
+    currentYear: types.optional(types.number, 1775)
   })
   .actions(self => ({
     getAllArticles: flow(function*() {
@@ -112,7 +113,6 @@ const ArticleStore = types
         ...el,
         ident: `${el.type}-${el.id}`
       }))
-      console.log("All articles", articlesWithIds)
       applySnapshot(self.articles, articlesWithIds)
     }),
     toggle(article: ArticleModel) {
@@ -120,12 +120,25 @@ const ArticleStore = types
     },
     incrementYear() {
       self.currentYear += 1
+      this.filterByYear()
     },
     decrementYear() {
       self.currentYear -= 1
+      this.filterByYear()
     },
     setYear(year: string) {
       self.currentYear = parseInt(year, 10)
+      this.filterByYear()
+    },
+    filterByYear() {
+      console.log("Current articles", self.articles)
+      const filteredArticles = self.articles.filter(article => {
+        const articleYear = getYear(article.startDate)
+        return articleYear === self.currentYear
+      })
+      console.log("Current year", self.currentYear)
+      console.log("Filtered", filteredArticles)
+      applySnapshot(self.articles, filteredArticles)
     }
   }))
 

@@ -2,7 +2,6 @@ import * as React from "react"
 import { inject, observer } from "mobx-react"
 import {
   TimelineContainer,
-  TimelineMenu,
   TimelineContent,
   TimelineFrames,
   TimelineFrameLeft,
@@ -10,6 +9,7 @@ import {
 } from "./index-styles"
 import TimelineDatePicker from "./timeline-date-picker/timeline-date-picker"
 import TimelineYearline from "./timeline-yearline/timeline-yearline"
+import TimelineMenu from "./timeline-menu/timeline-menu"
 import { rootStore } from "../../store/RootStore"
 
 interface Props {

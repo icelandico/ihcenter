@@ -16,7 +16,9 @@ import SvgIcon from "../../shared/SvgIcon/svgIcon"
 import {
   DetailsTop,
   DetailsTopItem,
-  WritingsList, WritingsTitle, WritingsYear
+  WritingsList,
+  WritingsTitle,
+  WritingsYear
 } from "../details-list-info/details-list-info-styles"
 import { BaseInfo, Writing } from "../../../store/models/types"
 import { ArticleModel } from "../../../store/models/article"
@@ -84,13 +86,13 @@ export class TabGenerator extends React.Component {
       <div>
         {detailsList &&
           detailsList.map((item: BaseInfo & Writing, idx: number) => {
-          return (
-            <span>
-              {item.name || item.title}
-              {idx < detailsList.length - 1 ? ", " : ""}
-            </span>
-          )
-        })}
+            return (
+              <span>
+                {item.name || item.title}
+                {idx < detailsList.length - 1 ? ", " : ""}
+              </span>
+            )
+          })}
       </div>
     )
   }
@@ -104,7 +106,9 @@ export class TabGenerator extends React.Component {
             return (
               <li>
                 <WritingsTitle>{item.title}</WritingsTitle>
-                {item.publicated && <WritingsYear>({getYear(item.publicated)})</WritingsYear>}
+                {item.publicated && (
+                  <WritingsYear>({getYear(item.publicated)})</WritingsYear>
+                )}
               </li>
             )
           })}
