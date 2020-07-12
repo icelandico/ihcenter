@@ -1,5 +1,6 @@
 import * as React from "react"
 import { observer, inject } from "mobx-react"
+import { useEffect, useRef, useState } from "react"
 import { rootStore } from "../../../store/RootStore"
 import { ArticleModel } from "../../../store/models/article"
 import { TabGenerator } from "../details-info-tab/details-info-tab-specific"
@@ -26,11 +27,34 @@ const renderTypeDetails = (details: ArticleModel): JSX.Element => {
 }
 
 const DetailListInfo: React.FC<Props> = props => {
+  const [isScrolled, setScrollValue] = useState(false)
+  const container = useRef(null)
+
+  useEffect(() => {
+    if (!container.current) return null
+    const checkScrollTop = (): boolean => {
+      if (container.current.scrollTop > 0) {
+        return true
+      }
+      return false
+    }
+
+    const checkForScroll = () => {
+      setScrollValue(checkScrollTop())
+    }
+    container.current.addEventListener("scroll", checkForScroll)
+
+    return () => container.current.removeEventListener("scroll", checkForScroll)
+  }, [])
+
   const { details } = props
   return (
-    <div className="content-list-info content-list-info-detailed">
+    <div
+      ref={container}
+      className="content-list-info content-list-info-detailed"
+    >
       {details && renderTypeDetails(details)}
-      <ScrollIndicator />
+      {!isScrolled && <ScrollIndicator />}
     </div>
   )
 }

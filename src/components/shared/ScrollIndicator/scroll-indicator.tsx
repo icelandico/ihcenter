@@ -6,7 +6,5 @@ interface Props {
 }
 
 export const ScrollIndicator: React.FC = props => {
-  return (
-    <Indicator />
-  )
+  return <Indicator />
 }
