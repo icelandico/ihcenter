@@ -50,6 +50,13 @@ export const MainImage = styled.div`
   margin: 0 auto;
 `
 
+export const Bookmark = styled.div`
+  position: absolute;
+  top: 3.3rem;
+  right: 5%;
+
+`
+
 export const DetailsContainer = styled.div`
   height: 62%;
   overflow-y: auto;

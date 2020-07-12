@@ -3,13 +3,14 @@ import { SvgContainer } from "./svgicon-styles"
 
 interface Props {
   Icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
-  width?: string
+  width?: number
+  height?: number
 }
 
 const SvgIcon: React.FC<Props> = props => {
-  const { Icon } = props
+  const { Icon, width, height } = props
   return (
-    <SvgContainer>
+    <SvgContainer width={width} height={height}>
       <Icon />
     </SvgContainer>
   )

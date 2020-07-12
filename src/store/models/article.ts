@@ -134,7 +134,7 @@ const ArticleStore = types
       console.log("Current articles", self.articles)
       const filteredArticles = self.articles.filter(article => {
         const articleYear = getYear(article.startDate)
-        return articleYear === self.currentYear
+        return articleYear === 1905
       })
       console.log("Current year", self.currentYear)
       console.log("Filtered", filteredArticles)
