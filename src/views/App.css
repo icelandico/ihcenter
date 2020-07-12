@@ -101,6 +101,10 @@
   overflow-y: auto;
 }
 
+.content-list-info-detailed::-webkit-scrollbar {
+  display: none;
+}
+
 .content-main-info {
   outline: 1px solid #007260;
   width: 60%;

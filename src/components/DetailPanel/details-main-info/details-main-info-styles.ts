@@ -54,7 +54,27 @@ export const Bookmark = styled.div`
   position: absolute;
   top: 3.3rem;
   right: 5%;
+  cursor: pointer;
+  stroke: ${colors.green};
+  fill: none;
+  transition: 0.3s;
+  
+  &:before {
+    position: absolute;
+    left: -48px;
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: ${colors.lightBrown};
+  }
 
+  svg {
+    transition: 0.3s;
+  }
+  
+  &:hover::before {
+    width: 75px;
+  }
 `
 
 export const DetailsContainer = styled.div`
