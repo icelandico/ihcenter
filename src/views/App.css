@@ -97,6 +97,7 @@
 }
 
 .content-list-info-detailed {
+  position: relative;
   padding: 0 2rem 0 0.5rem;
   overflow-y: auto;
 }

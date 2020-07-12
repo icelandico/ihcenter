@@ -3,6 +3,7 @@ import { observer, inject } from "mobx-react"
 import { rootStore } from "../../../store/RootStore"
 import { ArticleModel } from "../../../store/models/article"
 import { TabGenerator } from "../details-info-tab/details-info-tab-specific"
+import { ScrollIndicator } from "../../shared/ScrollIndicator/scroll-indicator"
 
 export interface Props {
   store?: typeof rootStore
@@ -29,6 +30,7 @@ const DetailListInfo: React.FC<Props> = props => {
   return (
     <div className="content-list-info content-list-info-detailed">
       {details && renderTypeDetails(details)}
+      <ScrollIndicator />
     </div>
   )
 }

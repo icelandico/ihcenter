@@ -1,7 +1,5 @@
 import * as React from "react"
-import { rootStore } from "../../../store/RootStore"
-import { ArticleModel } from "../../../store/models/article"
-import { Indicator } from "./scroll-indicator-styles";
+import { Indicator } from "./scroll-indicator-styles"
 
 interface Props {
 
