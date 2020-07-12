@@ -1,13 +1,14 @@
 import styled from "styled-components"
+import { colors } from "../../styles/colors"
 
 export const CustomMarker = styled.div<{
-  color: string
+  color?: string
 }>`
   width: 0;
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 10px solid ${props => props.color};
+  border-top: 10px solid ${props => props.color || colors.lightBrown};
   position: absolute;
   left: 50%;
   top: 50%;
