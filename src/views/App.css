@@ -88,7 +88,7 @@
 .content-container-r {
   flex-basis: 70%;
   outline: 0.1rem solid #007260;
-  max-height: 66rem;
+  max-height: 70%;
 }
 
 .content-list-info {
