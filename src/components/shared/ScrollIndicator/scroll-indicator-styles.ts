@@ -8,11 +8,8 @@ const indicatorKeyframes = keyframes`
 `
 
 export const Indicator = styled(CustomMarker)`
-  position: absolute;
-  bottom: 1rem;
-  top: auto;
-  right: 0.1rem;
-  left: auto;
+  position: sticky;
+  left: 0;
   -webkit-animation: ${indicatorKeyframes} 2s infinite ease-in-out;
   animation: ${indicatorKeyframes} 2s infinite ease-in-out;
 `

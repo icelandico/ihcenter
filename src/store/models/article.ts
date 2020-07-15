@@ -1,5 +1,5 @@
 import { types, Instance, flow, applySnapshot } from "mobx-state-tree"
-import { apiUrls, apiEndpoints } from "../api/api"
+import { apiEndpoints } from "../api/api"
 import {
   IdeaDetails,
   ImageDetails,

@@ -35,12 +35,13 @@ const DetailListInfo: React.FC<Props> = props => {
   useEffect(() => {
     if (!container.current) return null
     const checkScrollTop = (): void => {
-      if (container.current.scrollTop > 0) {
-        setScrollValue(true)
-      } else {
-        setScrollValue(false)
-      }
+      const scrollDiv = container.current
+      const result =
+        scrollDiv.scrollTop > 0 &&
+        scrollDiv.scrollHeight - scrollDiv.clientHeight === scrollDiv.scrollTop
+      setScrollValue(result)
     }
+
     setScrollable(checkIfScrollable(container.current))
     container.current.addEventListener("scroll", checkScrollTop)
     return () => container.current.removeEventListener("scroll", checkScrollTop)

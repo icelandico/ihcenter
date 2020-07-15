@@ -6,10 +6,7 @@ export const ScrollPosition = (container: any) => {
   useEffect(() => {
     if (!container.current) return null
     const checkScrollTop = (): boolean => {
-      if (container.scrollTop > 0) {
-        return true
-      }
-      return false
+      return container.scrollTop > 0
     }
 
     const checkForScroll = () => {
@@ -19,7 +16,6 @@ export const ScrollPosition = (container: any) => {
 
     return () => container.current.removeEventListener("scroll", checkForScroll)
   }, [])
-
 
   return isScrolled
 }
