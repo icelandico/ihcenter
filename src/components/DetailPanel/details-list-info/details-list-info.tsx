@@ -28,7 +28,7 @@ const renderTypeDetails = (details: ArticleModel): JSX.Element => {
 }
 
 const DetailListInfo: React.FC<Props> = props => {
-  const [isScrolled, setScrollValue] = useState(false)
+  const [isScrollNeeded, setScrollValue] = useState(true)
   const [isScrollable, setScrollable] = useState(false)
   const container = useRef(null)
 
@@ -37,8 +37,8 @@ const DetailListInfo: React.FC<Props> = props => {
     const checkScrollTop = (): void => {
       const scrollDiv = container.current
       const result =
-        scrollDiv.scrollTop > 0 &&
-        scrollDiv.scrollHeight - scrollDiv.clientHeight === scrollDiv.scrollTop
+        scrollDiv.scrollTop < scrollDiv.scrollHeight - scrollDiv.clientHeight ||
+        scrollDiv.scrollTop === 0
       setScrollValue(result)
     }
 
@@ -54,7 +54,7 @@ const DetailListInfo: React.FC<Props> = props => {
       className="content-list-info content-list-info-detailed"
     >
       {details && renderTypeDetails(details)}
-      {!isScrolled && isScrollable && <ScrollIndicator />}
+      {isScrollNeeded && isScrollable && <ScrollIndicator />}
     </div>
   )
 }
