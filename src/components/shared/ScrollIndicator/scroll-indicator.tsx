@@ -9,7 +9,7 @@ interface Props {
 
 export const ScrollIndicator: React.FC<Props> = props => {
   const { container } = props
-  const [isScrollNeeded, setScrollValue] = useState(false)
+  const [isScrollNeeded, setScrollValue] = useState(true)
   const [isScrollable, setScrollable] = useState(false)
 
   const handleScroll = (): void => {
@@ -22,7 +22,6 @@ export const ScrollIndicator: React.FC<Props> = props => {
   }
 
   useEffect(() => {
-    console.log("HOOK CALLED", checkIfScrollable(container))
     setScrollable(checkIfScrollable(container))
     container.addEventListener("scroll", handleScroll)
     return () => container.removeEventListener("scroll", handleScroll)
