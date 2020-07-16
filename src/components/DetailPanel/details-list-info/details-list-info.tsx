@@ -5,7 +5,7 @@ import { rootStore } from "../../../store/RootStore"
 import { ArticleModel } from "../../../store/models/article"
 import { TabGenerator } from "../details-info-tab/details-info-tab-specific"
 import { ScrollIndicator } from "../../shared/ScrollIndicator/scroll-indicator"
-import { checkIfScrollable } from "../../../utils/scrollableElement"
+import {useScroll} from "../../../hooks/scrollPosition";
 
 export interface Props {
   store?: typeof rootStore
@@ -28,33 +28,17 @@ const renderTypeDetails = (details: ArticleModel): JSX.Element => {
 }
 
 const DetailListInfo: React.FC<Props> = props => {
-  const [isScrollNeeded, setScrollValue] = useState(true)
-  const [isScrollable, setScrollable] = useState(false)
-  const container = useRef(null)
-
-  useEffect(() => {
-    if (!container.current) return null
-    const checkScrollTop = (): void => {
-      const scrollDiv = container.current
-      const result =
-        scrollDiv.scrollTop < scrollDiv.scrollHeight - scrollDiv.clientHeight ||
-        scrollDiv.scrollTop === 0
-      setScrollValue(result)
-    }
-
-    setScrollable(checkIfScrollable(container.current))
-    container.current.addEventListener("scroll", checkScrollTop)
-    return () => container.current.removeEventListener("scroll", checkScrollTop)
-  })
-
+  const scrollDiv = useRef(null)
   const { details } = props
   return (
     <div
-      ref={container}
-      className="content-list-info content-list-info-detailed"
+      ref={scrollDiv}
+      className={`content-list-info content-list-info-detailed id-${
+        details ? details.id : 0
+      }`}
     >
       {details && renderTypeDetails(details)}
-      {isScrollNeeded && isScrollable && <ScrollIndicator />}
+      {scrollDiv.current && <ScrollIndicator container={scrollDiv.current} />}
     </div>
   )
 }
