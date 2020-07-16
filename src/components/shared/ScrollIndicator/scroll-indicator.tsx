@@ -19,12 +19,13 @@ export const ScrollIndicator: React.FC<Props> = props => {
       scrollDiv.scrollTop === 0
 
     setScrollValue(result)
-    setScrollable(checkIfScrollable(container))
   }
 
   useEffect(() => {
+    console.log("HOOK CALLED", checkIfScrollable(container))
+    setScrollable(checkIfScrollable(container))
     container.addEventListener("scroll", handleScroll)
     return () => container.removeEventListener("scroll", handleScroll)
-  }, [container])
-  return isScrollNeeded && isScrollable && <Indicator />
+  }, [container, handleScroll])
+  return isScrollable && isScrollNeeded && <Indicator />
 }
