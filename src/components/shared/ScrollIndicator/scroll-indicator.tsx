@@ -26,5 +26,6 @@ export const ScrollIndicator: React.FC<Props> = props => {
     container.addEventListener("scroll", handleScroll)
     return () => container.removeEventListener("scroll", handleScroll)
   }, [container, handleScroll])
+
   return isScrollable && isScrollNeeded && <Indicator />
 }
