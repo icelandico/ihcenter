@@ -1,5 +1,6 @@
 import * as React from "react"
 import { observer, inject } from "mobx-react"
+import { useRef } from "react"
 import { rootStore } from "../../../store/RootStore"
 import {
   ElementTitle,
@@ -19,8 +20,8 @@ import EventIcon from "../../../static/icons/events.svg"
 import PoliticsIcon from "../../../static/icons/politics.svg"
 import SvgIcon from "../../shared/SvgIcon/svgIcon"
 import { ReactComponent as BookmarkOff } from "../../../static/icons/bookmark_off.svg"
-import {ScrollIndicator} from "../../shared/ScrollIndicator/scroll-indicator";
-import {useRef} from "react";
+import { ScrollIndicator } from "../../shared/ScrollIndicator/scroll-indicator"
+import {BottomGradient} from "../../shared/Styles/shared-styled-components";
 
 export interface Props {
   store?: typeof rootStore
@@ -103,6 +104,7 @@ const DetailMainInfo: React.FC<Props> = props => {
           )}
         </DetailsText>
       </DetailsContainer>
+      <BottomGradient />
     </div>
   )
 }

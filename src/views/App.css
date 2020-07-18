@@ -112,18 +112,6 @@
   flex-direction: column;
 }
 
-.content-main-info::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 12rem;
-  pointer-events: none;
-  /* box-shadow: inset 0px -65px 55px 0px rgba(0, 57, 63, 0.9); */
-  background: linear-gradient(transparent 0, rgba(0, 57, 63, 1));
-}
-
 .content-lower {
   height: 6rem;
   outline: 0.1rem solid rgb(196, 177, 8);
