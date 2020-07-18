@@ -5,7 +5,8 @@ import { rootStore } from "../../../store/RootStore"
 import { ArticleModel } from "../../../store/models/article"
 import { TabGenerator } from "../details-info-tab/details-info-tab-specific"
 import { ScrollIndicator } from "../../shared/ScrollIndicator/scroll-indicator"
-import { DetailsContainer, BottomGradient } from "./details-list-info-styles"
+import { DetailsContainer } from "./details-list-info-styles"
+import { BottomGradient } from "../../shared/Styles/shared-styled-components"
 
 export interface Props {
   store?: typeof rootStore
