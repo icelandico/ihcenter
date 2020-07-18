@@ -30,6 +30,17 @@ export const DetailsContainer = styled.div`
   }
 `
 
+export const BottomGradient = styled.div`
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 12rem;
+  pointer-events: none;
+  background: linear-gradient(transparent 0, rgba(0, 57, 63, 1));
+`
+
 export const WritingsList = styled.ul`
   padding: 0 0 0 1.5rem;
 

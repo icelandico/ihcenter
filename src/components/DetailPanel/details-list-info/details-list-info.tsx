@@ -5,7 +5,7 @@ import { rootStore } from "../../../store/RootStore"
 import { ArticleModel } from "../../../store/models/article"
 import { TabGenerator } from "../details-info-tab/details-info-tab-specific"
 import { ScrollIndicator } from "../../shared/ScrollIndicator/scroll-indicator"
-import { DetailsContainer } from "./details-list-info-styles"
+import { DetailsContainer, BottomGradient } from "./details-list-info-styles"
 
 export interface Props {
   store?: typeof rootStore
@@ -36,7 +36,7 @@ const DetailListInfo: React.FC<Props> = props => {
         {details && renderTypeDetails(details)}
         {scrollDiv.current && <ScrollIndicator container={scrollDiv.current} />}
       </DetailsContainer>
-      <div className="bottom-gradient" />
+      <BottomGradient />
     </div>
   )
 }
