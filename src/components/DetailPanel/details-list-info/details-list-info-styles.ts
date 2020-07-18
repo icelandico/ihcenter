@@ -21,6 +21,15 @@ export const DetailsTopItem = styled.div`
   }
 `
 
+export const DetailsContainer = styled.div`
+  height: 100%;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`
+
 export const WritingsList = styled.ul`
   padding: 0 0 0 1.5rem;
 
