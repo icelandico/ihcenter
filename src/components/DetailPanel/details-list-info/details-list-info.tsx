@@ -31,14 +31,13 @@ const DetailListInfo: React.FC<Props> = props => {
   const scrollDiv = useRef(null)
   const { details } = props
   return (
-    <div
-      ref={scrollDiv}
-      className={`content-list-info content-list-info-detailed id-${
-        details ? details.id : 0
-      }`}
+    <div className="content-list-info content-list-info-detailed"
     >
-      {details && renderTypeDetails(details)}
-      {scrollDiv.current && <ScrollIndicator container={scrollDiv.current} />}
+      <div className="inner-content" ref={scrollDiv}>
+        {details && renderTypeDetails(details)}
+        {scrollDiv.current && <ScrollIndicator container={scrollDiv.current} />}
+      </div>
+      <div className="bottom-gradient" />
     </div>
   )
 }

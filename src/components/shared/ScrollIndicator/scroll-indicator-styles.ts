@@ -9,7 +9,8 @@ const indicatorKeyframes = keyframes`
 
 export const Indicator = styled(CustomMarker)`
   position: sticky;
-  left: 0;
+  left: 50%;
   -webkit-animation: ${indicatorKeyframes} 2s infinite ease-in-out;
   animation: ${indicatorKeyframes} 2s infinite ease-in-out;
+  z-index: 10;
 `

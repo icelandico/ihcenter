@@ -19,6 +19,8 @@ import EventIcon from "../../../static/icons/events.svg"
 import PoliticsIcon from "../../../static/icons/politics.svg"
 import SvgIcon from "../../shared/SvgIcon/svgIcon"
 import { ReactComponent as BookmarkOff } from "../../../static/icons/bookmark_off.svg"
+import {ScrollIndicator} from "../../shared/ScrollIndicator/scroll-indicator";
+import {useRef} from "react";
 
 export interface Props {
   store?: typeof rootStore
@@ -46,6 +48,7 @@ const renderImage = (details: ArticleModel): string => {
 
 const DetailMainInfo: React.FC<Props> = props => {
   const { details } = props
+  const scrollDiv = useRef(null)
 
   return (
     <div className="content-list-info content-main-info" style={{position: "relative"}}>
@@ -69,7 +72,7 @@ const DetailMainInfo: React.FC<Props> = props => {
         </ElementDate>
       </DetailsTopContainer>
 
-      <DetailsContainer>
+      <DetailsContainer ref={scrollDiv}>
         <DetailsText>
           {details
             ? details.description
@@ -95,6 +98,9 @@ const DetailMainInfo: React.FC<Props> = props => {
           Est deleniti invidunt no, in his viris elaboraret. No nam solum
           ancillae, nec no inani labore dissentiunt. Et nibh nusquam scribentur
           ius, eos in habeo verear civibus.`}
+          {scrollDiv.current && (
+            <ScrollIndicator container={scrollDiv.current} />
+          )}
         </DetailsText>
       </DetailsContainer>
     </div>

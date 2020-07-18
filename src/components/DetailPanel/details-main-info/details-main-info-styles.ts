@@ -85,18 +85,19 @@ export const DetailsContainer = styled.div`
   text-align: justify;
 
   &::-webkit-scrollbar {
-    width: 0.5rem;
-    height: 1.5rem;
+    //width: 0.5rem;
+    //height: 1.5rem;
+    display: none;
   }
 
-  &::-webkit-scrollbar-track {
-    background: gray;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: white;
-    border-radius: 0.5rem;
-    border: 0.3rem solid ${colors.darkYellow};
-  }
+  // &::-webkit-scrollbar-track {
+  //   background: gray;
+  // }
+  // &::-webkit-scrollbar-thumb {
+  //   background-color: white;
+  //   border-radius: 0.5rem;
+  //   border: 0.3rem solid ${colors.darkYellow};
+  // }
 `
 
 export const DetailsText = styled.p`
