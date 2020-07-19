@@ -50,21 +50,26 @@ export const TimeArrow = styled.div<{
 
 export const TimeArrowDouble = styled(TimeArrow)<{
   direction: string
+  double: boolean
 }>`
   position: relative;
   transform: ${props =>
     props.direction === "left" ? "rotate(45deg)" : "rotate(225deg)"};
+
   &:after {
+  ${props =>
+    props.double &&
+    `
     position: absolute;
     content: "";
     padding: 0.75rem;
-    box-shadow: 1px -1px 0 1px ${colors.lightbrown} inset;
-    -webkit-box-shadow: 2px -2px ${colors.lightbrown} inset;
+    box-shadow: 1px -1px 0 1px ${colors.lightBrown} inset;
+    -webkit-box-shadow: 2px -2px ${colors.lightBrown} inset;
     border: solid transparent;
     border-width: 0.5rem 0.5rem 1rem 1rem;
     transition: 0.2s;
     cursor: pointer;
     top: 0;
     right: 0;
-  }
+  `}
 `
