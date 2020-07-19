@@ -52,7 +52,7 @@ export const MainImage = styled.div`
 
 export const BookmarkContainer = styled.div`
   position: absolute;
-  outline: 1px solid red;
+  //outline: 1px solid red;
   right: 1rem;
   top: 2.3rem;
   height: 3rem;

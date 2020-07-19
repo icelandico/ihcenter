@@ -20,6 +20,7 @@ const TimelineDatePicker: React.FC<Props> = props => {
       <TimeArrow
         direction="left"
         double
+        primary
         onClick={() => store.articleStore.decrementYear()}
       />
       <TimeArrow
@@ -38,6 +39,7 @@ const TimelineDatePicker: React.FC<Props> = props => {
       <TimeArrow
         direction="right"
         double
+        primary
         onClick={() => store.articleStore.decrementYear()}
       />
     </TimelineDateContainer>
