@@ -21,6 +21,6 @@ export const TimelineOption = styled.div<{
   flex: 1;
   height: 3rem;
   cursor: pointer;
-  background-color: navajowhite; //${props => props.option};
+  background-color: navajowhite;
   opacity: ${props => (props.active ? 1 : 0.5)};
 `
