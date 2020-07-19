@@ -5,7 +5,7 @@ import {
   ImageDetails,
   MainIdeaDetails,
   BaseInfoDetails,
-  WritingsDetails
+  WritingsDetails, NationalityDetails
 } from "./articleDetails"
 import { getYear } from "../../utils/formatDate"
 
@@ -20,18 +20,7 @@ export const Article = types.model("Article", {
   wikipediaLink: types.maybeNull(types.string),
   description: types.maybeNull(types.string),
   image: types.maybeNull(ImageDetails),
-  nationality: types.maybeNull(
-    types.model({
-      id: types.identifierNumber,
-      name: types.maybeNull(types.string),
-      flag: types.maybeNull(
-        types.model({
-          id: types.identifierNumber,
-          url: types.maybeNull(types.string)
-        })
-      )
-    })
-  ),
+  nationality: types.maybeNull(NationalityDetails),
   type: types.string,
   ident: types.identifier,
   startPlace: types.maybeNull(types.string),
@@ -131,13 +120,10 @@ const ArticleStore = types
       this.filterByYear()
     },
     filterByYear() {
-      console.log("Current articles", self.articles)
       const filteredArticles = self.articles.filter(article => {
         const articleYear = getYear(article.startDate)
         return articleYear === 1772
       })
-      console.log("Current year", self.currentYear)
-      console.log("Filtered", filteredArticles)
       applySnapshot(self.articles, filteredArticles)
     }
   }))

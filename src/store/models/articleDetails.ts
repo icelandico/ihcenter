@@ -30,3 +30,14 @@ export const WritingsDetails = types.model("WritingsDetails", {
   publicated: types.maybeNull(types.string),
   fragments: types.maybeNull(types.string)
 })
+
+export const NationalityDetails = types.model("NationalityDetails", {
+  id: types.identifierNumber,
+  name: types.maybeNull(types.string),
+  flag: types.maybeNull(
+    types.model({
+      id: types.identifierNumber,
+      url: types.maybeNull(types.string)
+    })
+  )
+})
