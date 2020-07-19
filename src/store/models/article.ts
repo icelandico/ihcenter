@@ -87,7 +87,8 @@ const ArticleStore = types
   .model("ArticleStore", {
     articles: types.optional(types.array(Article), []),
     chosenArticle: types.maybe(types.reference(Article)),
-    currentYear: types.optional(types.number, 1775)
+    currentYear: types.optional(types.number, 1775),
+    timelineMode: types.optional(types.string, "cummulative")
   })
   .actions(self => ({
     getAllArticles: flow(function*() {
@@ -125,6 +126,9 @@ const ArticleStore = types
         return articleYear === 1772
       })
       applySnapshot(self.articles, filteredArticles)
+    },
+    setTimelineMode(mode: string) {
+      self.timelineMode = mode
     }
   }))
 

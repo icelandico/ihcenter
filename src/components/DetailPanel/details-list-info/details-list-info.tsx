@@ -1,7 +1,6 @@
 import * as React from "react"
 import { observer, inject } from "mobx-react"
 import { useRef } from "react"
-import { rootStore } from "../../../store/RootStore"
 import { ArticleModel } from "../../../store/models/article"
 import { TabGenerator } from "../details-info-tab/details-info-tab-specific"
 import { ScrollIndicator } from "../../shared/ScrollIndicator/scroll-indicator"
@@ -9,7 +8,6 @@ import { DetailsContainer } from "./details-list-info-styles"
 import { BottomGradient } from "../../shared/Styles/shared-styled-components"
 
 export interface Props {
-  store?: typeof rootStore
   details: ArticleModel
 }
 
