@@ -50,30 +50,43 @@ export const MainImage = styled.div`
   margin: 0 auto;
 `
 
+export const BookmarkContainer = styled.div`
+  position: absolute;
+  outline: 1px solid red;
+  right: 1rem;
+  top: 2.3rem;
+  height: 3rem;
+  width: 50%;
+`
+
 export const Bookmark = styled.div`
   position: absolute;
-  top: 3.3rem;
-  right: 5%;
+  top: 0;
+  right: 0;
   cursor: pointer;
   stroke: ${colors.green};
   fill: none;
-  transition: 0.3s;
+  transition: 0.1s;
   
-  &:before {
-    position: absolute;
-    left: -48px;
-    content: "";
-    width: 0;
-    height: 2px;
-    background-color: ${colors.lightBrown};
-  }
+  // &:before {
+  //   position: absolute;
+  //   left: -98px;
+  //   content: "";
+  //   width: 100px;
+  //   height: 2px;
+  //   background-color: ${colors.lightBrown};
+  // }
 
   svg {
     transition: 0.3s;
   }
   
+  &:hover {
+    stroke: ${colors.lightBrown};
+  }
+  
   &:hover::before {
-    width: 75px;
+    //width: 75px;
   }
 `
 

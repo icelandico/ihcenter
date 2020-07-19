@@ -11,7 +11,8 @@ import {
   ElementLink,
   ElementDate,
   WikiLinkContainer,
-  Bookmark
+  Bookmark,
+  BookmarkContainer
 } from "./details-main-info-styles"
 import { apiUrls } from "../../../store/api/api"
 import { formatDate } from "../../../utils/formatDate"
@@ -21,7 +22,7 @@ import PoliticsIcon from "../../../static/icons/politics.svg"
 import SvgIcon from "../../shared/SvgIcon/svgIcon"
 import { ReactComponent as BookmarkOff } from "../../../static/icons/bookmark_off.svg"
 import { ScrollIndicator } from "../../shared/ScrollIndicator/scroll-indicator"
-import {BottomGradient} from "../../shared/Styles/shared-styled-components";
+import { BottomGradient } from "../../shared/Styles/shared-styled-components"
 
 export interface Props {
   store?: typeof rootStore
@@ -52,12 +53,16 @@ const DetailMainInfo: React.FC<Props> = props => {
   const scrollDiv = useRef(null)
 
   return (
-    <div className="content-list-info content-main-info" style={{position: "relative"}}>
-      <MainImage style={{ backgroundImage: `url(${renderImage(details)}` }}>
-      </MainImage>
-      <Bookmark>
-        <SvgIcon height={2.5} width={2.5} Icon={BookmarkOff} />
-      </Bookmark>
+    <div
+      className="content-list-info content-main-info"
+      style={{ position: "relative" }}
+    >
+      <MainImage style={{ backgroundImage: `url(${renderImage(details)}` }} />
+      <BookmarkContainer>
+        <Bookmark>
+          <SvgIcon height={2.2} width={2.2} Icon={BookmarkOff} />
+        </Bookmark>
+      </BookmarkContainer>
       <DetailsTopContainer>
         <ElementTitle>{details ? details.name : "Element Name"}</ElementTitle>
         <WikiLinkContainer>
