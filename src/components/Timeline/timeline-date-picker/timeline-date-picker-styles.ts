@@ -28,10 +28,11 @@ export const TimelineDate = styled.input`
     outline: 1px solid ${colors.lightBrown};
   }
 `
-
 export const TimeArrow = styled.div<{
   direction: string
+  double?: boolean
 }>`
+  position: relative;
   padding: 0.75rem;
   box-shadow: 1px -1px 0 1px ${colors.lightbrown} inset;
   -webkit-box-shadow: 2px -2px ${colors.lightbrown} inset;
@@ -39,20 +40,6 @@ export const TimeArrow = styled.div<{
   border-width: 0 0 1rem 1rem;
   transition: 0.2s;
   cursor: pointer;
-  transform: ${props =>
-    props.direction === "left" ? "rotate(45deg)" : "rotate(225deg)"};
-
-  &:hover {
-    box-shadow: 2px -2px 0 2px ${colors.lightbrown} inset;
-    -webkit-box-shadow: 4px -4px ${colors.lightbrown} inset;
-  }
-`
-
-export const TimeArrowDouble = styled(TimeArrow)<{
-  direction: string
-  double: boolean
-}>`
-  position: relative;
   transform: ${props =>
     props.direction === "left" ? "rotate(45deg)" : "rotate(225deg)"};
 

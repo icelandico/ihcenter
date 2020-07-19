@@ -2,7 +2,6 @@ import React from "react"
 import { inject, observer } from "mobx-react"
 import {
   TimeArrow,
-  TimeArrowDouble,
   TimelineDate,
   TimelineDateContainer
 } from "./timeline-date-picker-styles"
@@ -18,7 +17,7 @@ const TimelineDatePicker: React.FC<Props> = props => {
 
   return (
     <TimelineDateContainer>
-      <TimeArrowDouble
+      <TimeArrow
         direction="left"
         double
         onClick={() => store.articleStore.decrementYear()}
@@ -36,7 +35,7 @@ const TimelineDatePicker: React.FC<Props> = props => {
         direction="right"
         onClick={() => store.articleStore.incrementYear()}
       />
-      <TimeArrowDouble
+      <TimeArrow
         direction="right"
         double
         onClick={() => store.articleStore.decrementYear()}
