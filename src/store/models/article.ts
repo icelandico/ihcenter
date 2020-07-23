@@ -87,7 +87,7 @@ const ArticleStore = types
   .model("ArticleStore", {
     articles: types.optional(types.array(Article), []),
     chosenArticle: types.maybe(types.reference(Article)),
-    currentYear: types.optional(types.number, 1775),
+    currentYear: types.optional(types.number, new Date().getFullYear()),
     timelineMode: types.optional(types.string, "cummulative")
   })
   .actions(self => ({
@@ -129,6 +129,17 @@ const ArticleStore = types
     },
     setTimelineMode(mode: string) {
       self.timelineMode = mode
+      this.setLastYear()
+    },
+    setLastYear(): void {
+      const allArticles = self.articles
+      const articleDates = allArticles
+        .filter(el => el.startDate)
+        .map(el => new Date(el.startDate))
+      const lastYear: number = new Date(
+        Math.max(...(articleDates as []))
+      ).getFullYear()
+      self.currentYear = lastYear
     }
   }))
 

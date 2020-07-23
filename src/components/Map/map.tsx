@@ -17,6 +17,7 @@ class MapComponent extends React.Component<Props, State> {
   async componentDidMount() {
     const { store } = this.props
     await store.articleStore.getAllArticles()
+    store.articleStore.setLastYear()
   }
 
   showMarkers = (article: ArticleModel) => {
