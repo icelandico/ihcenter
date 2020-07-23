@@ -87,7 +87,7 @@ const ArticleStore = types
   .model("ArticleStore", {
     articles: types.optional(types.array(Article), []),
     chosenArticle: types.maybe(types.reference(Article)),
-    currentYear: types.optional(types.number, new Date().getFullYear()),
+    currentYear: types.optional(types.number, 0),
     timelineMode: types.optional(types.string, "cummulative")
   })
   .actions(self => ({

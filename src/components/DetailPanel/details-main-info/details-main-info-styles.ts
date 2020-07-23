@@ -52,7 +52,6 @@ export const MainImage = styled.div`
 
 export const BookmarkContainer = styled.div`
   position: absolute;
-  //outline: 1px solid red;
   right: 1rem;
   top: 2.3rem;
   height: 3rem;
@@ -67,15 +66,6 @@ export const Bookmark = styled.div`
   stroke: ${colors.green};
   fill: none;
   transition: 0.1s;
-  
-  // &:before {
-  //   position: absolute;
-  //   left: -98px;
-  //   content: "";
-  //   width: 100px;
-  //   height: 2px;
-  //   background-color: ${colors.lightBrown};
-  // }
 
   svg {
     transition: 0.3s;
@@ -83,10 +73,6 @@ export const Bookmark = styled.div`
   
   &:hover {
     stroke: ${colors.lightBrown};
-  }
-  
-  &:hover::before {
-    //width: 75px;
   }
 `
 
@@ -98,19 +84,9 @@ export const DetailsContainer = styled.div`
   text-align: justify;
 
   &::-webkit-scrollbar {
-    //width: 0.5rem;
-    //height: 1.5rem;
     display: none;
   }
 
-  // &::-webkit-scrollbar-track {
-  //   background: gray;
-  // }
-  // &::-webkit-scrollbar-thumb {
-  //   background-color: white;
-  //   border-radius: 0.5rem;
-  //   border: 0.3rem solid ${colors.darkYellow};
-  // }
 `
 
 export const DetailsText = styled.p`

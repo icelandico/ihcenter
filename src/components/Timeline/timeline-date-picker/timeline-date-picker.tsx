@@ -30,7 +30,7 @@ const TimelineDatePicker: React.FC<Props> = props => {
       <TimelineDate
         min="1790"
         onChange={e => store.articleStore.setYear(e.target.value)}
-        value={currentYear}
+        value={currentYear || ""}
       />
       <TimeArrow
         direction="right"
