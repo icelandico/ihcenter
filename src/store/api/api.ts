@@ -19,7 +19,8 @@ export const apiUrls: Urls = {
 }
 
 export const apiEndpoints = [
-  "http://icelandico.usermd.net/characters",
-  "http://icelandico.usermd.net/organisations",
-  "http://icelandico.usermd.net/events"
+  "http://icelandico.usermd.net/markers"
+  // "http://icelandico.usermd.net/characters",
+  // "http://icelandico.usermd.net/organisations",
+  // "http://icelandico.usermd.net/events"
 ]
