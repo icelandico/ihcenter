@@ -14,8 +14,11 @@ const loaderKeyframes = keyframes`
 }
 `
 
-export const LoaderContainer = styled.div`
-  position: absolute;
+export const LoaderContainer = styled.div<{
+  background?: boolean
+  regular?: boolean
+}>`
+  position: ${props => !props.regular && "absolute"};
   top: 0;
   left: 0;
   right: 0;
@@ -23,7 +26,7 @@ export const LoaderContainer = styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: ${props => props.background && "rgba(0, 0, 0, 0.8)"};
   z-index: 1001;
 `
 

@@ -53,7 +53,7 @@ class MapComponent extends React.Component<Props, State> {
             article.startCoords ? this.showMarkers(article) : null
           )
         ) : (
-          <Loader />
+          <Loader background />
         )}
       </Map>
     )

@@ -6,7 +6,7 @@ import {
   TimelineDateContainer
 } from "./timeline-date-picker-styles"
 import { rootStore } from "../../../store/RootStore"
-import Loader from "../../shared/Loader/loader";
+import Loader from "../../shared/Loader/loader"
 
 interface Props {
   store?: typeof rootStore
@@ -28,12 +28,15 @@ const TimelineDatePicker: React.FC<Props> = props => {
         direction="left"
         onClick={() => store.articleStore.decrementYear()}
       />
-      {/*<TimelineDate*/}
-      {/*  min="1790"*/}
-      {/*  onChange={e => store.articleStore.setYear(e.target.value)}*/}
-      {/*  value={currentYear || ""}*/}
-      {/*/>*/}
-      {/*<Loader />*/}
+      {currentYear ? (
+        <TimelineDate
+          min="1790"
+          onChange={e => store.articleStore.setYear(e.target.value)}
+          value={currentYear || ""}
+        />
+      ) : (
+        <Loader regular />
+      )}
       <TimeArrow
         direction="right"
         onClick={() => store.articleStore.incrementYear()}

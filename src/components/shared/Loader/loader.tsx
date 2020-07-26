@@ -2,12 +2,14 @@ import * as React from "react"
 import { LoaderElements, LoaderContainer } from "./loader-styles"
 
 interface Props {
-  transparent?: boolean
+  regular?: boolean
+  background?: boolean
 }
 
-const Loader: React.FC<Props> = () => {
+const Loader: React.FC<Props> = props => {
+  const { background, regular } = props
   return (
-    <LoaderContainer>
+    <LoaderContainer regular={regular} background={background}>
       <LoaderElements />
     </LoaderContainer>
   )
