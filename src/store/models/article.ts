@@ -88,7 +88,6 @@ const ArticleStore = types
     articles: types.optional(types.array(Article), []),
     chosenArticle: types.maybe(types.reference(Article)),
     currentYear: types.optional(types.number, 0),
-    timelineMode: types.optional(types.string, "cummulative"),
     filter: types.optional(filterType, SHOW_ALL)
   })
   .actions(self => ({
@@ -118,9 +117,8 @@ const ArticleStore = types
     setYear(year: string) {
       self.currentYear = parseInt(year, 10)
     },
-    setTimelineMode(mode: string) {
-      self.timelineMode = mode
-      this.setLastYear()
+    setFilter(mode: string) {
+      self.filter = mode
     },
     setLastYear(): void {
       const allArticles = self.articles
@@ -135,6 +133,7 @@ const ArticleStore = types
   }))
   .views(self => ({
     get filteredStore() {
+      console.log("FILTER", self.filter)
       const currentFilter: Function = FILTERS[self.filter]
       switch (currentFilter) {
         case FILTERS[SHOW_ALL]:
