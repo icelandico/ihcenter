@@ -49,7 +49,7 @@ class MapComponent extends React.Component<Props, State> {
           url={mapSettings.mainTile}
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
-        {articleStore.filteredStore.length ? (
+        {articleStore.articles.length ? (
           articleStore.filteredStore.map((article: ArticleModel) =>
             article.startCoords ? this.showMarkers(article) : null
           )
