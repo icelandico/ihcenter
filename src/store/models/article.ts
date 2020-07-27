@@ -133,7 +133,6 @@ const ArticleStore = types
   }))
   .views(self => ({
     get filteredStore() {
-      console.log("FILTER", self.filter)
       const currentFilter: Function = FILTERS[self.filter]
       switch (currentFilter) {
         case FILTERS[SHOW_ALL]:

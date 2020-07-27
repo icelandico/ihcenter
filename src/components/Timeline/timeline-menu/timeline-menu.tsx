@@ -6,7 +6,7 @@ import {
   TimelineMenuOptions,
   TimelineOption
 } from "./timeline-menu-styles"
-import {BY_YEAR, CUMULATIVE, SHOW_ALL} from "../../../store/constants/filters"
+import { BY_YEAR, CUMULATIVE, SHOW_ALL } from "../../../store/constants/filters"
 
 interface Props {
   store?: typeof rootStore
