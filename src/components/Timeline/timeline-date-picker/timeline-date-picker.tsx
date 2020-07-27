@@ -23,10 +23,12 @@ const TimelineDatePicker: React.FC<Props> = props => {
         double
         primary
         onClick={() => store.articleStore.decrementYear()}
+        title="Previous with data"
       />
       <TimeArrow
         direction="left"
         onClick={() => store.articleStore.decrementYear()}
+        title="Previous year"
       />
       {currentYear ? (
         <TimelineDate
@@ -40,12 +42,14 @@ const TimelineDatePicker: React.FC<Props> = props => {
       <TimeArrow
         direction="right"
         onClick={() => store.articleStore.incrementYear()}
+        title="Next year"
       />
       <TimeArrow
         direction="right"
         double
         primary
         onClick={() => store.articleStore.decrementYear()}
+        title="Next with data"
       />
     </TimelineDateContainer>
   )
