@@ -48,6 +48,7 @@ class MapComponent extends React.Component<Props, State> {
         <TileLayer
           url={mapSettings.mainTile}
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          noWrap
         />
         {articleStore.articles.length ? (
           articleStore.filteredStore.map((article: ArticleModel) =>
