@@ -7,7 +7,7 @@ import {
   BaseInfoDetails,
   WritingsDetails, NationalityDetails
 } from "./articleDetails"
-import { getYear } from "../../utils/formatDate"
+import { FILTERS, SHOW_ALL, filterType, BY_YEAR } from "../constants/filters"
 
 export type ArticleModel = Instance<typeof Article>
 
@@ -88,7 +88,8 @@ const ArticleStore = types
     articles: types.optional(types.array(Article), []),
     chosenArticle: types.maybe(types.reference(Article)),
     currentYear: types.optional(types.number, 0),
-    timelineMode: types.optional(types.string, "cummulative")
+    timelineMode: types.optional(types.string, "cummulative"),
+    filter: types.optional(filterType, SHOW_ALL)
   })
   .actions(self => ({
     getAllArticles: flow(function*() {
@@ -110,22 +111,12 @@ const ArticleStore = types
     },
     incrementYear() {
       self.currentYear += 1
-      this.filterByYear()
     },
     decrementYear() {
       self.currentYear -= 1
-      this.filterByYear()
     },
     setYear(year: string) {
       self.currentYear = parseInt(year, 10)
-      this.filterByYear()
-    },
-    filterByYear() {
-      const filteredArticles = self.articles.filter(article => {
-        const articleYear = getYear(article.startDate)
-        return articleYear === 1772
-      })
-      applySnapshot(self.articles, filteredArticles)
     },
     setTimelineMode(mode: string) {
       self.timelineMode = mode
@@ -140,6 +131,19 @@ const ArticleStore = types
         Math.max(...(articleDates as []))
       ).getFullYear()
       self.currentYear = lastYear
+    }
+  }))
+  .views(self => ({
+    get filteredStore() {
+      const currentFilter: Function = FILTERS[self.filter]
+      switch (currentFilter) {
+        case FILTERS[SHOW_ALL]:
+          return self.articles
+        case FILTERS[BY_YEAR]:
+          return self.articles.filter(currentFilter(self.currentYear))
+        default:
+          return self.articles
+      }
     }
   }))
 
