@@ -24,11 +24,10 @@ export const TimelineOption = styled.div<{
   flex: 1;
   height: 3rem;
   cursor: pointer;
-  background-color: navajowhite;
-  opacity: ${props => (props.active ? 1 : 0.5)};
 
   svg {
     height: 2rem;
     width: 2rem;
+    fill: ${props => (props.active ? colors.lightBrown : colors.green)};
   }
 `

@@ -1,11 +1,6 @@
-<svg data-name="Warstwa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7.52 10">
-  <defs>
-    <clipPath id="a" transform="translate(-958.72 -532.84)">
-      <path fill="none" d="M958.72 532.84h7.52v10h-7.52z"/>
-    </clipPath>
-  </defs>
-  <path fill="#007260" d="M2.23 5l2.65 5 2.64-5H2.23z"/>
-  <g clip-path="url(#a)">
-    <path stroke="#007260" fill="none" d="M0 .5h4.88V5"/>
-  </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 7.5 10" style="enable-background:new 0 0 7.5 10;" xml:space="preserve">
+<path  d="M2.2,5l2.7,5l2.6-5H2.2z M5.4,5h-1V1H0V0h5.4V5z"/>
 </svg>
