@@ -3,10 +3,11 @@ import { colors } from "../../../styles/colors"
 
 export const TimelineMenuContainer = styled.div`
   width: 5%;
+  text-align: center;
   color: ${colors.lightBrown};
   font-size: 1.2rem;
   text-transform: uppercase;
-  outline: 1px solid goldenrod;
+  border-left: 0.1rem solid ${colors.green};
 `
 
 export const TimelineMenuOptions = styled.div`
@@ -20,7 +21,6 @@ export const TimelineOption = styled.div<{
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid goldenrod;
   flex: 1;
   height: 3rem;
   cursor: pointer;

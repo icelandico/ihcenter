@@ -8,7 +8,7 @@ export const TimelineYearlineContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-x: scroll;
+  //overflow-x: scroll;
 `
 
 export const TimelineDot = styled.div`
