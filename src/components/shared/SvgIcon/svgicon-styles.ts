@@ -11,7 +11,7 @@ export const SvgContainer = styled.div<{
   justify-content: flex-start;
 
   & svg {
-    height: ${p => (p.height ? `${p.width}rem` : "1.25rem")};
-    width: ${p => (p.width ? `${p.width}rem` : "1.25rem")};
+    height: 100%;//${p => (p.height ? `${p.width}rem` : "1.25rem")};
+    width: 100%;//${p => (p.width ? `${p.width}rem` : "1.25rem")};
   }
 `

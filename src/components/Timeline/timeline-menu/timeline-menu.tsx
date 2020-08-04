@@ -7,6 +7,8 @@ import {
   TimelineOption
 } from "./timeline-menu-styles"
 import { BY_YEAR, CUMULATIVE, SHOW_ALL } from "../../../store/constants/filters"
+import SvgIcon from "../../shared/SvgIcon/svgIcon"
+import { ReactComponent as Cumulative } from "../../../static/icons/timeline_cumulative.svg"
 
 interface Props {
   store?: typeof rootStore
@@ -28,7 +30,9 @@ const TimelineMenu: React.FC<Props> = props => {
           onClick={() => switchTimelineType(CUMULATIVE)}
           option="firebrick"
           active={activeOption === CUMULATIVE}
-        />
+        >
+          <SvgIcon Icon={Cumulative} />
+        </TimelineOption>
         <TimelineOption
           onClick={() => switchTimelineType(BY_YEAR)}
           option="white"

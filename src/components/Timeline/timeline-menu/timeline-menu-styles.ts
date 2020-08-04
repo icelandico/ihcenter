@@ -23,4 +23,8 @@ export const TimelineOption = styled.div<{
   cursor: pointer;
   background-color: navajowhite;
   opacity: ${props => (props.active ? 1 : 0.5)};
+
+  svg {
+    width: 100%;
+  }
 `

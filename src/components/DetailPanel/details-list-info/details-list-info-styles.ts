@@ -18,6 +18,8 @@ export const DetailsTopItem = styled.div`
 
   & svg {
     margin: 0.5rem 0;
+    width: 1.25rem;
+    height: 1.25rem;
   }
 `
 

@@ -3,10 +3,12 @@ import { colors } from "../../../styles/colors"
 
 export const TimelineYearlineContainer = styled.div`
   height: 100%;
+  width: 100%;
   outline: 1px solid red;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-x: scroll;
 `
 
 export const TimelineDot = styled.div`
