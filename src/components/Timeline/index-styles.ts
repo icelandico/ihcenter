@@ -10,16 +10,12 @@ export const TimelineContainer = styled.div`
   height: auto;
 `
 
-export const TimelineMenu = styled.div`
-  width: 5%;
-  background-color: navy;
-`
-
 export const TimelineContent = styled.div`
   min-height: 7rem;
-  width: 100%;
+  width: 95%;
   border-top: 1px solid ${colors.green};
   position: relative;
+  padding: 0 2rem;
 `
 export const TimelineFrames = styled.div`
   position: absolute;
