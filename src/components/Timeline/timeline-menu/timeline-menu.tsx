@@ -9,6 +9,7 @@ import {
 import { BY_YEAR, CUMULATIVE, SHOW_ALL } from "../../../store/constants/filters"
 import SvgIcon from "../../shared/SvgIcon/svgIcon"
 import { ReactComponent as Cumulative } from "../../../static/icons/timeline_cumulative.svg"
+import { ReactComponent as Single } from "../../../static/icons/timeline_year.svg"
 
 interface Props {
   store?: typeof rootStore
@@ -37,7 +38,9 @@ const TimelineMenu: React.FC<Props> = props => {
           onClick={() => switchTimelineType(BY_YEAR)}
           option="white"
           active={activeOption === BY_YEAR}
-        />
+        >
+          <SvgIcon Icon={Single} />
+        </TimelineOption>
       </TimelineMenuOptions>
     </TimelineMenuContainer>
   )

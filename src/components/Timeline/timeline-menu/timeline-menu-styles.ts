@@ -17,6 +17,9 @@ export const TimelineOption = styled.div<{
   option: string
   active?: boolean
 }>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 1px solid goldenrod;
   flex: 1;
   height: 3rem;
@@ -25,6 +28,7 @@ export const TimelineOption = styled.div<{
   opacity: ${props => (props.active ? 1 : 0.5)};
 
   svg {
-    width: 100%;
+    height: 2rem;
+    width: 2rem;
   }
 `
