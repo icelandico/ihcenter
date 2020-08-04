@@ -69,6 +69,7 @@ export const Bookmark = styled.div`
 
   svg {
     transition: 0.3s;
+    width: 2.2rem;
   }
   
   &:hover {

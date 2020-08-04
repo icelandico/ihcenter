@@ -8,9 +8,9 @@ interface Props {
 }
 
 const SvgIcon: React.FC<Props> = props => {
-  const { Icon, width, height } = props
+  const { Icon } = props
   return (
-    <SvgContainer width={width} height={height}>
+    <SvgContainer>
       <Icon />
     </SvgContainer>
   )

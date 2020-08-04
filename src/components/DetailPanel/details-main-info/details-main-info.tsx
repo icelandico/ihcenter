@@ -60,7 +60,7 @@ const DetailMainInfo: React.FC<Props> = props => {
       <MainImage style={{ backgroundImage: `url(${renderImage(details)}` }} />
       <BookmarkContainer>
         <Bookmark>
-          <SvgIcon height={2.2} width={2.2} Icon={BookmarkOff} />
+          <SvgIcon Icon={BookmarkOff} />
         </Bookmark>
       </BookmarkContainer>
       <DetailsTopContainer>
