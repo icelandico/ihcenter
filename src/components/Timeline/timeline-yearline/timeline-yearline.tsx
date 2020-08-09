@@ -15,7 +15,11 @@ const TimelineYearline: React.FC<Props> = props => {
   return (
     <TimelineYearlineContainer>
       {yearRange.map(dot => {
-        return <TimelineDot />
+        return (
+          <TimelineDot>
+            <div />
+          </TimelineDot>
+        )
       })}
     </TimelineYearlineContainer>
   )

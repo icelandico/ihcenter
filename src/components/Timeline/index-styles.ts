@@ -15,7 +15,7 @@ export const TimelineContent = styled.div`
   width: 95%;
   border-top: 1px solid ${colors.green};
   position: relative;
-  padding: 0 2rem;
+  padding-right: 2rem;
 `
 export const TimelineFrames = styled.div`
   position: absolute;
@@ -25,6 +25,7 @@ export const TimelineFrames = styled.div`
   display: flex;
   justify-content: space-between;
   height: 100%;
+  pointer-events: none;
 `
 
 const TimelineFrame = styled.div`

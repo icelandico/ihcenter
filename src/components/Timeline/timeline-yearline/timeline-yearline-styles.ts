@@ -4,17 +4,20 @@ import { colors } from "../../../styles/colors"
 export const TimelineYearlineContainer = styled.div`
   height: 100%;
   width: 100%;
-  outline: 1px solid red;
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
-  overflow-x: scroll;
+  overflow-x: hidden;
+  padding-left: 2rem;
 `
 
 export const TimelineDot = styled.div`
-  width: 0.8rem;
-  height: 0.8rem;
-  background-color: ${colors.white};
-  border-radius: 50%;
   margin: 0 0.5rem;
+
+  div {
+    height: 0.8rem;
+    width: 0.8rem;
+    border-radius: 50%;
+    background-color: ${colors.white};
+  }
 `
