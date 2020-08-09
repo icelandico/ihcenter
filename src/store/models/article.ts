@@ -89,7 +89,8 @@ const ArticleStore = types
     chosenArticle: types.maybe(types.reference(Article)),
     currentYear: types.optional(types.number, 0),
     filter: types.optional(filterType, CUMULATIVE),
-    firstYear: types.optional(types.number, 0)
+    firstYear: types.optional(types.number, 0),
+    lastYear: types.optional(types.number, 0)
   })
   .actions(self => ({
     getAllArticles: flow(function*() {
@@ -121,7 +122,7 @@ const ArticleStore = types
     setFilter(mode: string) {
       self.filter = mode
     },
-    setLastYear(): void {
+    setYearsRange(): void {
       const allArticles = self.articles
       const articleDates = allArticles
         .filter(el => el.startDate)
@@ -132,8 +133,9 @@ const ArticleStore = types
       const firstYear: number = new Date(
         Math.min(...(articleDates as []))
       ).getFullYear()
-      self.currentYear = lastYear
+      self.lastYear = lastYear
       self.firstYear = firstYear
+      self.currentYear = lastYear
     }
   }))
   .views(self => ({

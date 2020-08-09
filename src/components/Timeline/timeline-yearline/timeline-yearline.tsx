@@ -11,6 +11,7 @@ interface Props {
 }
 
 const TimelineYearline: React.FC<Props> = props => {
+  // const yearRange
   const yearRange = Array.from({ length: 100 }, (x, i) => i)
   return (
     <TimelineYearlineContainer>
