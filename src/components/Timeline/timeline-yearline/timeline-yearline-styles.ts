@@ -4,16 +4,26 @@ import { colors } from "../../../styles/colors"
 export const TimelineYearlineContainer = styled.div`
   height: 100%;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow-x: scroll;
+  overflow: hidden;
+  position: relative;
+
+  ul {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    width: 2150px;
+    transform: translate3d(-250px, 0, 0) translateY(-50%);
+    top: 50%;
+  }
 `
 
-export const TimelineDot = styled.div`
+export const TimelineDot = styled.li`
   margin: 0 0.5rem;
+  float: left;
+  list-style: none;
 
-  div {
+  span {
+    display: inline-block;
     height: 0.8rem;
     width: 0.8rem;
     border-radius: 50%;
