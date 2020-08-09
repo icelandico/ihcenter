@@ -5,10 +5,9 @@ export const TimelineYearlineContainer = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
-  justify-content: end;
+  justify-content: center;
   align-items: center;
-  overflow-x: hidden;
-  padding-left: 2rem;
+  overflow-x: scroll;
 `
 
 export const TimelineDot = styled.div`

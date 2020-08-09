@@ -10,6 +10,7 @@ export const TimelineDateContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  outline: 1px solid red;
 `
 
 export const TimelineDate = styled.input`
