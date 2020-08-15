@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { colors } from "../../../styles/colors"
-import {fonts} from "../../../styles/font";
+import { fonts } from "../../../styles/font"
 
 export const TimelineYearlineContainer = styled.div`
   height: 100%;
@@ -15,6 +15,7 @@ export const TimelineYearlineContainer = styled.div`
     width: auto;
     transform: translate3d(-245px, 0, 0) translateY(-50%);
     top: 50%;
+    transition: transform 1s cubic-bezier(0.45, 0.03, 0.5, 0.95);
   }
 `
 
