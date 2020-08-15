@@ -1,6 +1,7 @@
 import React from "react"
 import { inject, observer } from "mobx-react"
 import {
+  TimelineDate,
   TimelineDot,
   TimelineYearlineContainer
 } from "./timeline-yearline-styles"
@@ -21,6 +22,7 @@ const TimelineYearline: React.FC<Props> = props => {
           return (
             <TimelineDot>
               <span />
+              {dot % 10 === 0 && <TimelineDate />}
             </TimelineDot>
           )
         })}
