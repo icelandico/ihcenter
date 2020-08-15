@@ -8,11 +8,12 @@ import { rootStore } from "../../../store/RootStore"
 
 interface Props {
   store?: typeof rootStore
+  range: number
 }
 
 const TimelineYearline: React.FC<Props> = props => {
-  // const yearRange
-  const yearRange = Array.from({ length: 100 }, (x, i) => i)
+  const yearRange = Array.from({ length: props.range }, (x, i) => i)
+  console.log(yearRange)
   return (
     <TimelineYearlineContainer>
       <ul>

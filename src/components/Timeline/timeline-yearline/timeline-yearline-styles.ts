@@ -24,8 +24,8 @@ export const TimelineDot = styled.li`
 
   span {
     display: inline-block;
-    height: 0.8rem;
-    width: 0.8rem;
+    height: 0.5rem;
+    width: 0.5rem;
     border-radius: 50%;
     background-color: ${colors.white};
   }

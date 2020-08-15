@@ -19,6 +19,7 @@ interface Props {
 const Timeline: React.FC<Props> = props => {
   const { store } = props
   const currentYear = store.articleStore.currentYear
+  const yearRange = store.articleStore.lastYear - store.articleStore.firstYear
 
   return (
     <TimelineContainer>
@@ -28,7 +29,7 @@ const Timeline: React.FC<Props> = props => {
           <TimelineFrameLeft />
           <TimelineFrameRight />
         </TimelineFrames>
-        <TimelineYearline />
+        <TimelineYearline range={yearRange} />
         <TimelineDatePicker currentYear={currentYear} />
       </TimelineContent>
     </TimelineContainer>
