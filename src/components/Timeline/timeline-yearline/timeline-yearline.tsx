@@ -19,9 +19,9 @@ const TimelineYearline: React.FC<Props> = props => {
     <TimelineYearlineContainer>
       <ul style={{ width: `${timelineWidth}px` }}>
         {timelineData.map(dot => {
-          const { year } = dot
+          const { year, isData } = dot
           return (
-            <TimelineDot>
+            <TimelineDot isData={isData}>
               <span />
               {year % 10 === 0 && <TimelineDate>{year}</TimelineDate>}
             </TimelineDot>

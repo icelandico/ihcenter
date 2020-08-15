@@ -18,7 +18,9 @@ export const TimelineYearlineContainer = styled.div`
   }
 `
 
-export const TimelineDot = styled.li`
+export const TimelineDot = styled.li<{
+  isData: boolean
+}>`
   margin: 0 0.5rem;
   float: left;
   list-style: none;
@@ -29,7 +31,8 @@ export const TimelineDot = styled.li`
     height: 0.5rem;
     width: 0.5rem;
     border-radius: 50%;
-    background-color: ${colors.white};
+    background-color: ${props =>
+      props.isData ? colors.lightBrown : colors.green};
   }
 `
 
