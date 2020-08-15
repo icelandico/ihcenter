@@ -13,7 +13,7 @@ export const TimelineYearlineContainer = styled.div`
     margin: 0;
     position: absolute;
     width: auto;
-    transform: translate3d(-250px, 0, 0) translateY(-50%);
+    transform: translate3d(-245px, 0, 0) translateY(-50%);
     top: 50%;
   }
 `
@@ -39,7 +39,7 @@ export const TimelineDate = styled.span`
   left: 50%;
   width: 5rem;
   height: 5px;
-  transform: translateX(-50%);
+  transform: translateX(-52%);
   font-size: 1.6rem;
   font-family: ${fonts.second};
   text-align: center;

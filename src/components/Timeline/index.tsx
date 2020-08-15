@@ -46,7 +46,6 @@ const Timeline: React.FC<Props> = props => {
       year: yearElement,
       isData: yearsWithData.includes(yearElement)
     }))
-    console.log(yearsDataArray)
     return yearsDataArray
   }
 

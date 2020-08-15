@@ -6,7 +6,6 @@ import {
   TimelineYearlineContainer
 } from "./timeline-yearline-styles"
 import { rootStore } from "../../../store/RootStore"
-import TimelineMenu from "../timeline-menu/timeline-menu";
 
 interface Props {
   store?: typeof rootStore
