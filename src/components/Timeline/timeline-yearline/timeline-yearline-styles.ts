@@ -11,7 +11,7 @@ export const TimelineYearlineContainer = styled.div`
     padding: 0;
     margin: 0;
     position: absolute;
-    width: 2150px;
+    width: auto;
     transform: translate3d(-250px, 0, 0) translateY(-50%);
     top: 50%;
   }

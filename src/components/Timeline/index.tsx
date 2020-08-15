@@ -21,6 +21,10 @@ const Timeline: React.FC<Props> = props => {
   const currentYear = store.articleStore.currentYear
   const yearRange = store.articleStore.lastYear - store.articleStore.firstYear
 
+  const calculateTimelineWidth = (range: number): number => {
+    return yearRange * 16
+  }
+
   return (
     <TimelineContainer>
       <TimelineMenu />
@@ -29,7 +33,10 @@ const Timeline: React.FC<Props> = props => {
           <TimelineFrameLeft />
           <TimelineFrameRight />
         </TimelineFrames>
-        <TimelineYearline range={yearRange} />
+        <TimelineYearline
+          range={yearRange}
+          width={calculateTimelineWidth(yearRange)}
+        />
         <TimelineDatePicker currentYear={currentYear} />
       </TimelineContent>
     </TimelineContainer>
