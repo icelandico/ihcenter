@@ -32,7 +32,6 @@ const TimelineDatePicker: React.FC<Props> = props => {
       />
       {currentYear ? (
         <TimelineDate
-          min="1790"
           onChange={e => store.articleStore.setYear(e.target.value)}
           value={currentYear || ""}
         />

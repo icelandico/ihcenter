@@ -1,5 +1,6 @@
 import * as React from "react"
 import { inject, observer } from "mobx-react"
+import { useRef } from "react"
 import {
   TimelineContainer,
   TimelineContent,
@@ -26,9 +27,9 @@ const Timeline: React.FC<Props> = props => {
   const { store } = props
   const { currentYear } = store.articleStore
   const yearRange = store.articleStore.lastYear - store.articleStore.firstYear
-
+  
   const calculateTimelineWidth = (): number => {
-    return yearRange * 16
+    return (yearRange + 1) * 15
   }
 
   const generateYearsData = (): YearsData[] | any => {
