@@ -6,23 +6,25 @@ import {
   TimelineYearlineContainer
 } from "./timeline-yearline-styles"
 import { rootStore } from "../../../store/RootStore"
+import TimelineMenu from "../timeline-menu/timeline-menu";
 
 interface Props {
   store?: typeof rootStore
-  range: number
-  width: number
+  timelineData: []
+  timelineWidth: number
 }
 
 const TimelineYearline: React.FC<Props> = props => {
-  const yearRange = Array.from({ length: props.range }, (x, i) => i)
+  const { timelineData, timelineWidth } = props
   return (
     <TimelineYearlineContainer>
-      <ul style={{ width: `${props.width}px` }}>
-        {yearRange.map(dot => {
+      <ul style={{ width: `${timelineWidth}px` }}>
+        {timelineData.map(dot => {
+          const { year } = dot
           return (
             <TimelineDot>
               <span />
-              {dot % 10 === 0 && <TimelineDate />}
+              {year % 10 === 0 && <TimelineDate>{year}</TimelineDate>}
             </TimelineDot>
           )
         })}

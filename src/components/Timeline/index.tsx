@@ -11,7 +11,7 @@ import TimelineDatePicker from "./timeline-date-picker/timeline-date-picker"
 import TimelineYearline from "./timeline-yearline/timeline-yearline"
 import TimelineMenu from "./timeline-menu/timeline-menu"
 import { rootStore } from "../../store/RootStore"
-import {getYear} from "../../utils/formatDate";
+import { getYear } from "../../utils/formatDate"
 
 interface Props {
   store?: typeof rootStore
@@ -24,15 +24,16 @@ interface YearsData {
 
 const Timeline: React.FC<Props> = props => {
   const { store } = props
-  const currentYear = store.articleStore.currentYear
+  const { currentYear } = store.articleStore
   const yearRange = store.articleStore.lastYear - store.articleStore.firstYear
+
   const calculateTimelineWidth = (): number => {
     return yearRange * 16
   }
 
-  const generateYearsData = (): YearsData[] => {
-    const firstYear = store.articleStore.firstYear
-    const lastYear = store.articleStore.lastYear
+  const generateYearsData = (): YearsData[] | any => {
+    const { firstYear } = store.articleStore
+    const { lastYear } = store.articleStore
     const range = (start: number, end: number): number[] => {
       if (start === end) return [start]
       return [start, ...range(start + 1, end)]
@@ -45,6 +46,7 @@ const Timeline: React.FC<Props> = props => {
       year: yearElement,
       isData: yearsWithData.includes(yearElement)
     }))
+    console.log(yearsDataArray)
     return yearsDataArray
   }
 
@@ -56,7 +58,10 @@ const Timeline: React.FC<Props> = props => {
           <TimelineFrameLeft />
           <TimelineFrameRight />
         </TimelineFrames>
-        <TimelineYearline range={yearRange} width={calculateTimelineWidth()} />
+        <TimelineYearline
+          timelineData={generateYearsData()}
+          timelineWidth={calculateTimelineWidth()}
+        />
         <TimelineDatePicker currentYear={currentYear} />
       </TimelineContent>
     </TimelineContainer>

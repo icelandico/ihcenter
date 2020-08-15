@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { colors } from "../../../styles/colors"
+import {fonts} from "../../../styles/font";
 
 export const TimelineYearlineContainer = styled.div`
   height: 100%;
@@ -36,9 +37,20 @@ export const TimelineDate = styled.span`
   position: absolute;
   top: 2.5rem;
   left: 50%;
-  content: "";
-  width: 5px;
+  width: 5rem;
   height: 5px;
-  background-color: violet;
   transform: translateX(-50%);
+  font-size: 1.6rem;
+  font-family: ${fonts.second};
+  text-align: center;
+
+  &:before {
+    position: absolute;
+    content: "";
+    height: 1.3rem;
+    width: 0.1rem;
+    background-color: ${colors.lightBrown};
+    top: -1.3rem;
+    left: 50%;
+  }
 `
