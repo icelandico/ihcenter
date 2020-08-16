@@ -38,6 +38,7 @@ const TimelineYearline: React.FC<Props> = props => {
       setDotWidth(dotWidth)
     }
   })
+
   return (
     <TimelineYearlineContainer>
       <ul style={{ width: `${timelineWidth}px` }}>

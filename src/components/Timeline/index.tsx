@@ -27,7 +27,7 @@ const Timeline: React.FC<Props> = props => {
   const { store } = props
   const { currentYear } = store.articleStore
   const yearRange = store.articleStore.lastYear - store.articleStore.firstYear
-  
+
   const calculateTimelineWidth = (): number => {
     return (yearRange + 1) * 15
   }
@@ -35,13 +35,16 @@ const Timeline: React.FC<Props> = props => {
   const generateYearsData = (): YearsData[] | any => {
     const { firstYear } = store.articleStore
     const { lastYear } = store.articleStore
+
     const range = (start: number, end: number): number[] => {
       if (start === end) return [start]
       return [start, ...range(start + 1, end)]
     }
+
     const yearsWithData = Array.from(
       new Set(store.articleStore.articles.map(el => getYear(el.startDate)))
     )
+
     const yearsRange = range(firstYear, lastYear)
     const yearsDataArray = yearsRange.map(yearElement => ({
       year: yearElement,
