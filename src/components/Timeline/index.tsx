@@ -1,6 +1,6 @@
 import * as React from "react"
 import { inject, observer } from "mobx-react"
-import { useRef } from "react"
+import {createRef, useEffect, useLayoutEffect, useRef, useState} from "react"
 import {
   TimelineContainer,
   TimelineContent,
@@ -27,6 +27,11 @@ const Timeline: React.FC<Props> = props => {
   const { store } = props
   const { currentYear } = store.articleStore
   const yearRange = store.articleStore.lastYear - store.articleStore.firstYear
+  const dotRef = createRef<HTMLDivElement>()
+
+  useEffect(() => {
+    if (dotRef.current) console.log("DOT REF", dotRef)
+  })
 
   const calculateTimelineWidth = (): number => {
     return (yearRange + 1) * 15
@@ -64,6 +69,7 @@ const Timeline: React.FC<Props> = props => {
         <TimelineYearline
           timelineData={generateYearsData()}
           timelineWidth={calculateTimelineWidth()}
+          innerRef={dotRef}
         />
         <TimelineDatePicker currentYear={currentYear} />
       </TimelineContent>

@@ -11,6 +11,7 @@ interface Props {
   store?: typeof rootStore
   timelineData: []
   timelineWidth: number
+  innerRef: any
 }
 
 const TimelineYearline: React.FC<Props> = props => {
@@ -20,7 +21,7 @@ const TimelineYearline: React.FC<Props> = props => {
 
   useEffect(() => {
     if (dotElement) {
-      const dotWidth =
+      const calculatedWidth =
         dotElement.current &&
         dotElement.current.offsetWidth +
           parseInt(
@@ -35,7 +36,7 @@ const TimelineYearline: React.FC<Props> = props => {
               .getPropertyValue("margin-right"),
             10
           )
-      setDotWidth(dotWidth)
+      setDotWidth(calculatedWidth)
     }
   })
 
