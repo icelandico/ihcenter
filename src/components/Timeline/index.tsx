@@ -1,6 +1,6 @@
 import * as React from "react"
 import { inject, observer } from "mobx-react"
-import {createRef, useEffect, useLayoutEffect, useRef, useState} from "react"
+import { createRef, useEffect, useLayoutEffect, useRef, useState } from "react"
 import {
   TimelineContainer,
   TimelineContent,
@@ -18,29 +18,19 @@ interface Props {
   store?: typeof rootStore
 }
 
-interface YearsData {
-  year: number
-  isData: boolean
-}
-
 const Timeline: React.FC<Props> = props => {
+  const [yearsData, setData] = useState([])
   const { store } = props
   const { currentYear } = store.articleStore
   const yearRange = store.articleStore.lastYear - store.articleStore.firstYear
   const dotRef = createRef<HTMLDivElement>()
 
-  useEffect(() => {
-    if (dotRef.current) console.log("DOT REF", dotRef)
-  })
-
   const calculateTimelineWidth = (): number => {
     return (yearRange + 1) * 15
   }
 
-  const generateYearsData = (): YearsData[] | any => {
-    const { firstYear } = store.articleStore
-    const { lastYear } = store.articleStore
-
+  useEffect(() => {
+    const { firstYear, lastYear } = store.articleStore
     const range = (start: number, end: number): number[] => {
       if (start === end) return [start]
       return [start, ...range(start + 1, end)]
@@ -55,8 +45,8 @@ const Timeline: React.FC<Props> = props => {
       year: yearElement,
       isData: yearsWithData.includes(yearElement)
     }))
-    return yearsDataArray
-  }
+    setData(yearsDataArray)
+  }, [currentYear])
 
   return (
     <TimelineContainer>
@@ -67,7 +57,7 @@ const Timeline: React.FC<Props> = props => {
           <TimelineFrameRight />
         </TimelineFrames>
         <TimelineYearline
-          timelineData={generateYearsData()}
+          timelineData={yearsData}
           timelineWidth={calculateTimelineWidth()}
           innerRef={dotRef}
         />

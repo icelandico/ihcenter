@@ -7,9 +7,14 @@ import {
 } from "./timeline-yearline-styles"
 import { rootStore } from "../../../store/RootStore"
 
+interface YearsData {
+  year: number
+  isData: boolean
+}
+
 interface Props {
   store?: typeof rootStore
-  timelineData: []
+  timelineData: YearsData[]
   timelineWidth: number
   innerRef: any
 }
@@ -26,7 +31,12 @@ const TimelineYearline: React.FC<Props> = props => {
   }
 
   const getInitialVal = (): number => {
-    return timelineWidth - parentWidth / 2 - dotWidth / 2
+    return timelineWidth - parentWidth / 2 - Math.ceil(dotWidth / 2)
+  }
+
+  const calculateXForYear = () => {
+    const { currentYear } = props.store.articleStore
+
   }
 
   useEffect(() => {
@@ -48,7 +58,6 @@ const TimelineYearline: React.FC<Props> = props => {
           )
       setDotWidth(calculatedWidth)
     }
-
     if (containerRef) setParentWidth(containerRef.current.clientWidth)
     calculateDotWidth()
   })

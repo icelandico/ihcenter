@@ -7,7 +7,13 @@ import {
   BaseInfoDetails,
   WritingsDetails, NationalityDetails
 } from "./articleDetails"
-import {FILTERS, SHOW_ALL, filterType, BY_YEAR, CUMULATIVE} from "../constants/filters"
+import {
+  FILTERS,
+  SHOW_ALL,
+  filterType,
+  BY_YEAR,
+  CUMULATIVE
+} from "../constants/filters"
 
 export type ArticleModel = Instance<typeof Article>
 
@@ -89,8 +95,8 @@ const ArticleStore = types
     chosenArticle: types.maybe(types.reference(Article)),
     currentYear: types.optional(types.number, 0),
     filter: types.optional(filterType, CUMULATIVE),
-    firstYear: types.optional(types.number, 0),
-    lastYear: types.optional(types.number, 0)
+    firstYear: types.maybeNull(types.number),
+    lastYear: types.maybeNull(types.number)
   })
   .actions(self => ({
     getAllArticles: flow(function*() {
