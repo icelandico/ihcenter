@@ -17,7 +17,17 @@ interface Props {
 const TimelineYearline: React.FC<Props> = props => {
   const { timelineData, timelineWidth } = props
   const [dotWidth, setDotWidth] = useState(0)
+  const [parentWidth, setParentWidth] = useState(0)
   const dotElement = useRef(null)
+  const containerRef = useRef(null)
+
+  const calculateDotWidth = (): number => {
+    return timelineWidth / timelineData.length
+  }
+
+  const getInitialVal = (): number => {
+    return timelineWidth - parentWidth / 2 - dotWidth / 2
+  }
 
   useEffect(() => {
     if (dotElement) {
@@ -38,10 +48,16 @@ const TimelineYearline: React.FC<Props> = props => {
           )
       setDotWidth(calculatedWidth)
     }
+
+    if (containerRef) setParentWidth(containerRef.current.clientWidth)
+    calculateDotWidth()
   })
 
   return (
-    <TimelineYearlineContainer>
+    <TimelineYearlineContainer
+      ref={containerRef}
+      translateVal={getInitialVal()}
+    >
       <ul style={{ width: `${timelineWidth}px` }}>
         {timelineData.map(dot => {
           const { year, isData } = dot

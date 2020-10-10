@@ -2,7 +2,9 @@ import styled from "styled-components"
 import { colors } from "../../../styles/colors"
 import { fonts } from "../../../styles/font"
 
-export const TimelineYearlineContainer = styled.div`
+export const TimelineYearlineContainer = styled.div<{
+  translateVal: number
+}>`
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -13,7 +15,8 @@ export const TimelineYearlineContainer = styled.div`
     margin: 0;
     position: absolute;
     width: auto;
-    transform: translate3d(-245px, 0, 0) translateY(-50%);
+    transform: translate3d(-${props => props.translateVal}px, 0, 0)
+      translateY(-50%);
     top: 50%;
     transition: transform 1s cubic-bezier(0.45, 0.03, 0.5, 0.95);
   }
