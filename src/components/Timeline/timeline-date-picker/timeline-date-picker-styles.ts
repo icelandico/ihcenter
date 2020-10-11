@@ -3,7 +3,7 @@ import { colors } from "../../../styles/colors"
 
 export const TimelineDateContainer = styled.div`
   height: 4rem;
-  margin: 0 auto;
+  margin: 1rem auto 0;
   width: 14rem;
   color: ${colors.lightBrown};
   text-align: center;

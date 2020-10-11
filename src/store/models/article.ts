@@ -5,7 +5,8 @@ import {
   ImageDetails,
   MainIdeaDetails,
   BaseInfoDetails,
-  WritingsDetails, NationalityDetails
+  WritingsDetails,
+  NationalityDetails
 } from "./articleDetails"
 import {
   FILTERS,
@@ -117,13 +118,23 @@ const ArticleStore = types
       self.chosenArticle = article
     },
     incrementYear() {
-      self.currentYear += 1
+      self.currentYear + 1 > self.lastYear
+        ? self.currentYear = self.lastYear
+        : (self.currentYear += 1)
     },
     decrementYear() {
-      self.currentYear -= 1
+      self.currentYear - 1 < self.firstYear
+        ? self.currentYear = self.firstYear
+        : self.currentYear -= 1
     },
-    setYear(year: string) {
-      self.currentYear = parseInt(year, 10)
+    setYear(year: number) {
+      if (year > self.lastYear) {
+        self.currentYear = self.lastYear
+      } else if (year < self.firstYear) {
+        self.currentYear = self.firstYear
+      } else {
+        self.currentYear = year
+      }
     },
     setFilter(mode: string) {
       self.filter = mode
@@ -142,6 +153,15 @@ const ArticleStore = types
       self.lastYear = lastYear
       self.firstYear = firstYear
       self.currentYear = lastYear
+    },
+    validateYear() {
+      if (self.currentYear + 1 > self.lastYear) {
+        return self.lastYear
+      }
+      if (self.currentYear - 1 < self.firstYear) {
+        return self.firstYear
+      }
+      return self.currentYear
     }
   }))
   .views(self => ({

@@ -20,7 +20,7 @@ const TimelineDatePicker: React.FC<Props> = props => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target
     setValue(parseInt(value, 10))
-    if (value.length >= 4) store.articleStore.setYear(value)
+    if (value.length >= 4) store.articleStore.setYear(parseInt(value, 10))
   }
 
   useEffect(() => {
