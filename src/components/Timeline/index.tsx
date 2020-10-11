@@ -13,6 +13,7 @@ import TimelineYearline from "./timeline-yearline/timeline-yearline"
 import TimelineMenu from "./timeline-menu/timeline-menu"
 import { rootStore } from "../../store/RootStore"
 import { getYear } from "../../utils/formatDate"
+import {range} from "../../utils/range";
 
 interface Props {
   store?: typeof rootStore
@@ -31,11 +32,6 @@ const Timeline: React.FC<Props> = props => {
 
   useEffect(() => {
     const { firstYear, lastYear } = store.articleStore
-    const range = (start: number, end: number): number[] => {
-      if (start === end) return [start]
-      return [start, ...range(start + 1, end)]
-    }
-
     const yearsWithData = Array.from(
       new Set(store.articleStore.articles.map(el => getYear(el.startDate)))
     )

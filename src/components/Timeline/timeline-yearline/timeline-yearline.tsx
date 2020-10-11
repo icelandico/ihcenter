@@ -6,6 +6,7 @@ import {
   TimelineYearlineContainer
 } from "./timeline-yearline-styles"
 import { rootStore } from "../../../store/RootStore"
+import { range } from "../../../utils/range"
 
 interface YearsData {
   year: number
@@ -32,7 +33,6 @@ const TimelineYearline: React.FC<Props> = props => {
   const { currentYear } = props.store.articleStore
   const [timelineVal, setTimelineVal] = useState(0)
 
-  // const dotElement = useRef(null)
   const containerRef = useRef(null)
   const previousVal = usePrevious(currentYear)
 
@@ -60,20 +60,26 @@ const TimelineYearline: React.FC<Props> = props => {
 
   useEffect(() => {
     handleTimelinePosition()
+    getHideRange()
   }, [currentYear])
 
+  const getHideRange = (): number[] => {
+    const start = currentYear - 4
+    const end = currentYear + 4
+    return range(start, end)
+  }
+
   return (
-    <TimelineYearlineContainer
-      ref={containerRef}
-      translateVal={timelineVal}
-    >
+    <TimelineYearlineContainer ref={containerRef} translateVal={timelineVal}>
       <ul style={{ width: `${timelineWidth}px` }}>
         {timelineData.map(dot => {
           const { year, isData } = dot
           return (
             <TimelineDot isData={isData}>
               <span />
-              {year % 10 === 0 && <TimelineDate>{year}</TimelineDate>}
+              {year % 10 === 0 && !getHideRange().includes(year) && (
+                <TimelineDate>{year}</TimelineDate>
+              )}
             </TimelineDot>
           )
         })}
