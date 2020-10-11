@@ -19,59 +19,55 @@ interface Props {
   innerRef: any
 }
 
+function usePrevious(value: any): number {
+  const ref = useRef()
+  useEffect(() => {
+    ref.current = value
+  })
+  return ref.current
+}
+
 const TimelineYearline: React.FC<Props> = props => {
   const { timelineData, timelineWidth } = props
-  const [dotWidth, setDotWidth] = useState(0)
-  const [parentWidth, setParentWidth] = useState(0)
-  const dotElement = useRef(null)
-  const containerRef = useRef(null)
+  const { currentYear } = props.store.articleStore
+  const [timelineVal, setTimelineVal] = useState(0)
 
-  const calculateDotWidth = (): number => {
+  // const dotElement = useRef(null)
+  const containerRef = useRef(null)
+  const previousVal = usePrevious(currentYear)
+
+  const getDotWidth = (): number => {
     return timelineWidth / timelineData.length
   }
 
-  const getInitialVal = (): number => {
-    return timelineWidth - parentWidth / 2 - Math.ceil(dotWidth / 2)
+  const handleTimelinePosition = () => {
+    const difference = Math.abs(previousVal - currentYear) * getDotWidth()
+    setTimelineVal(timelineVal - difference)
   }
 
-  const calculateXForYear = () => {
-    const { currentYear } = props.store.articleStore
-
+  const setInitial = () => {
+    const initialValue = timelineWidth - (containerRef.current.clientWidth / 2) - Math.ceil(getDotWidth() / 2)
+    setTimelineVal(initialValue)
   }
 
   useEffect(() => {
-    if (dotElement) {
-      const calculatedWidth =
-        dotElement.current &&
-        dotElement.current.offsetWidth +
-          parseInt(
-            window
-              .getComputedStyle(dotElement.current)
-              .getPropertyValue("margin-left"),
-            10
-          ) +
-          parseInt(
-            window
-              .getComputedStyle(dotElement.current)
-              .getPropertyValue("margin-right"),
-            10
-          )
-      setDotWidth(calculatedWidth)
-    }
-    if (containerRef) setParentWidth(containerRef.current.clientWidth)
-    calculateDotWidth()
-  })
+    setInitial()
+  }, [timelineData])
+
+  useEffect(() => {
+    handleTimelinePosition()
+  }, [currentYear])
 
   return (
     <TimelineYearlineContainer
       ref={containerRef}
-      translateVal={getInitialVal()}
+      translateVal={timelineVal}
     >
       <ul style={{ width: `${timelineWidth}px` }}>
         {timelineData.map(dot => {
           const { year, isData } = dot
           return (
-            <TimelineDot isData={isData} ref={dotElement}>
+            <TimelineDot isData={isData}>
               <span />
               {year % 10 === 0 && <TimelineDate>{year}</TimelineDate>}
             </TimelineDot>

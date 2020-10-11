@@ -46,7 +46,7 @@ const Timeline: React.FC<Props> = props => {
       isData: yearsWithData.includes(yearElement)
     }))
     setData(yearsDataArray)
-  }, [currentYear])
+  }, [yearRange])
 
   return (
     <TimelineContainer>

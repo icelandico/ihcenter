@@ -1,4 +1,4 @@
-import React from "react"
+import React, {SyntheticEvent, useEffect, useState} from "react"
 import { inject, observer } from "mobx-react"
 import {
   TimeArrow,
@@ -15,6 +15,17 @@ interface Props {
 
 const TimelineDatePicker: React.FC<Props> = props => {
   const { store, currentYear } = props
+  const [value, setValue] = useState(currentYear)
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target
+    setValue(parseInt(value, 10))
+    if (value.length >= 4) store.articleStore.setYear(value)
+  }
+
+  useEffect(() => {
+    setValue(currentYear)
+  }, [currentYear])
 
   return (
     <TimelineDateContainer>
@@ -32,8 +43,10 @@ const TimelineDatePicker: React.FC<Props> = props => {
       />
       {currentYear ? (
         <TimelineDate
-          onChange={e => store.articleStore.setYear(e.target.value)}
-          value={currentYear || ""}
+          onChange={e => handleChange(e)}
+          value={value || ""}
+          maxLength={4}
+          minLength={4}
         />
       ) : (
         <Loader regular />
