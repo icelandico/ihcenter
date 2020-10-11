@@ -15,7 +15,28 @@ export const TimelineContent = styled.div`
   width: 95%;
   border-top: 1px solid ${colors.green};
   position: relative;
+
+  &:before,
+  &:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    bottom: 0;
+    width: 33%;
+    z-index: 10;
+  }
+
+  &:before {
+    left: 0;
+    background: linear-gradient(to right, rgba(0, 57, 63, 1), transparent);
+  }
+
+  &:after {
+    right: 0;
+    background: linear-gradient(to left, rgba(0, 57, 63, 1), transparent);
+  }
 `
+
 export const TimelineFrames = styled.div`
   position: absolute;
   top: 0;
