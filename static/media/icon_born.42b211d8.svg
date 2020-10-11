@@ -1,0 +1,10 @@
+<svg id="Warstwa_1" data-name="Warstwa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 5.45">
+  <defs>
+    <style>
+      .cls-white{fill:#fff; stroke: #fff; stroke-width: 0.2}
+    </style>
+  </defs>
+  <path class="cls-white" d="M0 2.47h6v.5H0z"/>
+  <path class="cls-white" transform="rotate(-60 -20.104 1087.54)" d="M927.93 564.88h6v.5h-6z"/>
+  <path class="cls-white" transform="rotate(-29.9 -586.126 2021.564)" d="M930.69 562.13h.5v6h-.5z"/>
+</svg>
