@@ -41,8 +41,12 @@ const TimelineYearline: React.FC<Props> = props => {
   }
 
   const handleTimelinePosition = () => {
-    const difference = Math.abs(previousVal - currentYear) * getDotWidth()
-    setTimelineVal(timelineVal - difference)
+    const difference = Math.abs(previousVal - currentYear) * getDotWidth();
+    if (previousVal > currentYear) {
+      setTimelineVal(timelineVal - difference)
+    } else {
+      setTimelineVal(timelineVal + difference)
+    }
   }
 
   const setInitial = () => {
