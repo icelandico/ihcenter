@@ -1,6 +1,6 @@
 {
   "name": "ihcenter-front",
-  "homepage": "http://icelandico.github.io/ihcenter/",
+  "homepage": "https://icelandico.github.io/ihcenter/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
