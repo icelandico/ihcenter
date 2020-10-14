@@ -9,7 +9,7 @@ import { rootStore } from "./store/RootStore"
 
 ReactDOM.render(
   <Provider store={rootStore}>
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <App />
     </BrowserRouter>
   </Provider>,
