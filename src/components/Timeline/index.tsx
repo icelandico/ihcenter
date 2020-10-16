@@ -13,7 +13,8 @@ import TimelineYearline from "./timeline-yearline/timeline-yearline"
 import TimelineMenu from "./timeline-menu/timeline-menu"
 import { rootStore } from "../../store/RootStore"
 import { getYear } from "../../utils/formatDate"
-import {range} from "../../utils/range";
+import { range } from "../../utils/range"
+import EventCard from "../EventCard/event-card";
 
 interface Props {
   store?: typeof rootStore
@@ -48,6 +49,7 @@ const Timeline: React.FC<Props> = props => {
     <TimelineContainer>
       <TimelineMenu />
       <TimelineContent>
+        <EventCard />
         <TimelineFrames>
           <TimelineFrameLeft />
           <TimelineFrameRight />

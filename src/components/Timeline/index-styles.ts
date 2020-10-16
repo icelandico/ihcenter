@@ -13,7 +13,6 @@ export const TimelineContainer = styled.div`
 export const TimelineContent = styled.div`
   min-height: 7rem;
   width: 95%;
-  border-top: 1px solid ${colors.green};
   position: relative;
 
   &:before,
@@ -52,6 +51,7 @@ const TimelineFrame = styled.div`
   width: 49.5%;
   background-size: contain;
   background-repeat: no-repeat;
+  border-top: 0.1rem solid ${colors.green};
 `
 
 export const TimelineFrameLeft = styled(TimelineFrame)`
