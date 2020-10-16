@@ -1,6 +1,6 @@
 import * as React from "react"
 import { rootStore } from "../../store/RootStore"
-import { EventCardContainer } from "./event-card-styles"
+import { EventCardContainer, EventCardContent, EventCardClose } from "./event-card-styles"
 
 interface Props {
   store?: typeof rootStore
@@ -8,7 +8,10 @@ interface Props {
 
 const EventCard: React.FC<Props> = props => {
   return (
-    <EventCardContainer />
+    <EventCardContainer>
+      <EventCardClose />
+      <EventCardContent />
+    </EventCardContainer>
   )
 }
 
