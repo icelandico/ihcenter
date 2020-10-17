@@ -44,7 +44,7 @@ export const TimelineFrames = styled.div`
   display: flex;
   justify-content: space-between;
   height: 100%;
-  pointer-events: none;
+  //pointer-events: none;
 `
 
 const TimelineFrame = styled.div`
@@ -61,11 +61,4 @@ export const TimelineFrameLeft = styled(TimelineFrame)`
 
 export const TimelineFrameRight = styled(TimelineFrame)`
   background-image: url(${DatePaneRight});
-`
-
-export const TimelineYearLine = styled.div`
-  height: 100%;
-  outline: 1px solid red;
-  background-color: darksalmon;
-  opacity: 0.1;
 `

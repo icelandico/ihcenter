@@ -5,19 +5,18 @@ export const EventCardContainer = styled.div<{
   opened: boolean
 }>`
   position: absolute;
-  top: -12rem;
+  top: ${props => (props.opened ? "-12rem" : "0")};
   left: 50%;
   right: 50%;
-  transform: translateX(-50%)
-    rotateY(${props => (props.opened ? "180deg" : "90deg")});
+  transform: translateX(-50%);
   padding: 1rem;
   min-height: 10rem;
   height: 100%;
   width: 20rem;
   background-color: ${colors.darkGreen};
-  transition: all 1s;
+  transition: all 0.3s;
   transition-timing-function: cubic-bezier(.17, .67, .47, 1.27);
-  z-index: -1;
+  opacity: ${props => (props.opened ? "1" : "0")};
 `
 
 export const EventCardContent = styled.div`
@@ -31,7 +30,7 @@ export const EventCardContent = styled.div`
     width: 1px;
     left: 50%;
     bottom: -3.5rem;
-    transform: translateY(-50%);
+    transform: translate(-50%, -50%);
     background-color: ${colors.green};
   }
 `
@@ -59,4 +58,15 @@ export const EventCardClose = styled.span`
     transform: rotate(-45deg);
   }
   
+`
+
+export const EventCardOpener = styled.div`
+  position: absolute;
+  left: 50%;
+  top: -0.5rem;
+  transform: translateX(-50%) rotate(-135deg);
+  border: solid ${colors.lightBrown};
+  border-width: 0 0.2rem 0.2rem 0;
+  padding: 0.2rem;
+  cursor: pointer;
 `

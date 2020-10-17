@@ -1,7 +1,6 @@
 import * as React from "react"
 import { Map, TileLayer } from "react-leaflet"
 import { observer, inject } from "mobx-react"
-import { values } from "mobx"
 import { mapSettings } from "./utils"
 import { rootStore } from "../../store/RootStore"
 import MapMarker from "../Marker/marker"

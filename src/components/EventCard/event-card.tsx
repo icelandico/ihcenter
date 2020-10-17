@@ -1,10 +1,11 @@
 import * as React from "react"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { rootStore } from "../../store/RootStore"
 import {
   EventCardContainer,
   EventCardContent,
-  EventCardClose
+  EventCardClose,
+  EventCardOpener
 } from "./event-card-styles"
 
 interface Props {
@@ -18,15 +19,18 @@ const EventCard: React.FC<Props> = props => {
     setOpen(false)
   }
 
-  useEffect(() => {
-    setTimeout(() => setOpen(true), 2000)
-  }, [])
+  const handleOpen = () => {
+    setOpen(true)
+  }
 
   return (
-    <EventCardContainer opened={isOpened}>
-      <EventCardClose onClick={e => handleClose()} />
-      <EventCardContent />
-    </EventCardContainer>
+    <>
+      <EventCardOpener onClick={() => handleOpen()} />
+      <EventCardContainer opened={isOpened}>
+        <EventCardClose onClick={() => handleClose()} />
+        <EventCardContent />
+      </EventCardContainer>
+    </>
   )
 }
 

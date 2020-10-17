@@ -1,6 +1,6 @@
 import * as React from "react"
 import { inject, observer } from "mobx-react"
-import { createRef, useEffect, useLayoutEffect, useRef, useState } from "react"
+import { createRef, useEffect, useState } from "react"
 import {
   TimelineContainer,
   TimelineContent,
@@ -14,7 +14,7 @@ import TimelineMenu from "./timeline-menu/timeline-menu"
 import { rootStore } from "../../store/RootStore"
 import { getYear } from "../../utils/formatDate"
 import { range } from "../../utils/range"
-import EventCard from "../EventCard/event-card";
+import EventCard from "../EventCard/event-card"
 
 interface Props {
   store?: typeof rootStore
@@ -49,8 +49,8 @@ const Timeline: React.FC<Props> = props => {
     <TimelineContainer>
       <TimelineMenu />
       <TimelineContent>
-        <EventCard />
         <TimelineFrames>
+          <EventCard />
           <TimelineFrameLeft />
           <TimelineFrameRight />
         </TimelineFrames>
