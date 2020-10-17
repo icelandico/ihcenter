@@ -25,7 +25,7 @@ const EventCard: React.FC<Props> = props => {
 
   return (
     <>
-      <EventCardOpener onClick={() => handleOpen()} />
+      <EventCardOpener opened={isOpened} onClick={() => handleOpen()} />
       <EventCardContainer opened={isOpened}>
         <EventCardClose onClick={() => handleClose()} />
         <EventCardContent />

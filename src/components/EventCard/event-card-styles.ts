@@ -60,7 +60,9 @@ export const EventCardClose = styled.span`
   
 `
 
-export const EventCardOpener = styled.div`
+export const EventCardOpener = styled.div<{
+  opened: boolean
+}>`
   position: absolute;
   left: 50%;
   top: -0.5rem;
@@ -69,4 +71,6 @@ export const EventCardOpener = styled.div`
   border-width: 0 0.2rem 0.2rem 0;
   padding: 0.2rem;
   cursor: pointer;
+  transition: opacity 0.3s;
+  opacity: ${props => (props.opened ? "0" : "1")};
 `
