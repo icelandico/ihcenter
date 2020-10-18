@@ -16,12 +16,18 @@ import { getYear } from "../../utils/formatDate"
 import { range } from "../../utils/range"
 import EventCard from "../EventCard/event-card"
 
+interface IYearsData {
+  year: number
+  isData: boolean
+}
+
 interface Props {
   store?: typeof rootStore
 }
 
 const Timeline: React.FC<Props> = props => {
   const [yearsData, setData] = useState([])
+  const [isData, setIsData] = useState()
   const { store } = props
   const { currentYear } = store.articleStore
   const yearRange = store.articleStore.lastYear - store.articleStore.firstYear
@@ -30,6 +36,12 @@ const Timeline: React.FC<Props> = props => {
   const calculateTimelineWidth = (): number => {
     return (yearRange + 1) * 15
   }
+  
+  useEffect(() => {
+    const isData =
+      yearsData.filter((el: IYearsData) => el.year === currentYear && el.isData).length > 0
+    setIsData(isData)
+  })
 
   useEffect(() => {
     const { firstYear, lastYear } = store.articleStore
@@ -49,7 +61,7 @@ const Timeline: React.FC<Props> = props => {
       <TimelineMenu />
       <TimelineContent>
         <TimelineFrames>
-          <EventCard />
+          {isData && <EventCard />}
           <TimelineFrameLeft />
           <TimelineFrameRight />
         </TimelineFrames>

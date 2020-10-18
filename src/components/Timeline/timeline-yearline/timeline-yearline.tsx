@@ -56,6 +56,7 @@ const TimelineYearline: React.FC<Props> = props => {
 
   useEffect(() => {
     setInitial()
+    console.log(props.timelineData)
   }, [timelineData])
 
   useEffect(() => {
