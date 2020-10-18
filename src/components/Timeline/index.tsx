@@ -36,7 +36,6 @@ const Timeline: React.FC<Props> = props => {
     const yearsWithData = Array.from(
       new Set(store.articleStore.articles.map(el => getYear(el.startDate)))
     )
-
     const yearsRange = range(firstYear, lastYear)
     const yearsDataArray = yearsRange.map(yearElement => ({
       year: yearElement,

@@ -15,19 +15,11 @@ interface Props {
 const EventCard: React.FC<Props> = props => {
   const [isOpened, setOpen] = useState(false)
 
-  const handleClose = () => {
-    setOpen(false)
-  }
-
-  const handleOpen = () => {
-    setOpen(true)
-  }
-
   return (
     <>
-      <EventCardOpener opened={isOpened} onClick={() => handleOpen()} />
+      <EventCardOpener opened={isOpened} onClick={() => setOpen(true)} />
       <EventCardContainer opened={isOpened}>
-        <EventCardClose onClick={() => handleClose()} />
+        <EventCardClose onClick={() => setOpen(false)} />
         <EventCardContent />
       </EventCardContainer>
     </>
