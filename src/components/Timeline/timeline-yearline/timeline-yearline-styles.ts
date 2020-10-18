@@ -17,7 +17,7 @@ export const TimelineYearlineContainer = styled.div<{
     width: auto;
     transform: translate3d(${props => props.translateVal}px, 0, 0) translateY(-50%);
     top: 50%;
-    transition: transform 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    transition: transform 0.5s cubic-bezier(0.46, 0.03, 0.52, 0.96);
   }
 `
 
