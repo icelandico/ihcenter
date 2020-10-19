@@ -5,23 +5,26 @@ export const EventCardContainer = styled.div<{
   opened: boolean
 }>`
   position: absolute;
-  top: ${props => (props.opened ? "-12rem" : "0")};
+  top: ${props => (props.opened ? "-15rem" : "0")};
   left: 50%;
   right: 50%;
   transform: translateX(-50%);
   padding: 1rem;
-  min-height: 10rem;
-  height: 100%;
-  width: 20rem;
+  height: 13rem;
+  min-width: 20rem;
+  width: fit-content;
   background-color: ${colors.darkGreen};
   transition: all 0.3s;
   transition-timing-function: cubic-bezier(.17, .67, .47, 1.27);
   opacity: ${props => (props.opened ? "1" : "0")};
+  pointer-events: ${props => (props.opened ? "auto" : "none")};
 `
 
 export const EventCardContent = styled.div`
   height: 100%;
   border: 0.1rem solid ${colors.green};
+  padding: 0.5rem 0;
+  overflow: hidden;
 
   &::after {
     position: absolute;

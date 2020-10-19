@@ -45,9 +45,9 @@ const EventCardLine: React.FC<Props> = props => {
   return (
     <EventCardLineC>
       <SvgIcon Icon={chooseIcon(type)} />
-      <span>
+      <p>
         {name} {choosePhrase(type)}
-      </span>
+      </p>
     </EventCardLineC>
   )
 }
