@@ -1,5 +1,8 @@
 import * as React from "react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { inject, observer } from "mobx-react"
+import { getYear } from "../../utils/formatDate"
+import { ArticleModel } from "../../store/models/article"
 import { rootStore } from "../../store/RootStore"
 import {
   EventCardContainer,
@@ -15,6 +18,19 @@ interface Props {
 const EventCard: React.FC<Props> = props => {
   const [isOpened, setOpen] = useState(false)
 
+  const getCurrentYearArticles = () => {
+    const { articleStore } = props.store
+    const currentYearArticles = articleStore.articles.filter(
+      (article: ArticleModel) =>
+        getYear(article.startDate) === articleStore.currentYear
+    )
+    return currentYearArticles
+  }
+
+  useEffect(() => {
+    getCurrentYearArticles()
+  })
+
   return (
     <>
       <EventCardOpener opened={isOpened} onClick={() => setOpen(true)} />
@@ -26,4 +42,4 @@ const EventCard: React.FC<Props> = props => {
   )
 }
 
-export default EventCard
+export default inject("store")(observer(EventCard))

@@ -20,7 +20,7 @@ interface Props {
   innerRef: any
 }
 
-function usePrevious(value: any): number {
+const usePrevious = (value: any): number => {
   const ref = useRef()
   useEffect(() => {
     ref.current = value
@@ -49,14 +49,9 @@ const TimelineYearline: React.FC<Props> = props => {
     }
   }
 
-  const setInitial = () => {
+  useEffect(() => {
     const initialValue = timelineWidth - (containerRef.current.clientWidth / 2) - Math.ceil(getDotWidth() / 2)
     setTimelineVal(-Math.abs(initialValue))
-  }
-
-  useEffect(() => {
-    setInitial()
-    console.log(props.timelineData)
   }, [timelineData])
 
   useEffect(() => {
