@@ -1,5 +1,5 @@
 import * as React from "react"
-import { useEffect, useState } from "react"
+import {useEffect, useRef, useState} from "react"
 import { inject, observer } from "mobx-react"
 import { getYear } from "../../utils/formatDate"
 import { ArticleModel } from "../../store/models/article"
@@ -11,6 +11,7 @@ import {
   EventCardOpener
 } from "./event-card-styles"
 import EventCardLine from "./event-card-line/event-card-line"
+import {ScrollIndicator} from "../shared/ScrollIndicator/scroll-indicator";
 
 interface Props {
   store?: typeof rootStore
@@ -19,6 +20,7 @@ interface Props {
 const EventCard: React.FC<Props> = props => {
   const [isOpened, setOpen] = useState(false)
   const [yearEvents, setYearEvents] = useState([])
+  const scrollDiv = useRef(null)
 
   const getCurrentYearArticles = () => {
     const { articleStore } = props.store
@@ -38,10 +40,11 @@ const EventCard: React.FC<Props> = props => {
       <EventCardOpener opened={isOpened} onClick={() => setOpen(true)} />
       <EventCardContainer opened={isOpened}>
         <EventCardClose onClick={() => setOpen(false)} />
-        <EventCardContent>
+        <EventCardContent ref={scrollDiv}>
           {yearEvents.map(event => (
             <EventCardLine type={event.type} name={event.name} key={event.id} />
           ))}
+          {isOpened && <ScrollIndicator container={scrollDiv.current} /> }
         </EventCardContent>
       </EventCardContainer>
     </>

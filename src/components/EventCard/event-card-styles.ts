@@ -24,8 +24,12 @@ export const EventCardContent = styled.div`
   height: 100%;
   border: 0.1rem solid ${colors.green};
   padding: 0.5rem 0;
-  overflow: hidden;
+  overflow-y: scroll;
 
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  
   &::after {
     position: absolute;
     content: "";
@@ -36,6 +40,7 @@ export const EventCardContent = styled.div`
     transform: translate(-50%, -50%);
     background-color: ${colors.green};
   }
+
 `
 
 export const EventCardClose = styled.span`
