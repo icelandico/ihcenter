@@ -29,7 +29,7 @@ export const EventCardContent = styled.div`
   ::-webkit-scrollbar {
     display: none;
   }
-  
+
   &::after {
     position: absolute;
     content: "";
@@ -40,7 +40,6 @@ export const EventCardContent = styled.div`
     transform: translate(-50%, -50%);
     background-color: ${colors.green};
   }
-
 `
 
 export const EventCardClose = styled.span`

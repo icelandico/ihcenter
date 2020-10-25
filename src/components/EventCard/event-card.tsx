@@ -11,7 +11,7 @@ import {
   EventCardOpener
 } from "./event-card-styles"
 import EventCardLine from "./event-card-line/event-card-line"
-import {ScrollIndicator} from "../shared/ScrollIndicator/scroll-indicator";
+import { ScrollIndicator } from "../shared/ScrollIndicator/scroll-indicator";
 
 interface Props {
   store?: typeof rootStore
@@ -44,7 +44,12 @@ const EventCard: React.FC<Props> = props => {
           {yearEvents.map(event => (
             <EventCardLine type={event.type} name={event.name} key={event.id} />
           ))}
-          {isOpened && <ScrollIndicator container={scrollDiv.current} /> }
+          {isOpened && (
+            <ScrollIndicator
+              options={{ position: "right" }}
+              container={scrollDiv.current}
+            />
+          )}
         </EventCardContent>
       </EventCardContainer>
     </>
