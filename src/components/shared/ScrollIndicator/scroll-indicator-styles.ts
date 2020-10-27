@@ -2,12 +2,14 @@ import styled, { keyframes } from "styled-components"
 import { CustomMarker } from "../../Marker/marker-styles"
 import { Options } from "./scroll-indicator.model"
 
-const getPosition = (pos?: string) => {
+const getPosition = (pos: string = "center") => {
   switch (pos) {
     case "right":
       return "95%"
     case "left":
       return "5%"
+    case "center":
+      return "50%"
     default:
       return "50%"
   }
@@ -20,10 +22,10 @@ const indicatorKeyframes = keyframes`
 `
 
 export const Indicator = styled(CustomMarker)<{
-  options: Options
+  options?: Options
 }>`
   position: sticky;
-  left: ${props => getPosition(props.options.position)};
+  left: ${props => props.options ? getPosition(props.options.position) : getPosition()};
   -webkit-animation: ${indicatorKeyframes} 2s infinite ease-in-out;
   animation: ${indicatorKeyframes} 2s infinite ease-in-out;
   z-index: 10;
