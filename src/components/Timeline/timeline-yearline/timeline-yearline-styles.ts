@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { colors } from "../../../styles/colors"
 import { fonts } from "../../../styles/font"
+import {boolean} from "mobx-state-tree/dist/types/primitives";
 
 export const TimelineYearlineContainer = styled.div<{
   translateVal: number
@@ -40,7 +41,9 @@ export const TimelineDot = styled.li<{
   }
 `
 
-export const TimelineDate = styled.span`
+export const TimelineDate = styled.span<{
+  isHidden: boolean
+}>`
   position: absolute;
   top: 2.5rem;
   left: 50%;
@@ -50,6 +53,9 @@ export const TimelineDate = styled.span`
   font-size: 1.6rem;
   font-family: ${fonts.second};
   text-align: center;
+  opacity: ${props => (props.isHidden ? 0 : 1)};
+  transition: 0.5s;
+  transition-delay: 0.25s;
 
   &:before {
     position: absolute;

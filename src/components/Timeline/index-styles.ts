@@ -58,6 +58,17 @@ const TimelineFrame = styled.div`
 export const TimelineFrameLeft = styled(TimelineFrame)`
   background-image: url(${DatePaneLeft});
   background-position: 100%;
+  position: relative;
+  
+  //&:after {
+  //  content: "";
+  //  position: absolute;
+  //  bottom: 0;
+  //  right: 0;
+  //  height: 30px;
+  //  width: 50px;
+  //  background-color: peru;
+  //}
 `
 
 export const TimelineFrameRight = styled(TimelineFrame)`

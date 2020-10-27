@@ -88,10 +88,15 @@ const TimelineYearline: React.FC<Props> = props => {
         {timelineData.map(dot => {
           const { year, isData } = dot
           return (
-            <TimelineDot isData={isData} onClick={() => props.store.articleStore.setYear(year)}>
+            <TimelineDot
+              isData={isData}
+              onClick={() => props.store.articleStore.setYear(year)}
+            >
               <span />
-              {year % 10 === 0 && !getHideRange().includes(year) && (
-                <TimelineDate>{year}</TimelineDate>
+              {year % 10 === 0 && (
+                <TimelineDate isHidden={getHideRange().includes(year)}>
+                  {year}
+                </TimelineDate>
               )}
             </TimelineDot>
           )
