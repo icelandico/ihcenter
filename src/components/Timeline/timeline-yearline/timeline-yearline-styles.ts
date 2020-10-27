@@ -28,6 +28,7 @@ export const TimelineDot = styled.li<{
   float: left;
   list-style: none;
   position: relative;
+  cursor: pointer;
 
   span:first-child {
     display: inline-block;

@@ -23,6 +23,7 @@ export const TimelineContent = styled.div`
     bottom: 0;
     width: 33%;
     z-index: 10;
+    pointer-events: none;
   }
 
   &:before {
