@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, {MutableRefObject, useEffect, useRef, useState} from "react"
 import { inject, observer } from "mobx-react"
 import {
   TimelineDate,
@@ -32,6 +32,7 @@ const TimelineYearline: React.FC<Props> = props => {
   const { timelineData, timelineWidth } = props
   const { currentYear } = props.store.articleStore
   const [timelineVal, setTimelineVal] = useState(0)
+  const [scrollPos, setScrollPos] = useState(0)
 
   const containerRef = useRef(null)
   const previousVal = usePrevious(currentYear)
@@ -59,6 +60,22 @@ const TimelineYearline: React.FC<Props> = props => {
     getHideRange()
   }, [currentYear])
 
+  /* To implement scrolling timeline */
+
+  // useEffect(() => {
+  //   const handleScroll = (e: WheelEvent) => {
+  //     console.log(scrollPos)
+  //     setScrollPos(e.deltaY)
+  //   }
+  //
+  //   containerRef.current.addEventListener("wheel", (e: WheelEvent) =>
+  //     handleScroll(e)
+  //   )
+  //
+  //   return () =>
+  //     containerRef.current.removeEventListener("wheel", handleScroll)
+  // }, [scrollPos])
+
   const getHideRange = (): number[] => {
     const start = currentYear - 4
     const end = currentYear + 4
@@ -71,7 +88,7 @@ const TimelineYearline: React.FC<Props> = props => {
         {timelineData.map(dot => {
           const { year, isData } = dot
           return (
-            <TimelineDot isData={isData}>
+            <TimelineDot isData={isData} onClick={() => props.store.articleStore.setYear(year)}>
               <span />
               {year % 10 === 0 && !getHideRange().includes(year) && (
                 <TimelineDate>{year}</TimelineDate>
