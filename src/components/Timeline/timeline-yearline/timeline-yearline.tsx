@@ -62,19 +62,20 @@ const TimelineYearline: React.FC<Props> = props => {
 
   /* To implement scrolling timeline */
 
-  // useEffect(() => {
-  //   const handleScroll = (e: WheelEvent) => {
-  //     console.log(scrollPos)
-  //     setScrollPos(e.deltaY)
-  //   }
-  //
-  //   containerRef.current.addEventListener("wheel", (e: WheelEvent) =>
-  //     handleScroll(e)
-  //   )
-  //
-  //   return () =>
-  //     containerRef.current.removeEventListener("wheel", handleScroll)
-  // }, [scrollPos])
+  useEffect(() => {
+    const handleScroll = (e: WheelEvent) => {
+      if (e.deltaY === 100) props.store.articleStore.incrementYear()
+      if (e.deltaY === -100) props.store.articleStore.decrementYear()
+      // setScrollPos(e.deltaY)
+    }
+
+    containerRef.current.addEventListener("wheel", (e: WheelEvent) =>
+      handleScroll(e)
+    )
+
+    return () =>
+      containerRef.current.removeEventListener("wheel", handleScroll)
+  }, [scrollPos])
 
   const getHideRange = (): number[] => {
     const start = currentYear - 4
