@@ -36,7 +36,7 @@ const Timeline: React.FC<Props> = props => {
   const calculateTimelineWidth = (): number => {
     return (yearRange + 1) * 15
   }
-  
+
   useEffect(() => {
     const isData =
       yearsData.filter((el: IYearsData) => el.year === currentYear && el.isData).length > 0

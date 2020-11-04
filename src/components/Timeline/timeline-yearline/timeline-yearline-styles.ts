@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import { colors } from "../../../styles/colors"
 import { fonts } from "../../../styles/font"
-import {boolean} from "mobx-state-tree/dist/types/primitives";
 
 export const TimelineYearlineContainer = styled.div<{
   translateVal: number
