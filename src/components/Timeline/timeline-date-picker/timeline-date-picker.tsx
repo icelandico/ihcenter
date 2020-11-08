@@ -16,11 +16,17 @@ interface Props {
 const TimelineDatePicker: React.FC<Props> = props => {
   const { store, currentYear } = props
   const [value, setValue] = useState(currentYear)
+  const isNotLastYear = store.articleStore.lastYear !== currentYear
+  const isNotFirstYear = store.articleStore.firstYear !== currentYear
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target
     setValue(parseInt(value, 10))
     if (value.length >= 4) store.articleStore.setYear(parseInt(value, 10))
+  }
+
+  const handleNextEvent = (): void => {
+    console.log(store.articleStore.articles)
   }
 
   useEffect(() => {
@@ -35,11 +41,13 @@ const TimelineDatePicker: React.FC<Props> = props => {
         primary
         onClick={() => store.articleStore.decrementYear()}
         title="Previous with data"
+        isActive={isNotFirstYear}
       />
       <TimeArrow
         direction="left"
         onClick={() => store.articleStore.decrementYear()}
         title="Previous year"
+        isActive={isNotFirstYear}
       />
       {currentYear ? (
         <TimelineDate
@@ -55,13 +63,15 @@ const TimelineDatePicker: React.FC<Props> = props => {
         direction="right"
         onClick={() => store.articleStore.incrementYear()}
         title="Next year"
+        isActive={isNotLastYear}
       />
       <TimeArrow
         direction="right"
         double
         primary
-        onClick={() => store.articleStore.decrementYear()}
+        onClick={() => handleNextEvent()}
         title="Next with data"
+        isActive={isNotLastYear}
       />
     </TimelineDateContainer>
   )

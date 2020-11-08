@@ -8,6 +8,7 @@ import {
   BY_YEAR,
   CUMULATIVE
 } from "../constants/filters"
+import { getYear } from "../../utils/formatDate";
 
 export type ArticleModel = Instance<typeof Article>
 
@@ -35,7 +36,10 @@ const ArticleStore = types
         ...el,
         ident: `${el.type}-${el.id}`
       }))
-      applySnapshot(self.articles, articlesWithIds)
+      const sortedArticles = articlesWithIds.sort(
+        (a: any, b: any) => getYear(a.startDate) - getYear(b.startDate)
+      );
+      applySnapshot(self.articles, sortedArticles)
     }),
     toggle(article: ArticleModel) {
       self.chosenArticle = article

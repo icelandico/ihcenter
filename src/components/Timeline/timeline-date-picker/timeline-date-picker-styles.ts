@@ -32,6 +32,7 @@ export const TimeArrow = styled.div<{
   direction: string
   double?: boolean
   primary?: boolean
+  isActive: boolean
 }>`
   position: relative;
   padding: 0.75rem;
@@ -45,6 +46,8 @@ export const TimeArrow = styled.div<{
   cursor: pointer;
   transform: ${props =>
     props.direction === "left" ? "rotate(45deg)" : "rotate(225deg)"};
+  opacity: ${props => (props.isActive ? "1" : "0.2")};
+  pointer-events: ${props => (props.isActive ? "normal" : "none")};
   
    &:hover {
     box-shadow: 2px -2px 0 2px ${props => props.primary ? colors.lightBrown : colors.green} inset;

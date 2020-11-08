@@ -56,6 +56,7 @@ const TimelineYearline: React.FC<Props> = props => {
   }, [timelineData])
 
   useEffect(() => {
+    // console.log(props.store.articleStore.articles)
     handleTimelinePosition()
     getHideRange()
   }, [currentYear])
