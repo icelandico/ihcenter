@@ -1,7 +1,7 @@
 import styled from "styled-components"
+import { boolean } from "mobx-state-tree/dist/types/primitives"
 import { colors } from "../../../styles/colors"
 import wikiIcon from "../../../static/icons/wiki.svg"
-import {boolean} from "mobx-state-tree/dist/types/primitives";
 
 export const DetailsTopContainer = styled.div`
   position: relative;
@@ -51,17 +51,17 @@ export const MainImage = styled.div<{
   background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6x-rKSUYJJ6aa673JE2ZsjVcvhoIL6v3tAI_1X8Br56U4VrrL&s");
   background-size: cover;
   margin: 0 auto;
-  
+
   &::after {
-  ${props =>
-  props.bookmarkActive && `
     position: absolute;
     content: "";
     width: 100%;
     height: 100%;
     box-shadow: 0 0 0 0.5rem ${colors.lightBrown};
+    opacity: ${props => (props.bookmarkActive ? "1" : "0")};
     border-radius: 50%;
-  `}
+    transition: 0.5s;
+  }
 `
 
 export const BookmarkContainer = styled.div`
@@ -79,7 +79,7 @@ export const Bookmark = styled.div<{
   top: 0;
   right: 0;
   cursor: pointer;
-  stroke: ${props => props.bookmarkActive ? colors.lightBrown : colors.green};
+  stroke: ${props => (props.bookmarkActive ? colors.lightBrown : colors.green)};
   fill: none;
   transition: stroke 0.1s;
 
@@ -101,7 +101,8 @@ export const Bookmark = styled.div<{
   
   &::before {
   ${props =>
-    props.bookmarkActive && `
+    props.bookmarkActive &&
+    `
       width: 10rem;
   `}
 
@@ -117,7 +118,6 @@ export const DetailsContainer = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-
 `
 
 export const DetailsText = styled.p`
