@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { colors } from "../../../styles/colors"
 import wikiIcon from "../../../static/icons/wiki.svg"
+import {boolean} from "mobx-state-tree/dist/types/primitives";
 
 export const DetailsTopContainer = styled.div`
   position: relative;
@@ -38,7 +39,9 @@ export const ElementLink = styled.a`
   }
 `
 
-export const MainImage = styled.div`
+export const MainImage = styled.div<{
+  bookmarkActive: boolean
+}>`
   position: relative;
   top: -50px;
   width: 16rem;
@@ -48,6 +51,17 @@ export const MainImage = styled.div`
   background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6x-rKSUYJJ6aa673JE2ZsjVcvhoIL6v3tAI_1X8Br56U4VrrL&s");
   background-size: cover;
   margin: 0 auto;
+  
+  &::after {
+  ${props =>
+  props.bookmarkActive && `
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 0 0.5rem ${colors.lightBrown};
+    border-radius: 50%;
+  `}
 `
 
 export const BookmarkContainer = styled.div`
@@ -58,12 +72,14 @@ export const BookmarkContainer = styled.div`
   width: 50%;
 `
 
-export const Bookmark = styled.div`
+export const Bookmark = styled.div<{
+  bookmarkActive: boolean
+}>`
   position: absolute;
   top: 0;
   right: 0;
   cursor: pointer;
-  stroke: ${colors.green};
+  stroke: ${props => props.bookmarkActive ? colors.lightBrown : colors.green};
   fill: none;
   transition: 0.1s;
 

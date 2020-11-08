@@ -1,6 +1,6 @@
 import * as React from "react"
 import { observer, inject } from "mobx-react"
-import { useRef } from "react"
+import {useRef, useState} from "react"
 import { rootStore } from "../../../store/RootStore"
 import {
   ElementTitle,
@@ -49,17 +49,25 @@ const renderImage = (details: ArticleModel): string => {
 }
 
 const DetailMainInfo: React.FC<IProps> = props => {
+  const [activeBookmark, setActiveBookmark] = useState(false)
   const { details } = props
   const scrollDiv = useRef(null)
+
+  const setBookmarkStatus = () => {
+    setActiveBookmark(!activeBookmark)
+  }
 
   return (
     <div
       className="content-list-info content-main-info"
       style={{ position: "relative" }}
     >
-      <MainImage style={{ backgroundImage: `url(${renderImage(details)}` }} />
-      <BookmarkContainer>
-        <Bookmark>
+      <MainImage
+        bookmarkActive={activeBookmark}
+        style={{ backgroundImage: `url(${renderImage(details)}` }}
+      />
+      <BookmarkContainer onClick={() => setBookmarkStatus()}>
+        <Bookmark bookmarkActive={activeBookmark}>
           <SvgIcon Icon={BookmarkOff} />
         </Bookmark>
       </BookmarkContainer>
