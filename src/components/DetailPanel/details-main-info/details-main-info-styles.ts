@@ -81,16 +81,30 @@ export const Bookmark = styled.div<{
   cursor: pointer;
   stroke: ${props => props.bookmarkActive ? colors.lightBrown : colors.green};
   fill: none;
-  transition: 0.1s;
+  transition: stroke 0.1s;
 
   svg {
     transition: 0.3s;
     width: 2.2rem;
   }
   
-  &:hover {
-    stroke: ${colors.lightBrown};
+  &::before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    background: ${colors.lightBrown};
+    right: 1rem;
+    width: 0;
+    z-index: -1;
+    transition: 0.5s;
   }
+  
+  &::before {
+  ${props =>
+    props.bookmarkActive && `
+      width: 10rem;
+  `}
+
 `
 
 export const DetailsContainer = styled.div`
