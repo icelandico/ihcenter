@@ -13,7 +13,7 @@ import { ArticleModel } from "../../store/models/article"
 import { CustomMarker, CustomPopup } from "./marker-styles"
 import { chooseColor } from "../../utils/articleTypeColor"
 
-interface Props {
+interface IProps {
   store?: typeof rootStore
   article: ArticleModel
   key: string
@@ -37,7 +37,7 @@ export const chooseIcon = (type: string) => {
   }
 }
 
-const MapMarker: React.FC<Props> = props => {
+const MapMarker: React.FC<IProps> = props => {
   const [isMarkerClicked, setClickedMarker] = useState<boolean>(false)
 
   const customIcon = (): DivIcon => {

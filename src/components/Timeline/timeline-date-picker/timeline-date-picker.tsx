@@ -8,14 +8,31 @@ import {
 import { rootStore } from "../../../store/RootStore"
 import Loader from "../../shared/Loader/loader"
 
+interface IFollowingYears {
+  previousYear?: number
+  nextYear?: number
+}
+
 interface Props {
   store?: typeof rootStore
   currentYear: number
+  timelineData: IYearsData[]
+}
+
+interface IFollowingYears {
+  previousYear?: number
+  nextYear?: number
+}
+
+interface IYearsData {
+  year: number
+  isData: boolean
 }
 
 const TimelineDatePicker: React.FC<Props> = props => {
-  const { store, currentYear } = props
+  const { store, currentYear, timelineData } = props
   const [value, setValue] = useState(currentYear)
+  const [yearsSet, setYears] = useState<IFollowingYears>({})
   const isNotLastYear = store.articleStore.lastYear !== currentYear
   const isNotFirstYear = store.articleStore.firstYear !== currentYear
 
@@ -26,12 +43,35 @@ const TimelineDatePicker: React.FC<Props> = props => {
   }
 
   const handleNextEvent = (): void => {
-    console.log(store.articleStore.articles)
+    store.articleStore.setYear(yearsSet.nextYear)
+  }
+
+  const handlePrevEvent = (): void => {
+    store.articleStore.setYear(yearsSet.previousYear)
   }
 
   useEffect(() => {
     setValue(currentYear)
   }, [currentYear])
+
+  useEffect(() => {
+    timelineData.length > 1 &&
+      setYears(calculateFollowingYears(props.timelineData))
+  }, [timelineData, currentYear])
+
+  const calculateFollowingYears = (arr: IYearsData[]): IFollowingYears => {
+    const previousYear = arr
+      .filter(yearElem => yearElem.year < currentYear && yearElem.isData)
+      .pop()
+    const nextYear = arr
+      .filter(yearElem => yearElem.year > currentYear && yearElem.isData)
+      .shift()
+
+    return {
+      previousYear: previousYear.year,
+      nextYear: nextYear && nextYear.year
+    }
+  }
 
   return (
     <TimelineDateContainer>
@@ -39,7 +79,7 @@ const TimelineDatePicker: React.FC<Props> = props => {
         direction="left"
         double
         primary
-        onClick={() => store.articleStore.decrementYear()}
+        onClick={() => handlePrevEvent()}
         title="Previous with data"
         isActive={isNotFirstYear}
       />

@@ -13,11 +13,11 @@ import {
 import EventCardLine from "./event-card-line/event-card-line"
 import { ScrollIndicator } from "../shared/ScrollIndicator/scroll-indicator";
 
-interface Props {
+interface IProps {
   store?: typeof rootStore
 }
 
-const EventCard: React.FC<Props> = props => {
+const EventCard: React.FC<IProps> = props => {
   const [isOpened, setOpen] = useState(false)
   const [yearEvents, setYearEvents] = useState([])
   const scrollDiv = useRef(null)

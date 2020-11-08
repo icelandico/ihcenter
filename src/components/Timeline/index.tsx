@@ -21,11 +21,11 @@ interface IYearsData {
   isData: boolean
 }
 
-interface Props {
+interface IProps {
   store?: typeof rootStore
 }
 
-const Timeline: React.FC<Props> = props => {
+const Timeline: React.FC<IProps> = props => {
   const [yearsData, setData] = useState([])
   const [isData, setIsData] = useState()
   const { store } = props
@@ -70,7 +70,10 @@ const Timeline: React.FC<Props> = props => {
           timelineWidth={calculateTimelineWidth()}
           innerRef={dotRef}
         />
-        <TimelineDatePicker currentYear={currentYear} />
+        <TimelineDatePicker
+          timelineData={yearsData}
+          currentYear={currentYear}
+        />
       </TimelineContent>
     </TimelineContainer>
   )

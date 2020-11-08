@@ -24,7 +24,7 @@ import { ReactComponent as BookmarkOff } from "../../../static/icons/bookmark_of
 import { ScrollIndicator } from "../../shared/ScrollIndicator/scroll-indicator"
 import { BottomGradient } from "../../shared/Styles/shared-styled-components"
 
-export interface Props {
+export interface IProps {
   store?: typeof rootStore
   details: ArticleModel
 }
@@ -48,7 +48,7 @@ const renderImage = (details: ArticleModel): string => {
   }
 }
 
-const DetailMainInfo: React.FC<Props> = props => {
+const DetailMainInfo: React.FC<IProps> = props => {
   const { details } = props
   const scrollDiv = useRef(null)
 
