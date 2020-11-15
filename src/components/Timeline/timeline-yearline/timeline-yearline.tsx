@@ -51,7 +51,10 @@ const TimelineYearline: React.FC<Props> = props => {
   }
 
   useEffect(() => {
-    const initialValue = timelineWidth - (containerRef.current.clientWidth / 2) - Math.ceil(getDotWidth() / 2)
+    const initialValue =
+      timelineWidth -
+      containerRef.current.clientWidth / 2 -
+      Math.ceil(getDotWidth() / 2)
     setTimelineVal(-Math.abs(initialValue))
   }, [timelineData])
 
@@ -63,8 +66,10 @@ const TimelineYearline: React.FC<Props> = props => {
 
   useEffect(() => {
     const handleScroll = (e: WheelEvent) => {
-      if (e.deltaY === 100) props.store.articleStore.incrementYear()
-      if (e.deltaY === -100) props.store.articleStore.decrementYear()
+      if (e.deltaY === 100 || e.deltaY === 3)
+        props.store.articleStore.incrementYear()
+      if (e.deltaY === -100 || e.deltaY === -3)
+        props.store.articleStore.decrementYear()
     }
 
     containerRef.current.addEventListener("wheel", (e: WheelEvent) =>
