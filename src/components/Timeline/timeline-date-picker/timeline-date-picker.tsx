@@ -68,7 +68,7 @@ const TimelineDatePicker: React.FC<Props> = props => {
       .shift()
 
     return {
-      previousYear: previousYear.year,
+      previousYear: previousYear && previousYear.year,
       nextYear: nextYear && nextYear.year
     }
   }
