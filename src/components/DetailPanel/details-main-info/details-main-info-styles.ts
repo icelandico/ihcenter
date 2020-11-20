@@ -47,6 +47,7 @@ export const MainImage = styled.div<{
   border: 0.5rem solid ${colors.darkGreen};
   height: 16rem;
   border-radius: 50%;
+  background-color: ${colors.darkGreen};
   background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6x-rKSUYJJ6aa673JE2ZsjVcvhoIL6v3tAI_1X8Br56U4VrrL&s");
   background-size: cover;
   margin: 0 auto;
