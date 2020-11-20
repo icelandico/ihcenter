@@ -5,6 +5,7 @@ import Routes from "../routing/Routes"
 import Navbar from "../components/Navbar/navbar"
 import DetailPanel from "../components/DetailPanel"
 import Timeline from "../components/Timeline"
+import UserBookmarks from "../components/UserBookmarks"
 
 const App: React.FC = () => {
   return (
@@ -29,7 +30,7 @@ const App: React.FC = () => {
         <div className="top-menu" />
         <div className="content-container-r">
           <DetailPanel />
-          <div className="content-lower" />
+          <UserBookmarks />
         </div>
       </div>
     </div>
