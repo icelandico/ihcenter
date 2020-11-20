@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { boolean } from "mobx-state-tree/dist/types/primitives"
 import { colors } from "../../../styles/colors"
 import wikiIcon from "../../../static/icons/wiki.svg"
 

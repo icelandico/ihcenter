@@ -1,6 +1,7 @@
 import * as React from "react"
 import { observer, inject } from "mobx-react"
-import { useRef, useState } from "react"
+import {useEffect, useRef, useState} from "react"
+import { type } from "os"
 import { rootStore } from "../../../store/RootStore"
 import {
   ElementTitle,
@@ -48,65 +49,53 @@ const renderImage = (details: ArticleModel): string => {
   }
 }
 
-// Hook
-function useLocalStorage<T>(key: string, initialValue: T) {
-  // State to store our value
-  // Pass initial state function to useState so logic is only executed once
-  const [storedValue, setStoredValue] = useState<T>(() => {
-    try {
-      // Get from local storage by key
-      const item = window.localStorage.getItem(key)
-      // Parse stored json or if none return initialValue
-      return item ? JSON.parse(item) : initialValue
-    } catch (error) {
-      // If error also return initialValue
-      console.log(error)
-      return initialValue
-    }
-  })
-
-  // Return a wrapped version of useState's setter function that ...
-  // ... persists the new value to localStorage.
-  const setValue = (value: T | ((val: T) => T)) => {
-    try {
-      // Allow value to be a function so we have same API as useState
-      const valueToStore =
-        value instanceof Function ? value(storedValue) : value
-      // Save state
-      setStoredValue(valueToStore)
-      // Save to local storage
-      window.localStorage.setItem(key, JSON.stringify(valueToStore))
-    } catch (error) {
-      // A more advanced implementation would handle the error case
-      console.log(error)
-    }
-  }
-
-  return [storedValue, setValue]
+interface IBookmarkItem {
+  id?: number
+  type?: string
 }
 
 const DetailMainInfo: React.FC<IProps> = props => {
-  const [activeBookmark, setActiveBookmark] = useState(false)
-  const [elem, setElem] = useLocalStorage<any>("id", 1)
+  const [isBookmarked, setBookmark] = useState(false)
   const { details } = props
   const scrollDiv = useRef(null)
 
-  const setBookmarkStatus = (id: number) => {
-    setElem(id)
-    setActiveBookmark(!activeBookmark)
+  const setBookmarkStatus = (id: number, type: string) => {
+    const bookmarks = window.localStorage.getItem("userBookmarks")
+    const itemsCollection = JSON.parse(bookmarks) || []
+    const newCollection = isInStorage(id)
+      ? itemsCollection.filter((item: IBookmarkItem) => item.id !== id)
+      : itemsCollection.concat({ id, type })
+    window.localStorage.setItem("userBookmarks", JSON.stringify(newCollection))
+    setBookmark(isInStorage(id))
   }
+
+  const isInStorage = (id: number) => {
+    const bookmarks = window.localStorage.getItem("userBookmarks")
+    const itemsCollection = JSON.parse(bookmarks) || []
+    return itemsCollection.some((item: IBookmarkItem) => item.id === id)
+  }
+
+  useEffect(() => {
+    if (details) {
+      const isViewBookmarked = isInStorage(details.id)
+      setBookmark(isViewBookmarked)
+    }
+  }, [props])
 
   return (
     <div
       className="content-list-info content-main-info"
       style={{ position: "relative" }}
+      data-is-bookmarked={isBookmarked}
     >
       <MainImage
-        bookmarkActive={activeBookmark}
+        bookmarkActive={isBookmarked}
         style={{ backgroundImage: `url(${renderImage(details)}` }}
       />
-      <BookmarkContainer onClick={() => setBookmarkStatus(details.id)}>
-        <Bookmark bookmarkActive={activeBookmark}>
+      <BookmarkContainer
+        onClick={() => setBookmarkStatus(details.id, details.type)}
+      >
+        <Bookmark bookmarkActive={isBookmarked}>
           <SvgIcon Icon={BookmarkOff} />
         </Bookmark>
       </BookmarkContainer>
