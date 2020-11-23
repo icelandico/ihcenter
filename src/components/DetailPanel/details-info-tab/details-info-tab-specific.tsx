@@ -212,6 +212,7 @@ export class TabGenerator extends React.Component {
         tabId="professions"
         iconUrl={Fields}
         fontColor="darkBlue"
+        font={fonts.baseSans}
         content={this.renderTextInfo(details, "professions")}
       />
     )
