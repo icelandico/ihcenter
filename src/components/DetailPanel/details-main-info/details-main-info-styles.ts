@@ -45,7 +45,7 @@ export const MainImage = styled.div<{
   top: -50px;
   width: 16rem;
   border: 0.5rem solid ${colors.darkGreen};
-  height: 16rem;
+  min-height: 16rem;
   border-radius: 50%;
   background-color: ${colors.darkGreen};
   background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6x-rKSUYJJ6aa673JE2ZsjVcvhoIL6v3tAI_1X8Br56U4VrrL&s");
@@ -100,16 +100,11 @@ export const Bookmark = styled.div<{
   }
   
   &::before {
-  ${props =>
-    props.bookmarkActive &&
-    `
-      width: 10rem;
-  `}
-
+  ${props => props.bookmarkActive && ` width: 10vw;`}
 `
 
 export const DetailsContainer = styled.div`
-  height: 62%;
+  //height: 62%;
   overflow-y: auto;
   margin-top: 2rem;
   padding-right: 1rem;

@@ -1,7 +1,14 @@
 import * as React from "react"
 import { observer, inject } from "mobx-react"
 import { rootStore } from "../../store/RootStore"
-import { UserBookmarksContainer, RecentItem, UserRecentlyViewedItems, UserBookmarksItems, UserBookmarksText, OptionsText } from "./index-styles"
+import {
+  UserBookmarksContainer,
+  RecentItem,
+  UserRecentlyViewedItems,
+  UserBookmarksItems,
+  UserBookmarksText,
+  OptionsText
+} from "./index-styles"
 
 export interface IProps {
   store?: typeof rootStore
