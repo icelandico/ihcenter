@@ -87,7 +87,7 @@ export class TabGenerator extends React.Component {
         {detailsList &&
           detailsList.map((item: BaseInfo & Writing, idx: number) => {
             return (
-              <span>
+              <span key={item.name}>
                 {item.name || item.title}
                 {idx < detailsList.length - 1 ? ", " : ""}
               </span>
@@ -104,7 +104,7 @@ export class TabGenerator extends React.Component {
         {detailsList &&
           detailsList.map((item: Writing, idx: number) => {
             return (
-              <li>
+              <li key={item.id}>
                 <WritingsTitle>{item.title}</WritingsTitle>
                 {item.publicated && (
                   <WritingsYear>({getYear(item.publicated)})</WritingsYear>
@@ -177,6 +177,7 @@ export class TabGenerator extends React.Component {
         tabId="relatedEvents"
         iconUrl={Events}
         content={this.renderTextInfo(details, "relatedEvent")}
+        key={details.id}
       />
     )
   }
@@ -191,6 +192,7 @@ export class TabGenerator extends React.Component {
         border
         column
         content={this.renderGeneralInfo(details)}
+        key={details.id}
       />
     )
   }
@@ -202,6 +204,7 @@ export class TabGenerator extends React.Component {
         iconUrl={Influences}
         extend={3.5}
         content={this.renderTextInfo(details, "relatedPerson")}
+        key={details.id}
       />
     )
   }
@@ -214,6 +217,7 @@ export class TabGenerator extends React.Component {
         fontColor="darkBlue"
         font={fonts.baseSans}
         content={this.renderTextInfo(details, "professions")}
+        key={details.id}
       />
     )
   }
@@ -229,6 +233,7 @@ export class TabGenerator extends React.Component {
         fontColor="woodBrown"
         font={fonts.baseSans}
         content={this.renderTextInfo(details, "mainideas")}
+        key={details.id}
       />
     )
   }
@@ -245,6 +250,7 @@ export class TabGenerator extends React.Component {
         fontColor="woodBrown"
         font={fonts.baseSans}
         content={this.renderTextInfo(details, "ideas")}
+        key={details.id}
       />
     )
   }
@@ -257,6 +263,7 @@ export class TabGenerator extends React.Component {
         fontColor="regularRed"
         font={fonts.baseSans}
         content={this.renderTextInfo(details, "relatedOrg")}
+        key={details.id}
       />
     )
   }
@@ -269,6 +276,7 @@ export class TabGenerator extends React.Component {
         iconUrl={Influences}
         font={fonts.base}
         content={this.renderTextInfo(details, "influences")}
+        key={details.id}
       />
     )
   }
@@ -281,6 +289,7 @@ export class TabGenerator extends React.Component {
         iconUrl={Influenced}
         font={fonts.base}
         content={this.renderTextInfo(details, "influenced")}
+        key={details.id}
       />
     )
   }
@@ -294,6 +303,7 @@ export class TabGenerator extends React.Component {
         fontColor="lightBrown"
         italicFont
         content={this.renderWritingsInfo(details, "writings")}
+        key={details.id}
       />
     )
   }

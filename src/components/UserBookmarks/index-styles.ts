@@ -1,4 +1,5 @@
-import styled from "styled-components/macro"
+import styled, { css } from "styled-components/macro"
+import { keyframes } from "styled-components";
 import { colors } from "../../styles/colors"
 
 export const UserBookmarksContainer = styled.div`
@@ -45,9 +46,31 @@ export const UserBookmarksItems = styled.div`
   right: 0;
 `
 
-export const RecentItem = styled.div`
+const bookmarkLoader = keyframes`
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(51, 217, 178, 0.7);
+  }
+  
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 5px rgba(51, 217, 178, 0);
+  }
+  
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(51, 217, 178, 0);
+  }
+`
+
+export const RecentItem = styled.div<{ isActive?: boolean }>`
   height: 2.5rem;
   width: 2.5rem;
-  background-color: peru;
+  background-color: ${colors.green};
   border-radius: 50%;
+  background-size: cover;
+  transform: scale(1);
+  cursor: ${props => !props.isActive ? "not-allowed" : "pointer"};
+  animation: ${props =>
+    !props.isActive ? css`2s infinite ${bookmarkLoader}` : "none"};
 `
