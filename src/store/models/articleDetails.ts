@@ -1,4 +1,4 @@
-import { types } from "mobx-state-tree"
+import {Instance, types} from "mobx-state-tree"
 
 export const IdeaDetails = types.model("IdeaDetails", {
   id: types.identifierNumber,
@@ -46,3 +46,5 @@ export const UserBookmark = types.model("UserBookmarks", {
   id: types.identifierNumber,
   type: types.string
 })
+
+export type IUserBookmark = Instance<typeof UserBookmark>

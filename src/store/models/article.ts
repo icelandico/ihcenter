@@ -1,4 +1,4 @@
-import { types, Instance, flow, applySnapshot } from "mobx-state-tree"
+import {types, Instance, flow, applySnapshot, cast} from "mobx-state-tree"
 import { apiEndpoints } from "../api/api"
 import { ArticleModel } from "./articleModel"
 import {
@@ -9,10 +9,9 @@ import {
   CUMULATIVE
 } from "../constants/filters"
 import { getYear } from "../../utils/formatDate"
-import { UserBookmark } from "./articleDetails"
+import { UserBookmark, IUserBookmark } from "./articleDetails"
 
 export type ArticleModel = Instance<typeof Article>
-type IUserBookmark = Instance<typeof UserBookmark>
 
 export const Article = types.maybeNull(ArticleModel)
 
@@ -90,8 +89,8 @@ const ArticleStore = types
       self.firstYear = firstYear
       self.currentYear = lastYear
     },
-    setUserBookmarks(newBookmarks: any): void {
-      self.userBookmarks = newBookmarks
+    setUserBookmarks(newBookmarks: IUserBookmark[]): void {
+      self.userBookmarks = cast(newBookmarks)
     }
   }))
   .views(self => ({
