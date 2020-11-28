@@ -66,6 +66,7 @@ const DetailMainInfo: React.FC<IProps> = props => {
       ? itemsCollection.filter((item: IBookmarkItem) => item.id !== id)
       : itemsCollection.concat({ id, type })
     window.localStorage.setItem("userBookmarks", JSON.stringify(newCollection))
+    props.store.articleStore.setUserBookmarks(newCollection)
     setBookmark(isInStorage(id))
   }
 

@@ -16,6 +16,7 @@ interface State {}
 class MapComponent extends React.Component<Props, State> {
   async componentDidMount() {
     const { store } = this.props
+    console.log('bookmarks are', store.articleStore.userBookmarks)
     await store.articleStore.getAllArticles()
     store.articleStore.setYearsRange()
   }

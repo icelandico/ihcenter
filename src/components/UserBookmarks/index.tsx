@@ -5,10 +5,11 @@ import {
   UserBookmarksContainer,
   RecentItem,
   UserRecentlyViewedItems,
-  UserBookmarksItems,
   UserBookmarksText,
-  OptionsText
+  OptionsText,
+  UserBookmarksItems
 } from "./index-styles"
+import BookmarksItems from "./user-bookmarks-items/user-bookmarks-items";
 
 export interface IProps {
   store?: typeof rootStore
@@ -28,7 +29,9 @@ const UserBookmarks: React.FC<IProps> = props => {
           return <RecentItem />
         })}
       </UserRecentlyViewedItems>
-      <UserBookmarksItems />
+      <UserBookmarksItems>
+        <BookmarksItems />
+      </UserBookmarksItems>
     </UserBookmarksContainer>
   )
 }

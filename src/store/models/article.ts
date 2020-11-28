@@ -9,6 +9,7 @@ import {
   CUMULATIVE
 } from "../constants/filters"
 import { getYear } from "../../utils/formatDate";
+import { UserBookmarks } from "./articleDetails";
 
 export type ArticleModel = Instance<typeof Article>
 
@@ -21,7 +22,8 @@ const ArticleStore = types
     currentYear: types.optional(types.number, 0),
     filter: types.optional(filterType, CUMULATIVE),
     firstYear: types.maybeNull(types.number),
-    lastYear: types.maybeNull(types.number)
+    lastYear: types.maybeNull(types.number),
+    userBookmarks: types.optional(types.array(UserBookmarks), [])
   })
   .actions(self => ({
     getAllArticles: flow(function*() {
@@ -37,8 +39,8 @@ const ArticleStore = types
         ident: `${el.type}-${el.id}`
       }))
       const sortedArticles = articlesWithIds.sort(
-        (a: any, b: any) => getYear(a.startDate) - getYear(b.startDate)
-      );
+        (a: ArticleModel, b: ArticleModel) => getYear(a.startDate) - getYear(b.startDate)
+      )
       applySnapshot(self.articles, sortedArticles)
     }),
     toggle(article: ArticleModel) {
@@ -80,6 +82,9 @@ const ArticleStore = types
       self.lastYear = lastYear
       self.firstYear = firstYear
       self.currentYear = lastYear
+    },
+    setUserBookmarks(bookmarks: any): void {
+      self.userBookmarks = bookmarks
     }
   }))
   .views(self => ({
