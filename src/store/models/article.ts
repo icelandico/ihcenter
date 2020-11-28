@@ -8,10 +8,11 @@ import {
   BY_YEAR,
   CUMULATIVE
 } from "../constants/filters"
-import { getYear } from "../../utils/formatDate";
-import { UserBookmarks } from "./articleDetails";
+import { getYear } from "../../utils/formatDate"
+import { UserBookmark } from "./articleDetails"
 
 export type ArticleModel = Instance<typeof Article>
+type IUserBookmark = Instance<typeof UserBookmark>
 
 export const Article = types.maybeNull(ArticleModel)
 
@@ -23,7 +24,7 @@ const ArticleStore = types
     filter: types.optional(filterType, CUMULATIVE),
     firstYear: types.maybeNull(types.number),
     lastYear: types.maybeNull(types.number),
-    userBookmarks: types.optional(types.array(UserBookmarks), [])
+    userBookmarks: types.optional(types.array(UserBookmark), [])
   })
   .actions(self => ({
     getAllArticles: flow(function*() {
@@ -43,6 +44,12 @@ const ArticleStore = types
       )
       applySnapshot(self.articles, sortedArticles)
     }),
+    getBookmarsFromStore() {
+      const storeBookmarks = JSON.parse(
+        window.localStorage.getItem("userBookmarks")
+      )
+      applySnapshot(self.userBookmarks, storeBookmarks)
+    },
     toggle(article: ArticleModel) {
       self.chosenArticle = article
     },
@@ -83,8 +90,8 @@ const ArticleStore = types
       self.firstYear = firstYear
       self.currentYear = lastYear
     },
-    setUserBookmarks(bookmarks: any): void {
-      self.userBookmarks = bookmarks
+    setUserBookmarks(newBookmarks: any): void {
+      self.userBookmarks = newBookmarks
     }
   }))
   .views(self => ({

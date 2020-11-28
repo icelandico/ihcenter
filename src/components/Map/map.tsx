@@ -11,13 +11,11 @@ interface Props {
   store?: typeof rootStore
 }
 
-interface State {}
-
-class MapComponent extends React.Component<Props, State> {
+class MapComponent extends React.Component<Props, {}> {
   async componentDidMount() {
     const { store } = this.props
-    console.log('bookmarks are', store.articleStore.userBookmarks)
     await store.articleStore.getAllArticles()
+    store.articleStore.getBookmarsFromStore()
     store.articleStore.setYearsRange()
   }
 

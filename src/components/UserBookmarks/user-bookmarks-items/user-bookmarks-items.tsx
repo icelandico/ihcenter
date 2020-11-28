@@ -16,7 +16,6 @@ const BookmarksItems: React.FC<IProps> = props => {
 
   useEffect(() => {
     setBookmarks(userBookmarks)
-    console.log(userBookmarks)
   })
 
   return (

@@ -60,11 +60,10 @@ const DetailMainInfo: React.FC<IProps> = props => {
   const scrollDiv = useRef(null)
 
   const setBookmarkStatus = (id: number, type: string) => {
-    const bookmarks = window.localStorage.getItem("userBookmarks")
-    const itemsCollection = JSON.parse(bookmarks) || []
+    const bookmarks = props.store.articleStore.userBookmarks
     const newCollection = isInStorage(id)
-      ? itemsCollection.filter((item: IBookmarkItem) => item.id !== id)
-      : itemsCollection.concat({ id, type })
+      ? bookmarks.filter((item: IBookmarkItem) => item.id !== id)
+      : bookmarks.concat({ id, type })
     window.localStorage.setItem("userBookmarks", JSON.stringify(newCollection))
     props.store.articleStore.setUserBookmarks(newCollection)
     setBookmark(isInStorage(id))
