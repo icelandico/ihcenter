@@ -38,9 +38,7 @@ export const ElementLink = styled.a`
   }
 `
 
-export const MainImage = styled.div<{
-  bookmarkActive: boolean
-}>`
+export const MainImage = styled.div<{ bookmarkActive: boolean }>`
   position: relative;
   top: -50px;
   width: 16rem;
@@ -72,9 +70,7 @@ export const BookmarkContainer = styled.div`
   width: 50%;
 `
 
-export const Bookmark = styled.div<{
-  bookmarkActive: boolean
-}>`
+export const Bookmark = styled.div<{ bookmarkActive: boolean }>`
   position: absolute;
   top: 0;
   right: 0;

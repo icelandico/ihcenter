@@ -6,7 +6,7 @@ import {
   TimelineMenuOptions,
   TimelineOption
 } from "./timeline-menu-styles"
-import { BY_YEAR, CUMULATIVE, SHOW_ALL } from "../../../store/constants/filters"
+import { BY_YEAR, CUMULATIVE } from "../../../store/constants/filters"
 import SvgIcon from "../../shared/SvgIcon/svgIcon"
 import { ReactComponent as Cumulative } from "../../../static/icons/timeline_cumulative.svg"
 import { ReactComponent as Single } from "../../../static/icons/timeline_year.svg"

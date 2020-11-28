@@ -32,7 +32,7 @@ const TimelineYearline: React.FC<Props> = props => {
   const { timelineData, timelineWidth } = props
   const { currentYear } = props.store.articleStore
   const [timelineVal, setTimelineVal] = useState(0)
-  const [scrollPos, setScrollPos] = useState(0)
+  // const [scrollPos, setScrollPos] = useState(0)
 
   const containerRef = useRef(null)
   const previousVal = usePrevious(currentYear)
@@ -77,7 +77,7 @@ const TimelineYearline: React.FC<Props> = props => {
     )
 
     return () => containerRef.current.removeEventListener("wheel", handleScroll)
-  }, [scrollPos])
+  }, [])
 
   const getHideRange = (): number[] => {
     const start = currentYear - 4

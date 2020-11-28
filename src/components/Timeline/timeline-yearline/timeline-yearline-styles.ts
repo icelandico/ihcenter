@@ -2,9 +2,7 @@ import styled from "styled-components"
 import { colors } from "../../../styles/colors"
 import { fonts } from "../../../styles/font"
 
-export const TimelineYearlineContainer = styled.div<{
-  translateVal: number
-}>`
+export const TimelineYearlineContainer = styled.div<{ translateVal: number }>`
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -21,9 +19,7 @@ export const TimelineYearlineContainer = styled.div<{
   }
 `
 
-export const TimelineDot = styled.li<{
-  isData: boolean
-}>`
+export const TimelineDot = styled.li<{ isData: boolean }>`
   margin: 0 0.5rem;
   float: left;
   list-style: none;
@@ -40,9 +36,7 @@ export const TimelineDot = styled.li<{
   }
 `
 
-export const TimelineDate = styled.span<{
-  isHidden: boolean
-}>`
+export const TimelineDate = styled.span<{ isHidden: boolean }>`
   position: absolute;
   top: 2.5rem;
   left: 50%;

@@ -1,9 +1,7 @@
 import styled from "styled-components"
 import { colors } from "../../styles/colors"
 
-export const CustomMarker = styled.div<{
-  color?: string
-}>`
+export const CustomMarker = styled.div<{ color?: string }>`
   width: 0;
   height: 0;
   border-left: 5px solid transparent;
@@ -15,9 +13,7 @@ export const CustomMarker = styled.div<{
   transform: translate(-50%, -50%);
 `
 
-export const CustomPopup = styled.div<{
-  color: string
-}>`
+export const CustomPopup = styled.div<{ color: string }>`
   width: 30px;
   height: 30px;
   border-radius: 50% 50% 50% 0;

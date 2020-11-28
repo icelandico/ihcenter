@@ -1,9 +1,7 @@
 import styled from "styled-components"
 import { colors } from "../../styles/colors"
 
-export const EventCardContainer = styled.div<{
-  opened: boolean
-}>`
+export const EventCardContainer = styled.div<{ opened: boolean }>`
   position: absolute;
   top: ${props => (props.opened ? "-15rem" : "0")};
   left: 50%;
@@ -64,12 +62,9 @@ export const EventCardClose = styled.span`
     border-left: 2px solid ${colors.lightBrown};
     transform: rotate(-45deg);
   }
-  
 `
 
-export const EventCardOpener = styled.div<{
-  opened: boolean
-}>`
+export const EventCardOpener = styled.div<{ opened: boolean }>`
   position: absolute;
   left: 50%;
   top: -0.5rem;

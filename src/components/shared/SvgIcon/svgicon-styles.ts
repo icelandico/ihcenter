@@ -1,8 +1,6 @@
 import styled from "styled-components"
 
-export const SvgContainer = styled.div<{
-
-}>`
+export const SvgContainer = styled.div`
   height: auto;
   width: auto;
   display: inline-flex;

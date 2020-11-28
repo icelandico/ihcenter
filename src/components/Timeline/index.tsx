@@ -39,9 +39,10 @@ const Timeline: React.FC<IProps> = props => {
 
   useEffect(() => {
     const isData =
-      yearsData.filter((el: IYearsData) => el.year === currentYear && el.isData).length > 0
+      yearsData.filter((el: IYearsData) => el.year === currentYear && el.isData)
+        .length > 0
     setIsData(isData)
-  })
+  }, [yearsData, currentYear])
 
   useEffect(() => {
     const { firstYear, lastYear } = store.articleStore

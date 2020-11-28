@@ -16,8 +16,6 @@ export interface IProps {
 }
 
 const UserBookmarks: React.FC<IProps> = props => {
-  const { store } = props
-
   return (
     <UserBookmarksContainer>
       <UserBookmarksText>

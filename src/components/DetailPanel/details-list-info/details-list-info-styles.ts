@@ -1,9 +1,7 @@
 import styled from "styled-components"
 import { colors } from "../../../styles/colors"
 
-export const DetailsTop = styled.div<{
-  column: boolean
-}>`
+export const DetailsTop = styled.div<{ column: boolean }>`
   display: flex;
   flex-wrap: wrap;
   flex-direction: ${props => (props.column ? `column` : "row")};
