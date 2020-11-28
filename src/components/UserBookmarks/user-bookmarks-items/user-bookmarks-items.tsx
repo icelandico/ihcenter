@@ -4,6 +4,7 @@ import { inject, observer } from "mobx-react"
 import { rootStore } from "../../../store/RootStore"
 import { RecentItem } from "../index-styles"
 import { UserBookmarksPlaceholder } from "./user-bookmarks-items-styles"
+import { IUserBookmark } from "../../../store/models/articleDetails"
 
 export interface IProps {
   store?: typeof rootStore
@@ -18,7 +19,9 @@ const BookmarksItems: React.FC<IProps> = props => {
   })
 
   const renderBookmarksItems = () => {
-    return bookmarks.map((bookmark: any) => <RecentItem />)
+    return bookmarks.map((bookmark: IUserBookmark) => (
+      <RecentItem key={bookmark.id} />
+    ))
   }
 
   return (

@@ -94,6 +94,7 @@ const TimelineYearline: React.FC<Props> = props => {
             <TimelineDot
               isData={isData}
               onClick={() => props.store.articleStore.setYear(year)}
+              key={year}
             >
               <span />
               {year % 10 === 0 && (
