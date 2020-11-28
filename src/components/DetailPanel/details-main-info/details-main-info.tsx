@@ -49,8 +49,7 @@ const renderImage = (details: ArticleModel): string => {
 }
 
 interface IBookmarkItem {
-  id?: number
-  type?: string
+  id: string
 }
 
 const DetailMainInfo: React.FC<IProps> = props => {
@@ -58,17 +57,17 @@ const DetailMainInfo: React.FC<IProps> = props => {
   const { details } = props
   const scrollDiv = useRef(null)
 
-  const setBookmarkStatus = (id: number, type: string) => {
+  const setBookmarkStatus = (id: string) => {
     const bookmarks = props.store.articleStore.userBookmarks
     const newCollection = isInStorage(id)
       ? bookmarks.filter((item: IBookmarkItem) => item.id !== id)
-      : bookmarks.concat({ id, type })
+      : bookmarks.concat({ id })
     window.localStorage.setItem("userBookmarks", JSON.stringify(newCollection))
     props.store.articleStore.setUserBookmarks(newCollection)
     setBookmark(isInStorage(id))
   }
 
-  const isInStorage = (id: number) => {
+  const isInStorage = (id: string) => {
     const bookmarks = window.localStorage.getItem("userBookmarks")
     const itemsCollection = JSON.parse(bookmarks) || []
     return itemsCollection.some((item: IBookmarkItem) => item.id === id)
@@ -76,7 +75,7 @@ const DetailMainInfo: React.FC<IProps> = props => {
 
   useEffect(() => {
     if (details) {
-      const isViewBookmarked = isInStorage(details.id)
+      const isViewBookmarked = isInStorage(details.identifier)
       setBookmark(isViewBookmarked)
     }
   }, [props])
@@ -92,7 +91,7 @@ const DetailMainInfo: React.FC<IProps> = props => {
         style={{ backgroundImage: `url(${renderImage(details)}` }}
       />
       <BookmarkContainer
-        onClick={() => setBookmarkStatus(details.id, details.type)}
+        onClick={() => setBookmarkStatus(details.identifier)}
       >
         <Bookmark bookmarkActive={isBookmarked}>
           <SvgIcon Icon={BookmarkOff} />

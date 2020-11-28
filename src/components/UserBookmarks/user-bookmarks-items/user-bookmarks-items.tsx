@@ -26,7 +26,7 @@ const BookmarksItems: React.FC<IProps> = props => {
   const getArticlesFromBookmarks = () => {
     const bookmarksId = bookmarks.map(bookmark => Object.values(bookmark)[0])
     const bookmarkedArticles = props.store.articleStore.articles.filter(
-      article => bookmarksId.includes(article.id)
+      article => bookmarksId.includes(article.identifier)
     )
     return bookmarkedArticles
   }
@@ -44,7 +44,7 @@ const BookmarksItems: React.FC<IProps> = props => {
       case "organisation":
         return PoliticsIcon
       default:
-        return EventIcon
+        return ""
     }
   }
 

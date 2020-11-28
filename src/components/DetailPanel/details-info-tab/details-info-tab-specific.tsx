@@ -104,7 +104,7 @@ export class TabGenerator extends React.Component {
         {detailsList &&
           detailsList.map((item: Writing, idx: number) => {
             return (
-              <li key={item.id}>
+              <li key={`${item.id}-writing}`}>
                 <WritingsTitle>{item.title}</WritingsTitle>
                 {item.publicated && (
                   <WritingsYear>({getYear(item.publicated)})</WritingsYear>
@@ -177,7 +177,7 @@ export class TabGenerator extends React.Component {
         tabId="relatedEvents"
         iconUrl={Events}
         content={this.renderTextInfo(details, "relatedEvent")}
-        key={details.id}
+        key={`${details.id}-event`}
       />
     )
   }
@@ -192,7 +192,7 @@ export class TabGenerator extends React.Component {
         border
         column
         content={this.renderGeneralInfo(details)}
-        key={details.id}
+        key={`${details.id}-info`}
       />
     )
   }
@@ -204,7 +204,7 @@ export class TabGenerator extends React.Component {
         iconUrl={Influences}
         extend={3.5}
         content={this.renderTextInfo(details, "relatedPerson")}
-        key={details.id}
+        key={`${details.id}-rel-person`}
       />
     )
   }
@@ -217,7 +217,7 @@ export class TabGenerator extends React.Component {
         fontColor="darkBlue"
         font={fonts.baseSans}
         content={this.renderTextInfo(details, "professions")}
-        key={details.id}
+        key={`${details.id}-profession`}
       />
     )
   }
@@ -233,7 +233,7 @@ export class TabGenerator extends React.Component {
         fontColor="woodBrown"
         font={fonts.baseSans}
         content={this.renderTextInfo(details, "mainideas")}
-        key={details.id}
+        key={`${details.id}-mainidea`}
       />
     )
   }
@@ -250,7 +250,7 @@ export class TabGenerator extends React.Component {
         fontColor="woodBrown"
         font={fonts.baseSans}
         content={this.renderTextInfo(details, "ideas")}
-        key={details.id}
+        key={`${details.id}-idea`}
       />
     )
   }
@@ -263,7 +263,7 @@ export class TabGenerator extends React.Component {
         fontColor="regularRed"
         font={fonts.baseSans}
         content={this.renderTextInfo(details, "relatedOrg")}
-        key={details.id}
+        key={`${details.id}-politics`}
       />
     )
   }
@@ -276,7 +276,7 @@ export class TabGenerator extends React.Component {
         iconUrl={Influences}
         font={fonts.base}
         content={this.renderTextInfo(details, "influences")}
-        key={details.id}
+        key={`${details.id}-influence`}
       />
     )
   }
@@ -289,7 +289,7 @@ export class TabGenerator extends React.Component {
         iconUrl={Influenced}
         font={fonts.base}
         content={this.renderTextInfo(details, "influenced")}
-        key={details.id}
+        key={`${details.id}-influenced`}
       />
     )
   }
@@ -303,7 +303,7 @@ export class TabGenerator extends React.Component {
         fontColor="lightBrown"
         italicFont
         content={this.renderWritingsInfo(details, "writings")}
-        key={details.id}
+        key={`${details.id}-literature`}
       />
     )
   }

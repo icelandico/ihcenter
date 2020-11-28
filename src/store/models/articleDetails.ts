@@ -43,8 +43,7 @@ export const NationalityDetails = types.model("NationalityDetails", {
 })
 
 export const UserBookmark = types.model("UserBookmarks", {
-  id: types.identifierNumber,
-  type: types.string
+  id: types.string
 })
 
 export type IUserBookmark = Instance<typeof UserBookmark>

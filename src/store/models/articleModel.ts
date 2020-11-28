@@ -19,7 +19,7 @@ export const ArticleModel = types.model("Article", {
   image: types.maybeNull(ImageDetails),
   nationality: types.maybeNull(NationalityDetails),
   type: types.string,
-  ident: types.identifier,
+  identifier: types.identifier,
   startPlace: types.maybeNull(types.string),
   EndPlace: types.maybeNull(types.string),
   precursor: types.optional(types.array(IdeaDetails), []),

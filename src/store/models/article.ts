@@ -36,7 +36,7 @@ const ArticleStore = types
       )
       const articlesWithIds = articles.map((el: ArticleModel) => ({
         ...el,
-        ident: `${el.type}-${el.id}`
+        identifier: `${el.type}-${el.id}`
       }))
       const sortedArticles = articlesWithIds.sort(
         (a: ArticleModel, b: ArticleModel) => getYear(a.startDate) - getYear(b.startDate)
@@ -44,9 +44,8 @@ const ArticleStore = types
       applySnapshot(self.articles, sortedArticles)
     }),
     getBookmarsFromStore() {
-      const storeBookmarks = JSON.parse(
-        window.localStorage.getItem("userBookmarks")
-      )
+      const storeBookmarks =
+        JSON.parse(window.localStorage.getItem("userBookmarks")) || []
       applySnapshot(self.userBookmarks, storeBookmarks)
     },
     toggle(article: ArticleModel) {
