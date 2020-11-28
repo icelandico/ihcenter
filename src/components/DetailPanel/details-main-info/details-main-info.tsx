@@ -96,7 +96,7 @@ const DetailMainInfo: React.FC<IProps> = props => {
         onClick={() => setBookmarkStatus(details.id, details.type)}
       >
         <Bookmark bookmarkActive={isBookmarked}>
-          <SvgIcon Icon={BookmarkOff} />
+          <SvgIcon Icon={BookmarkOff} data-id={false}/>
         </Bookmark>
       </BookmarkContainer>
       <DetailsTopContainer>
