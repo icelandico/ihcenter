@@ -1,7 +1,6 @@
 import * as React from "react"
 import { observer, inject } from "mobx-react"
-import {useEffect, useRef, useState} from "react"
-import { type } from "os"
+import { useEffect, useRef, useState} from "react"
 import { rootStore } from "../../../store/RootStore"
 import {
   ElementTitle,

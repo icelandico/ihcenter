@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { inject, observer } from "mobx-react"
 import { rootStore } from "../../../store/RootStore"
 import { RecentItem } from "../index-styles"
+import { UserBookmarksPlaceholder } from "./user-bookmarks-items-styles"
 
 export interface IProps {
   store?: typeof rootStore
@@ -10,19 +11,25 @@ export interface IProps {
 
 const BookmarksItems: React.FC<IProps> = props => {
   const userBookmarks = props.store.articleStore.userBookmarks
-  const initialItems = () =>
-    JSON.parse(window.localStorage.getItem("userBookmarks"))
-  const [bookmarks, setBookmarks] = useState(initialItems)
+  const [bookmarks, setBookmarks] = useState([])
 
   useEffect(() => {
     setBookmarks(userBookmarks)
   })
 
+  const renderBookmarksItems = () => {
+    return bookmarks.map((bookmark: any) => <RecentItem />)
+  }
+
   return (
     <>
-      {bookmarks.map((bookmark: any) => {
-        return <RecentItem />
-      })}
+      {bookmarks.length ? (
+        renderBookmarksItems()
+      ) : (
+        <UserBookmarksPlaceholder>
+          Place for your bookmarks
+        </UserBookmarksPlaceholder>
+      )}
     </>
   )
 }

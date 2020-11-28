@@ -14,8 +14,8 @@ interface Props {
 class MapComponent extends React.Component<Props, {}> {
   async componentDidMount() {
     const { store } = this.props
-    await store.articleStore.getAllArticles()
     store.articleStore.getBookmarsFromStore()
+    await store.articleStore.getAllArticles()
     store.articleStore.setYearsRange()
   }
 

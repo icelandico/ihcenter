@@ -38,10 +38,10 @@ export const UserBookmarksItems = styled.div`
   position: absolute;
   display: flex;
   flex-direction: row-reverse;
+  align-items: center;
   width: 65%;
-  border: 1px solid darkgoldenrod;
   height: 3rem;
-  top: 100%;
+  top: 75%;
   right: 0;
 `
 
