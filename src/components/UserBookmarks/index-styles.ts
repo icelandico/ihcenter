@@ -37,6 +37,7 @@ export const UserRecentlyViewedItems = styled.div`
 export const UserBookmarksItems = styled.div`
   position: absolute;
   display: flex;
+  flex-direction: row-reverse;
   width: 65%;
   border: 1px solid darkgoldenrod;
   height: 3rem;
