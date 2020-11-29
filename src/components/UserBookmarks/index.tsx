@@ -10,6 +10,7 @@ import {
   UserBookmarksItems
 } from "./index-styles"
 import BookmarksItems from "./user-bookmarks-items/bookmarks-items"
+import RecentlyViewed from "./recently-viewed/recently-viewed"
 
 export interface IProps {
   store?: typeof rootStore
@@ -23,9 +24,7 @@ const UserBookmarks: React.FC<IProps> = props => {
         <OptionsText>BOOKMARKS:</OptionsText>
       </UserBookmarksText>
       <UserRecentlyViewedItems>
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(el => {
-          return <UserStorageItem key={el} />
-        })}
+        <RecentlyViewed />
       </UserRecentlyViewedItems>
       <UserBookmarksItems>
         <BookmarksItems />

@@ -54,6 +54,9 @@ const ArticleStore = types
         JSON.parse(window.localStorage.getItem("recentlyViewied")) || []
       applySnapshot(self.recentlyViewed, recentlyViewed)
     },
+    insertInStorage() {
+
+    },
     toggle(article: ArticleModel) {
       self.chosenArticle = article
     },
