@@ -50,12 +50,19 @@ const ArticleStore = types
       applySnapshot(self.userBookmarks, storeBookmarks)
     },
     getRecentlyViewedFromStore() {
-      const recentlyViewed =
-        JSON.parse(window.localStorage.getItem("recentlyViewied")) || []
-      applySnapshot(self.recentlyViewed, recentlyViewed)
+      const recentlyViewedItems =
+        JSON.parse(window.localStorage.getItem("recentlyViewedItems")) || []
+      applySnapshot(self.recentlyViewed, recentlyViewedItems)
     },
-    insertInStorage() {
-
+    insertInStorage(item: string) {
+      const storageItems =
+        JSON.parse(window.localStorage.getItem("recentlyViewedItems")) || []
+      const newItems = storageItems.concat({ id: item })
+      window.localStorage.setItem(
+        "recentlyViewedItems",
+        JSON.stringify(newItems)
+      )
+      self.recentlyViewed = newItems
     },
     toggle(article: ArticleModel) {
       self.chosenArticle = article
