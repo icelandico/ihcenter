@@ -15,6 +15,7 @@ class MapComponent extends React.Component<Props, {}> {
   async componentDidMount() {
     const { store } = this.props
     store.articleStore.getBookmarsFromStore()
+    store.articleStore.getRecentlyViewedFromStore()
     await store.articleStore.getAllArticles()
     store.articleStore.setYearsRange()
   }

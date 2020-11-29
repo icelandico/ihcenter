@@ -23,7 +23,8 @@ const ArticleStore = types
     filter: types.optional(filterType, CUMULATIVE),
     firstYear: types.maybeNull(types.number),
     lastYear: types.maybeNull(types.number),
-    userBookmarks: types.optional(types.array(UserBookmark), [])
+    userBookmarks: types.optional(types.array(UserBookmark), []),
+    recentlyViewed: types.optional(types.array(UserBookmark), [])
   })
   .actions(self => ({
     getAllArticles: flow(function*() {
@@ -47,6 +48,11 @@ const ArticleStore = types
       const storeBookmarks =
         JSON.parse(window.localStorage.getItem("userBookmarks")) || []
       applySnapshot(self.userBookmarks, storeBookmarks)
+    },
+    getRecentlyViewedFromStore() {
+      const recentlyViewed =
+        JSON.parse(window.localStorage.getItem("recentlyViewied")) || []
+      applySnapshot(self.recentlyViewed, recentlyViewed)
     },
     toggle(article: ArticleModel) {
       self.chosenArticle = article
