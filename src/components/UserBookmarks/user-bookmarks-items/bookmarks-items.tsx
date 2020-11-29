@@ -47,6 +47,7 @@ const BookmarksItems: React.FC<IProps> = props => {
         key={bookmark.id}
         style={{ backgroundImage: `url(${renderImage(bookmark)}` }}
         onClick={() => rootStore.articleStore.toggle(bookmark)}
+        title={bookmark.name}
       />
     ))
   }

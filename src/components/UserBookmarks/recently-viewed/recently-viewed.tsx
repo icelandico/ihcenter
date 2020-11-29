@@ -49,6 +49,7 @@ const RecentlyViewed: React.FC<IProps> = props => {
         key={`${bookmark.identifier}-${idx}`}
         style={{ backgroundImage: `url(${renderImage(bookmark)}` }}
         onClick={() => rootStore.articleStore.toggle(bookmark)}
+        title={bookmark.name}
       />
     ))
   }
