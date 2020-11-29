@@ -14,19 +14,20 @@ export const ScrollIndicator: React.FC<Props> = props => {
   const [isScrollNeeded, setScrollValue] = useState(true)
   const [isScrollable, setScrollable] = useState(false)
 
-  useEffect(() => {
-    const handleScroll = (): void => {
-      const scrollDiv = container
-      const result =
-        scrollDiv.scrollTop < scrollDiv.scrollHeight - scrollDiv.clientHeight ||
-        scrollDiv.scrollTop === 0
+  const handleScroll = (): void => {
+    const scrollDiv = container
+    const result =
+      scrollDiv.scrollTop < scrollDiv.scrollHeight - scrollDiv.clientHeight ||
+      scrollDiv.scrollTop === 0
 
-      setScrollValue(result)
-    }
+    setScrollValue(result)
+  }
+
+  useEffect(() => {
     setScrollable(checkIfScrollable(container))
     container.addEventListener("scroll", handleScroll)
     return () => container.removeEventListener("scroll", handleScroll)
-  }, [container])
+  }, [container, handleScroll])
 
   return isScrollable && isScrollNeeded && <Indicator options={props.options} />
 }
