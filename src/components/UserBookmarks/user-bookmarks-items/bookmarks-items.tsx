@@ -16,7 +16,7 @@ export interface IProps {
 
 const BookmarksItems: React.FC<IProps> = props => {
   const { userBookmarks } = props.store.articleStore
-  const areArticlesSet = props.store.articleStore.articles.length
+  const areArticlesSet = props.store.articleStore.articles.length > 0
   const [bookmarks, setBookmarks] = useState([])
 
   useEffect(() => {
@@ -51,8 +51,8 @@ const BookmarksItems: React.FC<IProps> = props => {
   const renderBookmarksItems = () => {
     const articles = getArticlesFromBookmarks()
     if (!areArticlesSet) {
-      return bookmarks.map((bookmark: IUserBookmark) => (
-        <UserStorageItem key={bookmark.id} />
+      return bookmarks.map((bookmark: IUserBookmark, idx) => (
+        <UserStorageItem key={`${bookmark.id}-${idx}`} />
       ))
     }
     return articles.map((bookmark: ArticleModel) => (

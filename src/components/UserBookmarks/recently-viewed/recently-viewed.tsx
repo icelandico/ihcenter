@@ -15,19 +15,21 @@ export interface IProps {
 
 const RecentlyViewed: React.FC<IProps> = props => {
   const { recentlyViewed } = props.store.articleStore
-  const areArticlesSet = props.store.articleStore.articles.length
+  const areArticlesSet = props.store.articleStore.articles.length > 0
   const [recentItems, setRecentItems] = useState([])
 
   useEffect(() => {
     setRecentItems(recentlyViewed)
   }, [areArticlesSet])
 
-  const getArticlesFromBookmarks = () => {
+  const getArticlesFromRecentlyViewed = () => {
     const recentItemsId = recentItems.map(
       recentItem => Object.values(recentItem)[0]
     )
-    const recentViewedItems = props.store.articleStore.articles.filter(
-      article => recentItemsId.includes(article.identifier)
+    const recentViewedItems = recentItemsId.map(recentItem =>
+      props.store.articleStore.articles.find(
+        article => article.identifier === recentItem
+      )
     )
     return recentViewedItems
   }
@@ -50,16 +52,17 @@ const RecentlyViewed: React.FC<IProps> = props => {
   }
 
   const renderRecentViewedItems = () => {
-    const articles = getArticlesFromBookmarks()
+    const articles = getArticlesFromRecentlyViewed()
     if (!areArticlesSet) {
-      return recentItems.map((bookmark: IUserBookmark) => (
-        <UserStorageItem key={bookmark.id} />
+      return recentItems.map((bookmark: IUserBookmark, idx) => (
+        <UserStorageItem key={`${bookmark.id}-${idx}`} data-not-active="true" />
       ))
     }
-    return articles.map((bookmark: ArticleModel) => (
+    return articles.map((bookmark: ArticleModel, idx) => (
       <UserStorageItem
+        data-is-active="true"
         isActive
-        key={bookmark.id}
+        key={`${bookmark.identifier}-${idx}`}
         style={{ backgroundImage: `url(${renderImage(bookmark)}` }}
         onClick={() => rootStore.articleStore.toggle(bookmark)}
       />
