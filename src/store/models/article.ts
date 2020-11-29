@@ -65,6 +65,7 @@ const ArticleStore = types
       self.recentlyViewed = newItems
     },
     toggle(article: ArticleModel) {
+      this.insertInStorage(article.identifier)
       self.chosenArticle = article
     },
     incrementYear() {

@@ -9,6 +9,7 @@ import { renderImage } from "../../../utils/renderImage"
 
 export interface IProps {
   store?: typeof rootStore
+  itemsThreshold: number
 }
 
 const RecentlyViewed: React.FC<IProps> = props => {
@@ -29,7 +30,9 @@ const RecentlyViewed: React.FC<IProps> = props => {
         article => article.identifier === recentItem
       )
     )
-    return recentViewedItems
+    return recentViewedItems.length > props.itemsThreshold
+      ? recentViewedItems.slice(recentViewedItems.length - props.itemsThreshold)
+      : recentViewedItems
   }
 
   const renderRecentViewedItems = () => {

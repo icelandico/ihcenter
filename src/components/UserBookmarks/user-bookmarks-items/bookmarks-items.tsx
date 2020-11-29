@@ -10,6 +10,7 @@ import { renderImage } from "../../../utils/renderImage"
 
 export interface IProps {
   store?: typeof rootStore
+  itemsThreshold: number
 }
 
 const BookmarksItems: React.FC<IProps> = props => {
@@ -26,7 +27,11 @@ const BookmarksItems: React.FC<IProps> = props => {
     const bookmarkedArticles = props.store.articleStore.articles.filter(
       article => bookmarksId.includes(article.identifier)
     )
-    return bookmarkedArticles
+    return bookmarkedArticles.length > props.itemsThreshold
+      ? bookmarkedArticles.slice(
+          bookmarkedArticles.length - props.itemsThreshold
+        )
+      : bookmarkedArticles
   }
 
   const renderBookmarksItems = () => {
