@@ -49,10 +49,6 @@
   overflow: hidden;
 }
 
-.navbar {
-  outline: 1px solid tomato;
-}
-
 .main-content-container {
   padding: 1rem 1rem 1rem 0;
   display: flex;

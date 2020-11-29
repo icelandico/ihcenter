@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { NavLink } from "react-router-dom"
 import { colors } from "../../styles/colors"
 import { ReactComponent as SearchIcon } from "../../static/icons/SEARCH.svg"
+import AppLogo from "../../static/icons/LOGO_ALT.svg"
 
 export const SearchIconSvg = styled(SearchIcon)`
   position: absolute;
@@ -26,9 +27,10 @@ export const NavbarBottom = styled.div`
   justify-content: space-between;
   padding-left: 5%;
   padding-right: 1rem;
+  position: relative;
 
   .navbar-search {
-    width: 26%;
+    width: 30rem;
     position: relative;
   }
 
@@ -58,7 +60,6 @@ export const NavigationLinks = styled.ul`
 export const NavigationItem = styled.li`
   margin-left: 1rem;
   width: 60px;
-  /* outline: 1px solid olivedrab; */
   text-align: center;
   max-height: 70px;
 
@@ -124,4 +125,16 @@ export const PageTitle = styled.h1`
   position: absolute;
   padding: 0 1rem;
   margin-left: -1rem;
+`
+
+export const NavbarLogo = styled.div`
+  background-image: url(${AppLogo});
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: ${colors.darkGreen};
+  width: 30rem;
+  height: 50%;
+  position: absolute;
+  top: -20%;
+  outline: 1rem solid ${colors.darkGreen};
 `
