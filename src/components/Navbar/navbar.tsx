@@ -10,7 +10,7 @@ import {
   SearchInput,
   PageTitle,
   NaviLink,
-  SearchIconSvg, NavbarLogo
+  SearchIconSvg, NavbarLogo, NavbarSearch, NavbarElement
 } from "./navbar-styles"
 import { menuItems } from "../../routing/routeConfig"
 
@@ -34,15 +34,14 @@ const Navbar: React.FC = () => {
     <NavbarContainer className="main-navbar">
       <NavbarTop />
       <NavbarBottom>
-          <NavbarLogo />
-          <div className="nav-item navbar-search">
-            <SearchIconSvg />
-            <SearchInput type="text" placeholder="Search" />
-          </div>
-        <div className="nav-item navigation-links">
-          {/* <PageTitle>view</PageTitle> */}
+        <NavbarLogo />
+        <NavbarSearch>
+          <SearchIconSvg />
+          <SearchInput type="text" placeholder="Search" />
+        </NavbarSearch>
+        <NavbarElement>
           <NavigationLinks>{generateLinks()}</NavigationLinks>
-        </div>
+        </NavbarElement>
       </NavbarBottom>
     </NavbarContainer>
   )

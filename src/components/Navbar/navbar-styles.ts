@@ -20,6 +20,19 @@ export const NavbarTop = styled.div`
   height: 50%;
 `
 
+export const NavbarElement = styled.div`
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-top: 0.5rem;
+`
+
+export const NavbarSearch = styled(NavbarElement)`
+  width: 30rem;
+  position: relative;
+  margin-top: 1rem;
+`
+
 export const NavbarBottom = styled.div`
   height: 50%;
   border-top: 1px solid ${colors.green};
@@ -28,18 +41,6 @@ export const NavbarBottom = styled.div`
   padding-left: 5%;
   padding-right: 1rem;
   position: relative;
-
-  .navbar-search {
-    width: 30rem;
-    position: relative;
-  }
-
-  .nav-item {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    margin-top: 0.5rem;
-  }
 `
 
 export const NavbarContainer = styled.nav`
@@ -53,7 +54,7 @@ export const NavigationLinks = styled.ul`
   list-style: none;
 
   & a {
-    color: #fff;
+    color: ${colors.white};
   }
 `
 
