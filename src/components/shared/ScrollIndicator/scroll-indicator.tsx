@@ -23,7 +23,6 @@ export const ScrollIndicator: React.FC<Props> = props => {
 
       setScrollValue(result)
     }
-
     setScrollable(checkIfScrollable(container))
     container.addEventListener("scroll", handleScroll)
     return () => container.removeEventListener("scroll", handleScroll)

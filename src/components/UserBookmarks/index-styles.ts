@@ -63,7 +63,7 @@ const bookmarkLoader = keyframes`
   }
 `
 
-export const RecentItem = styled.div<{ isActive?: boolean }>`
+export const UserStorageItem = styled.div<{ isActive?: boolean }>`
   height: 2.5rem;
   width: 2.5rem;
   background-color: ${colors.green};

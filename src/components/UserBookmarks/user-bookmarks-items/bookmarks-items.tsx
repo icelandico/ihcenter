@@ -2,8 +2,8 @@ import * as React from "react"
 import { useEffect, useState } from "react"
 import { inject, observer } from "mobx-react"
 import { rootStore } from "../../../store/RootStore"
-import { RecentItem } from "../index-styles"
-import { UserBookmarksPlaceholder } from "./user-bookmarks-items-styles"
+import { UserStorageItem } from "../index-styles"
+import { UserBookmarksPlaceholder } from "./bookmarks-items-styles"
 import { ArticleModel } from "../../../store/models/article"
 import { apiUrls } from "../../../store/api/api"
 import EventIcon from "../../../static/icons/events.svg"
@@ -52,11 +52,11 @@ const BookmarksItems: React.FC<IProps> = props => {
     const articles = getArticlesFromBookmarks()
     if (!areArticlesSet) {
       return bookmarks.map((bookmark: IUserBookmark) => (
-        <RecentItem key={bookmark.id} />
+        <UserStorageItem key={bookmark.id} />
       ))
     }
     return articles.map((bookmark: ArticleModel) => (
-      <RecentItem
+      <UserStorageItem
         isActive
         key={bookmark.id}
         style={{ backgroundImage: `url(${renderImage(bookmark)}` }}
