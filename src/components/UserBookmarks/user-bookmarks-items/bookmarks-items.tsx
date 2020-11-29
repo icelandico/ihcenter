@@ -5,10 +5,8 @@ import { rootStore } from "../../../store/RootStore"
 import { UserStorageItem } from "../index-styles"
 import { UserBookmarksPlaceholder } from "./bookmarks-items-styles"
 import { ArticleModel } from "../../../store/models/article"
-import { apiUrls } from "../../../store/api/api"
-import EventIcon from "../../../static/icons/events.svg"
-import PoliticsIcon from "../../../static/icons/politics.svg"
-import { IUserBookmark } from "../../../store/models/articleDetails";
+import { IUserBookmark } from "../../../store/models/articleDetails"
+import { renderImage } from "../../../utils/renderImage"
 
 export interface IProps {
   store?: typeof rootStore
@@ -29,23 +27,6 @@ const BookmarksItems: React.FC<IProps> = props => {
       article => bookmarksId.includes(article.identifier)
     )
     return bookmarkedArticles
-  }
-
-  const renderImage = (details: ArticleModel): string => {
-    if (details && details.image) {
-      return `${apiUrls.baseUrl}${details.image.url}`
-    }
-    const { type } = details
-    switch (type) {
-      case "person":
-        return `${apiUrls.baseUrl}${details.image.url}`
-      case "event":
-        return EventIcon
-      case "organisation":
-        return PoliticsIcon
-      default:
-        return ""
-    }
   }
 
   const renderBookmarksItems = () => {
