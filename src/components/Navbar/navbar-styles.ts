@@ -114,20 +114,6 @@ export const SearchInput = styled.input`
   }
 `
 
-export const PageTitle = styled.h1`
-  display: inline-block;
-  margin-top: -10px;
-  height: 20px;
-  line-height: 20px;
-  font-size: 32px;
-  background-color: ${colors.darkGreen};
-  font-weight: 100;
-  text-transform: uppercase;
-  position: absolute;
-  padding: 0 1rem;
-  margin-left: -1rem;
-`
-
 export const NavbarLogo = styled.div`
   background-image: url(${AppLogo});
   background-repeat: no-repeat;

@@ -8,9 +8,11 @@ import {
   NavigationItem,
   NavigationIcon,
   SearchInput,
-  PageTitle,
   NaviLink,
-  SearchIconSvg, NavbarLogo, NavbarSearch, NavbarElement
+  SearchIconSvg,
+  NavbarLogo,
+  NavbarSearch,
+  NavbarElement
 } from "./navbar-styles"
 import { menuItems } from "../../routing/routeConfig"
 
