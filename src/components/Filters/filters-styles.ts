@@ -5,4 +5,5 @@ export const FiltersContainer = styled.div`
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `

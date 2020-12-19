@@ -18,6 +18,9 @@ const App: React.FC = () => {
         <div className="left-gradient" />
         <div className="main-content-container">
           <div className="content-menu">
+            <span className="content__menu-aside-text content__menu-aside-filters">
+              Additional Filters
+            </span>
             <Filters />
           </div>
           <div className="content-box">

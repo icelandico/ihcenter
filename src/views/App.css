@@ -59,7 +59,24 @@
 
 .content-menu {
   width: 5.5%;
-  outline: 1px solid rgb(223, 20, 196);
+  border-left: 1px solid #007260;
+  position: relative;
+}
+
+.content__menu-aside-text {
+  position: absolute;
+  width: 100%;
+}
+
+.content__menu-aside-filters {
+  display: inline-block;
+  top: 15rem;
+  left: -9px;
+  white-space: nowrap;
+  transform-origin: 0 0;
+  transform: rotate(270deg);
+  font-size: 15px;
+  text-transform: uppercase;
 }
 
 .content-box {
