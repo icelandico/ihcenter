@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar/navbar"
 import DetailPanel from "../components/DetailPanel"
 import Timeline from "../components/Timeline"
 import UserBookmarks from "../components/UserBookmarks"
+import { FiltersContainer } from "../components/Filters/filters-styles"
 
 const App: React.FC = () => {
   return (
@@ -16,7 +17,9 @@ const App: React.FC = () => {
         </div>
         <div className="left-gradient" />
         <div className="main-content-container">
-          <div className="content-menu" />
+          <div className="content-menu">
+            <FiltersContainer />
+          </div>
           <div className="content-box">
             <Routes />
           </div>
