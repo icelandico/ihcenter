@@ -5,7 +5,7 @@ export const FilterTabContainer = styled.div<{
   isActive: boolean
 }>`
   position: absolute;
-  left: 110%;
+  left: 103%;
   top: 0;
   background-color: ${colors.darkGreen};
   padding: 1rem;
@@ -14,5 +14,4 @@ export const FilterTabContainer = styled.div<{
   width: 150px;
   display: ${props => (props.isActive ? "unset" : "none")};
   font-size: 1.6rem;
-  outline: 1px solid peru;
 `

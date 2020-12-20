@@ -1,10 +1,11 @@
 import styled from "styled-components"
 import { colors } from "../../../styles/colors"
 
-export const FilterBoxContainer = styled.div`
+export const FilterBoxContainer = styled.div<{
+  isActive: boolean
+}>`
   height: 2.5rem;
   width: 2.5rem;
-  //border: 2px solid ${colors.lightBrown};
   cursor: pointer;
   
   &::after {
@@ -14,9 +15,21 @@ export const FilterBoxContainer = styled.div`
     content: "";
     width: 2rem;
     height: 2rem;
-    background: linear-gradient(#fff,#fff), linear-gradient(#fff,#fff);
+    background: linear-gradient(${colors.lightBrown}, ${colors.lightBrown}), linear-gradient(${colors.lightBrown}, ${colors.lightBrown});
     background-position: center;
-    background-size: 40% 2px,2px 40%;
+    background-size: 50% 2px,2px 50%;
     background-repeat: no-repeat;
+  }
+  
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translate(0, -50%);
+    content: "";
+    width: ${props => (props.isActive ? "5rem" : "0")};
+    height: 2px;
+    background-color: ${colors.lightBrown};
+    z-index: 2000;
   }
 `

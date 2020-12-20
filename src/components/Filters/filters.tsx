@@ -23,6 +23,7 @@ const Filters: FunctionComponent = () => {
             <FilterBox
               filterType={filter}
               clickHandler={() => switchFilterTab(filter)}
+              isActive={checkIfActive(filter)}
             />
             <FilterTab filterType={filter} isActive={checkIfActive(filter)} />
           </SingleFilterBox>
