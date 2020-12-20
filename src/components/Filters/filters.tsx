@@ -7,7 +7,7 @@ const Filters: FunctionComponent = () => {
   const filterTypes = ["nationality", "fields", "current"]
 
   const switchFilterTab = (filter: string): void => {
-    setActiveTab(filter)
+    filter === activeTab ? setActiveTab("") : setActiveTab(filter)
   }
 
   return (
