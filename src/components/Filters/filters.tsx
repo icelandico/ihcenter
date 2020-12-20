@@ -3,10 +3,16 @@ import { FiltersContainer } from "./filters-styles"
 import FilterBox from "./filter-box/filter-box"
 
 const Filters: FunctionComponent = () => {
+
+  const filterTypes = [
+    'nationality',
+    'fields',
+    'current'
+  ]
   return (
     <FiltersContainer>
-      {[1, 2, 3].map(filter => {
-        return <FilterBox>Filter</FilterBox>
+      {filterTypes.map(filter => {
+        return <FilterBox filterType={filter}>Filter</FilterBox>
       })}
     </FiltersContainer>
   )
