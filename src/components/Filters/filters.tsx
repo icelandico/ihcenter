@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useState } from "react"
-import { FiltersContainer } from "./filters-styles"
+import { FiltersContainer, SingleFilterBox } from "./filters-styles"
 import FilterBox from "./filter-box/filter-box"
+import FilterTab from "./filterTab/filter-tab"
 
 const Filters: FunctionComponent = () => {
   const [activeTab, setActiveTab] = useState<string>("")
@@ -10,15 +11,21 @@ const Filters: FunctionComponent = () => {
     filter === activeTab ? setActiveTab("") : setActiveTab(filter)
   }
 
+  const checkIfActive = (filter: string): boolean => {
+    return activeTab === filter
+  }
+
   return (
     <FiltersContainer>
       {filterTypes.map(filter => {
         return (
-          <FilterBox
-            filterType={filter}
-            clickHandler={() => switchFilterTab(filter)}
-            activeTab={activeTab}
-          />
+          <SingleFilterBox>
+            <FilterBox
+              filterType={filter}
+              clickHandler={() => switchFilterTab(filter)}
+            />
+            <FilterTab filterType={filter} isActive={checkIfActive(filter)} />
+          </SingleFilterBox>
         )
       })}
     </FiltersContainer>
