@@ -7,10 +7,11 @@ import SvgIcon from "../../shared/SvgIcon/svgIcon"
 
 interface IProps {
   filterType: string
+  clickHandler: Function
 }
 
 const FilterBox: FunctionComponent<IProps> = props => {
-  const { filterType } = props
+  const { filterType, clickHandler } = props
 
   const renderIcon = (type: string) => {
     switch (type) {
@@ -24,7 +25,7 @@ const FilterBox: FunctionComponent<IProps> = props => {
   }
 
   return (
-    <FilterBoxContainer>
+    <FilterBoxContainer onClick={() => clickHandler()}>
       <SvgIcon Icon={renderIcon(filterType)} />
     </FilterBoxContainer>
   )
