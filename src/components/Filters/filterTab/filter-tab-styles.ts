@@ -11,6 +11,9 @@ export const FilterTabContainer = styled.div<{
   padding: 1rem;
   z-index: 2000;
   min-width: 13rem;
+  max-height: 40rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
   display: ${props => (props.isActive ? "unset" : "none")};
   font-size: 1.6rem;
 `

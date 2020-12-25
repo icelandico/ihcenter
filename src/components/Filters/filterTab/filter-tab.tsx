@@ -2,6 +2,7 @@ import React, { FunctionComponent, useState, useEffect, useRef } from "react"
 import { FilterTabContainer } from "./filter-tab-styles"
 import { apiEndpoints } from "../../../store/api/api"
 import FilterCheckbox from "../filter-checkbox/filter-checkbox"
+import {ScrollIndicator} from "../../shared/ScrollIndicator/scroll-indicator";
 
 interface IProps {
   filterType: string
@@ -67,6 +68,7 @@ const FilterTab: FunctionComponent<IProps> = props => {
         filterOptions[filterType].map((filter: IFilter) => (
           <FilterCheckbox filterName={filter.name} />
         ))}
+      {tabRef.current && <ScrollIndicator container={tabRef.current} />}
     </FilterTabContainer>
   )
 }
