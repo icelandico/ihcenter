@@ -1,9 +1,11 @@
 import React, { FunctionComponent, useState } from "react"
 import { FilterTabContainer } from "./filter-tab-styles"
+import { ICheckbox } from "../filter-box/filterCheckboxSet"
 
 interface IProps {
   filterType: string
   isActive: boolean
+  checkboxSet: string[]
 }
 
 const FilterTab: FunctionComponent<IProps> = props => {

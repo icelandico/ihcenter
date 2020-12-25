@@ -2,6 +2,7 @@ import React, { FunctionComponent, useState } from "react"
 import { FiltersContainer, SingleFilterBox } from "./filters-styles"
 import FilterBox from "./filter-box/filter-box"
 import FilterTab from "./filterTab/filter-tab"
+import { getFiltersCheckboxSet } from "./filter-box/filterCheckboxSet"
 
 const Filters: FunctionComponent = () => {
   const [activeTab, setActiveTab] = useState<string>("")
@@ -25,7 +26,7 @@ const Filters: FunctionComponent = () => {
               clickHandler={() => switchFilterTab(filter)}
               isActive={checkIfActive(filter)}
             />
-            <FilterTab filterType={filter} isActive={checkIfActive(filter)} />
+            <FilterTab filterType={filter} isActive={checkIfActive(filter)} checkboxSet={getFiltersCheckboxSet(filter)} />
           </SingleFilterBox>
         )
       })}

@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react"
-import { FilterBoxContainer } from "./filter-box-styles"
+import { FilterCross, FilterContainer, FilterIconBox } from "./filter-box-styles"
 import { ReactComponent as FlagIcon } from "../../../static/flags/Default.svg"
 import { ReactComponent as CurrentIcon } from "../../../static/icons/current.svg"
 import { ReactComponent as FieldsIcon } from "../../../static/icons/fields.svg"
@@ -26,9 +26,12 @@ const FilterBox: FunctionComponent<IProps> = props => {
   }
 
   return (
-    <FilterBoxContainer onClick={() => clickHandler()} isActive={isActive}>
-      <SvgIcon Icon={renderIcon(filterType)} />
-    </FilterBoxContainer>
+    <FilterContainer onClick={() => clickHandler()} isActive={isActive}>
+      <FilterIconBox>
+        <SvgIcon Icon={renderIcon(filterType)} />
+      </FilterIconBox>
+      <FilterCross />
+    </FilterContainer>
   )
 }
 
