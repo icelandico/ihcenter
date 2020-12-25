@@ -19,12 +19,6 @@ export const apiUrls: Urls = {
 }
 
 export const apiEndpoints = {
-  allArticles: `${apiUrls.baseUrl}/markers`
+  getArticles: `${apiUrls.baseUrl}/markers`,
+  getProfessions: `${apiUrls.baseUrl}/professions`
 }
-
-// export const apiEndpoints = [
-//   "https://icelandico.usermd.net/markers"
-  // "http://icelandico.usermd.net/characters",
-  // "http://icelandico.usermd.net/organisations",
-  // "http://icelandico.usermd.net/events"
-// ]
