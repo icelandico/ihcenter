@@ -26,11 +26,11 @@ const FilterBox: FunctionComponent<IProps> = props => {
   }
 
   return (
-    <FilterContainer onClick={() => clickHandler()} isActive={isActive}>
+    <FilterContainer onClick={() => clickHandler()}>
       <FilterIconBox>
         <SvgIcon Icon={renderIcon(filterType)} />
       </FilterIconBox>
-      <FilterCross />
+      <FilterCross isActive={isActive} />
     </FilterContainer>
   )
 }

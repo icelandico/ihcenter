@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useState } from "react"
 import { FilterTabContainer } from "./filter-tab-styles"
-import { ICheckbox } from "../filter-box/filterCheckboxSet"
 
 interface IProps {
   filterType: string
@@ -10,7 +9,6 @@ interface IProps {
 
 const FilterTab: FunctionComponent<IProps> = props => {
   const { filterType, isActive } = props
-  const [tabOpened, setActiveTab] = useState<string>("")
 
   return (
     <FilterTabContainer isActive={isActive}>

@@ -5,7 +5,7 @@ export const FilterTabContainer = styled.div<{
   isActive: boolean
 }>`
   position: absolute;
-  left: 105%;
+  left: 120%;
   top: 0;
   background-color: ${colors.darkGreen};
   padding: 1rem;
