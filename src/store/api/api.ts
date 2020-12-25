@@ -15,12 +15,16 @@ interface Urls {
 // }
 
 export const apiUrls: Urls = {
-  baseUrl: "http://icelandico.usermd.net/"
+  baseUrl: "http://icelandico.usermd.net"
 }
 
-export const apiEndpoints = [
-  "https://icelandico.usermd.net/markers"
+export const apiEndpoints = {
+  allArticles: `${apiUrls.baseUrl}/markers`
+}
+
+// export const apiEndpoints = [
+//   "https://icelandico.usermd.net/markers"
   // "http://icelandico.usermd.net/characters",
   // "http://icelandico.usermd.net/organisations",
   // "http://icelandico.usermd.net/events"
-]
+// ]

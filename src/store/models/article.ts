@@ -28,14 +28,10 @@ const ArticleStore = types
   })
   .actions(self => ({
     getAllArticles: flow(function*() {
-      const response = yield Promise.all(
-        apiEndpoints.map(url => fetch(url).then(response => response.json()))
+      const response = yield fetch(apiEndpoints.allArticles).then(response =>
+        response.json()
       )
-      const articles = response.reduce(
-        (prevSet: [], nextSet: []) => prevSet.concat(nextSet),
-        []
-      )
-      const articlesWithIds = articles.map((el: ArticleModel) => ({
+      const articlesWithIds = response.map((el: ArticleModel) => ({
         ...el,
         identifier: `${el.type}-${el.id}`
       }))
