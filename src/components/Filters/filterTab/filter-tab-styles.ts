@@ -10,8 +10,7 @@ export const FilterTabContainer = styled.div<{
   background-color: ${colors.darkGreen};
   padding: 1rem;
   z-index: 2000;
-  height: 400px;
-  width: 150px;
+  min-width: 13rem;
   display: ${props => (props.isActive ? "unset" : "none")};
   font-size: 1.6rem;
 `

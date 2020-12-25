@@ -12,7 +12,7 @@ export const CheckboxLabel = styled.label`
   position: relative;
   display: inline-block;
   cursor: pointer;
-  margin: 0.6rem 1rem;
+  margin: 0.5rem 0 0 2.5rem;
 `
 
 const rotate = keyframes`
@@ -27,21 +27,19 @@ const rotate = keyframes`
 `
 
 export const CheckboxIndicator = styled.div`
-  width: 1.2em;
-  height: 1.2em;
-  background: #aa44cc;
+  width: 1.5rem;
+  height: 1.5rem;
   position: absolute;
-  top: 0em;
-  left: -1.6em;
-  border: 1px solid #757575;
-  border-radius: 0.2em;
+  top: 0;
+  left: -2.5rem;
+  border: 1px solid ${colors.lightBrown};
 
   ${CheckboxInput}:not(:disabled):checked & {
     background: #d1d1d1;
   }
 
   ${CheckboxLabel}:hover & {
-    background: #ccc;
+    border-width: 2px;
   }
 
   &::after {
@@ -52,12 +50,12 @@ export const CheckboxIndicator = styled.div`
 
   ${CheckboxInput}:checked + &::after {
     display: block;
-    top: 0.1em;
-    left: 0.35em;
-    width: 35%;
-    height: 70%;
-    border: solid #263238;
-    border-width: 0 0.2em 0.2em 0;
+    top: 0;
+    left: 0.35rem;
+    width: 30%;
+    height: 55%;
+    border: solid ${colors.lightGreen};
+    border-width: 0 0.2rem 0.2rem 0;
     animation-name: ${rotate};
     animation-duration: 0.3s;
     animation-fill-mode: forwards;
