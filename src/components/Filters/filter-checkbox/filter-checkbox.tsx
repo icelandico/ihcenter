@@ -17,13 +17,12 @@ const FilterCheckbox: FunctionComponent<IProps> = props => {
     <CheckboxLabel>
       {filterName}
       <CheckboxInput
-        id={id}
+        id={`profession-${filterName.toLowerCase()}`}
         type="checkbox"
-        name={name}
-        value={value}
-        disabled={disabled}
+        name={filterName.toLowerCase()}
+        value={filterName.toLowerCase()}
         checked={checked}
-        onChange={onChange}
+        onChange={() => setChecked(!checked)}
       />
       <CheckboxIndicator />
     </CheckboxLabel>

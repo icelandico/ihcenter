@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useState, useEffect } from "react"
 import { FilterTabContainer } from "./filter-tab-styles"
 import { apiEndpoints } from "../../../store/api/api"
+import FilterCheckbox from "../filter-checkbox/filter-checkbox"
 
 interface IProps {
   filterType: string
@@ -34,12 +35,6 @@ const FilterTab: FunctionComponent<IProps> = props => {
       name: filter.name,
       id: filter.id
     }))
-    console.log(
-      results.map((filter: IFilter) => ({
-        name: filter.name,
-        id: filter.id
-      }))
-    )
   }
 
   useEffect(() => {
@@ -48,12 +43,8 @@ const FilterTab: FunctionComponent<IProps> = props => {
 
   return (
     <FilterTabContainer isActive={isActive}>
-      Filter type:
-      {filterType}
       {filterOptions[filterType] &&
-        filterOptions[filterType].map((filter: any) => {
-          return <p>{filter.name}</p>
-        })}
+        filterOptions[filterType].map((filter: any) => <FilterCheckbox filterName={filter.name} /> )}
     </FilterTabContainer>
   )
 }
