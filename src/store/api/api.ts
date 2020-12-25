@@ -21,5 +21,6 @@ export const apiUrls: Urls = {
 export const apiEndpoints = {
   getArticles: `${apiUrls.baseUrl}/markers`,
   getProfessions: `${apiUrls.baseUrl}/professions?_sort=name:ASC`,
-  getMainIdeas: `${apiUrls.baseUrl}/mainIdeas?_sort=name:ASC`
+  getMainIdeas: `${apiUrls.baseUrl}/mainIdeas?_sort=name:ASC`,
+  getNationalities: `${apiUrls.baseUrl}/mainIdeas?_sort=name:ASC`
 }

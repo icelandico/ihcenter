@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState, useEffect, useRef } from "react"
 import { FilterTabContainer } from "./filter-tab-styles"
 import { apiEndpoints } from "../../../store/api/api"
 import FilterCheckbox from "../filter-checkbox/filter-checkbox"
-import {ScrollIndicator} from "../../shared/ScrollIndicator/scroll-indicator";
+import { ScrollIndicator } from "../../shared/ScrollIndicator/scroll-indicator"
 
 interface IProps {
   filterType: string
@@ -28,17 +28,18 @@ const FilterTab: FunctionComponent<IProps> = props => {
       case "fields":
         return apiEndpoints.getProfessions
       default:
-        return apiEndpoints.getProfessions
+        return apiEndpoints.getNationalities
     }
   }
 
   const fetchFilters = async (type: string) => {
     const fetchApi = await fetch(chooseFiltersUrl(type))
     const results = await fetchApi.json()
-    filterOptions[type] = await results.map((filter: IFilter) => ({
+    const typeOptions = await results.map((filter: IFilter) => ({
       name: filter.name,
       id: filter.id
     }))
+    setFilterOptions({ ...filterOptions, [type]: typeOptions })
   }
 
   const checkIfActive = (filter: string): boolean => {
@@ -46,8 +47,8 @@ const FilterTab: FunctionComponent<IProps> = props => {
   }
 
   useEffect(() => {
-    if (!filterOptions[filterType]) fetchFilters(filterType)
-  }, [])
+    if (checkIfActive(filterType)) fetchFilters(filterType)
+  }, [activeTab])
 
   // useEffect(() => {
   //   const handleOutsideClick = (ev: Event) => {
