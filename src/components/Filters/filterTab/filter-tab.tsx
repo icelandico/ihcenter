@@ -23,7 +23,7 @@ const FilterTab: FunctionComponent<IProps> = props => {
   const chooseFiltersUrl = (type: string) => {
     switch (type) {
       case "current":
-        return apiEndpoints.getProfessions
+        return apiEndpoints.getMainIdeas
       case "fields":
         return apiEndpoints.getProfessions
       default:
