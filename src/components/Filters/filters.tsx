@@ -9,7 +9,6 @@ const Filters: FunctionComponent = () => {
   const filterTypes = ["nationality", "fields", "current"]
 
   const switchFilterTab = (filter: string, outsideClick = false): void => {
-    console.log('switch tab')
     if (outsideClick) {
       setActiveTab("")
       return
