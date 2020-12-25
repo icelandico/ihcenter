@@ -1,21 +1,24 @@
-import React, { FunctionComponent, useState, useEffect } from "react"
+import React, { FunctionComponent, useState, useEffect, useRef } from "react"
 import { FilterTabContainer } from "./filter-tab-styles"
 import { apiEndpoints } from "../../../store/api/api"
 import FilterCheckbox from "../filter-checkbox/filter-checkbox"
 
 interface IProps {
   filterType: string
-  isActive: boolean
+  activeTab: string
   checkboxSet: string[]
+  outsideClick: Function
 }
 
 interface IFilter {
-  [key: string]: string
+  name: string
+  id: number
 }
 
 const FilterTab: FunctionComponent<IProps> = props => {
-  const { filterType, isActive } = props
+  const { filterType, activeTab } = props
   const [filterOptions, setFilterOptions] = useState<any>({})
+  const tabRef = useRef(null)
 
   const chooseFiltersUrl = (type: string) => {
     switch (type) {
@@ -37,14 +40,33 @@ const FilterTab: FunctionComponent<IProps> = props => {
     }))
   }
 
+  const checkIfActive = (filter: string): boolean => {
+    return activeTab === filter
+  }
+
   useEffect(() => {
     if (!filterOptions[filterType]) fetchFilters(filterType)
   }, [])
 
+  // useEffect(() => {
+  //   const handleOutsideClick = (ev: Event) => {
+  //     if (tabRef.current && !tabRef.current.contains(ev.target)) {
+  //       props.outsideClick()
+  //     }
+  //   }
+  //
+  //   if (checkIfActive(filterType)) document.addEventListener("mousedown", handleOutsideClick)
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleOutsideClick)
+  //   }
+  // }, [tabRef, activeTab])
+
   return (
-    <FilterTabContainer isActive={isActive}>
+    <FilterTabContainer isActive={checkIfActive(filterType)} ref={tabRef}>
       {filterOptions[filterType] &&
-        filterOptions[filterType].map((filter: any) => <FilterCheckbox filterName={filter.name} /> )}
+        filterOptions[filterType].map((filter: IFilter) => (
+          <FilterCheckbox filterName={filter.name} />
+        ))}
     </FilterTabContainer>
   )
 }

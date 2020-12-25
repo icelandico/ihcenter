@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from "react"
+import React, { FunctionComponent, useState, useRef } from "react"
 import { FiltersContainer, SingleFilterBox } from "./filters-styles"
 import FilterBox from "./filter-box/filter-box"
 import FilterTab from "./filterTab/filter-tab"
@@ -8,7 +8,12 @@ const Filters: FunctionComponent = () => {
   const [activeTab, setActiveTab] = useState<string>("")
   const filterTypes = ["nationality", "fields", "current"]
 
-  const switchFilterTab = (filter: string): void => {
+  const switchFilterTab = (filter: string, outsideClick = false): void => {
+    console.log('switch tab')
+    if (outsideClick) {
+      setActiveTab("")
+      return
+    }
     filter === activeTab ? setActiveTab("") : setActiveTab(filter)
   }
 
@@ -26,7 +31,12 @@ const Filters: FunctionComponent = () => {
               clickHandler={() => switchFilterTab(filter)}
               isActive={checkIfActive(filter)}
             />
-            <FilterTab filterType={filter} isActive={checkIfActive(filter)} checkboxSet={getFiltersCheckboxSet(filter)} />
+            <FilterTab
+              filterType={filter}
+              activeTab={activeTab}
+              checkboxSet={getFiltersCheckboxSet(filter)}
+              outsideClick={() => switchFilterTab(activeTab, true)}
+            />
           </SingleFilterBox>
         )
       })}
