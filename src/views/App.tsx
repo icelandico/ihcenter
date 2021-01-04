@@ -7,6 +7,7 @@ import DetailPanel from "../components/DetailPanel"
 import Timeline from "../components/Timeline"
 import UserBookmarks from "../components/UserBookmarks"
 import Filters from "../components/Filters/filters"
+import ActiveFilters from "../components/Filters/ActiveFilters/active-filters";
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const App: React.FC = () => {
         </div>
         <div className="left-gradient" />
         <div className="main-content-container">
+          <ActiveFilters />
           <div className="content-menu">
             {/*<span className="content__menu-aside-text content__menu-aside-filters">*/}
             {/*  Additional Filters*/}

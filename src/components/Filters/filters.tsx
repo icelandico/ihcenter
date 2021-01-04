@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, useRef } from "react"
+import React, { FunctionComponent, useState } from "react"
 import { FiltersContainer, SingleFilterBox } from "./filters-styles"
 import FilterBox from "./filter-box/filter-box"
 import FilterTab from "./filterTab/filter-tab"
