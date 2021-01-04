@@ -1,13 +1,14 @@
 import React, { FunctionComponent, useState } from "react"
-import { ActiveFiltersContainer} from "./active-filters-styles"
+import { ActiveFiltersContainer, SingleFilter } from "./active-filters-styles"
 
 const ActiveFilters: FunctionComponent = () => {
-  const [activeTab, setActiveTab] = useState<string>("")
-  const filterTypes = ["nationality", "fields", "current"]
+  const activeFilters = ["capitalism", "albanian", "economy", "critique"]
 
   return (
     <ActiveFiltersContainer>
-
+      {activeFilters.map(filter => {
+        return <SingleFilter>{filter}</SingleFilter>
+      })}
     </ActiveFiltersContainer>
   )
 }

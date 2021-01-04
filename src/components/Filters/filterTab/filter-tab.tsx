@@ -70,7 +70,7 @@ const FilterTab: FunctionComponent<IProps> = props => {
         filterOptions[filterType].map((filter: IFilter) => (
           <FilterCheckbox filterName={filter.name} />
         ))}
-      {!filterOptions[filterType] && <Loader /> }
+      {!filterOptions[filterType] && <Loader />}
       {tabRef.current && <ScrollIndicator container={tabRef.current} />}
     </FilterTabContainer>
   )
