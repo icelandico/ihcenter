@@ -32,7 +32,7 @@ const TimelineMenu: React.FC<Props> = props => {
           option="firebrick"
           active={activeOption === CUMULATIVE}
         >
-          <SvgIcon Icon={Cumulative} />
+          <SvgIcon Icon={Cumulative} height={60} />
         </TimelineOption>
         <TimelineOption
           onClick={() => switchTimelineType(BY_YEAR)}

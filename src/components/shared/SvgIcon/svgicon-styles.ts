@@ -1,14 +1,17 @@
 import styled from "styled-components"
 
-export const SvgContainer = styled.div`
-  height: auto;
-  width: auto;
+export const SvgContainer = styled.div<{
+  height?: number
+  width?: number
+}>`
+  height: "auto";
+  width: "auto";
   display: inline-flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 
   & svg {
-    height: 100%;
-    width: 100%;
+    height: ${props => (props.height ? `${props.height}px` : "100%")};
+    width: ${props => (props.width ? `${props.width}px` : "100%")};
   }
 `
