@@ -7,17 +7,18 @@ import {
 
 interface IProps {
   filterName: string
+  filterType: string
 }
 
 const FilterCheckbox: FunctionComponent<IProps> = props => {
-  const { filterName } = props
+  const { filterName, filterType } = props
   const [checked, setChecked] = useState<boolean>(false)
 
   return (
     <CheckboxLabel>
       {filterName}
       <CheckboxInput
-        id={`profession-${filterName.toLowerCase()}`}
+        id={`${filterType}-${filterName.toLowerCase()}`}
         type="checkbox"
         name={filterName.toLowerCase()}
         value={filterName.toLowerCase()}

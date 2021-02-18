@@ -15,6 +15,7 @@ interface IProps {
 interface IFilter {
   name: string
   id: number
+  type: string
 }
 
 const FilterTab: FunctionComponent<IProps> = props => {
@@ -38,7 +39,8 @@ const FilterTab: FunctionComponent<IProps> = props => {
     const results = await fetchApi.json()
     const typeOptions = await results.map((filter: IFilter) => ({
       name: filter.name,
-      id: filter.id
+      id: filter.id,
+      type
     }))
     setFilterOptions({ ...filterOptions, [type]: typeOptions })
   }
@@ -68,7 +70,7 @@ const FilterTab: FunctionComponent<IProps> = props => {
     <FilterTabContainer isActive={checkIfActive(filterType)} ref={tabRef}>
       {filterOptions[filterType] &&
         filterOptions[filterType].map((filter: IFilter) => (
-          <FilterCheckbox filterName={filter.name} />
+          <FilterCheckbox filterName={filter.name} filterType={filter.type} />
         ))}
       {!filterOptions[filterType] && <Loader />}
       {tabRef.current && <ScrollIndicator container={tabRef.current} />}
