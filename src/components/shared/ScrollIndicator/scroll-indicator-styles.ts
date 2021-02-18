@@ -23,7 +23,8 @@ const indicatorKeyframes = keyframes`
 
 export const Indicator = styled(CustomMarker)<{ options?: Options }>`
   position: sticky;
-  left: ${props => props.options ? getPosition(props.options.position) : getPosition()};
+  left: ${props =>
+    props.options ? getPosition(props.options.position) : getPosition()};
   -webkit-animation: ${indicatorKeyframes} 2s infinite ease-in-out;
   animation: ${indicatorKeyframes} 2s infinite ease-in-out;
   z-index: 10;

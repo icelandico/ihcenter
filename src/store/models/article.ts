@@ -1,4 +1,4 @@
-import {types, Instance, flow, applySnapshot, cast} from "mobx-state-tree"
+import { types, Instance, flow, applySnapshot, cast } from "mobx-state-tree"
 import { apiEndpoints } from "../api/api"
 import { ArticleModel } from "./articleModel"
 import {

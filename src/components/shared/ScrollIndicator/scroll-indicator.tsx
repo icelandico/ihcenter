@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import { useEffect, useState } from "react"
 import { Indicator } from "./scroll-indicator-styles"
 import { checkIfScrollable } from "../../../utils/scrollableElement"
@@ -11,8 +11,8 @@ interface Props {
 
 export const ScrollIndicator: React.FC<Props> = props => {
   const { container } = props
-  const [isScrollNeeded, setScrollValue] = useState(true)
-  const [isScrollable, setScrollable] = useState(false)
+  const [isScrollNeeded, setScrollValue] = useState<boolean>(true)
+  const [isScrollable, setScrollable] = useState<boolean>(false)
 
   const handleScroll = (): void => {
     const scrollDiv = container
