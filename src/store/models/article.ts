@@ -10,6 +10,7 @@ import {
 } from "../constants/filters"
 import { getYear } from "../../utils/formatDate"
 import { UserBookmark, IUserBookmark } from "./articleDetails"
+import { Filter } from "./filterModel"
 
 export type ArticleModel = Instance<typeof Article>
 
@@ -24,7 +25,8 @@ const ArticleStore = types
     firstYear: types.maybeNull(types.number),
     lastYear: types.maybeNull(types.number),
     userBookmarks: types.optional(types.array(UserBookmark), []),
-    recentlyViewed: types.optional(types.array(UserBookmark), [])
+    recentlyViewed: types.optional(types.array(UserBookmark), []),
+    activeFilters: types.optional(types.array(Filter), [])
   })
   .actions(self => ({
     getAllArticles: flow(function*() {
