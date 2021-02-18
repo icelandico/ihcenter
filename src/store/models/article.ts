@@ -105,6 +105,18 @@ const ArticleStore = types
     },
     setUserBookmarks(newBookmarks: IUserBookmark[]): void {
       self.userBookmarks = cast(newBookmarks)
+    },
+    handleActiveFilters(name: string, type: string) {
+      const activeIndex = self.activeFilters.findIndex(
+        element => element.name === name && element.type === type
+      )
+      const isFilterActive = self.activeFilters.some(
+        filter => filter.name === name && filter.type === type
+      )
+
+      isFilterActive
+        ? self.activeFilters.splice(activeIndex, 1)
+        : self.activeFilters.push({ name, type })
     }
   }))
   .views(self => ({
