@@ -1,8 +1,14 @@
-import React, { FunctionComponent, useState } from "react"
+import React, { FunctionComponent } from "react"
+import { inject, observer } from "mobx-react"
 import { ActiveFiltersContainer, SingleFilter } from "./active-filters-styles"
+import { rootStore } from "../../../store/RootStore"
 
-const ActiveFilters: FunctionComponent = () => {
-  const activeFilters = ["capitalism", "albanian", "economy", "critique"]
+interface Props {
+  store?: typeof rootStore
+}
+
+const ActiveFilters: FunctionComponent<Props> = props => {
+  const { activeFilters } = props.store.articleStore
 
   return (
     <ActiveFiltersContainer>
@@ -13,4 +19,4 @@ const ActiveFilters: FunctionComponent = () => {
   )
 }
 
-export default ActiveFilters
+export default inject("store")(observer(ActiveFilters))
