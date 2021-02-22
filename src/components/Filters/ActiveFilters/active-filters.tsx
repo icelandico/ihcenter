@@ -13,7 +13,7 @@ const ActiveFilters: FunctionComponent<Props> = props => {
   return (
     <ActiveFiltersContainer>
       {activeFilters.map(filter => {
-        return <SingleFilter>{filter.name}</SingleFilter>
+        return <SingleFilter filterColor={filter.type}>{filter.name}</SingleFilter>
       })}
     </ActiveFiltersContainer>
   )

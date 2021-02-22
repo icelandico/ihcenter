@@ -1,11 +1,11 @@
-import React, { FunctionComponent, useState, useEffect } from "react"
+import React, { FunctionComponent, useState } from "react"
+import { inject, observer } from "mobx-react"
 import {
   CheckboxLabel,
   CheckboxIndicator,
   CheckboxInput
 } from "./filter-checkbox-styles"
 import { rootStore } from "../../../store/RootStore"
-import { inject, observer } from "mobx-react"
 
 interface IProps {
   filterName: string
@@ -19,7 +19,6 @@ const FilterCheckbox: FunctionComponent<IProps> = props => {
 
   const handleSwitchFilter = (name: string, type: string) => {
     store.articleStore.handleActiveFilters(name, type)
-    console.log('store', store.articleStore.activeFilters)
     setChecked(!checked)
   }
 
