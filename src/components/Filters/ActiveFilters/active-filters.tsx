@@ -10,11 +10,15 @@ interface Props {
 const ActiveFilters: FunctionComponent<Props> = props => {
   const { activeFilters } = props.store.articleStore
 
+  const removeFilter = (name: string, type: string) => {
+    props.store.articleStore.handleActiveFilters(name, type)
+  }
+
   return (
     <ActiveFiltersContainer>
       {activeFilters.map(filter => {
         return (
-          <SingleFilter filterType={filter.type}>{filter.name}</SingleFilter>
+          <SingleFilter filterType={filter.type} onClick={() => removeFilter(filter.name, filter.type)}>{filter.name}</SingleFilter>
         )
       })}
     </ActiveFiltersContainer>
