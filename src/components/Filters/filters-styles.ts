@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const FiltersContainer = styled.div`
-  height: 100%;
+  height: auto;
   padding: 1rem 0.5rem;
   display: flex;
   flex-direction: column;

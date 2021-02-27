@@ -7,7 +7,7 @@ import DetailPanel from "../components/DetailPanel"
 import Timeline from "../components/Timeline"
 import UserBookmarks from "../components/UserBookmarks"
 import Filters from "../components/Filters/filters"
-import ActiveFilters from "../components/Filters/ActiveFilters/active-filters"
+import ActiveFilters from "../components/Filters/active-filters/active-filters"
 import {
   MainContainer,
   MainContainerLeft,

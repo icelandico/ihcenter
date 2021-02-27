@@ -1,4 +1,4 @@
-import {Instance, types} from "mobx-state-tree"
+import { Instance, types } from "mobx-state-tree"
 
 export const IdeaDetails = types.model("IdeaDetails", {
   id: types.identifierNumber,
