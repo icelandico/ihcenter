@@ -38,13 +38,14 @@ const RecentlyViewed: React.FC<IProps> = props => {
   const renderRecentViewedItems = () => {
     const articles = getArticlesFromRecentlyViewed()
     if (!areArticlesSet) {
-      return recentItems.map((bookmark: IUserBookmark, idx) => (
-        <UserStorageItem key={`${bookmark.id}-${idx}`} data-not-active="true" />
-      ))
+      return recentItems
+        .slice(0, props.itemsThreshold)
+        .map((bookmark: IUserBookmark, idx) => (
+          <UserStorageItem key={`${bookmark.id}-${idx}`} />
+        ))
     }
     return articles.map((bookmark: ArticleModel, idx) => (
       <UserStorageItem
-        data-is-active="true"
         isActive
         key={`${bookmark.identifier}-${idx}`}
         style={{ backgroundImage: `url(${renderImage(bookmark)}` }}
