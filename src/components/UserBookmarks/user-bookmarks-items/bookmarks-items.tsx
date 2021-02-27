@@ -37,9 +37,11 @@ const BookmarksItems: React.FC<IProps> = props => {
   const renderBookmarksItems = () => {
     const articles = getArticlesFromBookmarks()
     if (!areArticlesSet) {
-      return bookmarks.map((bookmark: IUserBookmark, idx) => (
-        <UserStorageItem key={`${bookmark.id}-${idx}`} />
-      ))
+      return bookmarks
+        .slice(0, props.itemsThreshold)
+        .map((bookmark: IUserBookmark, idx) => (
+          <UserStorageItem key={`${bookmark.id}-${idx}`} />
+        ))
     }
     return articles.map((bookmark: ArticleModel) => (
       <UserStorageItem
