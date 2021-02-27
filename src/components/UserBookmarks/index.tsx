@@ -1,6 +1,6 @@
 import * as React from "react"
 import { observer, inject } from "mobx-react"
-import {useEffect, useRef, useState} from "react"
+import { useEffect, useRef, useState} from "react"
 import { rootStore } from "../../store/RootStore"
 import {
   UserBookmarksContainer,
@@ -22,6 +22,7 @@ const UserBookmarks: React.FC<IProps> = props => {
 
   useEffect(() => {
     if (recentlyViewedRef.current) {
+      console.log(Math.ceil(recentlyViewedRef.current.offsetWidth / 25))
       setMaxItems(Math.ceil(recentlyViewedRef.current.offsetWidth / 25))
     }
   }, [])
