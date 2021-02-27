@@ -12,7 +12,10 @@ import {
   MainContainer,
   MainContainerLeft,
   MainContainerTopMenu,
-  MainContainerLeftGradient
+  MainContainerLeftGradient,
+  MainContainerContent,
+  MainContainerMenu,
+  MainContainerInnerContent
 } from "./app-styles"
 
 const App: React.FC = () => {
@@ -23,25 +26,25 @@ const App: React.FC = () => {
           <Navbar />
         </MainContainerTopMenu>
         <MainContainerLeftGradient />
-        <div className="main-content-container">
+        <MainContainerContent>
           <ActiveFilters />
-          <div className="content-menu">
+          <MainContainerMenu>
             {/*<span className="content__menu-aside-text content__menu-aside-filters">*/}
             {/*  Additional Filters*/}
             {/*</span>*/}
             <Filters />
-          </div>
-          <div className="content-box">
+          </MainContainerMenu>
+          <MainContainerInnerContent>
             <Routes />
-          </div>
-        </div>
+          </MainContainerInnerContent>
+        </MainContainerContent>
         <Route exact path="/">
           <Timeline />
         </Route>
       </MainContainerLeft>
 
       <div className="right">
-        <div className="top-menu" />
+        <MainContainerTopMenu />
         <div className="content-container-r">
           <DetailPanel />
           <UserBookmarks />
