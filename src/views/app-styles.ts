@@ -68,10 +68,36 @@ export const MainContainerBox = styled.div`
 `
 
 export const MainContainerInnerContent = styled.div`
-  -webkit-box-shadow: 0px 0px 40px 0px rgba(0,57,63,0.8);
-  -moz-box-shadow: 0px 0px 40px 0px rgba(0,57,63,0.8);
-  box-shadow: 0px 0px 40px 0px rgba(0,57,63,0.8);
+  -webkit-box-shadow: 0px 0px 40px 0px rgba(0, 57, 63, 0.8);
+  -moz-box-shadow: 0px 0px 40px 0px rgba(0, 57, 63, 0.8);
+  box-shadow: 0px 0px 40px 0px rgba(0, 57, 63, 0.8);
   width: 100%;
   height: 95%;
   flex: 2;
+`
+
+export const MainContainerRight = styled.div`
+  flex: 1;
+  background-image: linear-gradient(
+    135deg,
+    ${colors.green} 8.33%,
+    rgb(0, 57, 63) 8.33%,
+    rgb(0, 57, 63) 50%,
+    #007260 50%,
+    #007260 58.33%,
+    rgb(0, 57, 63) 58.33%,
+    rgb(0, 57, 63) 100%
+  );
+  background-size: 10.97px 10.97px;
+  width: 100%;
+  height: 100%;
+  padding-right: 4rem;
+  display: flex;
+  flex-direction: column;
+`
+
+export const MainContainerRightBox = styled.div`
+  flex-basis: 70%;
+  outline: 0.1rem solid ${colors.green};
+  max-height: 70%;
 `

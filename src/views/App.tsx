@@ -15,7 +15,9 @@ import {
   MainContainerLeftGradient,
   MainContainerContent,
   MainContainerMenu,
-  MainContainerInnerContent
+  MainContainerInnerContent,
+  MainContainerRight,
+  MainContainerRightBox
 } from "./app-styles"
 
 const App: React.FC = () => {
@@ -43,13 +45,13 @@ const App: React.FC = () => {
         </Route>
       </MainContainerLeft>
 
-      <div className="right">
+      <MainContainerRight>
         <MainContainerTopMenu />
-        <div className="content-container-r">
+        <MainContainerRightBox>
           <DetailPanel />
           <UserBookmarks />
-        </div>
-      </div>
+        </MainContainerRightBox>
+      </MainContainerRight>
     </MainContainer>
   )
 }
