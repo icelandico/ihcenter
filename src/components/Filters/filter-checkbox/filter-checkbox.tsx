@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from "react"
+import React, { FunctionComponent, useState, useEffect } from "react"
 import { inject, observer } from "mobx-react"
 import {
   CheckboxLabel,
@@ -16,6 +16,13 @@ interface IProps {
 const FilterCheckbox: FunctionComponent<IProps> = props => {
   const { filterName, filterType, store } = props
   const [checked, setChecked] = useState<boolean>(false)
+
+  useEffect(() => {
+    const isFilterActive = store.articleStore.activeFilters.some(
+      filter => filter.name === filterName && filter.type === filterType
+    )
+    setChecked(isFilterActive)
+  })
 
   const handleSwitchFilter = (name: string, type: string) => {
     store.articleStore.handleActiveFilters(name, type)

@@ -8,15 +8,21 @@ import Timeline from "../components/Timeline"
 import UserBookmarks from "../components/UserBookmarks"
 import Filters from "../components/Filters/filters"
 import ActiveFilters from "../components/Filters/ActiveFilters/active-filters"
+import {
+  MainContainer,
+  MainContainerLeft,
+  MainContainerTopMenu,
+  MainContainerLeftGradient
+} from "./app-styles"
 
 const App: React.FC = () => {
   return (
-    <div className="main-container">
-      <div className="left">
-        <div className="top-menu navbar">
+    <MainContainer>
+      <MainContainerLeft>
+        <MainContainerTopMenu>
           <Navbar />
-        </div>
-        <div className="left-gradient" />
+        </MainContainerTopMenu>
+        <MainContainerLeftGradient />
         <div className="main-content-container">
           <ActiveFilters />
           <div className="content-menu">
@@ -32,7 +38,7 @@ const App: React.FC = () => {
         <Route exact path="/">
           <Timeline />
         </Route>
-      </div>
+      </MainContainerLeft>
 
       <div className="right">
         <div className="top-menu" />
@@ -41,7 +47,7 @@ const App: React.FC = () => {
           <UserBookmarks />
         </div>
       </div>
-    </div>
+    </MainContainer>
   )
 }
 
