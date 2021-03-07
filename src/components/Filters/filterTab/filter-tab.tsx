@@ -4,12 +4,15 @@ import { apiEndpoints } from "../../../store/api/api"
 import FilterCheckbox from "../filter-checkbox/filter-checkbox"
 import { ScrollIndicator } from "../../shared/ScrollIndicator/scroll-indicator"
 import Loader from "../../shared/Loader/loader"
+import {rootStore} from "../../../store/RootStore";
+import { observer, inject } from "mobx-react"
 
 interface IProps {
   filterType: string
   activeTab: string
   checkboxSet: string[]
   outsideClick: Function
+  store?: typeof rootStore
 }
 
 interface IFilter {
@@ -19,7 +22,7 @@ interface IFilter {
 }
 
 const FilterTab: FunctionComponent<IProps> = props => {
-  const { filterType, activeTab } = props
+  const { filterType, activeTab, store } = props
   const [filterOptions, setFilterOptions] = useState<any>({})
   const tabRef = useRef(null)
 
@@ -49,6 +52,11 @@ const FilterTab: FunctionComponent<IProps> = props => {
     return activeTab === filter
   }
 
+  const checkState = (name: string, type: string) => {
+    const isActive = store.articleStore.isFilterActive(name, type)
+    return true
+  }
+
   useEffect(() => {
     if (checkIfActive(filterType)) fetchFilters(filterType)
   }, [activeTab])
@@ -70,7 +78,11 @@ const FilterTab: FunctionComponent<IProps> = props => {
     <FilterTabContainer isActive={checkIfActive(filterType)} ref={tabRef}>
       {filterOptions[filterType] &&
         filterOptions[filterType].map((filter: IFilter) => (
-          <FilterCheckbox filterName={filter.name} filterType={filter.type} />
+          <FilterCheckbox
+            filterName={filter.name}
+            filterType={filter.type}
+            isChecked={false}
+          />
         ))}
       {!filterOptions[filterType] && <Loader />}
       {tabRef.current && <ScrollIndicator container={tabRef.current} />}
@@ -78,4 +90,4 @@ const FilterTab: FunctionComponent<IProps> = props => {
   )
 }
 
-export default FilterTab
+export default inject("store")(observer(FilterTab))

@@ -6,10 +6,12 @@ import {
   CheckboxInput
 } from "./filter-checkbox-styles"
 import { rootStore } from "../../../store/RootStore"
+import {getSnapshot} from "mobx-state-tree";
 
 interface IProps {
   filterName: string
   filterType: string
+  isChecked: boolean
   store?: typeof rootStore
 }
 
@@ -22,11 +24,16 @@ const FilterCheckbox: FunctionComponent<IProps> = props => {
       filter => filter.name === filterName && filter.type === filterType
     )
     setChecked(isFilterActive)
-  })
+  }, [])
 
   const handleSwitchFilter = (name: string, type: string) => {
     store.articleStore.handleActiveFilters(name, type)
     setChecked(!checked)
+  }
+
+  const checkState = (name: string, type: string): boolean => {
+    const storeSnapshot = getSnapshot(store.articleStore.activeFilters)
+    return store.articleStore.isFilterActive(name, type)
   }
 
   return (
@@ -37,7 +44,7 @@ const FilterCheckbox: FunctionComponent<IProps> = props => {
         type="checkbox"
         name={filterName.toLowerCase()}
         value={filterName.toLowerCase()}
-        checked={checked}
+        checked={checkState(filterName, filterType)}
         onChange={() => handleSwitchFilter(filterName, filterType)}
       />
       <CheckboxIndicator />

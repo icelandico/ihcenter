@@ -21,6 +21,7 @@ const ActiveFilters: FunctionComponent<Props> = props => {
           <SingleFilter
             filterType={filter.type}
             onClick={() => removeFilter(filter.name, filter.type)}
+            key={`${filter.name}-${filter.type}`}
           >
             {filter.name}
           </SingleFilter>
