@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from "react"
 import { inject, observer } from "mobx-react"
 import { ActiveFiltersContainer, SingleFilter } from "./active-filters-styles"
+import { CUSTOM, CUMULATIVE } from "../../../store/constants/filters"
 import { rootStore } from "../../../store/RootStore"
 
 interface Props {
@@ -8,15 +9,18 @@ interface Props {
 }
 
 const ActiveFilters: FunctionComponent<Props> = props => {
-  const { activeFilters } = props.store.articleStore
+  const { articleStore } = props.store
 
   const removeFilter = (name: string, type: string) => {
-    props.store.articleStore.handleActiveFilters(name, type)
+    articleStore.handleActiveFilters(name, type)
+    articleStore.activeFilters.length > 0
+      ? articleStore.setFilter(CUSTOM)
+      : articleStore.setFilter(CUMULATIVE)
   }
 
   return (
     <ActiveFiltersContainer>
-      {activeFilters.map(filter => {
+      {articleStore.activeFilters.map(filter => {
         return (
           <SingleFilter
             filterType={filter.type}

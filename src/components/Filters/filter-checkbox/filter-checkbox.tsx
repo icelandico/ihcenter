@@ -1,12 +1,12 @@
 import React, { FunctionComponent, useState, useEffect } from "react"
 import { inject, observer } from "mobx-react"
+import { getSnapshot } from "mobx-state-tree"
 import {
   CheckboxLabel,
   CheckboxIndicator,
   CheckboxInput
 } from "./filter-checkbox-styles"
 import { rootStore } from "../../../store/RootStore"
-import {getSnapshot} from "mobx-state-tree";
 
 interface IProps {
   filterName: string

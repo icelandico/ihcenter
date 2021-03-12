@@ -16,9 +16,9 @@ const FilterBox: FunctionComponent<IProps> = props => {
 
   const renderIcon = (type: string) => {
     switch (type) {
-      case "current":
+      case "mainideas":
         return CurrentIcon
-      case "fields":
+      case "professions":
         return FieldsIcon
       default:
         return FlagIcon

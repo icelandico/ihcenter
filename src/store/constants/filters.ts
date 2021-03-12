@@ -1,11 +1,13 @@
 import { types } from "mobx-state-tree"
 import { getYear } from "../../utils/formatDate"
+import { FilterModel } from "../models/filterModel"
 
 export const SHOW_ALL = "show_all"
 export const BY_YEAR = "by_year"
 export const CUMULATIVE = "cummulative"
+export const CUSTOM = "custom"
 export const filterType = types.union(
-  ...[SHOW_ALL, BY_YEAR, CUMULATIVE].map(types.literal)
+  ...[SHOW_ALL, BY_YEAR, CUMULATIVE, CUSTOM].map(types.literal)
 )
 
 interface IFilters {
@@ -26,4 +28,6 @@ export const FILTERS: IFilters = {
       return articleYear <= year
     }
   }
+  // [CUSTOM]: (filters: FilterModel[]) => {
+  // }
 }

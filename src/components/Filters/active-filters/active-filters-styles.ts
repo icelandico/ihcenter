@@ -5,9 +5,9 @@ const chooseColor = (type: string) => {
   switch (type) {
     case "nationality":
       return colors.lightBrown
-    case "fields":
+    case "professions":
       return colors.darkBlue
-    case "current":
+    case "mainideas":
       return colors.woodBrown
     default:
       return colors.white

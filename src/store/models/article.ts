@@ -6,7 +6,8 @@ import {
   SHOW_ALL,
   filterType,
   BY_YEAR,
-  CUMULATIVE
+  CUMULATIVE,
+  CUSTOM
 } from "../constants/filters"
 import { getYear } from "../../utils/formatDate"
 import { UserBookmark, IUserBookmark } from "./articleDetails"
@@ -136,6 +137,8 @@ const ArticleStore = types
           return self.articles.filter(currentFilter(self.currentYear))
         case FILTERS[CUMULATIVE]:
           return self.articles.filter(currentFilter(self.currentYear))
+        case FILTERS[CUSTOM]:
+          return self.articles.filter(currentFilter(self.activeFilters))
         default:
           return self.articles
       }
