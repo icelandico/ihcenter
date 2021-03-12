@@ -17,10 +17,10 @@ export const MainContainerLeft = styled.div`
 
 export const MainContainerTopMenu = styled.div`
   width: 100%;
-  z-index: 2;
+  z-index: 6;
   flex-basis: 15%;
   padding: 0.5rem 0;
-  overflow: hidden;
+  // overflow: hidden;
 `
 
 export const MainContainerLeftGradient = styled.div`
