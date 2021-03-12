@@ -1,11 +1,11 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from "react"
+import { observer, inject } from "mobx-react"
 import { FilterTabContainer } from "./filter-tab-styles"
 import { apiEndpoints } from "../../../store/api/api"
 import FilterCheckbox from "../filter-checkbox/filter-checkbox"
 import { ScrollIndicator } from "../../shared/ScrollIndicator/scroll-indicator"
 import Loader from "../../shared/Loader/loader"
-import {rootStore} from "../../../store/RootStore";
-import { observer, inject } from "mobx-react"
+import { rootStore } from "../../../store/RootStore";
 
 interface IProps {
   filterType: string

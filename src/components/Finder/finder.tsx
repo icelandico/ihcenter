@@ -1,4 +1,10 @@
-import React, { ChangeEvent, FunctionComponent, useState } from "react"
+import React, {
+  ChangeEvent,
+  FunctionComponent,
+  useState,
+  useEffect,
+  useRef
+} from "react"
 import { inject, observer } from "mobx-react"
 import { rootStore } from "../../store/RootStore"
 import {
@@ -15,13 +21,29 @@ interface Props {
 }
 
 const Finder: FunctionComponent<Props> = props => {
+  const [finderValue, setFinderValue] = useState<string>("")
   const [results, setResults] = useState<ArticleModel[]>([])
   const [resultsVisible, setResultsVisible] = useState<boolean>(false)
+  const resultsRef = useRef(null)
   const { store } = props
+
+  useEffect(() => {
+    const handleOutsideClick = (ev: Event) => {
+      if (resultsRef.current && !resultsRef.current.contains(ev.target)) {
+        setResultsVisible(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleOutsideClick)
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick)
+    }
+  }, [resultsRef])
 
   const handleInputChange = (e: ChangeEvent) => {
     const eventTarget = e.currentTarget as HTMLInputElement
     const finderValue = eventTarget.value.toLowerCase()
+    setFinderValue(finderValue)
     const results = store.articleStore.articles.filter(el =>
       el.name.toLowerCase().includes(finderValue)
     )
@@ -34,12 +56,19 @@ const Finder: FunctionComponent<Props> = props => {
     setResultsVisible(false)
   }
 
+  const setArticle = (article: ArticleModel) => {
+    setResultsVisible(false)
+    setFinderValue(article.name)
+    store.articleStore.toggle(article)
+    setResults([])
+  }
+
   const renderResults = () => {
     return (
-      <FinderResultsContainer>
+      <FinderResultsContainer ref={resultsRef}>
         {results.map(el => {
           return (
-            <SingleResult type={el.type}>
+            <SingleResult type={el.type} onClick={() => setArticle(el)}>
               <ResultText>{el.name}</ResultText>
             </SingleResult>
           )
@@ -54,8 +83,9 @@ const Finder: FunctionComponent<Props> = props => {
         type="text"
         placeholder="Search"
         onChange={e => handleInputChange(e)}
-        onBlur={() => setResultsVisible(false)}
+        // onBlur={() => setResultsVisible(false)}
         onFocus={() => setResultsVisible(true)}
+        value={finderValue}
       />
       {resultsVisible && renderResults()}
     </FinderContainer>
