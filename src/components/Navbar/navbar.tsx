@@ -7,7 +7,6 @@ import {
   NavigationLinks,
   NavigationItem,
   NavigationIcon,
-  SearchInput,
   NaviLink,
   SearchIconSvg,
   NavbarLogo,
@@ -15,6 +14,7 @@ import {
   NavbarElement
 } from "./navbar-styles"
 import { menuItems } from "../../routing/routeConfig"
+import Finder from "../Finder/finder"
 
 const Navbar: React.FC = () => {
   const generateLinks = () => {
@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
         <NavbarLogo />
         <NavbarSearch>
           <SearchIconSvg />
-          <SearchInput type="text" placeholder="Search" />
+          <Finder />
         </NavbarSearch>
         <NavbarElement>
           <NavigationLinks>{generateLinks()}</NavigationLinks>
