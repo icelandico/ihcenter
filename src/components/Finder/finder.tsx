@@ -58,7 +58,7 @@ const Finder: FunctionComponent<Props> = props => {
 
   const setArticle = (article: ArticleModel) => {
     setResultsVisible(false)
-    setFinderValue(article.name)
+    setFinderValue("")
     store.articleStore.toggle(article)
     setResults([])
   }
