@@ -21,7 +21,7 @@ export const FinderResultsContainer = styled.div`
   right: 0;
   height: auto;
   max-height: 21rem;
-  background-color: ${colors.green};
+  background-color: ${colors.darkGreen};
   border: 0.1rem solid ${colors.green};
   border-top: transparent;
   overflow-y: auto;
@@ -38,20 +38,24 @@ export const SingleResult = styled.div<{
 }>`
   width: 100%;
   height: 3rem;
-  border-bottom: 0.1rem solid ${colors.darkGreen};
+  border-bottom: 0.1rem solid ${colors.green};
   border-left: 0.5rem solid ${props => chooseColor(props.type)};
   color: ${colors.lightBrown};
-  padding: 0.5rem;
+  padding: 0.5rem 0 0.5rem 0.75rem;
   font-size: 1.4rem;
   cursor: pointer;
   transition: 0.15s;
 
   &:hover {
-    background-color: ${colors.darkGreen};
-    // color: ${colors.green};
+    background-color: ${colors.green};
   }
 
   &:nth-last-child {
     border-bottom: none;
   }
+`
+
+export const ResultText = styled.span`
+  display: inline-block;
+  line-height: 2rem;
 `

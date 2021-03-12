@@ -6,6 +6,7 @@ import {
   FinderResultsContainer,
   FinderContainer,
   SingleResult,
+  ResultText,
 } from "./finder-styles"
 import { ArticleModel } from "../../store/models/article"
 
@@ -15,6 +16,7 @@ interface Props {
 
 const Finder: FunctionComponent<Props> = props => {
   const [results, setResults] = useState<ArticleModel[]>([])
+  const [resultsVisible, setResultsVisible] = useState<boolean>(false)
   const { store } = props
 
   const handleInputChange = (e: ChangeEvent) => {
@@ -23,14 +25,24 @@ const Finder: FunctionComponent<Props> = props => {
     const results = store.articleStore.articles.filter(el =>
       el.name.toLowerCase().includes(finderValue)
     )
-    finderValue.length >= 3 ? setResults(results) : setResults([])
+    if (finderValue.length >= 3 && results.length >= 1) {
+      setResults(results)
+      setResultsVisible(true)
+      return
+    }
+    setResults([])
+    setResultsVisible(false)
   }
 
   const renderResults = () => {
     return (
       <FinderResultsContainer>
         {results.map(el => {
-          return <SingleResult type={el.type}>{el.name}</SingleResult>
+          return (
+            <SingleResult type={el.type}>
+              <ResultText>{el.name}</ResultText>
+            </SingleResult>
+          )
         })}
       </FinderResultsContainer>
     )
@@ -42,8 +54,10 @@ const Finder: FunctionComponent<Props> = props => {
         type="text"
         placeholder="Search"
         onChange={e => handleInputChange(e)}
+        onBlur={() => setResultsVisible(false)}
+        onFocus={() => setResultsVisible(true)}
       />
-      {results.length >= 1 && renderResults()}
+      {resultsVisible && renderResults()}
     </FinderContainer>
   )
 }
