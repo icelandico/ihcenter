@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { colors } from "../../styles/colors"
+import { chooseColor } from "../../utils/articleTypeColor";
 
 export const FinderInput = styled.input`
   border: 0.2rem solid ${colors.green};
@@ -20,10 +21,10 @@ export const FinderResultsContainer = styled.div`
   right: 0;
   height: auto;
   max-height: 21rem;
-  background-color: ${colors.lightBrown};
-  border: 0.2rem solid ${colors.green};
+  background-color: ${colors.green};
+  border: 0.1rem solid ${colors.green};
   border-top: transparent;
-  overflow-y: scroll;
+  overflow-y: auto;
 `
 
 export const FinderContainer = styled.div`
@@ -32,18 +33,25 @@ export const FinderContainer = styled.div`
   position: relative;
 `
 
-export const SingleResult = styled.div`
+export const SingleResult = styled.div<{
+  type: string
+}>`
   width: 100%;
   height: 3rem;
-  border-bottom: 0.1rem solid ${colors.green};
-  color: ${colors.green};
+  border-bottom: 0.1rem solid ${colors.darkGreen};
+  border-left: 0.5rem solid ${props => chooseColor(props.type)};
+  color: ${colors.lightBrown};
   padding: 0.5rem;
   font-size: 1.4rem;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.15s;
 
   &:hover {
     background-color: ${colors.darkGreen};
-    color: ${colors.lightBrown};
+    // color: ${colors.green};
+  }
+
+  &:nth-last-child {
+    border-bottom: none;
   }
 `

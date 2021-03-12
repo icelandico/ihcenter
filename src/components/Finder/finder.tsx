@@ -30,7 +30,7 @@ const Finder: FunctionComponent<Props> = props => {
     return (
       <FinderResultsContainer>
         {results.map(el => {
-          return <SingleResult>{el.name}</SingleResult>
+          return <SingleResult type={el.type}>{el.name}</SingleResult>
         })}
       </FinderResultsContainer>
     )
