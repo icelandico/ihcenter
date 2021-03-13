@@ -13,6 +13,7 @@ import {
   FinderContainer,
   SingleResult,
   ResultText,
+  ClearInput
 } from "./finder-styles"
 import { ArticleModel } from "../../store/models/article"
 
@@ -87,6 +88,7 @@ const Finder: FunctionComponent<Props> = props => {
         onFocus={() => setResultsVisible(true)}
         value={finderValue}
       />
+      <ClearInput />
       {resultsVisible && renderResults()}
     </FinderContainer>
   )

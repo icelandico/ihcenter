@@ -13,6 +13,11 @@ export const FinderInput = styled.input`
   &::placeholder {
     color: ${colors.green};
   }
+  
+  &:focus {
+    border-color: ${colors.lightBrown};
+    outline: none;
+  }
 `
 export const FinderResultsContainer = styled.div`
   position: absolute;
@@ -58,4 +63,20 @@ export const SingleResult = styled.div<{
 export const ResultText = styled.span`
   display: inline-block;
   line-height: 2rem;
+`
+
+export const ClearInput = styled.span`
+  position: absolute;
+  right: 2rem;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  
+  &:before {
+    position: absolute;
+    content: "X";
+    color: ${colors.white};
+    top: 50%;
+    left: 50%;
+  }
 `
