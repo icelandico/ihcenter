@@ -78,6 +78,11 @@ const Finder: FunctionComponent<Props> = props => {
     )
   }
 
+  const handleClear = () => {
+    setFinderValue("")
+    setResults([])
+  }
+
   return (
     <FinderContainer>
       <FinderInput
@@ -88,7 +93,7 @@ const Finder: FunctionComponent<Props> = props => {
         onFocus={() => setResultsVisible(true)}
         value={finderValue}
       />
-      <ClearInput />
+      <ClearInput onClick={() => handleClear()}/>
       {resultsVisible && renderResults()}
     </FinderContainer>
   )

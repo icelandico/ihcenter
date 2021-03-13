@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { colors } from "../../styles/colors"
-import { chooseColor } from "../../utils/articleTypeColor";
+import { chooseColor } from "../../utils/articleTypeColor"
 
 export const FinderInput = styled.input`
   border: 0.2rem solid ${colors.green};
@@ -9,11 +9,12 @@ export const FinderInput = styled.input`
   height: 100%;
   padding-left: 15px;
   color: ${colors.white};
+  transition: 0.25s;
 
   &::placeholder {
     color: ${colors.green};
   }
-  
+
   &:focus {
     border-color: ${colors.lightBrown};
     outline: none;
