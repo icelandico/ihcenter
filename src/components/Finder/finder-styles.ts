@@ -69,15 +69,23 @@ export const ResultText = styled.span`
 export const ClearInput = styled.span`
   position: absolute;
   right: 2rem;
+  top: 0.75rem;
   cursor: pointer;
-  width: 2rem;
-  height: 2rem;
-  
+  background: ${colors.lightBrown};
+
   &:before {
+    content: "";
+    height: 1.5rem;
+    border-left: 3px solid ${colors.lightBrown};
     position: absolute;
-    content: "X";
-    color: ${colors.white};
-    top: 50%;
-    left: 50%;
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    content: "";
+    height: 1.5rem;
+    border-left: 3px solid ${colors.lightBrown};
+    position: absolute;
+    transform: rotate(-45deg);
   }
 `
