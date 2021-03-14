@@ -15,20 +15,34 @@ interface IProps {
   store?: typeof rootStore
 }
 
+interface IState {
+  name: string
+  id: number
+}
+
 const FilterCheckbox: FunctionComponent<IProps> = props => {
   const { filterName, filterType, store } = props
-  const [checked, setChecked] = useState<boolean>(false)
+  const [checkboxState, setCheckboxState] = useState<number>(0)
 
-  useEffect(() => {
-    const isFilterActive = store.articleStore.activeFilters.some(
-      filter => filter.name === filterName && filter.type === filterType
-    )
-    setChecked(isFilterActive)
-  }, [])
+  const stateOptions: IState[] = [
+    { id: 0, name: "" },
+    { id: 1, name: "include" },
+    { id: 2, name: "exclude" }
+  ]
+
+  // useEffect(() => {
+  //   const isFilterActive = store.articleStore.activeFilters.some(
+  //     filter => filter.name === filterName && filter.type === filterType
+  //   )
+  //   setCheckboxState(isFilterActive)
+  // }, [])
 
   const handleSwitchFilter = (name: string, type: string) => {
     store.articleStore.handleActiveFilters(name, type)
-    setChecked(!checked)
+    const newState = checkboxState + 1
+    newState >= stateOptions.length
+      ? setCheckboxState(0)
+      : setCheckboxState(checkboxState + 1)
   }
 
   const checkState = (name: string, type: string): boolean => {
@@ -47,7 +61,10 @@ const FilterCheckbox: FunctionComponent<IProps> = props => {
         checked={checkState(filterName, filterType)}
         onChange={() => handleSwitchFilter(filterName, filterType)}
       />
-      <CheckboxIndicator />
+      <CheckboxIndicator
+        checkboxState={stateOptions[checkboxState].name}
+        data-state={stateOptions[checkboxState].name}
+      />
     </CheckboxLabel>
   )
 }

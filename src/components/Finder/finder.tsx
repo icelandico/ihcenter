@@ -3,7 +3,7 @@ import React, {
   FunctionComponent,
   useState,
   useEffect,
-  useRef
+  useRef, ReactComponentElement, ReactElement
 } from "react"
 import { inject, observer } from "mobx-react"
 import { rootStore } from "../../store/RootStore"
@@ -64,7 +64,7 @@ const Finder: FunctionComponent<Props> = props => {
     setResults([])
   }
 
-  const renderResults = () => {
+  const renderResults = (): ReactElement => {
     return (
       <FinderResultsContainer ref={resultsRef}>
         {results.map(el => {
@@ -78,7 +78,7 @@ const Finder: FunctionComponent<Props> = props => {
     )
   }
 
-  const handleClear = () => {
+  const handleClear = (): void => {
     setFinderValue("")
     setResults([])
   }
