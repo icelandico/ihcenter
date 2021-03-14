@@ -93,7 +93,7 @@ const Finder: FunctionComponent<Props> = props => {
         onFocus={() => setResultsVisible(true)}
         value={finderValue}
       />
-      <ClearInput onClick={() => handleClear()}/>
+      { finderValue.length >= 3 && <ClearInput onClick={() => handleClear()} /> }
       {resultsVisible && renderResults()}
     </FinderContainer>
   )
