@@ -4,7 +4,9 @@ import { getSnapshot } from "mobx-state-tree"
 import {
   CheckboxLabel,
   CheckboxIndicator,
-  CheckboxInput
+  Checkbox,
+  CheckboxIncluded,
+  CheckboxExcluded
 } from "./filter-checkbox-styles"
 import { rootStore } from "../../../store/RootStore"
 
@@ -38,11 +40,16 @@ const FilterCheckbox: FunctionComponent<IProps> = props => {
   // }, [])
 
   const handleSwitchFilter = (name: string, type: string) => {
-    store.articleStore.handleActiveFilters(name, type)
     const newState = checkboxState + 1
-    newState >= stateOptions.length
-      ? setCheckboxState(0)
-      : setCheckboxState(checkboxState + 1)
+    if (newState >= stateOptions.length) {
+      setCheckboxState(0)
+      return
+    }
+    setCheckboxState(checkboxState + 1)
+
+    const filterState = stateOptions[checkboxState].name
+    stateOptions[checkboxState].name !== "" &&
+      store.articleStore.handleActiveFilters(name, type, filterState)
   }
 
   const checkState = (name: string, type: string): boolean => {
@@ -50,21 +57,22 @@ const FilterCheckbox: FunctionComponent<IProps> = props => {
     return store.articleStore.isFilterActive(name, type)
   }
 
+  const renderCheckbox = (state: string) => {
+    switch (state) {
+      case "include":
+        return <CheckboxIncluded data-state={state} />
+      case "exclude":
+        return <CheckboxExcluded data-state={state} />
+      default:
+        return <CheckboxIndicator data-state={state} />
+    }
+  }
+
   return (
-    <CheckboxLabel>
+    <CheckboxLabel onClick={() => handleSwitchFilter(filterName, filterType)}>
       {filterName}
-      <CheckboxInput
-        id={`${filterType}-${filterName.toLowerCase()}`}
-        type="checkbox"
-        name={filterName.toLowerCase()}
-        value={filterName.toLowerCase()}
-        checked={checkState(filterName, filterType)}
-        onChange={() => handleSwitchFilter(filterName, filterType)}
-      />
-      <CheckboxIndicator
-        checkboxState={stateOptions[checkboxState].name}
-        data-state={stateOptions[checkboxState].name}
-      />
+      <Checkbox id={`${filterType}-${filterName.toLowerCase()}`} />
+      {renderCheckbox(stateOptions[checkboxState].name)}
     </CheckboxLabel>
   )
 }

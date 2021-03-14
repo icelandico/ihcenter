@@ -26,6 +26,8 @@ const ActiveFilters: FunctionComponent<Props> = props => {
             filterType={filter.type}
             onClick={() => removeFilter(filter.name, filter.type)}
             key={`${filter.name}-${filter.type}`}
+            filterState={filter.state}
+            data-state={filter.state}
           >
             {filter.name}
           </SingleFilter>

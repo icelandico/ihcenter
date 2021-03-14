@@ -12,6 +12,7 @@ import {
 import { getYear } from "../../utils/formatDate"
 import { UserBookmark, IUserBookmark } from "./articleDetails"
 import { Filter } from "./filterModel"
+import {log} from "util";
 
 export type ArticleModel = Instance<typeof Article>
 
@@ -112,7 +113,7 @@ const ArticleStore = types
         filter => filter.name === name && filter.type === type
       )
     },
-    handleActiveFilters(name: string, type: string) {
+    handleActiveFilters(name: string, type: string, state?: string) {
       const activeIndex = self.activeFilters.findIndex(
         element => element.name === name && element.type === type
       )
@@ -123,7 +124,7 @@ const ArticleStore = types
           )
         : applySnapshot(
             self.activeFilters,
-            self.activeFilters.concat({ name, type })
+            self.activeFilters.concat({ name, type, state }),
           )
     }
   }))

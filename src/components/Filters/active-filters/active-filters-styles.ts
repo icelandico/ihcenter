@@ -2,16 +2,7 @@ import styled from "styled-components"
 import { colors } from "../../../styles/colors"
 
 const chooseColor = (type: string) => {
-  switch (type) {
-    case "nationality":
-      return colors.lightBrown
-    case "professions":
-      return colors.darkBlue
-    case "mainideas":
-      return colors.woodBrown
-    default:
-      return colors.white
-  }
+  return type === "include" ? colors.lightGreen : colors.regularRed
 }
 
 export const ActiveFiltersContainer = styled.div`
@@ -21,7 +12,10 @@ export const ActiveFiltersContainer = styled.div`
   height: 2.5rem;
   padding-left: 5.5%;
 `
-export const SingleFilter = styled.span<{ filterType: string }>`
+export const SingleFilter = styled.span<{
+  filterType: string
+  filterState: string
+}>`
   margin-right: 0.75rem;
   cursor: pointer;
   font-size: 1.4rem;
