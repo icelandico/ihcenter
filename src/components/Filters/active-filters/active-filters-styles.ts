@@ -14,7 +14,7 @@ export const ActiveFiltersContainer = styled.div`
 `
 export const SingleFilter = styled.span<{
   filterType: string
-  filterState: string
+  filterState: number
 }>`
   margin-right: 0.75rem;
   cursor: pointer;

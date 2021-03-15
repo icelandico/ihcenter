@@ -5,7 +5,8 @@ import { apiEndpoints } from "../../../store/api/api"
 import FilterCheckbox from "../filter-checkbox/filter-checkbox"
 import { ScrollIndicator } from "../../shared/ScrollIndicator/scroll-indicator"
 import Loader from "../../shared/Loader/loader"
-import { rootStore } from "../../../store/RootStore";
+import { rootStore } from "../../../store/RootStore"
+import { FilterModel } from "../../../store/models/filterModel"
 
 interface IProps {
   filterType: string
@@ -77,12 +78,8 @@ const FilterTab: FunctionComponent<IProps> = props => {
   return (
     <FilterTabContainer isActive={checkIfActive(filterType)} ref={tabRef}>
       {filterOptions[filterType] &&
-        filterOptions[filterType].map((filter: IFilter) => (
-          <FilterCheckbox
-            filterName={filter.name}
-            filterType={filter.type}
-            isChecked={false}
-          />
+        filterOptions[filterType].map((filter: FilterModel) => (
+          <FilterCheckbox filter={filter} isChecked={false} />
         ))}
       {!filterOptions[filterType] && <Loader />}
       {tabRef.current && <ScrollIndicator container={tabRef.current} />}

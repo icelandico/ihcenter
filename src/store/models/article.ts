@@ -11,7 +11,7 @@ import {
 } from "../constants/filters"
 import { getYear } from "../../utils/formatDate"
 import { UserBookmark, IUserBookmark } from "./articleDetails"
-import { Filter } from "./filterModel"
+import {Filter, FilterModel} from "./filterModel"
 import {log} from "util";
 
 export type ArticleModel = Instance<typeof Article>
@@ -113,19 +113,26 @@ const ArticleStore = types
         filter => filter.name === name && filter.type === type
       )
     },
-    handleActiveFilters(name: string, type: string, state?: string) {
+    removeFilter(filter: FilterModel) {
       const activeIndex = self.activeFilters.findIndex(
-        element => element.name === name && element.type === type
+        element => element.name === filter.name && element.type === filter.type
       )
-      this.isFilterActive(name, type) ?
-        applySnapshot(
-            self.activeFilters,
-            self.activeFilters.filter((filter, index) => index !== activeIndex)
-          )
-        : applySnapshot(
-            self.activeFilters,
-            self.activeFilters.concat({ name, type, state }),
-          )
+      applySnapshot(
+        self.activeFilters,
+        self.activeFilters.filter((filter, index) => index !== activeIndex)
+      )
+    },
+    insertFilter(filter: FilterModel) {
+      applySnapshot(self.activeFilters, self.activeFilters.concat(filter))
+    },
+    changeFilterState(filter: FilterModel) {
+      const activeIndex = self.activeFilters.findIndex(
+        element => element.name === filter.name && element.type === filter.type
+      )
+      self.activeFilters.splice(activeIndex, 1, {
+        ...self.activeFilters[activeIndex],
+        state: filter.state
+      })
     }
   }))
   .views(self => ({

@@ -9,10 +9,10 @@ import {
   CheckboxExcluded
 } from "./filter-checkbox-styles"
 import { rootStore } from "../../../store/RootStore"
+import { FilterModel } from "../../../store/models/filterModel"
 
 interface IProps {
-  filterName: string
-  filterType: string
+  filter: FilterModel
   isChecked: boolean
   store?: typeof rootStore
 }
@@ -23,7 +23,7 @@ interface IState {
 }
 
 const FilterCheckbox: FunctionComponent<IProps> = props => {
-  const { filterName, filterType, store } = props
+  const { filter, store } = props
   const [checkboxState, setCheckboxState] = useState<number>(0)
 
   const stateOptions: IState[] = [
@@ -41,15 +41,22 @@ const FilterCheckbox: FunctionComponent<IProps> = props => {
 
   const handleSwitchFilter = (name: string, type: string) => {
     const newState = checkboxState + 1
+    const filter = { name, type, state: newState }
     if (newState >= stateOptions.length) {
+      store.articleStore.removeFilter(filter)
       setCheckboxState(0)
       return
     }
     setCheckboxState(checkboxState + 1)
 
     const filterState = stateOptions[checkboxState].name
-    stateOptions[checkboxState].name !== "" &&
-      store.articleStore.handleActiveFilters(name, type, filterState)
+    if (newState === 1) {
+      store.articleStore.insertFilter(filter)
+      return
+    }
+    if (newState === 2) {
+      store.articleStore.changeFilterState(filter)
+    }
   }
 
   const checkState = (name: string, type: string): boolean => {
@@ -60,18 +67,18 @@ const FilterCheckbox: FunctionComponent<IProps> = props => {
   const renderCheckbox = (state: string) => {
     switch (state) {
       case "include":
-        return <CheckboxIncluded data-state={state} />
+        return <CheckboxIncluded />
       case "exclude":
-        return <CheckboxExcluded data-state={state} />
+        return <CheckboxExcluded />
       default:
-        return <CheckboxIndicator data-state={state} />
+        return <CheckboxIndicator />
     }
   }
 
   return (
-    <CheckboxLabel onClick={() => handleSwitchFilter(filterName, filterType)}>
-      {filterName}
-      <Checkbox id={`${filterType}-${filterName.toLowerCase()}`} />
+    <CheckboxLabel onClick={() => handleSwitchFilter(filter.name, filter.type)}>
+      {filter.name}
+      <Checkbox id={`${filter.type}-${filter.name.toLowerCase()}`} />
       {renderCheckbox(stateOptions[checkboxState].name)}
     </CheckboxLabel>
   )
