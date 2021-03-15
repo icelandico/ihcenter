@@ -20,10 +20,10 @@ const ActiveFilters: FunctionComponent<Props> = props => {
       {articleStore.activeFilters.map(filter => {
         return (
           <SingleFilter
-            filterType={filter.type}
             onClick={() => removeFilter(filter)}
             key={`${filter.name}-${filter.type}`}
             filterState={filter.state}
+            data-state={filter.state}
           >
             {filter.name}
           </SingleFilter>
