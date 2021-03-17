@@ -3,7 +3,8 @@ import React, {
   FunctionComponent,
   useState,
   useEffect,
-  useRef, ReactComponentElement, ReactElement
+  useRef,
+  ReactElement
 } from "react"
 import { inject, observer } from "mobx-react"
 import { rootStore } from "../../store/RootStore"
@@ -13,9 +14,14 @@ import {
   FinderContainer,
   SingleResult,
   ResultText,
-  ClearInput
+  ClearInput,
+  ResultIcon
 } from "./finder-styles"
 import { ArticleModel } from "../../store/models/article"
+import { ReactComponent as OrganisationIcon } from "../../static/icons/politics.svg"
+import { ReactComponent as PersonIcon } from "../../static/icons/politics.svg"
+import { ReactComponent as EventIcon } from "../../static/icons/events.svg"
+import SvgIcon from "../shared/SvgIcon/svgIcon"
 
 interface Props {
   store?: typeof rootStore
@@ -70,6 +76,9 @@ const Finder: FunctionComponent<Props> = props => {
         {results.map(el => {
           return (
             <SingleResult type={el.type} onClick={() => setArticle(el)}>
+              <ResultIcon>
+                <SvgIcon Icon={OrganisationIcon} />
+              </ResultIcon>
               <ResultText>{el.name}</ResultText>
             </SingleResult>
           )

@@ -42,12 +42,13 @@ export const FinderContainer = styled.div`
 export const SingleResult = styled.div<{
   type: string
 }>`
+  display: flex;
   width: 100%;
   height: 3rem;
   border-bottom: 0.1rem solid ${colors.green};
-  border-left: 0.5rem solid ${props => chooseColor(props.type)};
+  // border-left: 0.5rem solid ${props => chooseColor(props.type)};
   color: ${colors.lightBrown};
-  padding: 0.5rem 0 0.5rem 0.75rem;
+  padding: 0.5rem 0 0.5rem 0.25rem;
   font-size: 1.4rem;
   cursor: pointer;
   transition: 0.15s;
@@ -59,6 +60,11 @@ export const SingleResult = styled.div<{
   &:nth-last-child {
     border-bottom: none;
   }
+`
+
+export const ResultIcon = styled.div`
+  width: 2rem;
+  margin-right: 0.75rem;
 `
 
 export const ResultText = styled.span`

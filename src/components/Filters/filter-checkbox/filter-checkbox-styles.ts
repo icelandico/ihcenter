@@ -47,8 +47,8 @@ export const CheckboxExcluded = styled(CheckboxIndicator)`
 
   &::before {
     position: absolute;
-    left: 50%;
-    top: 13%;
+    left: 45%;
+    top: 12%;
     content: "";
     height: 1.3rem;
     border-left: 2px solid ${colors.regularRed};
@@ -57,8 +57,8 @@ export const CheckboxExcluded = styled(CheckboxIndicator)`
 
   &::after {
     position: absolute;
-    left: 50%;
-    top: 13%;
+    left: 45%;
+    top: 12%;
     content: "";
     height: 1.3rem;
     border-left: 2px solid ${colors.regularRed};

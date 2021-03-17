@@ -49,7 +49,6 @@ const FilterCheckbox: FunctionComponent<IProps> = props => {
     }
     setCheckboxState(checkboxState + 1)
 
-    const filterState = stateOptions[checkboxState].name
     if (newState === 1) {
       store.articleStore.insertFilter(filter)
       return
@@ -78,7 +77,7 @@ const FilterCheckbox: FunctionComponent<IProps> = props => {
   return (
     <CheckboxLabel onClick={() => handleSwitchFilter(filter.name, filter.type)}>
       {filter.name}
-      <Checkbox id={`${filter.type}-${filter.name.toLowerCase()}`} />
+      <Checkbox />
       {renderCheckbox(stateOptions[checkboxState].name)}
     </CheckboxLabel>
   )
