@@ -53,11 +53,6 @@ const FilterTab: FunctionComponent<IProps> = props => {
     return activeTab === filter
   }
 
-  const checkState = (name: string, type: string) => {
-    const isActive = store.articleStore.isFilterActive(name, type)
-    return true
-  }
-
   useEffect(() => {
     if (checkIfActive(filterType)) fetchFilters(filterType)
   }, [activeTab])

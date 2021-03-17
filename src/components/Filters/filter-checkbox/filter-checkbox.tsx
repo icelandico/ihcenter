@@ -32,12 +32,14 @@ const FilterCheckbox: FunctionComponent<IProps> = props => {
     { id: 2, name: "exclude" }
   ]
 
-  // useEffect(() => {
-  //   const isFilterActive = store.articleStore.activeFilters.some(
-  //     filter => filter.name === filterName && filter.type === filterType
-  //   )
-  //   setCheckboxState(isFilterActive)
-  // }, [])
+  useEffect(() => {
+    console.log('rerender')
+    // const isFilterActive = store.articleStore.activeFilters.some(
+    //   filter => filter.name === filterName && filter.type === filterType
+    // )
+    // setCheckboxState(isFilterActive)
+    getSnapshot(store.articleStore.activeFilters)
+  })
 
   const handleSwitchFilter = (name: string, type: string) => {
     const newState = checkboxState + 1
@@ -58,9 +60,9 @@ const FilterCheckbox: FunctionComponent<IProps> = props => {
     }
   }
 
-  const checkState = (name: string, type: string): boolean => {
+  const checkState = (name: string, type: string): number => {
     const storeSnapshot = getSnapshot(store.articleStore.activeFilters)
-    return store.articleStore.isFilterActive(name, type)
+    return store.articleStore.getCurrentState(name, type)
   }
 
   const renderCheckbox = (state: string) => {
@@ -78,7 +80,7 @@ const FilterCheckbox: FunctionComponent<IProps> = props => {
     <CheckboxLabel onClick={() => handleSwitchFilter(filter.name, filter.type)}>
       {filter.name}
       <Checkbox />
-      {renderCheckbox(stateOptions[checkboxState].name)}
+      {renderCheckbox(stateOptions[checkState(filter.name, filter.type)].name)}
     </CheckboxLabel>
   )
 }

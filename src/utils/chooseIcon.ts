@@ -5,7 +5,7 @@ import { ReactComponent as EventIcon } from "../static/icons/events.svg"
 
 export class ReactUtils extends Component {
 
-  public static chooseIcon = (iconType: string) => {
+  public static chooseIcon(iconType: string) {
     switch (iconType) {
       case "person":
         return PersonIcon

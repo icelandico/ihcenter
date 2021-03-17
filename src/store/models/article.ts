@@ -108,10 +108,11 @@ const ArticleStore = types
     setUserBookmarks(newBookmarks: IUserBookmark[]): void {
       self.userBookmarks = cast(newBookmarks)
     },
-    isFilterActive(name: string, type: string) {
-      return self.activeFilters.some(
-        filter => filter.name === name && filter.type === type
+    getCurrentState(name: string, type: string): number {
+      const activeIndex = self.activeFilters.findIndex(
+        element => element.name === name && element.type === type
       )
+      return activeIndex !== -1 ? self.activeFilters[activeIndex].state : 0
     },
     removeFilter(filter: FilterModel) {
       const activeIndex = self.activeFilters.findIndex(
