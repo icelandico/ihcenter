@@ -25,9 +25,7 @@ const choosePhrase = (type: string): string => {
   }
 }
 
-const chooseIcon = (
-  type: string
-): React.FunctionComponent<React.SVGProps<SVGSVGElement>> => {
+const chooseIcon = (type: string): React.FunctionComponent<React.SVGProps<SVGSVGElement>> => {
   switch (type) {
     case "person":
       return PersonIcon

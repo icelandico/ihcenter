@@ -18,10 +18,8 @@ import {
   ResultIcon
 } from "./finder-styles"
 import { ArticleModel } from "../../store/models/article"
-import { ReactComponent as OrganisationIcon } from "../../static/icons/politics.svg"
-import { ReactComponent as PersonIcon } from "../../static/icons/politics.svg"
-import { ReactComponent as EventIcon } from "../../static/icons/events.svg"
 import SvgIcon from "../shared/SvgIcon/svgIcon"
+import { ReactUtils } from "../../utils/chooseIcon"
 
 interface Props {
   store?: typeof rootStore
@@ -33,6 +31,7 @@ const Finder: FunctionComponent<Props> = props => {
   const [resultsVisible, setResultsVisible] = useState<boolean>(false)
   const resultsRef = useRef(null)
   const { store } = props
+  const reactUtils = ReactUtils
 
   useEffect(() => {
     const handleOutsideClick = (ev: Event) => {
@@ -77,7 +76,7 @@ const Finder: FunctionComponent<Props> = props => {
           return (
             <SingleResult type={el.type} onClick={() => setArticle(el)}>
               <ResultIcon>
-                <SvgIcon Icon={OrganisationIcon} />
+                <SvgIcon Icon={reactUtils.chooseIcon(el.type)} />
               </ResultIcon>
               <ResultText>{el.name}</ResultText>
             </SingleResult>
