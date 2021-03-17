@@ -1,0 +1,18 @@
+<svg id="Warstwa_1" data-name="Warstwa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.36 16.36">
+    <defs>
+        <clipPath id="clip-path" transform="translate(-956.34 -527.43)">
+            <path class="cls-1" d="M956.34 527.43h16.36v16.36h-16.36z"/>
+        </clipPath>
+        <clipPath id="clip-path-2" transform="translate(-956.34 -527.43)">
+            <path class="cls-1" d="M956.84 535.61a7.68 7.68 0 107.68-7.67 7.68 7.68 0 00-7.68 7.67"/>
+        </clipPath>
+        <style>
+            .cls-1{fill:none}.cls-2{clip-path:url(#clip-path)}
+        </style>
+    </defs>
+    <path d="M964.52 543.28a7.67 7.67 0 10-7.68-7.67 7.67 7.67 0 007.68 7.67" transform="translate(-956.34 -527.43)" fill="#00393f"/>
+    <g clip-path="url(#clip-path-2)">
+        <path fill="#96388d" d="M8.41 3.68h-.28L7.7 6.82 5.17 4.91l-.19.19 1.91 2.55-3.14.44v.27l3.1.47-1.87 2.5.19.19 2.5-1.87.46 3.12h.28l.45-3.16 2.53 1.91.2-.19L9.66 8.8l3.16-.44v-.27l-3.16-.44 1.93-2.55-.2-.19-2.53 1.91-.45-3.14z"/>
+    </g>
+    <path d="M8.18 15.85A7.67 7.67 0 10.5 8.18a7.67 7.67 0 007.68 7.67z" stroke="#96388d" stroke-width="1.02" fill="none"/>
+</svg>
