@@ -3,6 +3,7 @@ import { inject, observer } from "mobx-react"
 import { ActiveFiltersContainer, SingleFilter } from "./active-filters-styles"
 import { rootStore } from "../../../store/RootStore"
 import { FilterModel } from "../../../store/models/filterModel"
+import Checkmark from "../../shared/Checkmark/checkmark"
 
 interface Props {
   store?: typeof rootStore
@@ -25,7 +26,8 @@ const ActiveFilters: FunctionComponent<Props> = props => {
             filterState={filter.state}
             data-state={filter.state}
           >
-            {filter.name.toLowerCase()}
+            <Checkmark mode={filter.state === 1 ? "on" : "off"} scale={0.6}/>
+            <p>{filter.name.toLowerCase()}</p>
           </SingleFilter>
         )
       })}

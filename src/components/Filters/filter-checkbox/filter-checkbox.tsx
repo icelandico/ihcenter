@@ -32,15 +32,6 @@ const FilterCheckbox: FunctionComponent<IProps> = props => {
     { id: 2, name: "exclude" }
   ]
 
-  useEffect(() => {
-    console.log('rerender')
-    // const isFilterActive = store.articleStore.activeFilters.some(
-    //   filter => filter.name === filterName && filter.type === filterType
-    // )
-    // setCheckboxState(isFilterActive)
-    getSnapshot(store.articleStore.activeFilters)
-  })
-
   const handleSwitchFilter = (name: string, type: string) => {
     const newState = checkboxState + 1
     const filter = { name, type, state: newState }

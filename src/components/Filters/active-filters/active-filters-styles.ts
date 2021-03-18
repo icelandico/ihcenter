@@ -12,10 +12,11 @@ export const ActiveFiltersContainer = styled.div`
   height: 2.5rem;
   padding-left: 5.5%;
 `
-export const SingleFilter = styled.span<{
+export const SingleFilter = styled.div<{
   filterState: number
 }>`
-  margin-right: 0.75rem;
+  display: flex;
+  margin-right: 0.5rem;
   cursor: pointer;
   font-size: 1.4rem;
   font-weight: 700;
