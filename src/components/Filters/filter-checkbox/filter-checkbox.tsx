@@ -3,10 +3,10 @@ import { inject, observer } from "mobx-react"
 import { getSnapshot } from "mobx-state-tree"
 import {
   CheckboxLabel,
-  CheckboxIndicator,
-  Checkbox,
-  CheckboxIncluded,
-  CheckboxExcluded
+  FilterCheckboxIndicator,
+  FilterCheckboxExcluded,
+  FilterCheckboxIncluded,
+
 } from "./filter-checkbox-styles"
 import { rootStore } from "../../../store/RootStore"
 import { FilterModel } from "../../../store/models/filterModel"
@@ -59,18 +59,18 @@ const FilterCheckbox: FunctionComponent<IProps> = props => {
   const renderCheckbox = (state: string) => {
     switch (state) {
       case "include":
-        return <CheckboxIncluded />
+        return <FilterCheckboxIncluded />
       case "exclude":
-        return <CheckboxExcluded />
+        return <FilterCheckboxExcluded />
       default:
-        return <CheckboxIndicator />
+        return <FilterCheckboxIndicator />
     }
   }
 
   return (
     <CheckboxLabel onClick={() => handleSwitchFilter(filter.name, filter.type)}>
       {filter.name}
-      <Checkbox />
+      <FilterCheckboxIndicator />
       {renderCheckbox(stateOptions[checkState(filter.name, filter.type)].name)}
     </CheckboxLabel>
   )
