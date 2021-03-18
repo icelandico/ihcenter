@@ -25,7 +25,7 @@ const ActiveFilters: FunctionComponent<Props> = props => {
             filterState={filter.state}
             data-state={filter.state}
           >
-            {filter.name}
+            {filter.name.toLowerCase()}
           </SingleFilter>
         )
       })}
