@@ -6,7 +6,7 @@ import { getFiltersCheckboxSet } from "./filter-box/filterCheckboxSet"
 
 const Filters: FunctionComponent = () => {
   const [activeTab, setActiveTab] = useState<string>("")
-  const filterTypes = ["nationality", "professions", "mainideas"]
+  const filterTypes = ["nationalities", "professions", "mainideas"]
 
   const switchFilterTab = (filter: string, outsideClick = false): void => {
     if (outsideClick) {

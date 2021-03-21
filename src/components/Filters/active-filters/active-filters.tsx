@@ -24,9 +24,8 @@ const ActiveFilters: FunctionComponent<Props> = props => {
             onClick={() => removeFilter(filter)}
             key={`${filter.name}-${filter.type}`}
             filterState={filter.state}
-            data-state={filter.state}
           >
-            <Checkmark mode={filter.state === 1 ? "on" : "off"} scale={0.6}/>
+            <Checkmark mode={filter.state === 1 ? "on" : "off"} scale={0.6} />
             <p>{filter.name.toLowerCase()}</p>
           </SingleFilter>
         )

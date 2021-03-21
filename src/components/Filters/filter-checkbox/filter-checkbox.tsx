@@ -32,9 +32,9 @@ const FilterCheckbox: FunctionComponent<IProps> = props => {
     { id: 2, name: "exclude" }
   ]
 
-  const handleSwitchFilter = (name: string, type: string) => {
+  const handleSwitchFilter = (name: string, type: string, id: number) => {
     const newState = checkboxState + 1
-    const filter = { name, type, state: newState }
+    const filter = { name, type, state: newState, id }
     if (newState >= stateOptions.length) {
       store.articleStore.removeFilter(filter)
       setCheckboxState(0)
@@ -68,7 +68,7 @@ const FilterCheckbox: FunctionComponent<IProps> = props => {
   }
 
   return (
-    <CheckboxLabel onClick={() => handleSwitchFilter(filter.name, filter.type)}>
+    <CheckboxLabel onClick={() => handleSwitchFilter(filter.name, filter.type, filter.id)}>
       {filter.name}
       <FilterCheckboxIndicator />
       {renderCheckbox(stateOptions[checkState(filter.name, filter.type)].name)}

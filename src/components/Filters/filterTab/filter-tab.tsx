@@ -23,7 +23,7 @@ interface IFilter {
 }
 
 const FilterTab: FunctionComponent<IProps> = props => {
-  const { filterType, activeTab, store } = props
+  const { filterType, activeTab } = props
   const [filterOptions, setFilterOptions] = useState<any>({})
   const tabRef = useRef(null)
 
@@ -69,12 +69,16 @@ const FilterTab: FunctionComponent<IProps> = props => {
   //     document.removeEventListener("mousedown", handleOutsideClick)
   //   }
   // }, [tabRef, activeTab])
-
+  // console.log('filtertpyes', filterOptions[filterType])
   return (
     <FilterTabContainer isActive={checkIfActive(filterType)} ref={tabRef}>
       {filterOptions[filterType] &&
         filterOptions[filterType].map((filter: FilterModel) => (
-          <FilterCheckbox filter={filter} isChecked={false} />
+          <FilterCheckbox
+            filter={filter}
+            isChecked={false}
+
+          />
         ))}
       {!filterOptions[filterType] && <Loader />}
       {tabRef.current && <ScrollIndicator container={tabRef.current} />}
