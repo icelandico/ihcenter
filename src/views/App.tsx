@@ -19,6 +19,7 @@ import {
   MainContainerRight,
   MainContainerRightBox
 } from "./app-styles"
+import FiltersBottom from "../components/Filters/filters-bottom"
 
 const App: React.FC = () => {
   return (
@@ -31,10 +32,8 @@ const App: React.FC = () => {
         <MainContainerContent>
           <ActiveFilters />
           <MainContainerMenu>
-            {/*<span className="content__menu-aside-text content__menu-aside-filters">*/}
-            {/*  Additional Filters*/}
-            {/*</span>*/}
             <Filters />
+            <FiltersBottom />
           </MainContainerMenu>
           <MainContainerInnerContent>
             <Routes />
