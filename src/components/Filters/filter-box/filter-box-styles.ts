@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { colors } from "../../../styles/colors"
+import StarIcon from "../../../static/icons/icon_born.svg"
 
 export const FilterContainer = styled.div`
   cursor: pointer;
@@ -18,7 +19,7 @@ export const FilterCross = styled.div<{
   position: relative;
   width: 1rem;
 
-  &:after {
+  &::after {
     position: absolute;
     content: "+";
     font-size: 2vh;
@@ -35,5 +36,28 @@ export const FilterCross = styled.div<{
     height: 2px;
     background-color: ${colors.lightBrown};
     z-index: 2000;
+  }
+`
+
+export const FilterLine = styled.div<{
+  isActive: boolean
+}>`
+  position: relative;
+  width: 1rem;
+
+  &::after {
+    position: absolute;
+    left: -50%;
+    content: "";
+    width: 5rem;
+    height: 2px;
+    background-color: #feeaca;
+  }
+
+  &::before {
+    position: absolute;
+    content: url(${StarIcon});
+    width: ${props => (props.isActive ? "1.5rem" : "0")};
+    top: -6px;
   }
 `

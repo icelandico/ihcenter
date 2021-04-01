@@ -4,13 +4,9 @@ import FilterBox from "./filter-box/filter-box"
 
 const FiltersBottom: FunctionComponent = () => {
   const [activeTab, setActiveTab] = useState<string>("")
-  const filterTypes = ["character", "writing", "event"]
+  const filterTypes = ["person", "writing", "event"]
 
-  const switchFilterTab = (filter: string, outsideClick = false): void => {
-    if (outsideClick) {
-      setActiveTab("")
-      return
-    }
+  const switchFilterTab = (filter: string): void => {
     filter === activeTab ? setActiveTab("") : setActiveTab(filter)
   }
 
@@ -27,6 +23,7 @@ const FiltersBottom: FunctionComponent = () => {
               filterType={filter}
               clickHandler={() => switchFilterTab(filter)}
               isActive={checkIfActive(filter)}
+              noCross
             />
           </SingleFilterBox>
         )

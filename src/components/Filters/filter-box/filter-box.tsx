@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from "react"
 import {
   FilterCross,
+  FilterLine,
   FilterContainer,
-  FilterIconBox
+  FilterIconBox,
 } from "./filter-box-styles"
 import { ReactComponent as FlagIcon } from "../../../static/icons/flag.svg"
 import { ReactComponent as CurrentIcon } from "../../../static/icons/current.svg"
@@ -16,10 +17,11 @@ interface IProps {
   filterType: string
   clickHandler: Function
   isActive: boolean
+  noCross?: boolean
 }
 
 const FilterBox: FunctionComponent<IProps> = props => {
-  const { filterType, clickHandler, isActive } = props
+  const { filterType, clickHandler, isActive, noCross } = props
 
   const renderIcon = (type: string) => {
     switch (type) {
@@ -27,7 +29,7 @@ const FilterBox: FunctionComponent<IProps> = props => {
         return CurrentIcon
       case "professions":
         return FieldsIcon
-      case "character":
+      case "person":
         return CharacterIcon
       case "event":
         return EventIcon
@@ -43,7 +45,11 @@ const FilterBox: FunctionComponent<IProps> = props => {
       <FilterIconBox>
         <SvgIcon Icon={renderIcon(filterType)} />
       </FilterIconBox>
-      <FilterCross isActive={isActive} />
+      {noCross ? (
+        <FilterLine isActive={isActive} />
+      ) : (
+        <FilterCross isActive={isActive} />
+      )}
     </FilterContainer>
   )
 }
