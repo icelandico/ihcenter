@@ -4,7 +4,7 @@ import {
   FilterContainer,
   FilterIconBox
 } from "./filter-box-styles"
-import { ReactComponent as FlagIcon } from "../../../static/flags/Default.svg"
+import { ReactComponent as FlagIcon } from "../../../static/icons/flag.svg"
 import { ReactComponent as CurrentIcon } from "../../../static/icons/current.svg"
 import { ReactComponent as FieldsIcon } from "../../../static/icons/fields.svg"
 import { ReactComponent as CharacterIcon } from "../../../static/icons/person.svg"
