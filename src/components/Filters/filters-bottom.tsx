@@ -1,13 +1,26 @@
-import React, { FunctionComponent, useState } from "react"
+import React, { useState } from "react"
+import { observer, inject } from "mobx-react"
 import { FiltersContainer, SingleFilterBox } from "./filters-styles"
 import FilterBox from "./filter-box/filter-box"
+import { rootStore } from "../../store/RootStore"
+import { TYPE, SHOW_ALL } from "../../store/constants/filters"
 
-const FiltersBottom: FunctionComponent = () => {
+interface Props {
+  store?: typeof rootStore
+}
+
+const FiltersBottom: React.FC<Props> = props => {
   const [activeTab, setActiveTab] = useState<string>("")
   const filterTypes = ["person", "writing", "event"]
 
   const switchFilterTab = (filter: string): void => {
-    filter === activeTab ? setActiveTab("") : setActiveTab(filter)
+    if (filter === activeTab) {
+      setActiveTab("")
+      props.store.articleStore.setFilter(SHOW_ALL)
+      return
+    }
+    setActiveTab(filter)
+    props.store.articleStore.setFilter(TYPE)
   }
 
   const checkIfActive = (filter: string): boolean => {
@@ -32,4 +45,4 @@ const FiltersBottom: FunctionComponent = () => {
   )
 }
 
-export default FiltersBottom
+export default inject("store")(observer(FiltersBottom))

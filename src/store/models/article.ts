@@ -1,5 +1,5 @@
 import { types, Instance, flow, applySnapshot, cast } from "mobx-state-tree"
-import {apiEndpoints, apiFilters} from "../api/api"
+import { apiEndpoints, apiFilters } from "../api/api"
 import { ArticleModel } from "./articleModel"
 import {
   FILTERS,
@@ -7,11 +7,11 @@ import {
   filterType,
   BY_YEAR,
   CUMULATIVE,
-  CUSTOM
+  TYPE
 } from "../constants/filters"
 import { getYear } from "../../utils/formatDate"
 import { UserBookmark, IUserBookmark } from "./articleDetails"
-import { Filter, FilterModel} from "./filterModel"
+import { Filter, FilterModel } from "./filterModel"
 
 export type ArticleModel = Instance<typeof Article>
 
@@ -145,7 +145,7 @@ const ArticleStore = types
           return self.articles.filter(currentFilter(self.currentYear))
         case FILTERS[CUMULATIVE]:
           return self.articles.filter(currentFilter(self.currentYear))
-        case FILTERS[CUSTOM]:
+        case FILTERS[TYPE]:
           return self.articles.filter(currentFilter(self.activeFilters))
         default:
           return self.articles
