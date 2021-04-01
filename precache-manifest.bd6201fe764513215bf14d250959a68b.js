@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3a3c2da14e5bf6f47e7b9a2c0aed6937",
+    "revision": "02e120ecfcefa2436762e1320f709699",
     "url": "/ihcenter/index.html"
   },
   {
-    "revision": "275ebd62daa806c8f822",
+    "revision": "e8d041d8652b36b78997",
     "url": "/ihcenter/static/css/main.cc9e9286.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ihcenter/static/js/2.e4ff477e.chunk.js"
   },
   {
-    "revision": "275ebd62daa806c8f822",
-    "url": "/ihcenter/static/js/main.b01a4c48.chunk.js"
+    "revision": "e8d041d8652b36b78997",
+    "url": "/ihcenter/static/js/main.8bf2fe77.chunk.js"
   },
   {
     "revision": "26f6480fca97f4ea06cb",
@@ -78,6 +78,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "9541552f7bfa45a35cc654624305e828",
     "url": "/ihcenter/static/media/fields.9541552f.svg"
+  },
+  {
+    "revision": "9c6114be610b72f1442f261924d30219",
+    "url": "/ihcenter/static/media/flag.9c6114be.svg"
   },
   {
     "revision": "42b211d85b4d67ef24255a0dcabd7145",
