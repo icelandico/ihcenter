@@ -15,7 +15,8 @@ interface Urls {
 // }
 
 export const apiUrls: Urls = {
-  baseUrl: "https://icelandico.usermd.net"
+  baseUrl: "https://icelandico.usermd.net",
+  baseUrlDev: "http://localhost:1337"
 }
 
 export const apiEndpoints = {
@@ -23,4 +24,8 @@ export const apiEndpoints = {
   getProfessions: `${apiUrls.baseUrl}/professions?_sort=name:ASC`,
   getMainIdeas: `${apiUrls.baseUrl}/mainIdeas?_sort=name:ASC`,
   getNationalities: `${apiUrls.baseUrl}/nationalities?_sort=name:ASC`
+}
+
+export const apiFilters = {
+  getFiltered: `${apiUrls.baseUrlDev}/markers/filter`
 }

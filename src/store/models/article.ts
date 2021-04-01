@@ -1,5 +1,5 @@
 import { types, Instance, flow, applySnapshot, cast } from "mobx-state-tree"
-import { apiEndpoints } from "../api/api"
+import {apiEndpoints, apiFilters} from "../api/api"
 import { ArticleModel } from "./articleModel"
 import {
   FILTERS,
@@ -124,7 +124,6 @@ const ArticleStore = types
     },
     insertFilter(filter: FilterModel) {
       applySnapshot(self.activeFilters, self.activeFilters.concat(filter))
-      console.log('filters', self.activeFilters)
     },
     changeFilterState(filter: FilterModel) {
       const activeIndex = self.activeFilters.findIndex(

@@ -5,8 +5,7 @@ import {
   CheckboxLabel,
   FilterCheckboxIndicator,
   FilterCheckboxExcluded,
-  FilterCheckboxIncluded,
-
+  FilterCheckboxIncluded
 } from "./filter-checkbox-styles"
 import { rootStore } from "../../../store/RootStore"
 import { FilterModel } from "../../../store/models/filterModel"
@@ -44,7 +43,21 @@ const FilterCheckbox: FunctionComponent<IProps> = props => {
 
     if (newState === 1) {
       store.articleStore.insertFilter(filter)
-      return
+      // const fetchFilters = async () => {
+      //   const fetchApi = await fetch("http://localhost:1337/markers/filter", {
+      //     method: "POST",
+      //     body: JSON.stringify([
+      //       { id: 10, name: "mainideas" },
+      //       { id: 1, name: "professions" },
+      //       { id: 2, name: "nationalities" }
+      //     ]),
+      //     headers: {
+      //       "content-type": "application/json;charset=UTF-8"
+      //     }
+      //   })
+      // }
+      //
+      // fetchFilters()
     }
     if (newState === 2) {
       store.articleStore.changeFilterState(filter)
@@ -68,7 +81,9 @@ const FilterCheckbox: FunctionComponent<IProps> = props => {
   }
 
   return (
-    <CheckboxLabel onClick={() => handleSwitchFilter(filter.name, filter.type, filter.id)}>
+    <CheckboxLabel
+      onClick={() => handleSwitchFilter(filter.name, filter.type, filter.id)}
+    >
       {filter.name}
       <FilterCheckboxIndicator />
       {renderCheckbox(stateOptions[checkState(filter.name, filter.type)].name)}
