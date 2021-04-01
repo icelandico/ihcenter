@@ -21,7 +21,7 @@ const Filters: FunctionComponent = () => {
   }
 
   return (
-    <FiltersContainer>
+    <FiltersContainer marginBottom>
       {filterTypes.map(filter => {
         return (
           <SingleFilterBox>
