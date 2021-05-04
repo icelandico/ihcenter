@@ -7,7 +7,8 @@ import {
   filterType,
   BY_YEAR,
   CUMULATIVE,
-  TYPE
+  TYPE_EVENT,
+  TYPE_PERSON
 } from "../constants/filters"
 import { getYear } from "../../utils/formatDate"
 import { UserBookmark, IUserBookmark } from "./articleDetails"
@@ -124,6 +125,7 @@ const ArticleStore = types
     },
     insertFilter(filter: FilterModel) {
       applySnapshot(self.activeFilters, self.activeFilters.concat(filter))
+      console.log('activeFilters', self.activeFilters)
     },
     changeFilterState(filter: FilterModel) {
       const activeIndex = self.activeFilters.findIndex(
@@ -145,7 +147,7 @@ const ArticleStore = types
           return self.articles.filter(currentFilter(self.currentYear))
         case FILTERS[CUMULATIVE]:
           return self.articles.filter(currentFilter(self.currentYear))
-        case FILTERS[TYPE]:
+        case FILTERS[TYPE_PERSON]:
           return self.articles.filter(currentFilter(self.activeFilters))
         default:
           return self.articles

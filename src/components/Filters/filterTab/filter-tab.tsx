@@ -74,11 +74,7 @@ const FilterTab: FunctionComponent<IProps> = props => {
     <FilterTabContainer isActive={checkIfActive(filterType)} ref={tabRef}>
       {filterOptions[filterType] &&
         filterOptions[filterType].map((filter: FilterModel) => (
-          <FilterCheckbox
-            filter={filter}
-            isChecked={false}
-
-          />
+          <FilterCheckbox filter={filter} isChecked={false} />
         ))}
       {!filterOptions[filterType] && <Loader />}
       {tabRef.current && <ScrollIndicator container={tabRef.current} />}

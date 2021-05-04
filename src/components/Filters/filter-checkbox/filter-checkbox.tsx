@@ -43,21 +43,6 @@ const FilterCheckbox: FunctionComponent<IProps> = props => {
 
     if (newState === 1) {
       store.articleStore.insertFilter(filter)
-      // const fetchFilters = async () => {
-      //   const fetchApi = await fetch("http://localhost:1337/markers/filter", {
-      //     method: "POST",
-      //     body: JSON.stringify([
-      //       { id: 10, name: "mainideas" },
-      //       { id: 1, name: "professions" },
-      //       { id: 2, name: "nationalities" }
-      //     ]),
-      //     headers: {
-      //       "content-type": "application/json;charset=UTF-8"
-      //     }
-      //   })
-      // }
-      //
-      // fetchFilters()
     }
     if (newState === 2) {
       store.articleStore.changeFilterState(filter)
