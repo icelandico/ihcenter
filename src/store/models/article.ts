@@ -125,7 +125,7 @@ const ArticleStore = types
     },
     insertFilter(filter: FilterModel) {
       applySnapshot(self.activeFilters, self.activeFilters.concat(filter))
-      console.log('activeFilters', self.activeFilters)
+      console.log('active filters', self.activeFilters)
     },
     changeFilterState(filter: FilterModel) {
       const activeIndex = self.activeFilters.findIndex(
