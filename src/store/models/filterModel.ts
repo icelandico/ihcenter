@@ -13,3 +13,4 @@ export const FiltersSet = types.model("FiltersSet", {
 })
 
 export type FilterModel = Instance<typeof Filter>
+export type FiltersTime = "CUMULATIVE" | "BY_YEAR"

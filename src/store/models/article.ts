@@ -11,7 +11,7 @@ import {
 } from "../constants/filters"
 import { getYear } from "../../utils/formatDate"
 import { UserBookmark, IUserBookmark } from "./articleDetails"
-import { FilterModel, FiltersSet } from "./filterModel"
+import {FilterModel, FiltersSet, FiltersTime} from "./filterModel"
 
 export type ArticleModel = Instance<typeof Article>
 
@@ -86,7 +86,7 @@ const ArticleStore = types
         self.currentYear = year
       }
     },
-    setFilter(mode: string) {
+    setFilter(mode: FiltersTime) {
       self.activeFilters.time = mode
     },
     setYearsRange(): void {
@@ -108,49 +108,44 @@ const ArticleStore = types
       self.userBookmarks = cast(newBookmarks)
     },
     getCurrentState(name: string, type: string): number {
-      const activeIndex = self.activeFilters.findIndex(
+      const activeIndex = self.activeFilters.parameters.findIndex(
         element => element.name === name && element.type === type
       )
-      return activeIndex !== -1 ? self.activeFilters[activeIndex].state : 0
+      return activeIndex !== -1 ? self.activeFilters.parameters[activeIndex].state : 0
     },
     removeFilter(filter: FilterModel) {
-      const activeIndex = self.activeFilters.findIndex(
+      const activeIndex = self.activeFilters.parameters.findIndex(
         element => element.name === filter.name && element.type === filter.type
       )
       applySnapshot(
         self.activeFilters,
-        self.activeFilters.filter((filter, index) => index !== activeIndex)
+        self.activeFilters.parameters.filter((filter, index) => index !== activeIndex)
       )
     },
     insertFilter(filter: FilterModel) {
-      applySnapshot(self.activeFilters, self.activeFilters.concat(filter))
+      applySnapshot(self.activeFilters, self.activeFilters.parameters.concat(filter))
       console.log('active filters', self.activeFilters)
     },
     changeFilterState(filter: FilterModel) {
-      const activeIndex = self.activeFilters.findIndex(
+      const activeIndex = self.activeFilters.parameters.findIndex(
         element => element.name === filter.name && element.type === filter.type
       )
-      self.activeFilters.splice(activeIndex, 1, {
-        ...self.activeFilters[activeIndex],
+      self.activeFilters.parameters.splice(activeIndex, 1, {
+        ...self.activeFilters.parameters[activeIndex],
         state: filter.state
       })
     }
   }))
   .views(self => ({
     get filteredStore() {
-      const currentFilter: Function = FILTERS[self.filter]
-      switch (currentFilter) {
-        case FILTERS[SHOW_ALL]:
-          return self.articles
-        case FILTERS[BY_YEAR]:
-          return self.articles.filter(currentFilter(self.currentYear))
-        case FILTERS[CUMULATIVE]:
-          return self.articles.filter(currentFilter(self.currentYear))
-        case FILTERS[TYPE_PERSON]:
-          return self.articles.filter(currentFilter(self.activeFilters))
-        default:
-          return self.articles
+      const currentFilter: string = self.activeFilters.time
+      if (currentFilter === "CUMULATIVE") {
+        return self.articles.filter(FILTERS[CUMULATIVE](self.currentYear))
       }
+      if (currentFilter === "BY_YEAR") {
+        return self.articles.filter(FILTERS[BY_YEAR](self.currentYear))
+      }
+      return self.articles
     }
   }))
 
