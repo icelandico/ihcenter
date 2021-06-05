@@ -7,4 +7,9 @@ export const Filter = types.model("Filter", {
   id: types.optional(types.number, 0)
 })
 
+export const FiltersSet = types.model("FiltersSet", {
+  time: types.union(types.literal("CUMULATIVE"), types.literal("BY_YEAR")),
+  parameters: types.optional(types.array(Filter), [])
+})
+
 export type FilterModel = Instance<typeof Filter>

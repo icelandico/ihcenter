@@ -17,7 +17,7 @@ interface Props {
 
 const TimelineMenu: React.FC<Props> = props => {
   const { store } = props
-  const activeOption = store.articleStore.filter
+  const activeOption = store.articleStore.activeFilters.time;
 
   const switchTimelineType = (option: string): void => {
     store.articleStore.setFilter(option)

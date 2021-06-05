@@ -18,7 +18,7 @@ const ActiveFilters: FunctionComponent<Props> = props => {
 
   return (
     <ActiveFiltersContainer>
-      {articleStore.activeFilters.map(filter => {
+      {articleStore.activeFilters.map((filter: FilterModel) => {
         return (
           <SingleFilter
             onClick={() => removeFilter(filter)}
