@@ -27,7 +27,7 @@ interface IProps {
 
 const Timeline: React.FC<IProps> = props => {
   const [yearsData, setData] = useState([])
-  const [isData, setIsData] = useState()
+  const [isData, setIsData] = useState<boolean>()
   const { store } = props
   const { currentYear } = store.articleStore
   const yearRange = store.articleStore.lastYear - store.articleStore.firstYear
@@ -38,9 +38,7 @@ const Timeline: React.FC<IProps> = props => {
   }
 
   useEffect(() => {
-    const isData =
-      yearsData.filter((el: IYearsData) => el.year === currentYear && el.isData)
-        .length > 0
+    const isData: boolean = yearsData.filter((el: IYearsData) => el.year === currentYear && el.isData).length > 0
     setIsData(isData)
   }, [yearsData, currentYear])
 
