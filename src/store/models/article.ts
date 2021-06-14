@@ -123,8 +123,8 @@ const ArticleStore = types
       )
     },
     insertFilter(filter: FilterModel) {
-      applySnapshot(self.activeFilters, self.activeFilters.parameters.concat(filter))
-      console.log('active filters', self.activeFilters)
+      applySnapshot(self.activeFilters.parameters, self.activeFilters.parameters.concat(filter))
+      console.log('Filters', self.activeFilters)
     },
     changeFilterState(filter: FilterModel) {
       const activeIndex = self.activeFilters.parameters.findIndex(
@@ -138,11 +138,12 @@ const ArticleStore = types
   }))
   .views(self => ({
     get filteredStore() {
-      const currentFilter: string = self.activeFilters.time
-      if (currentFilter === "CUMULATIVE") {
+      const currentTimeFilter: string = self.activeFilters.time
+      const currentFilterParams = self.activeFilters.parameters
+      if (currentTimeFilter === "CUMULATIVE") {
         return self.articles.filter(FILTERS[CUMULATIVE](self.currentYear))
       }
-      if (currentFilter === "BY_YEAR") {
+      if (currentTimeFilter === "BY_YEAR") {
         return self.articles.filter(FILTERS[BY_YEAR](self.currentYear))
       }
       return self.articles

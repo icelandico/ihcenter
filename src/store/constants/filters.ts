@@ -32,19 +32,4 @@ export const FILTERS: IFilters = {
       return articleYear <= year
     }
   },
-  [TYPE_EVENT]: (type: string) => {
-    return (article: any) => {
-      return article.type === "event"
-    }
-  },
-  [TYPE_WRITING]: (type: string) => {
-    return (article: any) => {
-      return article.type === "writing"
-    }
-  },
-  [TYPE_PERSON]: (type: string) => {
-    return (article: any) => {
-      return article.type === "person"
-    }
-  }
 }
