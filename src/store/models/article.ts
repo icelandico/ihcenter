@@ -140,11 +140,19 @@ const ArticleStore = types
     get filteredStore() {
       const currentTimeFilter: string = self.activeFilters.time
       const currentFilterParams = self.activeFilters.parameters
+
+      const filteredByParams = self.articles.filter(article => currentFilterParams.every(filter => {
+        if (filter.type === "nationalities" && article.nationality) return article.nationality.name === filter.name
+        if (filter.type === "mainideas" && article.mainideas) return article.mainideas.some(el => el.name === filter.name)
+        if (filter.type === "professions" && article.professions) return article.professions.some(el => el.name === filter.name)
+        if (filter.type === "type" && article.type) return article.type === filter.name
+      }))
+
       if (currentTimeFilter === "CUMULATIVE") {
-        return self.articles.filter(FILTERS[CUMULATIVE](self.currentYear))
+        return filteredByParams.filter(FILTERS[CUMULATIVE](self.currentYear))
       }
       if (currentTimeFilter === "BY_YEAR") {
-        return self.articles.filter(FILTERS[BY_YEAR](self.currentYear))
+        return filteredByParams.filter(FILTERS[BY_YEAR](self.currentYear))
       }
       return self.articles
     }
