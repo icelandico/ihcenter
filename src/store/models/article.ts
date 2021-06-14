@@ -146,9 +146,18 @@ const ArticleStore = types
       const currentFilterParams = self.activeFilters.parameters
 
       const filteredByParams = self.articles.filter(article => currentFilterParams.every(filter => {
-        if (filter.type === "nationalities" && article.nationality) return article.nationality.name === filter.name
-        if (filter.type === "mainideas" && article.mainideas) return article.mainideas.some(el => el.name === filter.name)
-        if (filter.type === "professions" && article.professions) return article.professions.some(el => el.name === filter.name)
+        if (filter.type === "nationalities" && article.nationality) {
+          if (filter.state === 1) return article.nationality.name === filter.name
+          if (filter.state === 2) return article.nationality.name !== filter.name
+        }
+        if (filter.type === "mainideas" && article.mainideas) {
+          if (filter.state === 1) return article.mainideas.some(el => el.name === filter.name)
+          if (filter.state === 2) return article.mainideas.every(el => el.name !== filter.name)
+        }
+        if (filter.type === "professions" && article.professions) {
+          if (filter.state === 1) return article.professions.some(el => el.name === filter.name)
+          if (filter.state === 2) return article.professions.every(el => el.name !== filter.name)
+        }
         if (filter.type === "type" && article.type) return article.type === filter.name
       }))
 
