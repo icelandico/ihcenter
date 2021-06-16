@@ -46,7 +46,7 @@ const Finder: FunctionComponent<Props> = props => {
     }
   }, [resultsRef])
 
-  const handleInputChange = (e: ChangeEvent) => {
+  const handleInputChange = (e: ChangeEvent): void => {
     const eventTarget = e.currentTarget as HTMLInputElement
     const finderValue = eventTarget.value
     setFinderValue(finderValue)
@@ -62,7 +62,7 @@ const Finder: FunctionComponent<Props> = props => {
     setResultsVisible(false)
   }
 
-  const setArticle = (article: ArticleModel) => {
+  const setArticle = (article: ArticleModel): void => {
     setResultsVisible(false)
     setFinderValue("")
     store.articleStore.toggle(article)

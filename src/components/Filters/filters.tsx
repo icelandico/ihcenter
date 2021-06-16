@@ -1,10 +1,10 @@
-import React, { FunctionComponent, useState } from "react"
+import React, { FunctionComponent, ReactElement, useState } from "react"
 import { FiltersContainer, SingleFilterBox } from "./filters-styles"
 import FilterBox from "./filter-box/filter-box"
 import FilterTab from "./filterTab/filter-tab"
 import { getFiltersCheckboxSet } from "./filter-box/filterCheckboxSet"
 
-const Filters: FunctionComponent = () => {
+const Filters: FunctionComponent = (): ReactElement => {
   const [activeTab, setActiveTab] = useState<string>("")
   const filterTypes = ["nationalities", "professions", "mainideas"]
 
