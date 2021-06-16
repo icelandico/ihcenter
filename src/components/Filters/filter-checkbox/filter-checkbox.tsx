@@ -23,7 +23,6 @@ interface IState {
 
 const FilterCheckbox: FunctionComponent<IProps> = props => {
   const { filter, store } = props
-  const [checkboxState, setCheckboxState] = useState<number>(0)
 
   const stateOptions: IState[] = [
     { id: 0, name: "" },
@@ -32,16 +31,14 @@ const FilterCheckbox: FunctionComponent<IProps> = props => {
   ]
 
   const handleSwitchFilter = (name: string, type: string, id: number) => {
-    const newState = checkboxState + 1 > stateOptions.length - 1 ? 0 : checkboxState + 1
-    console.log('handleClick', newState)
+    const currentState = checkState(name, type)
+    const newState = currentState + 1 > stateOptions.length - 1 ? 0 : currentState + 1
     const filter = { name, type, state: newState, id }
 
     if (newState === 0) {
       store.articleStore.removeFilter(filter)
-      setCheckboxState(0)
       return
     }
-    setCheckboxState(checkboxState + 1)
 
     if (newState === 1) {
       store.articleStore.insertFilter(filter)

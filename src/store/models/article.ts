@@ -131,17 +131,11 @@ const ArticleStore = types
       )
     },
     changeFilterState(filter: FilterModel) {
-      console.log('change Filter State', filter)
       const activeIndex = self.activeFilters.parameters.findIndex(
         element => element.name === filter.name && element.type === filter.type
       )
-
       const updatedFilters = self.activeFilters.parameters.map((currentFilter, index) => index === activeIndex ? {...currentFilter, state: filter.state } : currentFilter)
-
-      applySnapshot(
-        self.activeFilters.parameters,
-        updatedFilters
-      )
+      applySnapshot(self.activeFilters.parameters, updatedFilters)
     }
   }))
   .views(self => ({

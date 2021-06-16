@@ -69,7 +69,7 @@ const FilterTab: FunctionComponent<IProps> = props => {
   //     document.removeEventListener("mousedown", handleOutsideClick)
   //   }
   // }, [tabRef, activeTab])
-  // console.log('filtertpyes', filterOptions[filterType])
+  
   return (
     <FilterTabContainer isActive={checkIfActive(filterType)} ref={tabRef}>
       {filterOptions[filterType] &&
