@@ -143,29 +143,33 @@ const ArticleStore = types
   .views(self => ({
     get filteredStore() {
       const currentTimeFilter: string = self.activeFilters.time
-      const currentFilterParams = self.activeFilters.parameters
+      const currentFilterParams = self.activeFilters.parameters.filter(filter => filter.type !== "type")
+      const currentTypeFilterParams = self.activeFilters.parameters.filter(filter => filter.type === "type")
+      
+      const filteredByParams = self.articles.filter(article =>
+        currentFilterParams.every(filter => {
+          if (filter.type === "nationalities" && article.nationality) {
+            if (filter.state === 1) return article.nationality.name === filter.name
+            if (filter.state === 2) return article.nationality.name !== filter.name
+          }
+          if (filter.type === "mainideas" && article.mainideas) {
+            if (filter.state === 1) return article.mainideas.some(el => el.name === filter.name)
+            if (filter.state === 2) return article.mainideas.every(el => el.name !== filter.name)
+          }
+          if (filter.type === "professions" && article.professions) {
+            if (filter.state === 1) return article.professions.some(el => el.name === filter.name)
+            if (filter.state === 2) return article.professions.every(el => el.name !== filter.name)
+          }
+        })
+      )
 
-      const filteredByParams = self.articles.filter(article => currentFilterParams.every(filter => {
-        if (filter.type === "nationalities" && article.nationality) {
-          if (filter.state === 1) return article.nationality.name === filter.name
-          if (filter.state === 2) return article.nationality.name !== filter.name
-        }
-        if (filter.type === "mainideas" && article.mainideas) {
-          if (filter.state === 1) return article.mainideas.some(el => el.name === filter.name)
-          if (filter.state === 2) return article.mainideas.every(el => el.name !== filter.name)
-        }
-        if (filter.type === "professions" && article.professions) {
-          if (filter.state === 1) return article.professions.some(el => el.name === filter.name)
-          if (filter.state === 2) return article.professions.every(el => el.name !== filter.name)
-        }
-        if (filter.type === "type" && article.type) return article.type === filter.name
-      }))
+      const filteredByType = currentTypeFilterParams.length > 0 ? filteredByParams.filter(article => currentTypeFilterParams.some(filter => article.type === filter.name)) : filteredByParams
 
       if (currentTimeFilter === "CUMULATIVE") {
-        return filteredByParams.filter(FILTERS[CUMULATIVE](self.currentYear))
+        return filteredByType.filter(FILTERS[CUMULATIVE](self.currentYear))
       }
       if (currentTimeFilter === "BY_YEAR") {
-        return filteredByParams.filter(FILTERS[BY_YEAR](self.currentYear))
+        return filteredByType.filter(FILTERS[BY_YEAR](self.currentYear))
       }
       return self.articles
     }
