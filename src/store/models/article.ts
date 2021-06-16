@@ -163,7 +163,14 @@ const ArticleStore = types
         })
       )
 
-      const filteredByType = currentTypeFilterParams.length > 0 ? filteredByParams.filter(article => currentTypeFilterParams.some(filter => article.type === filter.name)) : filteredByParams
+      const filteredByType =
+        currentTypeFilterParams.length > 0
+          ? filteredByParams.filter(article =>
+              currentTypeFilterParams.some(
+                filter => article.type === filter.name
+              )
+            )
+          : filteredByParams
 
       if (currentTimeFilter === "CUMULATIVE") {
         return filteredByType.filter(FILTERS[CUMULATIVE](self.currentYear))
