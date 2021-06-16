@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "97c403177e5f49a2b3e7d434b2b08686",
+    "revision": "675ffb89ef9cc8561765ae2455809c03",
     "url": "/ihcenter/index.html"
   },
   {
-    "revision": "02eaa50c0291bfc33011",
+    "revision": "156a792b06971a79f4c7",
     "url": "/ihcenter/static/css/main.cc9e9286.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ihcenter/static/js/2.7690bca1.chunk.js"
   },
   {
-    "revision": "02eaa50c0291bfc33011",
-    "url": "/ihcenter/static/js/main.fb62c691.chunk.js"
+    "revision": "156a792b06971a79f4c7",
+    "url": "/ihcenter/static/js/main.db8c70ed.chunk.js"
   },
   {
     "revision": "26f6480fca97f4ea06cb",
