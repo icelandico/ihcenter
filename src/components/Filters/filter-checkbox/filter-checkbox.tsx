@@ -32,9 +32,11 @@ const FilterCheckbox: FunctionComponent<IProps> = props => {
   ]
 
   const handleSwitchFilter = (name: string, type: string, id: number) => {
-    const newState = checkboxState + 1
+    const newState = checkboxState + 1 > stateOptions.length - 1 ? 0 : checkboxState + 1
+    console.log('handleClick', newState)
     const filter = { name, type, state: newState, id }
-    if (newState >= stateOptions.length) {
+
+    if (newState === 0) {
       store.articleStore.removeFilter(filter)
       setCheckboxState(0)
       return
@@ -68,6 +70,7 @@ const FilterCheckbox: FunctionComponent<IProps> = props => {
   return (
     <CheckboxLabel
       onClick={() => handleSwitchFilter(filter.name, filter.type, filter.id)}
+      data-state={checkState(filter.name, filter.type)}
     >
       {filter.name}
       <FilterCheckboxIndicator />

@@ -131,13 +131,17 @@ const ArticleStore = types
       )
     },
     changeFilterState(filter: FilterModel) {
+      console.log('change Filter State', filter)
       const activeIndex = self.activeFilters.parameters.findIndex(
         element => element.name === filter.name && element.type === filter.type
       )
-      self.activeFilters.parameters.splice(activeIndex, 1, {
-        ...self.activeFilters.parameters[activeIndex],
-        state: filter.state
-      })
+
+      const updatedFilters = self.activeFilters.parameters.map((currentFilter, index) => index === activeIndex ? {...currentFilter, state: filter.state } : currentFilter)
+
+      applySnapshot(
+        self.activeFilters.parameters,
+        updatedFilters
+      )
     }
   }))
   .views(self => ({
@@ -145,7 +149,7 @@ const ArticleStore = types
       const currentTimeFilter: string = self.activeFilters.time
       const currentFilterParams = self.activeFilters.parameters.filter(filter => filter.type !== "type")
       const currentTypeFilterParams = self.activeFilters.parameters.filter(filter => filter.type === "type")
-      
+
       const filteredByParams = self.articles.filter(article =>
         currentFilterParams.every(filter => {
           if (filter.type === "nationalities" && article.nationality) {
