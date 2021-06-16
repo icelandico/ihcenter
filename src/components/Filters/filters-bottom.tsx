@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { observer, inject } from "mobx-react"
+import { getSnapshot } from "mobx-state-tree"
 import { FiltersContainer, SingleFilterBox } from "./filters-styles"
 import FilterBox from "./filter-box/filter-box"
 import { rootStore } from "../../store/RootStore"
@@ -24,8 +25,9 @@ const FiltersBottom: React.FC<Props> = props => {
     setActiveTabs(activeTabs.concat(filter))
   }
 
-  const checkIfActive = (filter: string): boolean => {
-    return activeTabs.includes(filter)
+  const checkState = (name: string, type: string): number => {
+    const storeSnapshot = getSnapshot(props.store.articleStore.activeFilters)
+    return props.store.articleStore.getCurrentState(name, type)
   }
 
   return (
@@ -36,7 +38,7 @@ const FiltersBottom: React.FC<Props> = props => {
             <FilterBox
               filterType={filter}
               clickHandler={() => switchFilterTab(filter)}
-              isActive={checkIfActive(filter)}
+              isActive={checkState(filter, "type") === 1}
               noCross
             />
           </SingleFilterBox>
