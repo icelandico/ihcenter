@@ -48,10 +48,10 @@ const Finder: FunctionComponent<Props> = props => {
 
   const handleInputChange = (e: ChangeEvent) => {
     const eventTarget = e.currentTarget as HTMLInputElement
-    const finderValue = eventTarget.value.toLowerCase()
+    const finderValue = eventTarget.value
     setFinderValue(finderValue)
     const results = store.articleStore.articles.filter(el =>
-      el.name.toLowerCase().includes(finderValue)
+      el.name.toLowerCase().includes(finderValue.toLowerCase())
     )
     if (finderValue.length >= 3 && results.length >= 1) {
       setResults(results)
