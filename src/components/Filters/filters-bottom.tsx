@@ -18,10 +18,10 @@ const FiltersBottom: React.FC<Props> = props => {
       const newTabs = activeTabs.filter(el => el !== filter)
       const filtersToRemove = activeTabs.filter(el => el === filter)
       setActiveTabs(newTabs)
-      filtersToRemove.forEach(filter => props.store.articleStore.removeFilter({ name: filter, type: "type", state: 1, id: 0 }))
+      filtersToRemove.forEach(filter => props.store.articleStore.removeFilter({ name: filter, type: "type", state: 2, id: 0 }))
       return
     }
-    props.store.articleStore.insertFilter({ name: filter, type: "type", state: 1, id: 0 })
+    props.store.articleStore.insertFilter({ name: filter, type: "type", state: 2, id: 0 })
     setActiveTabs(activeTabs.concat(filter))
   }
 
@@ -38,7 +38,7 @@ const FiltersBottom: React.FC<Props> = props => {
             <FilterBox
               filterType={filter}
               clickHandler={() => switchFilterTab(filter)}
-              isActive={checkState(filter, "type") === 1}
+              isActive={checkState(filter, "type") === 2}
               noCross
             />
           </SingleFilterBox>
