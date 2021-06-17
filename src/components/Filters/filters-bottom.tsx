@@ -11,7 +11,7 @@ interface Props {
 
 const FiltersBottom: React.FC<Props> = props => {
   const [activeTabs, setActiveTabs] = useState<string[]>([])
-  const filterTypes = ["person", "writing", "event"]
+  const filterTypes = ["person", "writing", "event", "organisation"]
 
   const switchFilterTab = (filter: string): void => {
     if (activeTabs.includes(filter)) {

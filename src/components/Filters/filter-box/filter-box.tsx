@@ -11,6 +11,7 @@ import { ReactComponent as FieldsIcon } from "../../../static/icons/fields.svg"
 import { ReactComponent as CharacterIcon } from "../../../static/icons/person.svg"
 import { ReactComponent as EventIcon } from "../../../static/icons/events.svg"
 import { ReactComponent as WritingIcon } from "../../../static/icons/text.svg"
+import { ReactComponent as OrganisationIcon } from "../../../static/icons/politics.svg"
 import SvgIcon from "../../shared/SvgIcon/svgIcon"
 
 interface IProps {
@@ -35,6 +36,8 @@ const FilterBox: FunctionComponent<IProps> = props => {
         return EventIcon
       case "writing":
         return WritingIcon
+      case "organisation":
+        return OrganisationIcon
       default:
         return FlagIcon
     }
