@@ -164,8 +164,8 @@ const ArticleStore = types
       const filteredByType =
         currentTypeFilterParams.length > 0
           ? filteredByParams.filter(article =>
-              currentTypeFilterParams.some(
-                filter => article.type === filter.name
+              currentTypeFilterParams.every(
+                filter => article.type !== filter.name
               )
             )
           : filteredByParams
