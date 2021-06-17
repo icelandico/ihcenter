@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "108e105eef8ced5fadfd149cc181b416",
+    "revision": "d104dd421b31aee5ea0af060d1ad48e5",
     "url": "/ihcenter/index.html"
   },
   {
-    "revision": "f78e2fe98cc451590e58",
+    "revision": "ab6025c0d7d1afba45aa",
     "url": "/ihcenter/static/css/main.cc9e9286.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ihcenter/static/js/2.7690bca1.chunk.js"
   },
   {
-    "revision": "f78e2fe98cc451590e58",
-    "url": "/ihcenter/static/js/main.d511c1c3.chunk.js"
+    "revision": "ab6025c0d7d1afba45aa",
+    "url": "/ihcenter/static/js/main.6592ff82.chunk.js"
   },
   {
     "revision": "26f6480fca97f4ea06cb",
@@ -108,8 +108,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ihcenter/static/media/person.e65cb6d9.svg"
   },
   {
-    "revision": "8edfa5f3242359f1fc61f06c9cbc5710",
-    "url": "/ihcenter/static/media/politics.8edfa5f3.svg"
+    "revision": "d6e7e82f5ec1326d50cf40e935bc3c9b",
+    "url": "/ihcenter/static/media/politics.d6e7e82f.svg"
   },
   {
     "revision": "01fdc74e01e3aace8ef12054ed9073f3",
