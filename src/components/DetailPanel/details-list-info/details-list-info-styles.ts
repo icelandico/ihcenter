@@ -48,3 +48,12 @@ export const WritingsYear = styled.span`
   margin-left: 0.5rem;
   font-weight: 700;
 `
+
+export const DetailsTitle = styled.span`
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: ${colors.lightBrown};
+  }
+`

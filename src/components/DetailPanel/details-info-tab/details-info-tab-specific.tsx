@@ -16,6 +16,7 @@ import SvgIcon from "../../shared/SvgIcon/svgIcon"
 import {
   DetailsTop,
   DetailsTopItem,
+  DetailsTitle,
   WritingsList,
   WritingsTitle,
   WritingsYear
@@ -97,10 +98,10 @@ export class TabGenerator extends React.Component {
         {detailsList &&
           detailsList.map((item: BaseInfo & Writing, idx: number) => {
             return (
-              <span key={item.name}>
+              <DetailsTitle key={item.name}>
                 {item.name || item.title}
                 {idx < detailsList.length - 1 ? ", " : ""}
-              </span>
+              </DetailsTitle>
             )
           })}
       </div>
