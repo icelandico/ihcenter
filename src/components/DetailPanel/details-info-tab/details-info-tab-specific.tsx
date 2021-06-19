@@ -82,10 +82,20 @@ export class TabGenerator extends React.Component {
 
   renderTextInfo = (details: ArticleOptions, specificDetail: string) => {
     const detailsList = details[specificDetail]
+    const sortedDetailsList = detailsList.sort(
+      (a: BaseInfo & Writing, b: BaseInfo & Writing) => {
+        const prev = a.name.toLowerCase()
+        const next = b.name.toLowerCase()
+
+        if (prev < next) return -1
+        if (prev > next) return 1
+        return 0
+    })
+
     return (
       <div>
         {detailsList &&
-          detailsList.map((item: BaseInfo & Writing, idx: number) => {
+          sortedDetailsList.map((item: BaseInfo & Writing, idx: number) => {
             return (
               <span key={item.name}>
                 {item.name || item.title}
