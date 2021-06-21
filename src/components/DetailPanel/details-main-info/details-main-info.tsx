@@ -19,6 +19,7 @@ import { formatDate } from "../../../utils/formatDate"
 import { ArticleModel } from "../../../store/models/article"
 import EventIcon from "../../../static/icons/events.svg"
 import PoliticsIcon from "../../../static/icons/politics.svg"
+import CharacterIcon from "../../../static/icons/person.svg"
 import SvgIcon from "../../shared/SvgIcon/svgIcon"
 import { ReactComponent as BookmarkOff } from "../../../static/icons/bookmark_off.svg"
 import { ScrollIndicator } from "../../shared/ScrollIndicator/scroll-indicator"
@@ -31,7 +32,7 @@ export interface IProps {
 
 const renderImage = (details: ArticleModel): string => {
   if (!details)
-    return "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6x-rKSUYJJ6aa673JE2ZsjVcvhoIL6v3tAI_1X8Br56U4VrrL&s"
+    return CharacterIcon
   if (details && details.image) {
     return `${apiUrls.baseUrl}${details.image.url}`
   }

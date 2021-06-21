@@ -98,7 +98,7 @@ export class TabGenerator extends React.Component {
         {detailsList &&
           detailsList.map((item: BaseInfo & Writing, idx: number) => {
             return (
-              <DetailsTitle key={item.name}>
+              <DetailsTitle key={item.name} onClick={() => console.log('Clicked', item)}>
                 {item.name || item.title}
                 {idx < detailsList.length - 1 ? ", " : ""}
               </DetailsTitle>
