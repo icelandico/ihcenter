@@ -7,7 +7,7 @@ export const MainContainer = styled.div`
 `
 export const MainContainerLeft = styled.div`
   display: grid;
-  grid-template-rows: 12rem 1fr 10rem;
+  grid-template-rows: 12rem 1fr 12rem;
   padding-left: 2rem;
   width: 65%;
   height: 100%;

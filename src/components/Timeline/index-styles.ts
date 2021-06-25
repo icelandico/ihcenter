@@ -11,7 +11,7 @@ export const TimelineContainer = styled.div`
 `
 
 export const TimelineContent = styled.div`
-  min-height: 7rem;
+  height: 60%;
   width: 95%;
   position: relative;
 
