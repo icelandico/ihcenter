@@ -4,10 +4,15 @@ import { colors } from "../../styles/colors"
 import { ReactComponent as SearchIcon } from "../../static/icons/SEARCH.svg"
 import AppLogo from "../../static/icons/LOGO_ALT.svg"
 
+export const NavbarContainer = styled.nav`
+  height: 100%;
+  width: 100%;
+`
+
 export const SearchIconSvg = styled(SearchIcon)`
   position: absolute;
   left: -3rem;
-  height: 30%;
+  height: 60%;
 `
 
 export const Home = styled.div`
@@ -38,14 +43,9 @@ export const NavbarBottom = styled.div`
   border-top: 1px solid ${colors.green};
   display: flex;
   justify-content: space-between;
-  padding-left: 5%;
-  padding-right: 1rem;
+  align-items: center;
   position: relative;
-`
-
-export const NavbarContainer = styled.nav`
-  height: 100%;
-  width: 100%;
+  padding-top: 2rem;
 `
 
 export const NavigationLinks = styled.ul`

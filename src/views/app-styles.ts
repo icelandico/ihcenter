@@ -6,21 +6,18 @@ export const MainContainer = styled.div`
   display: flex;
 `
 export const MainContainerLeft = styled.div`
-  flex: 2;
+  display: grid;
+  grid-template-rows: 12rem 1fr 10rem;
   padding-left: 2rem;
-  display: flex;
   width: 65%;
   height: 100%;
   position: relative;
-  flex-direction: column;
 `
 
 export const MainContainerTopMenu = styled.div`
   width: 100%;
   z-index: 6;
-  flex-basis: 15%;
-  padding: 0.5rem 0;
-  // overflow: hidden;
+  padding: 0.5rem 0 0 5%;
 `
 
 export const MainContainerLeftGradient = styled.div`
@@ -45,23 +42,21 @@ export const MainContainerLeftGradient = styled.div`
 `
 
 export const MainContainerContent = styled.div`
+  grid-template-columns: 1fr 95%;
+  display: grid;
   padding: 1rem 1rem 1rem 0;
-  display: flex;
-  flex-wrap: wrap;
-  flex-basis: 70%;
+  grid-template-rows: 2.5rem 1fr;
   width: 100%;
   z-index: 5;
 `
 
 export const MainContainerMenu = styled.div`
-  width: 5.5%;
   height: 100%;
   border-left: 1px solid ${colors.green};
   position: relative;
 `
 
 export const MainContainerBox = styled.div`
-  width: 5.5%;
   height: 100%;
   border-left: 1px solid ${colors.green};
   position: relative;
@@ -71,22 +66,19 @@ export const MainContainerInnerContent = styled.div`
   -webkit-box-shadow: 0px 0px 40px 0px rgba(0, 57, 63, 0.8);
   -moz-box-shadow: 0px 0px 40px 0px rgba(0, 57, 63, 0.8);
   box-shadow: 0px 0px 40px 0px rgba(0, 57, 63, 0.8);
-  width: 100%;
-  height: 95%;
-  flex: 2;
 `
 
 export const MainContainerRight = styled.div`
   flex: 1;
   background-image: linear-gradient(
-    135deg,
-    ${colors.green} 8.33%,
-    rgb(0, 57, 63) 8.33%,
-    rgb(0, 57, 63) 50%,
-    #007260 50%,
-    #007260 58.33%,
-    rgb(0, 57, 63) 58.33%,
-    rgb(0, 57, 63) 100%
+          135deg,
+          ${colors.green} 8.33%,
+          rgb(0, 57, 63) 8.33%,
+          rgb(0, 57, 63) 50%,
+          #007260 50%,
+          #007260 58.33%,
+          rgb(0, 57, 63) 58.33%,
+          rgb(0, 57, 63) 100%
   );
   background-size: 10.97px 10.97px;
   width: 100%;

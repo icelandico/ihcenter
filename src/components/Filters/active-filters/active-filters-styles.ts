@@ -8,9 +8,9 @@ const chooseColor = (state: number) => {
 export const ActiveFiltersContainer = styled.div`
   display: flex;
   align-items: center;
+  grid-column: 1 / -1;
   width: 100%;
-  height: 2.5rem;
-  padding-left: 5.5%;
+  padding-left: 5%;
 `
 export const SingleFilter = styled.div<{
   filterState: number
