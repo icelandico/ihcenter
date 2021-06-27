@@ -33,7 +33,7 @@ export const FilterCross = styled.div<{
     position: absolute;
     content: "";
     width: ${props => (props.isActive ? "5rem" : "0")};
-    height: 2px;
+    height: 0.2rem;
     background-color: ${colors.lightBrown};
     z-index: 2000;
   }
@@ -50,7 +50,7 @@ export const FilterLine = styled.div<{
     left: -50%;
     content: "";
     width: 5rem;
-    height: 2px;
+    height: 0.2rem;
     background-color: #feeaca;
   }
 
@@ -58,6 +58,6 @@ export const FilterLine = styled.div<{
     position: absolute;
     content: url(${StarIcon});
     width: ${props => (props.isActive ? "1.5rem" : "0")};
-    top: -6px;
+    top: -0.6rem;
   }
 `

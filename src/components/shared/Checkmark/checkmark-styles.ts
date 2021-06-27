@@ -20,7 +20,6 @@ export const Checkbox = styled.div<{
   position: absolute;
   top: 0;
   transform: scale(${props => (props.scale ? props.scale : 1)});
-  // outline: 1px solid ${colors.lightBrown};
 `
 
 export const CheckboxExcluded = styled(Checkbox)`

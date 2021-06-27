@@ -15,10 +15,10 @@ export const CheckboxLabel = styled.label`
 
 export const FilterCheckboxIndicator = styled(Checkbox)`
   left: -2.5rem;
-  outline: 1px solid ${colors.lightBrown};
+  outline: 0.1rem solid ${colors.lightBrown};
 
   ${CheckboxLabel}:hover & {
-    outline: 2px solid ${colors.lightBrown};
+    outline: 0.2rem solid ${colors.lightBrown};
   }
 `
 

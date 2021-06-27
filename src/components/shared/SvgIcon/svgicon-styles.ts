@@ -4,8 +4,8 @@ export const SvgContainer = styled.div<{
   height?: number
   width?: number
 }>`
-  height: "auto";
-  width: "auto";
+  height: auto;
+  width: auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;

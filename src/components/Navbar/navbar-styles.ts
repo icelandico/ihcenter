@@ -39,7 +39,7 @@ export const NavbarSearch = styled(NavbarElement)`
 
 export const NavbarBottom = styled.div`
   height: 70%;
-  border-top: 1px solid ${colors.green};
+  border-top: 0.1rem solid ${colors.green};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -66,8 +66,8 @@ export const NavigationItem = styled.li`
     text-transform: uppercase;
     color: ${colors.green};
     text-align: center;
-    font-size: 14px;
-    margin-top: 5px;
+    font-size: 1.4rem;
+    margin-top: 0.5rem;
   }
 
   & a {
@@ -94,7 +94,7 @@ export const NaviLink = styled(NavLink).attrs({ activeClassName })`
   &.${activeClassName} {
     ${NavigationIcon} {
       border-radius: 50%;
-      box-shadow: ${colors.green} 0 0 0 5px;
+      box-shadow: ${colors.green} 0 0 0 0.5rem;
     }
   }
 `

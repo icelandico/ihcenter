@@ -4,9 +4,9 @@ import { colors } from "../../styles/colors"
 export const CustomMarker = styled.div<{ color?: string }>`
   width: 0;
   height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 10px solid ${props => props.color || colors.lightBrown};
+  border-left: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-top: 1rem solid ${props => props.color || colors.lightBrown};
   position: absolute;
   left: 50%;
   top: 50%;
@@ -14,15 +14,15 @@ export const CustomMarker = styled.div<{ color?: string }>`
 `
 
 export const CustomPopup = styled.div<{ color: string }>`
-  width: 30px;
-  height: 30px;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50% 50% 50% 0;
   background: ${props => props.color};
   position: absolute;
   transform: rotate(-45deg);
   left: 50%;
   top: 50%;
-  margin: -15px 0 0 -14.5px;
+  margin: -1.5rem 0 0 -1.45rem;
 
   div {
     width: 100%;

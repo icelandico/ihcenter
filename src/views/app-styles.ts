@@ -45,8 +45,8 @@ export const MainContainerContent = styled.div`
   grid-template-columns: 1fr 95%;
   display: grid;
   padding: 0 1rem 1rem 0;
-  border-top: 1px solid ${colors.green};
-  border-left: 1px solid ${colors.green};
+  border-top: 0.1rem solid ${colors.green};
+  border-left: 0.1rem solid ${colors.green};
   grid-template-rows: 2.5rem 1fr;
   width: 100%;
   z-index: 5;
@@ -59,7 +59,7 @@ export const MainContainerMenu = styled.div`
 
 export const MainContainerBox = styled.div`
   height: 100%;
-  border-left: 1px solid ${colors.green};
+  border-left: 0.1rem solid ${colors.green};
   position: relative;
 `
 
@@ -72,14 +72,14 @@ export const MainContainerInnerContent = styled.div`
 export const MainContainerRight = styled.div`
   flex: 1;
   background-image: linear-gradient(
-          135deg,
-          ${colors.green} 8.33%,
-          rgb(0, 57, 63) 8.33%,
-          rgb(0, 57, 63) 50%,
-          #007260 50%,
-          #007260 58.33%,
-          rgb(0, 57, 63) 58.33%,
-          rgb(0, 57, 63) 100%
+    135deg,
+    ${colors.green} 8.33%,
+    rgb(0, 57, 63) 8.33%,
+    rgb(0, 57, 63) 50%,
+    #007260 50%,
+    #007260 58.33%,
+    rgb(0, 57, 63) 58.33%,
+    rgb(0, 57, 63) 100%
   );
   background-size: 10.97px 10.97px;
   width: 100%;
@@ -92,6 +92,6 @@ export const MainContainerRight = styled.div`
 export const MainContainerRightBox = styled.div`
   flex-basis: 70%;
   border: 0.1rem solid ${colors.green};
-  max-height: 70%;
+  max-height: 75%;
   margin-top: 12rem;
 `

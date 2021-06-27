@@ -7,7 +7,7 @@ export const FinderInput = styled.input`
   background-color: transparent;
   width: 100%;
   height: 100%;
-  padding-left: 15px;
+  padding-left: 1.5rem;
   color: ${colors.white};
   transition: 0.25s;
 
