@@ -45,7 +45,6 @@ const App: React.FC = () => {
       </MainContainerLeft>
 
       <MainContainerRight>
-        <MainContainerTopMenu />
         <MainContainerRightBox>
           <DetailPanel />
           <UserBookmarks />

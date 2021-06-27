@@ -12,7 +12,7 @@ export const NavbarContainer = styled.nav`
 export const SearchIconSvg = styled(SearchIcon)`
   position: absolute;
   left: -3rem;
-  height: 60%;
+  height: 35%;
 `
 
 export const Home = styled.div`
@@ -22,14 +22,13 @@ export const Home = styled.div`
 `
 
 export const NavbarTop = styled.div`
-  height: 50%;
+  height: 30%;
 `
 
 export const NavbarElement = styled.div`
   display: flex;
   align-items: center;
   height: 100%;
-  margin-top: 0.5rem;
 `
 
 export const NavbarSearch = styled(NavbarElement)`
@@ -39,13 +38,12 @@ export const NavbarSearch = styled(NavbarElement)`
 `
 
 export const NavbarBottom = styled.div`
-  height: 50%;
+  height: 70%;
   border-top: 1px solid ${colors.green};
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
-  padding-top: 2rem;
 `
 
 export const NavigationLinks = styled.ul`
@@ -83,8 +81,8 @@ export const NavigationItem = styled.li`
 `
 
 export const NavigationIcon = styled.img`
-  height: 35px;
-  width: 35px;
+  height: 3.5rem;
+  width: 3.5rem;
   border-radius: 50%;
   margin: 0 auto;
   object-fit: cover;

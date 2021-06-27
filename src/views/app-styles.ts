@@ -44,7 +44,9 @@ export const MainContainerLeftGradient = styled.div`
 export const MainContainerContent = styled.div`
   grid-template-columns: 1fr 95%;
   display: grid;
-  padding: 1rem 1rem 1rem 0;
+  padding: 3rem 1rem 1rem 0;
+  border-top: 1px solid ${colors.green};
+  border-left: 1px solid ${colors.green};
   grid-template-rows: 2.5rem 1fr;
   width: 100%;
   z-index: 5;
@@ -52,7 +54,6 @@ export const MainContainerContent = styled.div`
 
 export const MainContainerMenu = styled.div`
   height: 100%;
-  border-left: 1px solid ${colors.green};
   position: relative;
 `
 
@@ -90,6 +91,7 @@ export const MainContainerRight = styled.div`
 
 export const MainContainerRightBox = styled.div`
   flex-basis: 70%;
-  outline: 0.1rem solid ${colors.green};
+  border: 0.1rem solid ${colors.green};
   max-height: 70%;
+  margin-top: 12rem;
 `
