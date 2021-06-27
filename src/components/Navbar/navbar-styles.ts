@@ -12,7 +12,7 @@ export const NavbarContainer = styled.nav`
 export const SearchIconSvg = styled(SearchIcon)`
   position: absolute;
   left: -3rem;
-  height: 35%;
+  height: 30%;
 `
 
 export const Home = styled.div`
@@ -58,9 +58,9 @@ export const NavigationLinks = styled.ul`
 
 export const NavigationItem = styled.li`
   margin-left: 1rem;
-  width: 60px;
+  width: 6rem;
   text-align: center;
-  max-height: 70px;
+  max-height: 7rem;
 
   & p {
     text-transform: uppercase;
@@ -98,7 +98,6 @@ export const NaviLink = styled(NavLink).attrs({ activeClassName })`
     }
   }
 `
-
 
 export const NavbarLogo = styled.div`
   background-image: url(${AppLogo});
