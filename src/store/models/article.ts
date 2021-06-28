@@ -3,11 +3,9 @@ import { apiEndpoints } from "../api/api"
 import { ArticleModel } from "./articleModel"
 import {
   FILTERS,
-  SHOW_ALL,
   filterType,
   BY_YEAR,
   CUMULATIVE,
-  TYPE_PERSON
 } from "../constants/filters"
 import { getYear } from "../../utils/formatDate"
 import { UserBookmark, IUserBookmark } from "./articleDetails"

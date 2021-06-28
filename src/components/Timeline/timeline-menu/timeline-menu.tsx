@@ -1,4 +1,4 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import { inject, observer } from "mobx-react"
 import { rootStore } from "../../../store/RootStore"
 import {
@@ -11,11 +11,11 @@ import { ReactComponent as Cumulative } from "../../../static/icons/timeline_cum
 import { ReactComponent as Single } from "../../../static/icons/timeline_year.svg"
 import { FiltersTime } from "../../../store/models/filterModel"
 
-interface Props {
+interface IProps {
   store?: typeof rootStore
 }
 
-const TimelineMenu: React.FC<Props> = props => {
+const TimelineMenu: FunctionComponent<IProps> = props => {
   const { store } = props
   const activeOption = store.articleStore.activeFilters.time
 

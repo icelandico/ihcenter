@@ -1,4 +1,4 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import {
   CheckboxExcluded,
   CheckboxIncluded,
@@ -6,12 +6,12 @@ import {
   Checkbox
 } from "./checkmark-styles"
 
-interface Props {
+interface IProps {
   mode: string
   scale?: number
 }
 
-const Checkmark: React.FC<Props> = props => {
+const Checkmark: FunctionComponent<IProps> = props => {
   const { mode, scale } = props
   return (
     <CheckmarkContainer>

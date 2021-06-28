@@ -1,4 +1,4 @@
-import * as React from "react"
+import React, { FunctionComponent } from "react"
 import { observer, inject } from "mobx-react"
 import {
   NavbarContainer,
@@ -16,7 +16,7 @@ import {
 import { menuItems } from "../../routing/routeConfig"
 import Finder from "../Finder/finder"
 
-const Navbar: React.FC = () => {
+const Navbar: FunctionComponent = () => {
   const generateLinks = () => {
     return menuItems.map((item, index) => {
       return (

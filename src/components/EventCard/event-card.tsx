@@ -1,5 +1,5 @@
 import * as React from "react"
-import {useEffect, useRef, useState} from "react"
+import { useEffect, useRef, useState } from "react"
 import { inject, observer } from "mobx-react"
 import { getYear } from "../../utils/formatDate"
 import { ArticleModel } from "../../store/models/article"

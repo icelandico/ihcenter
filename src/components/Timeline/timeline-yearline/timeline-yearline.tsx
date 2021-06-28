@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { FunctionComponent, useEffect, useRef, useState } from "react"
 import { inject, observer } from "mobx-react"
 import {
   TimelineDate,
@@ -13,24 +13,26 @@ interface YearsData {
   isData: boolean
 }
 
-interface Props {
+interface IProps {
   store?: typeof rootStore
   timelineData: YearsData[]
   timelineWidth: number
-  innerRef: any
 }
 
 const usePrevious = (value: any): number => {
   const ref = useRef()
   useEffect(() => {
-    ref.current = value
+    if (value) ref.current = value
   })
   return ref.current
 }
 
-const TimelineYearline: React.FC<Props> = props => {
-  const { timelineData, timelineWidth } = props
-  const { currentYear } = props.store.articleStore
+const TimelineYearline: FunctionComponent<IProps> = ({
+  store,
+  timelineData,
+  timelineWidth
+}) => {
+  const { currentYear } = store.articleStore
   const [timelineVal, setTimelineVal] = useState(0)
   // const [scrollPos, setScrollPos] = useState(0)
 
@@ -65,10 +67,9 @@ const TimelineYearline: React.FC<Props> = props => {
 
   useEffect(() => {
     const handleScroll = (e: WheelEvent) => {
-      if (e.deltaY === 100 || e.deltaY === 3)
-        props.store.articleStore.incrementYear()
+      if (e.deltaY === 100 || e.deltaY === 3) store.articleStore.incrementYear()
       if (e.deltaY === -100 || e.deltaY === -3)
-        props.store.articleStore.decrementYear()
+        store.articleStore.decrementYear()
     }
 
     containerRef.current.addEventListener("wheel", (e: WheelEvent) =>
@@ -92,7 +93,7 @@ const TimelineYearline: React.FC<Props> = props => {
           return (
             <TimelineDot
               isData={isData}
-              onClick={() => props.store.articleStore.setYear(year)}
+              onClick={() => store.articleStore.setYear(year)}
               key={year}
             >
               <span />

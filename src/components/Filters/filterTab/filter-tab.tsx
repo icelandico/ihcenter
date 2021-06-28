@@ -22,8 +22,7 @@ interface IFilter {
   type: string
 }
 
-const FilterTab: FunctionComponent<IProps> = props => {
-  const { filterType, activeTab } = props
+const FilterTab: FunctionComponent<IProps> = ({ filterType, activeTab }) => {
   const [filterOptions, setFilterOptions] = useState<any>({})
   const tabRef = useRef(null)
 

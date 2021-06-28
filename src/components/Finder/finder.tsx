@@ -25,12 +25,11 @@ interface Props {
   store?: typeof rootStore
 }
 
-const Finder: FunctionComponent<Props> = props => {
+const Finder: FunctionComponent<Props> = ({ store }) => {
   const [finderValue, setFinderValue] = useState<string>("")
   const [results, setResults] = useState<ArticleModel[]>([])
   const [resultsVisible, setResultsVisible] = useState<boolean>(false)
   const resultsRef = useRef(null)
-  const { store } = props
   const reactUtils = ReactUtils
 
   useEffect(() => {

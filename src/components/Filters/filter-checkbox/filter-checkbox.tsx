@@ -21,8 +21,7 @@ interface IState {
   id: number
 }
 
-const FilterCheckbox: FunctionComponent<IProps> = props => {
-  const { filter, store } = props
+const FilterCheckbox: FunctionComponent<IProps> = ({ filter, store }) => {
 
   const stateOptions: IState[] = [
     { id: 0, name: "" },

@@ -1,13 +1,13 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import { SvgContainer } from "./svgicon-styles"
 
-interface Props {
+interface IProps {
   Icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
   width?: number
   height?: number
 }
 
-const SvgIcon: React.FC<Props> = props => {
+const SvgIcon: FunctionComponent<IProps> = props => {
   const { Icon } = props
   return (
     <SvgContainer {...props}>

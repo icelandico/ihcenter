@@ -22,7 +22,7 @@ interface IProps {
   type: string
 }
 
-export const chooseIcon = (type: string) => {
+export const chooseIcon = (type: string): string => {
   switch (type) {
     case "person":
       return PersonIcon

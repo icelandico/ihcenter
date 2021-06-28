@@ -1,6 +1,6 @@
-import * as React from "react"
+import React, { FunctionComponent } from "react"
 import { inject, observer } from "mobx-react"
-import { createRef, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import {
   TimelineContainer,
   TimelineContent,
@@ -25,13 +25,11 @@ interface IProps {
   store?: typeof rootStore
 }
 
-const Timeline: React.FC<IProps> = props => {
+const Timeline: FunctionComponent<IProps> = ({ store }) => {
   const [yearsData, setData] = useState([])
   const [isData, setIsData] = useState<boolean>()
-  const { store } = props
   const { currentYear } = store.articleStore
   const yearRange = store.articleStore.lastYear - store.articleStore.firstYear
-  const dotRef = createRef<HTMLDivElement>()
 
   const calculateTimelineWidth = (): number => {
     return (yearRange + 1) * 15
@@ -67,7 +65,6 @@ const Timeline: React.FC<IProps> = props => {
         <TimelineYearline
           timelineData={yearsData}
           timelineWidth={calculateTimelineWidth()}
-          innerRef={dotRef}
         />
         <TimelineDatePicker
           timelineData={yearsData}

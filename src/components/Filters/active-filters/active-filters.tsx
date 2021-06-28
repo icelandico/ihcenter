@@ -5,12 +5,12 @@ import { rootStore } from "../../../store/RootStore"
 import { FilterModel } from "../../../store/models/filterModel"
 import Checkmark from "../../shared/Checkmark/checkmark"
 
-interface Props {
+interface IProps {
   store?: typeof rootStore
 }
 
-const ActiveFilters: FunctionComponent<Props> = props => {
-  const { articleStore } = props.store
+const ActiveFilters: FunctionComponent<IProps> = ({ store }) => {
+  const { articleStore } = store
 
   const removeFilter = (filter: FilterModel) => {
     articleStore.removeFilter(filter)

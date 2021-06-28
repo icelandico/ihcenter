@@ -21,9 +21,12 @@ interface IProps {
   noCross?: boolean
 }
 
-const FilterBox: FunctionComponent<IProps> = props => {
-  const { filterType, clickHandler, isActive, noCross } = props
-
+const FilterBox: FunctionComponent<IProps> = ({
+  filterType,
+  clickHandler,
+  isActive,
+  noCross
+}) => {
   const renderIcon = (type: string) => {
     switch (type) {
       case "mainideas":
