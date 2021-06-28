@@ -44,3 +44,11 @@ const romanizeMonth = (original: string): string => {
     return roman
   }, "")
 }
+
+export const calculateAge = (startDate: string, endDate: string) => {
+  const start = new Date(startDate)
+  const end = new Date(endDate)
+  const yearsDiff = end.getFullYear() - start.getFullYear()
+  const monthDifference = yearsDiff * 12 + (end.getMonth() - start.getMonth())
+  return Math.floor(monthDifference / 12)
+}

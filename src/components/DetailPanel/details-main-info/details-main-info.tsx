@@ -15,7 +15,7 @@ import {
   BookmarkContainer
 } from "./details-main-info-styles"
 import { apiUrls } from "../../../store/api/api"
-import { formatDate } from "../../../utils/formatDate"
+import { formatDate, calculateAge } from "../../../utils/formatDate"
 import { ArticleModel } from "../../../store/models/article"
 import EventIcon from "../../../static/icons/events.svg"
 import PoliticsIcon from "../../../static/icons/politics.svg"
@@ -108,8 +108,8 @@ const DetailMainInfo: React.FC<IProps> = props => {
           />
         </WikiLinkContainer>
         <ElementDate>
-          {details &&
-            `${formatDate(details.startDate)} - ${formatDate(details.endDate)}`}
+          {details && `${formatDate(details.startDate)} - ${formatDate(details.endDate)}`}
+          <p>{details && details.type === "person" && `(aged ${calculateAge(details.startDate, details.endDate)})`}</p>
         </ElementDate>
       </DetailsTopContainer>
 
