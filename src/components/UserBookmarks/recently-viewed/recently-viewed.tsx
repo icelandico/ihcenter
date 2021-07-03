@@ -49,7 +49,7 @@ const RecentlyViewed: React.FC<IProps> = props => {
         isActive
         key={`${bookmark.identifier}-${idx}`}
         style={{ backgroundImage: `url(${renderImage(bookmark)}` }}
-        onClick={() => rootStore.articleStore.toggle(bookmark)}
+        onClick={() => rootStore.articleStore.toggle(bookmark.identifier)}
         title={bookmark.name}
       />
     ))

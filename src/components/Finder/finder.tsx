@@ -64,7 +64,7 @@ const Finder: FunctionComponent<Props> = ({ store }) => {
   const setArticle = (article: ArticleModel): void => {
     setResultsVisible(false)
     setFinderValue("")
-    store.articleStore.toggle(article)
+    store.articleStore.toggle(article.identifier)
     setResults([])
   }
 

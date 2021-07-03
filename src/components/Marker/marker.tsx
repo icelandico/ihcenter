@@ -54,7 +54,7 @@ const MapMarker: React.FC<IProps> = props => {
     const { article } = props
     const { store } = props
     setClickedMarker(!isMarkerClicked)
-    store.articleStore.toggle(article)
+    store.articleStore.toggle(article.identifier)
   }
 
   const { key, position } = props

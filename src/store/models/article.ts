@@ -61,9 +61,11 @@ const ArticleStore = types
       )
       self.recentlyViewed = newItems
     },
-    toggle(article: ArticleModel) {
-      this.insertInStorage(article.identifier)
-      self.chosenArticle = article
+    toggle(identifier: string) {
+      this.insertInStorage(identifier)
+      self.chosenArticle = self.articles.find(
+        article => article.identifier === identifier
+      )
     },
     incrementYear() {
       self.currentYear + 1 > self.lastYear
