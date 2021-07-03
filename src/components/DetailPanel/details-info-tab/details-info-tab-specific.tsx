@@ -10,6 +10,7 @@ import Events from "../../../static/icons/events.svg"
 import Influences from "../../../static/icons/influences.svg"
 import Influenced from "../../../static/icons/influenced.svg"
 import Literature from "../../../static/icons/text.svg"
+import Person from "../../../static/icons/person.svg"
 import { ReactComponent as Born } from "../../../static/icons/icon_born.svg"
 import { ReactComponent as Dead } from "../../../static/icons/icon_dead.svg"
 import SvgIcon from "../../shared/SvgIcon/svgIcon"
@@ -212,8 +213,7 @@ export class TabGenerator extends React.Component {
     return (
       <DetailsInfoTab
         tabId="relatedPersons"
-        iconUrl={Influences}
-        extend={3.5}
+        iconUrl={Person}
         content={this.renderTextInfo(details, "relatedPerson")}
         key={`${details.id}-rel-person`}
       />
