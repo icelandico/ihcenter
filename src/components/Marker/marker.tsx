@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, FunctionComponent } from "react"
 import { Marker, Popup } from "react-leaflet"
 import { observer, inject } from "mobx-react"
 import L, { DivIcon } from "leaflet"
@@ -37,9 +37,7 @@ export const chooseIcon = (type: string): string => {
   }
 }
 
-const MapMarker: React.FC<IProps> = props => {
-  const [isMarkerClicked, setClickedMarker] = useState<boolean>(false)
-
+const MapMarker: FunctionComponent<IProps> = props => {
   const customIcon = (): DivIcon => {
     const divIcon = L.divIcon({
       html: ReactDOMServer.renderToString(
@@ -53,7 +51,6 @@ const MapMarker: React.FC<IProps> = props => {
   const switchIcon = () => {
     const { article } = props
     const { store } = props
-    setClickedMarker(!isMarkerClicked)
     store.articleStore.toggle(article.identifier)
   }
 

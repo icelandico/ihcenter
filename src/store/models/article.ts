@@ -69,7 +69,7 @@ const ArticleStore = types
         self.chosenArticle = chosenArticle
         this.insertInStorage(identifier)
         return
-      } 
+      }
       alert("Article not found!")
     },
     incrementYear() {
