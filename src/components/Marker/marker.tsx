@@ -1,8 +1,9 @@
-import React, { useState, FunctionComponent } from "react"
+import React, { FunctionComponent } from "react"
 import { Marker, Popup } from "react-leaflet"
 import { observer, inject } from "mobx-react"
 import L, { DivIcon } from "leaflet"
 import ReactDOMServer from "react-dom/server"
+import { onSnapshot } from "mobx-state-tree"
 import { rootStore } from "../../store/RootStore"
 import PersonIcon from "../../static/icons/person.svg"
 import EventsIcon from "../../static/icons/events.svg"
@@ -37,11 +38,12 @@ export const chooseIcon = (type: string): string => {
   }
 }
 
-const MapMarker: FunctionComponent<IProps> = props => {
+const MapMarker: FunctionComponent<IProps> = ({ store, article, key, position, clicked, type }: IProps) => {
+  
   const customIcon = (): DivIcon => {
     const divIcon = L.divIcon({
       html: ReactDOMServer.renderToString(
-        <CustomMarker color={chooseColor(props.type)} />
+        <CustomMarker color={chooseColor(type)} />
       ),
       iconAnchor: [15, 15]
     })
@@ -49,12 +51,11 @@ const MapMarker: FunctionComponent<IProps> = props => {
   }
 
   const switchIcon = () => {
-    const { article } = props
-    const { store } = props
+    onSnapshot(store.articleStore, newSnapshot => {
+      console.log("NEW article", newSnapshot.chosenArticle)
+    })
     store.articleStore.toggle(article.identifier)
   }
-
-  const { key, position } = props
 
   return (
     <Marker
@@ -66,14 +67,14 @@ const MapMarker: FunctionComponent<IProps> = props => {
       onClick={switchIcon}
     >
       <Popup style={{ background: "transparent" }}>
-        <CustomPopup color={chooseColor(props.type)}>
+        <CustomPopup color={chooseColor(type)}>
           <div
-            color={chooseColor(props.type)}
+            color={chooseColor(type)}
             style={{
               backgroundImage: `url(${
-                props.article && props.article.image
-                  ? `${apiUrls.baseUrl}${props.article.image.url}`
-                  : chooseIcon(props.type)
+                article && article.image
+                  ? `${apiUrls.baseUrl}${article.image.url}`
+                  : chooseIcon(type)
               })`
             }}
           />
