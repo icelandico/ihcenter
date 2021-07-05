@@ -1,4 +1,5 @@
 import React from "react"
+import { inject, observer} from "mobx-react"
 import {
   TabContainer,
   TabIcon,
@@ -6,6 +7,7 @@ import {
   TabExtraIcon
 } from "./details-info-tab-styles"
 import Default from "../../../static/flags/Default.svg"
+import { rootStore } from "../../../store/RootStore"
 
 interface Props {
   iconUrl?: string
@@ -21,6 +23,8 @@ interface Props {
   font?: string
   column?: boolean
   italicFont?: boolean
+  articleId?: any
+  store?: typeof rootStore
 }
 
 const DetailsInfoTab: React.FC<Props> = props => {
@@ -35,7 +39,9 @@ const DetailsInfoTab: React.FC<Props> = props => {
     tabId,
     font,
     fontColor,
-    italicFont
+    italicFont,
+    articleId,
+    store
   } = props
 
   const renderTabContainer = () => {
@@ -70,4 +76,4 @@ const DetailsInfoTab: React.FC<Props> = props => {
   return isContent ? renderTabContainer() : null
 }
 
-export default DetailsInfoTab
+export default inject("store")(observer(DetailsInfoTab))

@@ -1,4 +1,5 @@
-import * as React from "react"
+import React, { FunctionComponent } from "react"
+import { inject, observer } from "mobx-react"
 import { apiUrls } from "../../../store/api/api"
 import DetailsInfoTab from "./details-info-tab"
 import Fields from "../../../static/icons/fields.svg"
@@ -29,35 +30,36 @@ import { getYear } from "../../../utils/formatDate"
 
 type ArticleOptions = ArticleModel & { [key: string]: any }
 
+interface IProps {
+  articleType: string
+  details: ArticleModel
+}
+
 interface IDetailsType {
   [key: string]: JSX.Element
 }
 
-export class TabGenerator extends React.Component {
-  details: ArticleModel = null
-
-  constructor(details: ArticleModel) {
-    super(details)
-    this.details = details
-  }
-
-  getProperFunction = (tabInfo: string): JSX.Element => {
+const DetailsInfoTabSpecific: ({
+  articleType,
+  details
+}: IProps) => JSX.Element = ({ articleType, details }: IProps) => {
+  const getProperFunction = (tabInfo: string): JSX.Element => {
     const detailsTabs: IDetailsType = {
-      baseInfo: this.baseInfoDetails(this.details),
-      literature: this.literatureDetails(this.details),
-      influenced: this.influencedDetails(this.details),
-      influences: this.influencesDetails(this.details),
-      politics: this.politicsDetails(this.details),
-      ideas: this.ideasDetails(this.details),
-      mainIdeas: this.mainIdeasDetails(this.details),
-      events: this.eventsDetails(this.details),
-      professions: this.professionsDetails(this.details),
-      relatedPersons: this.relatedPersonDetails(this.details)
+      baseInfo: baseInfoDetails(details),
+      literature: literatureDetails(details),
+      influenced: influencedDetails(details),
+      influences: influencesDetails(details),
+      politics: politicsDetails(details),
+      ideas: ideasDetails(details),
+      mainIdeas: mainIdeasDetails(details),
+      events: eventsDetails(details),
+      professions: professionsDetails(details),
+      relatedPersons: relatedPersonDetails(details)
     }
     return detailsTabs[tabInfo]
   }
 
-  renderGeneralInfo = (details: ArticleModel) => {
+  const renderGeneralInfo = (details: ArticleModel) => {
     const nationality = details.nationality
       ? details.nationality.name
       : "Global guy"
@@ -82,7 +84,7 @@ export class TabGenerator extends React.Component {
     )
   }
 
-  renderTextInfo = (details: ArticleOptions, specificDetail: string) => {
+  const renderTextInfo = (details: ArticleOptions, specificDetail: string) => {
     const detailsList = details[specificDetail].sort(
       (a: BaseInfo & Writing, b: BaseInfo & Writing) => {
         const prev = a.name.toLowerCase()
@@ -99,7 +101,7 @@ export class TabGenerator extends React.Component {
         {detailsList &&
           detailsList.map((item: BaseInfo & Writing, idx: number) => {
             return (
-              <DetailsTitle key={item.name} onClick={() => console.log('Clicked', item)}>
+              <DetailsTitle key={item.name}>
                 {item.name || item.title}
                 {idx < detailsList.length - 1 ? ", " : ""}
               </DetailsTitle>
@@ -109,7 +111,10 @@ export class TabGenerator extends React.Component {
     )
   }
 
-  renderWritingsInfo = (details: ArticleOptions, specificDetail: string) => {
+  const renderWritingsInfo = (
+    details: ArticleOptions,
+    specificDetail: string
+  ) => {
     const detailsList = details[specificDetail]
     return (
       <WritingsList>
@@ -128,7 +133,7 @@ export class TabGenerator extends React.Component {
     )
   }
 
-  renderEvent = (): JSX.Element => {
+  const renderEvent = (): JSX.Element => {
     const eventConfig = [
       "baseInfo",
       "profession",
@@ -143,7 +148,7 @@ export class TabGenerator extends React.Component {
     return <>A</>
   }
 
-  renderOrganisation = (): JSX.Element => {
+  const renderOrganisation = (): JSX.Element => {
     const organisationConfig = [
       "baseInfo",
       "mainIdeas",
@@ -156,13 +161,13 @@ export class TabGenerator extends React.Component {
     return (
       <>
         {organisationConfig.map((element: string) => {
-          return this.getProperFunction(element)
+          return getProperFunction(element)
         })}
       </>
     )
   }
 
-  renderPerson = (): JSX.Element => {
+  const renderPerson = (): JSX.Element => {
     const personConfig = [
       "baseInfo",
       "professions",
@@ -177,24 +182,24 @@ export class TabGenerator extends React.Component {
     return (
       <>
         {personConfig.map((element: string) => {
-          return this.getProperFunction(element)
+          return getProperFunction(element)
         })}
       </>
     )
   }
 
-  eventsDetails = (details: ArticleModel) => {
+  const eventsDetails = (details: ArticleModel) => {
     return (
       <DetailsInfoTab
         tabId="relatedEvents"
         iconUrl={Events}
-        content={this.renderTextInfo(details, "relatedEvent")}
+        content={renderTextInfo(details, "relatedEvent")}
         key={`${details.id}-event`}
       />
     )
   }
 
-  baseInfoDetails = (details: ArticleModel): JSX.Element => {
+  const baseInfoDetails = (details: ArticleModel): JSX.Element => {
     const flagDetails =
       details && details.nationality && details.nationality.flag
     return (
@@ -203,37 +208,37 @@ export class TabGenerator extends React.Component {
         iconUrl={flagDetails ? `${apiUrls.baseUrl}/${flagDetails.url}` : null}
         border
         column
-        content={this.renderGeneralInfo(details)}
+        content={renderGeneralInfo(details)}
         key={`${details.id}-info`}
       />
     )
   }
 
-  relatedPersonDetails = (details: ArticleModel) => {
+  const relatedPersonDetails = (details: ArticleModel) => {
     return (
       <DetailsInfoTab
         tabId="relatedPersons"
         iconUrl={Person}
-        content={this.renderTextInfo(details, "relatedPerson")}
+        content={renderTextInfo(details, "relatedPerson")}
         key={`${details.id}-rel-person`}
       />
     )
   }
 
-  professionsDetails = (details: ArticleModel) => {
+  const professionsDetails = (details: ArticleModel) => {
     return (
       <DetailsInfoTab
         tabId="professions"
         iconUrl={Fields}
         fontColor="darkBlue"
         font={fonts.baseSans}
-        content={this.renderTextInfo(details, "professions")}
+        content={renderTextInfo(details, "professions")}
         key={`${details.id}-profession`}
       />
     )
   }
 
-  mainIdeasDetails = (details: ArticleModel) => {
+  const mainIdeasDetails = (details: ArticleModel) => {
     const mainPrecursor = details && !!details.precursor.length
     return (
       <DetailsInfoTab
@@ -243,13 +248,13 @@ export class TabGenerator extends React.Component {
         founderIconUrl={FounderIcon}
         fontColor="woodBrown"
         font={fonts.baseSans}
-        content={this.renderTextInfo(details, "mainideas")}
+        content={renderTextInfo(details, "mainideas")}
         key={`${details.id}-mainidea`}
       />
     )
   }
 
-  ideasDetails = (details: ArticleModel) => {
+  const ideasDetails = (details: ArticleModel) => {
     const ideaPrecursor = details && !!details.ideaPrecursor.length
 
     return (
@@ -260,52 +265,54 @@ export class TabGenerator extends React.Component {
         founderIconUrl={FounderIcon}
         fontColor="woodBrown"
         font={fonts.baseSans}
-        content={this.renderTextInfo(details, "ideas")}
+        content={renderTextInfo(details, "ideas")}
         key={`${details.id}-idea`}
       />
     )
   }
 
-  politicsDetails = (details: ArticleModel) => {
+  const politicsDetails = (details: ArticleModel) => {
     return (
       <DetailsInfoTab
         tabId="politics"
         iconUrl={Politics}
         fontColor="regularRed"
         font={fonts.baseSans}
-        content={this.renderTextInfo(details, "relatedOrg")}
+        content={renderTextInfo(details, "relatedOrg")}
         key={`${details.id}-politics`}
       />
     )
   }
 
-  influencesDetails = (details: ArticleModel) => {
+  const influencesDetails = (details: ArticleModel) => {
     return (
       <DetailsInfoTab
         tabId="influences"
         extend={3.5}
         iconUrl={Influences}
         font={fonts.base}
-        content={this.renderTextInfo(details, "influences")}
+        content={renderTextInfo(details, "influences")}
         key={`${details.id}-influence`}
+        articleId={details}
       />
     )
   }
 
-  influencedDetails = (details: ArticleModel) => {
+  const influencedDetails = (details: ArticleModel) => {
     return (
       <DetailsInfoTab
         tabId="influenced"
         extend={3.5}
         iconUrl={Influenced}
         font={fonts.base}
-        content={this.renderTextInfo(details, "influenced")}
+        content={renderTextInfo(details, "influenced")}
         key={`${details.id}-influenced`}
+        articleId={details}
       />
     )
   }
 
-  literatureDetails = (details: ArticleModel) => {
+  const literatureDetails = (details: ArticleModel) => {
     return (
       <DetailsInfoTab
         tabId="literature"
@@ -313,9 +320,26 @@ export class TabGenerator extends React.Component {
         round
         fontColor="lightBrown"
         italicFont
-        content={this.renderWritingsInfo(details, "writings")}
+        content={renderWritingsInfo(details, "writings")}
         key={`${details.id}-literature`}
       />
     )
   }
+
+  const renderSwitch = (type: string): JSX.Element => {
+    switch (type) {
+      case "person":
+        return renderPerson()
+      case "event":
+        return renderEvent()
+      case "organisation":
+        return renderOrganisation()
+      default:
+        return renderPerson()
+    }
+  }
+
+  return renderSwitch(articleType)
 }
+
+export default inject("store")(observer(DetailsInfoTabSpecific))

@@ -2,7 +2,7 @@ import * as React from "react"
 import { observer, inject } from "mobx-react"
 import { useRef } from "react"
 import { ArticleModel } from "../../../store/models/article"
-import { TabGenerator } from "../details-info-tab/details-info-tab-specific"
+import DetailsInfoTabSpecific from "../details-info-tab/details-info-tab-specific"
 import { ScrollIndicator } from "../../shared/ScrollIndicator/scroll-indicator"
 import { DetailsContainer } from "./details-list-info-styles"
 import { BottomGradient } from "../../shared/Styles/shared-styled-components"
@@ -12,18 +12,8 @@ export interface Props {
 }
 
 const renderTypeDetails = (details: ArticleModel): JSX.Element => {
-  const tabGenerator = new TabGenerator(details)
   const { type } = details
-  switch (type) {
-    case "person":
-      return tabGenerator.renderPerson()
-    case "event":
-      return tabGenerator.renderEvent()
-    case "organisation":
-      return tabGenerator.renderOrganisation()
-    default:
-      return tabGenerator.renderPerson()
-  }
+  return <DetailsInfoTabSpecific articleType={type} details={details} />
 }
 
 const DetailListInfo: React.FC<Props> = props => {
