@@ -20,7 +20,8 @@ export const ImageDetails = types.model("ImageDetails", {
 
 export const BaseInfoDetails = types.model("BaseInfoDetails", {
   id: types.identifierNumber,
-  name: types.string
+  name: types.string,
+  type: types.optional(types.string, ""),
 })
 
 export const WritingsDetails = types.model("WritingsDetails", {

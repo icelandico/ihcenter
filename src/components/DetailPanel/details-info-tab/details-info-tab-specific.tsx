@@ -27,12 +27,14 @@ import { BaseInfo, Writing } from "../../../store/models/types"
 import { ArticleModel } from "../../../store/models/article"
 import { fonts } from "../../../styles/font"
 import { getYear } from "../../../utils/formatDate"
+import { rootStore } from "../../../store/RootStore"
 
 type ArticleOptions = ArticleModel & { [key: string]: any }
 
 interface IProps {
   articleType: string
   details: ArticleModel
+  store?: typeof rootStore
 }
 
 interface IDetailsType {
@@ -101,7 +103,7 @@ const DetailsInfoTabSpecific: ({
         {detailsList &&
           detailsList.map((item: BaseInfo & Writing, idx: number) => {
             return (
-              <DetailsTitle key={item.name}>
+              <DetailsTitle key={item.name} onClick={() => rootStore.articleStore.toggle(`${item.type}-${item.id}`)}>
                 {item.name || item.title}
                 {idx < detailsList.length - 1 ? ", " : ""}
               </DetailsTitle>
