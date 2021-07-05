@@ -62,10 +62,15 @@ const ArticleStore = types
       self.recentlyViewed = newItems
     },
     toggle(identifier: string) {
-      this.insertInStorage(identifier)
-      self.chosenArticle = self.articles.find(
+      const chosenArticle = self.articles.find(
         article => article.identifier === identifier
       )
+      if (chosenArticle) {
+        self.chosenArticle = chosenArticle
+        this.insertInStorage(identifier)
+        return
+      } 
+      alert("Article not found!")
     },
     incrementYear() {
       self.currentYear + 1 > self.lastYear
