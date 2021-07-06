@@ -39,7 +39,6 @@ export const chooseIcon = (type: string): string => {
 }
 
 const MapMarker: FunctionComponent<IProps> = ({ store, article, key, position, type, isActive }: IProps) => {
-  const popupRef = useRef(null)
   const markerRef = useRef(null)
   
   const customIcon = (): DivIcon => {
@@ -72,7 +71,7 @@ const MapMarker: FunctionComponent<IProps> = ({ store, article, key, position, t
       onClick={switchIcon}
       ref={markerRef}
     >
-      <Popup ref={popupRef} style={{ background: "transparent" }}>
+      <Popup style={{ background: "transparent" }}>
         <CustomPopup color={chooseColor(type)}>
           <div
             color={chooseColor(type)}
