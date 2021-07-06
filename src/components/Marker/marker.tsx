@@ -1,9 +1,8 @@
-import React, { FunctionComponent } from "react"
+import React, { FunctionComponent, useRef, useEffect } from "react"
 import { Marker, Popup } from "react-leaflet"
 import { observer, inject } from "mobx-react"
 import L, { DivIcon } from "leaflet"
 import ReactDOMServer from "react-dom/server"
-import { onSnapshot } from "mobx-state-tree"
 import { rootStore } from "../../store/RootStore"
 import PersonIcon from "../../static/icons/person.svg"
 import EventsIcon from "../../static/icons/events.svg"
@@ -19,8 +18,9 @@ interface IProps {
   article: ArticleModel
   key: string
   position: [number, number]
-  clicked: boolean
   type: string
+  markerIdent: string
+  isActive: boolean
 }
 
 export const chooseIcon = (type: string): string => {
@@ -38,7 +38,9 @@ export const chooseIcon = (type: string): string => {
   }
 }
 
-const MapMarker: FunctionComponent<IProps> = ({ store, article, key, position, clicked, type }: IProps) => {
+const MapMarker: FunctionComponent<IProps> = ({ store, article, key, position, type, isActive }: IProps) => {
+  const popupRef = useRef(null)
+  const markerRef = useRef(null)
   
   const customIcon = (): DivIcon => {
     const divIcon = L.divIcon({
@@ -49,11 +51,14 @@ const MapMarker: FunctionComponent<IProps> = ({ store, article, key, position, c
     })
     return divIcon
   }
+  
+  useEffect(() => {
+    if (isActive === true) {
+      markerRef.current.leafletElement.openPopup()
+    }
+  }, [isActive])
 
   const switchIcon = () => {
-    onSnapshot(store.articleStore, newSnapshot => {
-      console.log("NEW article", newSnapshot.chosenArticle)
-    })
     store.articleStore.toggle(article.identifier)
   }
 
@@ -65,8 +70,9 @@ const MapMarker: FunctionComponent<IProps> = ({ store, article, key, position, c
       iconAnchor={[0, 0]}
       iconSize={[40, 40]}
       onClick={switchIcon}
+      ref={markerRef}
     >
-      <Popup style={{ background: "transparent" }}>
+      <Popup ref={popupRef} style={{ background: "transparent" }}>
         <CustomPopup color={chooseColor(type)}>
           <div
             color={chooseColor(type)}

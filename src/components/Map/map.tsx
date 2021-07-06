@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import { Map, TileLayer } from "react-leaflet"
 import { observer, inject } from "mobx-react"
 import { mapSettings } from "./utils"
@@ -20,14 +20,19 @@ class MapComponent extends React.Component<Props, {}> {
     store.articleStore.setYearsRange()
   }
 
-  showMarkers = (article: ArticleModel) => {
+  showMarkers = (article: ArticleModel): JSX.Element => {
     const coords = article.startCoords
       .split(",")
       .map((coordinate: string) => Number(coordinate))
     const markerCoords: [number, number] = [coords[0], coords[1]]
     return (
       <MapMarker
-        clicked={false}
+        isActive={
+          rootStore.articleStore.chosenArticle ?
+            article.identifier === rootStore.articleStore.chosenArticle.identifier
+            : false
+        }
+        markerIdent={article.identifier}
         key={`${article.type}-${article.id}`}
         article={article}
         position={markerCoords}
