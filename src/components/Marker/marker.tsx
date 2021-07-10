@@ -39,7 +39,7 @@ export const chooseIcon = (type: string): string => {
 
 const MapMarker: FunctionComponent<IProps> = ({ store, article, key, position, type, isActive }: IProps) => {
   const markerRef = useRef(null)
-  
+
   const customIcon = (): DivIcon => {
     const divIcon = L.divIcon({
       html: ReactDOMServer.renderToString(
@@ -49,7 +49,7 @@ const MapMarker: FunctionComponent<IProps> = ({ store, article, key, position, t
     })
     return divIcon
   }
-  
+
   useEffect(() => {
     if (isActive === true) {
       markerRef.current.leafletElement.openPopup()

@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import { observer, inject } from "mobx-react"
 import { useEffect, useRef, useState } from "react"
 import { rootStore } from "../../../store/RootStore"
@@ -10,6 +10,7 @@ import {
   DetailsText,
   ElementLink,
   ElementDate,
+  ElementAgedDate,
   WikiLinkContainer,
   Bookmark,
   BookmarkContainer
@@ -109,7 +110,7 @@ const DetailMainInfo: React.FC<IProps> = props => {
         </WikiLinkContainer>
         <ElementDate>
           {details && `${formatDate(details.startDate)} - ${formatDate(details.endDate)}`}
-          <p>{details && details.type === "person" && `(aged ${calculateAge(details.startDate, details.endDate)})`}</p>
+          <ElementAgedDate>{details && details.type === "person" && `(aged ${calculateAge(details.startDate, details.endDate)})`}</ElementAgedDate>
         </ElementDate>
       </DetailsTopContainer>
 
@@ -144,7 +145,6 @@ const DetailMainInfo: React.FC<IProps> = props => {
           )}
         </DetailsText>
       </DetailsContainer>
-      <BottomGradient />
     </div>
   )
 }

@@ -23,6 +23,10 @@ export const ElementDate = styled.p`
   font-family: "Krub", sans-serif;
 `
 
+export const ElementAgedDate = styled.span`
+  display: inline-block;
+`
+
 export const ElementLink = styled.a`
   position: absolute;
   height: 3rem;
@@ -111,7 +115,7 @@ export const DetailsContainer = styled.div`
   }
 `
 
-export const DetailsText = styled.p`
+export const DetailsText = styled.div`
   font-size: 1.5rem;
   color: ${colors.lightBrown};
   padding-bottom: 2rem;
