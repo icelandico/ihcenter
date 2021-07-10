@@ -19,7 +19,6 @@ interface IProps {
   key: string
   position: [number, number]
   type: string
-  markerIdent: string
   isActive: boolean
 }
 
@@ -54,12 +53,9 @@ const MapMarker: FunctionComponent<IProps> = ({ store, article, key, position, t
   useEffect(() => {
     if (isActive === true) {
       markerRef.current.leafletElement.openPopup()
+      markerRef.current.leafletElement.options.leaflet.map.setView(position)
     }
   }, [isActive])
-
-  const switchIcon = () => {
-    store.articleStore.toggle(article.identifier)
-  }
 
   return (
     <Marker
@@ -68,7 +64,7 @@ const MapMarker: FunctionComponent<IProps> = ({ store, article, key, position, t
       position={position}
       iconAnchor={[0, 0]}
       iconSize={[40, 40]}
-      onClick={switchIcon}
+      onClick={() => store.articleStore.toggle(article.identifier)}
       ref={markerRef}
     >
       <Popup style={{ background: "transparent" }}>

@@ -32,7 +32,6 @@ class MapComponent extends React.Component<Props, {}> {
             article.identifier === rootStore.articleStore.chosenArticle.identifier
             : false
         }
-        markerIdent={article.identifier}
         key={`${article.type}-${article.id}`}
         article={article}
         position={markerCoords}

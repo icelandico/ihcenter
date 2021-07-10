@@ -103,7 +103,12 @@ const DetailsInfoTabSpecific: ({
         {detailsList &&
           detailsList.map((item: BaseInfo & Writing, idx: number) => {
             return (
-              <DetailsTitle key={item.name} onClick={() => rootStore.articleStore.toggle(`${item.type}-${item.id}`)}>
+              <DetailsTitle
+                key={item.name}
+                onClick={() =>
+                  rootStore.articleStore.toggle(`${item.type}-${item.id}`)
+                }
+              >
                 {item.name || item.title}
                 {idx < detailsList.length - 1 ? ", " : ""}
               </DetailsTitle>
