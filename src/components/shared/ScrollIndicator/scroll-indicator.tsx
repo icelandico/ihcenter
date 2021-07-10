@@ -33,11 +33,15 @@ export const ScrollIndicator: FunctionComponent<IProps> = ({
   }, [container, handleScroll])
 
   return (
-    isScrollable &&
-    isScrollNeeded && (
+    isScrollable && (
       <>
-        <Indicator options={options} />
-        { !(container.scrollTop === container.scrollHeight - container.clientHeight) && <BottomGradient /> }
+        <Indicator active={isScrollNeeded} options={options} />
+        <BottomGradient
+          active={
+            container.scrollTop !==
+            container.scrollHeight - container.clientHeight
+          }
+        />
       </>
     )
   )
