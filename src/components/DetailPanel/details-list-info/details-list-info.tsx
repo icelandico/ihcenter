@@ -1,11 +1,10 @@
-import * as React from "react"
+import React from "react"
 import { observer, inject } from "mobx-react"
 import { useRef } from "react"
 import { ArticleModel } from "../../../store/models/article"
 import DetailsInfoTabSpecific from "../details-info-tab/details-info-tab-specific"
 import { ScrollIndicator } from "../../shared/ScrollIndicator/scroll-indicator"
 import { DetailsContainer } from "./details-list-info-styles"
-import { BottomGradient } from "../../shared/Styles/shared-styled-components"
 
 export interface Props {
   details: ArticleModel
@@ -25,7 +24,6 @@ const DetailListInfo: React.FC<Props> = props => {
         {details && renderTypeDetails(details)}
         {scrollDiv.current && <ScrollIndicator container={scrollDiv.current} />}
       </DetailsContainer>
-      <BottomGradient />
     </div>
   )
 }
