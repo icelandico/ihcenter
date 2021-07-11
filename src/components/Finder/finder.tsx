@@ -49,15 +49,18 @@ const Finder: FunctionComponent<Props> = ({ store }) => {
 
   const handleKeyNav = (e: KeyboardEvent) => {
     if (e.keyCode === 40) {
-      activeOption + 1 >= results.length + 1 ? setActiveOption(1) : setActiveOption(activeOption + 1)
-      return
+      activeOption + 1 >= results.length + 1
+        ? setActiveOption(1)
+        : setActiveOption(activeOption + 1)
     }
 
     if (e.keyCode === 38) {
-      activeOption - 1 < 1 ? setActiveOption(results.length) : setActiveOption(activeOption - 1)
+      activeOption - 1 < 1
+        ? setActiveOption(results.length)
+        : setActiveOption(activeOption - 1)
     }
   }
-  
+
   const handleInputChange = (e: ChangeEvent): void => {
     const eventTarget = e.currentTarget as HTMLInputElement
     const finderValue = eventTarget.value
@@ -91,7 +94,6 @@ const Finder: FunctionComponent<Props> = ({ store }) => {
               onClick={() => setArticle(el)}
               isActive={idx + 1 === activeOption}
               onMouseEnter={() => setActiveOption(idx + 1)}
-              onMouseLeave={() => setActiveOption(0)}
             >
               <ResultIcon>
                 <SvgIcon Icon={reactUtils.chooseIcon(el.type)} />
@@ -119,7 +121,7 @@ const Finder: FunctionComponent<Props> = ({ store }) => {
         value={finderValue}
         onKeyDown={handleKeyNav}
       />
-      { finderValue.length >= 3 && <ClearInput onClick={() => handleClear()} /> }
+      {finderValue.length >= 3 && <ClearInput onClick={() => handleClear()} />}
       {resultsVisible && renderResults()}
     </FinderContainer>
   )
