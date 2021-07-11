@@ -59,6 +59,10 @@ const Finder: FunctionComponent<Props> = ({ store }) => {
         ? setActiveOption(results.length)
         : setActiveOption(activeOption - 1)
     }
+
+    if (e.keyCode === 13) {
+      setArticle(results[activeOption - 1])
+    }
   }
 
   const handleInputChange = (e: ChangeEvent): void => {
