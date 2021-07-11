@@ -41,6 +41,7 @@ export const FinderContainer = styled.div`
 
 export const SingleResult = styled.div<{
   type: string
+  isActive: boolean
 }>`
   display: flex;
   width: 100%;
@@ -52,6 +53,7 @@ export const SingleResult = styled.div<{
   font-size: 1.4rem;
   cursor: pointer;
   transition: 0.15s;
+  background-color: ${props => (props.isActive ? colors.green : "transparent")};
 
   &:hover {
     background-color: ${colors.green};

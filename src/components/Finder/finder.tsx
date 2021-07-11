@@ -4,7 +4,8 @@ import React, {
   useState,
   useEffect,
   useRef,
-  ReactElement
+  ReactElement,
+  KeyboardEvent
 } from "react"
 import { inject, observer } from "mobx-react"
 import { rootStore } from "../../store/RootStore"
@@ -29,6 +30,7 @@ const Finder: FunctionComponent<Props> = ({ store }) => {
   const [finderValue, setFinderValue] = useState<string>("")
   const [results, setResults] = useState<ArticleModel[]>([])
   const [resultsVisible, setResultsVisible] = useState<boolean>(false)
+  const [activeOption, setActiveOption] = useState<number>(0)
   const resultsRef = useRef(null)
   const reactUtils = ReactUtils
 
@@ -45,6 +47,17 @@ const Finder: FunctionComponent<Props> = ({ store }) => {
     }
   }, [resultsRef])
 
+  const handleKeyNav = (e: KeyboardEvent) => {
+    if (e.keyCode === 40) {
+      activeOption + 1 >= results.length ? setActiveOption(0) : setActiveOption(activeOption + 1)
+      return
+    }
+
+    if (e.keyCode === 38) {
+      activeOption - 1 < 0 ? setActiveOption(results.length - 1) : setActiveOption(activeOption - 1)
+    }
+  }
+  
   const handleInputChange = (e: ChangeEvent): void => {
     const eventTarget = e.currentTarget as HTMLInputElement
     const finderValue = eventTarget.value
@@ -71,9 +84,14 @@ const Finder: FunctionComponent<Props> = ({ store }) => {
   const renderResults = (): ReactElement => {
     return (
       <FinderResultsContainer ref={resultsRef}>
-        {results.map(el => {
+        {results.map((el, idx) => {
           return (
-            <SingleResult type={el.type} onClick={() => setArticle(el)}>
+            <SingleResult
+              type={el.type}
+              onClick={() => setArticle(el)}
+              isActive={idx === activeOption}
+              onMouseEnter={() => setActiveOption(idx)}
+            >
               <ResultIcon>
                 <SvgIcon Icon={reactUtils.chooseIcon(el.type)} />
               </ResultIcon>
@@ -96,9 +114,9 @@ const Finder: FunctionComponent<Props> = ({ store }) => {
         type="text"
         placeholder="Search"
         onChange={e => handleInputChange(e)}
-        // onBlur={() => setResultsVisible(false)}
         onFocus={() => setResultsVisible(true)}
         value={finderValue}
+        onKeyDown={handleKeyNav}
       />
       { finderValue.length >= 3 && <ClearInput onClick={() => handleClear()} /> }
       {resultsVisible && renderResults()}
