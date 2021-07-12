@@ -90,7 +90,7 @@ export const MainContainerRight = styled.div`
 `
 
 export const MainContainerRightBox = styled.div`
-  flex-basis: 70%;
+  flex-basis: 75%;
   border: 0.1rem solid ${colors.green};
   max-height: 75%;
   margin-top: 12rem;
