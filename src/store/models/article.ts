@@ -29,8 +29,14 @@ const ArticleStore = types
   })
   .actions(self => ({
     getAllArticles: flow(function*() {
-      const response = yield fetch(apiEndpoints.getArticles).then(response =>
-        response.json()
+      const response = yield fetch(apiEndpoints.getArticles).then(
+        (response: Response) => {
+          if (response.ok) {
+            return response.json()
+          } else {
+            console.log('error')
+          }
+        }
       )
       const articlesWithIds = response.map((el: ArticleModel) => ({
         ...el,
