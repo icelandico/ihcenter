@@ -60,6 +60,9 @@ const ArticleStore = types
     insertInStorage(item: string) {
       const storageItems =
         JSON.parse(window.localStorage.getItem("recentlyViewedItems")) || []
+      
+      if (item === storageItems[storageItems.length - 1].id) return
+      
       const newItems = storageItems.concat({ id: item })
       window.localStorage.setItem(
         "recentlyViewedItems",

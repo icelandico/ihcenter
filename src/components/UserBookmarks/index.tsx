@@ -1,6 +1,5 @@
-import * as React from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { observer, inject } from "mobx-react"
-import { useEffect, useRef, useState} from "react"
 import { rootStore } from "../../store/RootStore"
 import {
   UserBookmarksContainer,
