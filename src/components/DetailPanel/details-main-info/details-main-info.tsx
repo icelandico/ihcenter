@@ -110,7 +110,7 @@ const DetailMainInfo: React.FC<IProps> = props => {
         </WikiLinkContainer>
         <ElementDate>
           {details && `${formatDate(details.startDate)} - ${formatDate(details.endDate)}`}
-          <ElementAgedDate>{details && details.type === "person" && `(aged ${calculateAge(details.startDate, details.endDate)})`}</ElementAgedDate>
+          {" "}<ElementAgedDate>{details && details.type === "person" && `(aged ${calculateAge(details.startDate, details.endDate)})`}</ElementAgedDate>
         </ElementDate>
       </DetailsTopContainer>
 
