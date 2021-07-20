@@ -40,8 +40,8 @@ const MapMarker: FunctionComponent<IProps> = ({
 
   useEffect(() => {
     if (isActive === true) {
+      markerRef.current.leafletElement.options.leaflet.map.panTo(position)
       markerRef.current.leafletElement.openPopup()
-      markerRef.current.leafletElement.options.leaflet.map.setView(position)
     }
   }, [isActive])
 
@@ -55,7 +55,7 @@ const MapMarker: FunctionComponent<IProps> = ({
       onClick={() => store.articleStore.toggle(article.identifier)}
       ref={markerRef}
     >
-      <Popup style={{ background: "transparent" }}>
+      <Popup style={{ background: "transparent" }} autoPan={false}>
         <CustomPopup color={chooseColor(type)}>
           <div
             color={chooseColor(type)}
