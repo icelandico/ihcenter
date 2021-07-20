@@ -20,7 +20,7 @@ import {
 } from "./finder-styles"
 import { ArticleModel } from "../../store/models/article"
 import SvgIcon from "../shared/SvgIcon/svgIcon"
-import { ReactUtils } from "../../utils/chooseIcon"
+import { chooseIcon } from "../../utils/chooseIcon"
 
 interface Props {
   store?: typeof rootStore
@@ -32,7 +32,6 @@ const Finder: FunctionComponent<Props> = ({ store }) => {
   const [resultsVisible, setResultsVisible] = useState<boolean>(false)
   const [activeOption, setActiveOption] = useState<number>(0)
   const resultsRef = useRef(null)
-  const reactUtils = ReactUtils
 
   useEffect(() => {
     const handleOutsideClick = (ev: Event) => {
@@ -100,7 +99,7 @@ const Finder: FunctionComponent<Props> = ({ store }) => {
               onMouseEnter={() => setActiveOption(idx + 1)}
             >
               <ResultIcon>
-                <SvgIcon Icon={reactUtils.chooseIcon(el.type)} />
+                <SvgIcon Icon={chooseIcon(el.type)} />
               </ResultIcon>
               <ResultText>{el.name}</ResultText>
             </SingleResult>
