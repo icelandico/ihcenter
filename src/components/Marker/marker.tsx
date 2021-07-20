@@ -4,14 +4,11 @@ import { observer, inject } from "mobx-react"
 import L, { DivIcon } from "leaflet"
 import ReactDOMServer from "react-dom/server"
 import { rootStore } from "../../store/RootStore"
-import PersonIcon from "../../static/icons/person.svg"
-import EventsIcon from "../../static/icons/events.svg"
-import WritingsIcon from "../../static/icons/text.svg"
-import OrganisationsIcon from "../../static/icons/politics.svg"
 import { apiUrls } from "../../store/api/api"
 import { ArticleModel } from "../../store/models/article"
 import { CustomMarker, CustomPopup } from "./marker-styles"
 import { chooseColor } from "../../utils/articleTypeColor"
+import { chooseIcon } from "../../utils/chooseIcon"
 
 interface IProps {
   store?: typeof rootStore
@@ -20,21 +17,6 @@ interface IProps {
   position: [number, number]
   type: string
   isActive: boolean
-}
-
-export const chooseIcon = (type: string): string => {
-  switch (type) {
-    case "person":
-      return PersonIcon
-    case "event":
-      return EventsIcon
-    case "organisation":
-      return OrganisationsIcon
-    case "writing":
-      return WritingsIcon
-    default:
-      return PersonIcon
-  }
 }
 
 const MapMarker: FunctionComponent<IProps> = ({ store, article, key, position, type, isActive }: IProps) => {
