@@ -19,17 +19,23 @@ interface IProps {
   isActive: boolean
 }
 
-const MapMarker: FunctionComponent<IProps> = ({ store, article, key, position, type, isActive }: IProps) => {
+const MapMarker: FunctionComponent<IProps> = ({
+  store,
+  article,
+  key,
+  position,
+  type,
+  isActive
+}: IProps) => {
   const markerRef = useRef(null)
 
   const customIcon = (): DivIcon => {
-    const divIcon = L.divIcon({
+    return L.divIcon({
       html: ReactDOMServer.renderToString(
         <CustomMarker color={chooseColor(type)} />
       ),
       iconAnchor: [15, 15]
     })
-    return divIcon
   }
 
   useEffect(() => {
