@@ -1,6 +1,7 @@
 import React from "react"
-import { Map, TileLayer } from "react-leaflet"
+import { MapContainer, TileLayer } from "react-leaflet"
 import { observer, inject } from "mobx-react"
+import MarkerClusterGroup from "react-leaflet-markercluster"
 import { mapSettings } from "./utils"
 import { rootStore } from "../../store/RootStore"
 import MapMarker from "../Marker/marker"
@@ -12,6 +13,13 @@ interface Props {
 }
 
 class MapComponent extends React.Component<Props, {}> {
+  mapRef: any
+
+  constructor(props: any) {
+    super(props)
+    this.mapRef = React.createRef()
+  }
+
   async componentDidMount() {
     const { store } = this.props
     store.articleStore.getBookmarsFromStore()
@@ -28,14 +36,16 @@ class MapComponent extends React.Component<Props, {}> {
     return (
       <MapMarker
         isActive={
-          rootStore.articleStore.chosenArticle ?
-            article.identifier === rootStore.articleStore.chosenArticle.identifier
+          rootStore.articleStore.chosenArticle
+            ? article.identifier ===
+              rootStore.articleStore.chosenArticle.identifier
             : false
         }
         key={`${article.type}-${article.id}`}
         article={article}
         position={markerCoords}
         type={article.type}
+        map={this.mapRef}
       />
     )
   }
@@ -43,10 +53,13 @@ class MapComponent extends React.Component<Props, {}> {
   render() {
     const { articleStore } = rootStore
     return (
-      <Map
+      <MapContainer
         center={mapSettings.coordinates}
         zoom={mapSettings.zoom}
         style={{ height: "100%" }}
+        whenCreated={mapInstance => {
+          this.mapRef.current = mapInstance
+        }}
       >
         <TileLayer
           url={mapSettings.mainTile}
@@ -54,13 +67,15 @@ class MapComponent extends React.Component<Props, {}> {
           noWrap
         />
         {articleStore.articles.length ? (
-          articleStore.filteredStore.map((article: ArticleModel) =>
-            article.startCoords ? this.showMarkers(article) : null
-          )
+          <MarkerClusterGroup maxClusterRadius={50}>
+            {articleStore.filteredStore.map((article: ArticleModel) =>
+              article.startCoords ? this.showMarkers(article) : null
+            )}
+          </MarkerClusterGroup>
         ) : (
           <Loader background />
         )}
-      </Map>
+      </MapContainer>
     )
   }
 }

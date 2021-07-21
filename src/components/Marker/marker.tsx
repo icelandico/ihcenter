@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useRef, useEffect } from "react"
-import { Marker, Popup } from "react-leaflet"
+import { Marker, Popup, useMap, useMapEvent } from "react-leaflet"
 import { observer, inject } from "mobx-react"
 import L, { DivIcon } from "leaflet"
 import ReactDOMServer from "react-dom/server"
@@ -17,6 +17,7 @@ interface IProps {
   position: [number, number]
   type: string
   isActive: boolean
+  map: any
 }
 
 const MapMarker: FunctionComponent<IProps> = ({
@@ -25,7 +26,8 @@ const MapMarker: FunctionComponent<IProps> = ({
   key,
   position,
   type,
-  isActive
+  isActive,
+  map
 }: IProps) => {
   const markerRef = useRef(null)
 
@@ -40,8 +42,8 @@ const MapMarker: FunctionComponent<IProps> = ({
 
   useEffect(() => {
     if (isActive === true) {
-      markerRef.current.leafletElement.options.leaflet.map.panTo(position)
-      markerRef.current.leafletElement.openPopup()
+      // map.leafletElement.options.leaflet.map.panTo(position)
+      // map.current.leafletElement.openPopup()
     }
   }, [isActive])
 
@@ -50,12 +52,14 @@ const MapMarker: FunctionComponent<IProps> = ({
       icon={customIcon()}
       key={key}
       position={position}
-      iconAnchor={[0, 0]}
-      iconSize={[40, 40]}
-      onClick={() => store.articleStore.toggle(article.identifier)}
+      eventHandlers={{
+        click: () => {
+          store.articleStore.toggle(article.identifier)
+        }
+      }}
       ref={markerRef}
     >
-      <Popup style={{ background: "transparent" }} autoPan={false}>
+      <Popup autoPan={false}>
         <CustomPopup color={chooseColor(type)}>
           <div
             color={chooseColor(type)}
