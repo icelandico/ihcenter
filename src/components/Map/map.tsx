@@ -58,7 +58,7 @@ const MapComponent = ({ store }: IProps) => {
         noWrap
       />
       {articleStore.articles.length ? (
-        <MarkerClusterGroup maxClusterRadius={50}>
+        <MarkerClusterGroup maxClusterRadius={35}>
           {articleStore.filteredStore.map((article: ArticleModel) =>
             article.startCoords ? showMarkers(article) : null
           )}

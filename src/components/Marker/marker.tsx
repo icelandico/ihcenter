@@ -27,8 +27,8 @@ const MapMarker: FunctionComponent<IProps> = ({
   type,
   isActive
 }: IProps) => {
-  const markerRef = useRef(null)
   const map = useMap()
+  const markerRef = useRef(null)
 
   const customIcon = (): DivIcon => {
     return L.divIcon({
@@ -41,8 +41,8 @@ const MapMarker: FunctionComponent<IProps> = ({
 
   useEffect(() => {
     if (isActive === true) {
-      // map.leafletElement.options.leaflet.map.panTo(position)
       map.panTo(position)
+      markerRef.current.openPopup()
     }
   }, [isActive])
 
