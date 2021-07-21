@@ -1,5 +1,5 @@
-import React from "react"
-import { MapContainer, TileLayer } from "react-leaflet"
+import React, { useEffect, useRef, useState } from "react"
+import { MapContainer, TileLayer, useMap } from "react-leaflet"
 import { observer, inject } from "mobx-react"
 import MarkerClusterGroup from "react-leaflet-markercluster"
 import { mapSettings } from "./utils"
@@ -8,27 +8,24 @@ import MapMarker from "../Marker/marker"
 import Loader from "../shared/Loader/loader"
 import { ArticleModel } from "../../store/models/article"
 
-interface Props {
+interface IProps {
   store?: typeof rootStore
 }
 
-class MapComponent extends React.Component<Props, {}> {
-  mapRef: any
+const MapComponent = ({ store }: IProps) => {
+  const { articleStore } = store
 
-  constructor(props: any) {
-    super(props)
-    this.mapRef = React.createRef()
-  }
+  useEffect(() => {
+    const getInfo = async () => {
+      articleStore.getBookmarsFromStore()
+      articleStore.getRecentlyViewedFromStore()
+      await articleStore.getAllArticles()
+      articleStore.setYearsRange()
+    }
+    getInfo()
+  }, [])
 
-  async componentDidMount() {
-    const { store } = this.props
-    store.articleStore.getBookmarsFromStore()
-    store.articleStore.getRecentlyViewedFromStore()
-    await store.articleStore.getAllArticles()
-    store.articleStore.setYearsRange()
-  }
-
-  showMarkers = (article: ArticleModel): JSX.Element => {
+  const showMarkers = (article: ArticleModel): JSX.Element => {
     const coords = article.startCoords
       .split(",")
       .map((coordinate: string) => Number(coordinate))
@@ -45,39 +42,32 @@ class MapComponent extends React.Component<Props, {}> {
         article={article}
         position={markerCoords}
         type={article.type}
-        map={this.mapRef}
       />
     )
   }
 
-  render() {
-    const { articleStore } = rootStore
-    return (
-      <MapContainer
-        center={mapSettings.coordinates}
-        zoom={mapSettings.zoom}
-        style={{ height: "100%" }}
-        whenCreated={mapInstance => {
-          this.mapRef.current = mapInstance
-        }}
-      >
-        <TileLayer
-          url={mapSettings.mainTile}
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          noWrap
-        />
-        {articleStore.articles.length ? (
-          <MarkerClusterGroup maxClusterRadius={50}>
-            {articleStore.filteredStore.map((article: ArticleModel) =>
-              article.startCoords ? this.showMarkers(article) : null
-            )}
-          </MarkerClusterGroup>
-        ) : (
-          <Loader background />
-        )}
-      </MapContainer>
-    )
-  }
+  return (
+    <MapContainer
+      center={mapSettings.coordinates}
+      zoom={mapSettings.zoom}
+      style={{ height: "100%" }}
+    >
+      <TileLayer
+        url={mapSettings.mainTile}
+        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        noWrap
+      />
+      {articleStore.articles.length ? (
+        <MarkerClusterGroup maxClusterRadius={50}>
+          {articleStore.filteredStore.map((article: ArticleModel) =>
+            article.startCoords ? showMarkers(article) : null
+          )}
+        </MarkerClusterGroup>
+      ) : (
+        <Loader background />
+      )}
+    </MapContainer>
+  )
 }
 
 export default inject("store")(observer(MapComponent))
