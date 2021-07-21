@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react"
+import React, { FunctionComponent, useRef, useEffect } from "react"
 import { Marker, Popup, useMap } from "react-leaflet"
 import { observer, inject } from "mobx-react"
 import L, { DivIcon } from "leaflet"
@@ -58,7 +58,7 @@ const MapMarker: FunctionComponent<IProps> = ({
       }}
       ref={markerRef}
     >
-      <Popup>
+      <Popup autoPan={false}>
         <CustomPopup color={chooseColor(type)}>
           <div
             color={chooseColor(type)}
