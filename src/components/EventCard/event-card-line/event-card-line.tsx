@@ -1,4 +1,4 @@
-import * as React from "react"
+import React, { FunctionComponent } from "react"
 import { EventCardLineC } from "./event-card-line-styles"
 import { ReactComponent as PersonIcon } from "../../../static/icons/person.svg"
 import { ReactComponent as EventIcon } from "../../../static/icons/events.svg"
@@ -25,7 +25,7 @@ const choosePhrase = (type: string): string => {
   }
 }
 
-const chooseIcon = (type: string): React.FunctionComponent<React.SVGProps<SVGSVGElement>> => {
+const chooseIcon = (type: string):FunctionComponent<React.SVGProps<SVGSVGElement>> => {
   switch (type) {
     case "person":
       return PersonIcon
@@ -38,8 +38,7 @@ const chooseIcon = (type: string): React.FunctionComponent<React.SVGProps<SVGSVG
   }
 }
 
-const EventCardLine: React.FC<Props> = props => {
-  const { name, type } = props
+const EventCardLine: FunctionComponent<Props> = ({ name, type }) => {
   return (
     <EventCardLineC>
       <SvgIcon Icon={chooseIcon(type)} />

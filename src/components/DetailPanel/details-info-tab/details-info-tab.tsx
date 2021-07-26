@@ -1,5 +1,5 @@
 import React from "react"
-import { inject, observer} from "mobx-react"
+import { inject, observer } from "mobx-react"
 import {
   TabContainer,
   TabIcon,
@@ -40,8 +40,6 @@ const DetailsInfoTab: React.FC<Props> = props => {
     font,
     fontColor,
     italicFont,
-    articleId,
-    store
   } = props
 
   const renderTabContainer = () => {

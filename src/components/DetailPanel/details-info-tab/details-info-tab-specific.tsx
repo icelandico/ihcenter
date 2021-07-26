@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react"
+import React from "react"
 import { inject, observer } from "mobx-react"
 import { apiUrls } from "../../../store/api/api"
 import DetailsInfoTab from "./details-info-tab"

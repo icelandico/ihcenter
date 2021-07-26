@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import { useEffect, useRef, useState } from "react"
 import { inject, observer } from "mobx-react"
 import { getYear } from "../../utils/formatDate"
@@ -17,13 +17,13 @@ interface IProps {
   store?: typeof rootStore
 }
 
-const EventCard: React.FC<IProps> = props => {
+const EventCard: React.FC<IProps> = ({ store }) => {
   const [isOpened, setOpen] = useState(false)
   const [yearEvents, setYearEvents] = useState([])
   const scrollDiv = useRef(null)
 
   const getCurrentYearArticles = () => {
-    const { articleStore } = props.store
+    const { articleStore } = store
     const currentYearArticles = articleStore.articles.filter(
       (article: ArticleModel) =>
         getYear(article.startDate) === articleStore.currentYear
@@ -33,7 +33,7 @@ const EventCard: React.FC<IProps> = props => {
 
   useEffect(() => {
     getCurrentYearArticles()
-  }, [props.store.articleStore.currentYear])
+  }, [store.articleStore.currentYear])
 
   return (
     <>

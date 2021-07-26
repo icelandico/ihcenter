@@ -24,7 +24,6 @@ import CharacterIcon from "../../../static/icons/person.svg"
 import SvgIcon from "../../shared/SvgIcon/svgIcon"
 import { ReactComponent as BookmarkOff } from "../../../static/icons/bookmark_off.svg"
 import { ScrollIndicator } from "../../shared/ScrollIndicator/scroll-indicator"
-import { BottomGradient } from "../../shared/Styles/shared-styled-components"
 
 export interface IProps {
   store?: typeof rootStore

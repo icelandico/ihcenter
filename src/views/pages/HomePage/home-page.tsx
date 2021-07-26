@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import { Home } from "./home-page-styles"
 import MapComponent from "../../../components/Map/map"
 

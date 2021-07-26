@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import { observer, inject } from "mobx-react"
 import { rootStore } from "../../store/RootStore"
 import DetailListInfo from "./details-list-info/details-list-info"
