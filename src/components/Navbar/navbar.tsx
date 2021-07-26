@@ -23,7 +23,7 @@ const Navbar: FunctionComponent = () => {
         <NavigationItem key={`nav-${index + 1}`}>
           <NaviLink to={`${item.route}`} exact>
             <NavigationIcon
-              src={require(`./../../static/icons/MODE_${item.name}.svg`)}
+              src={require(`./../../static/icons/MODE_${item.name}.svg`).default}
             />
             <p>{item.name}</p>
           </NaviLink>
