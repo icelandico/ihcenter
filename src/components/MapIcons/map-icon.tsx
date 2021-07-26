@@ -3,7 +3,6 @@ import L from "leaflet"
 export const icon = L.icon({
   iconUrl: require("./../../static/icons/ZNACZNIK_2.svg"),
   iconSize: [10, 30]
-  // iconAnchor: [5, 30]
 })
 
 export const iconClicked = L.icon({

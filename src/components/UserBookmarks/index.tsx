@@ -15,7 +15,7 @@ export interface IProps {
   store?: typeof rootStore
 }
 
-const UserBookmarks: React.FC<IProps> = props => {
+const UserBookmarks: React.FC<IProps> = () => {
   const recentlyViewedRef = useRef(null)
   const [maxItems, setMaxItems] = useState(0)
 

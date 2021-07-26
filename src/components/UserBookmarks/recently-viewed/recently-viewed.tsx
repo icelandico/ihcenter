@@ -6,15 +6,16 @@ import { UserStorageItem } from "../index-styles"
 import { ArticleModel } from "../../../store/models/article"
 import { IUserBookmark } from "../../../store/models/articleDetails"
 import { renderImage } from "../../../utils/renderImage"
+import { generateUuid } from "../../../utils/generateUuid"
 
 export interface IProps {
   store?: typeof rootStore
   itemsThreshold: number
 }
 
-const RecentlyViewed: React.FC<IProps> = props => {
-  const { recentlyViewed } = props.store.articleStore
-  const areArticlesSet = props.store.articleStore.articles.length > 0
+const RecentlyViewed: React.FC<IProps> = ({ store, itemsThreshold }) => {
+  const { recentlyViewed } = store.articleStore
+  const areArticlesSet = store.articleStore.articles.length > 0
   const [recentItems, setRecentItems] = useState([])
 
   useEffect(() => {
@@ -26,12 +27,12 @@ const RecentlyViewed: React.FC<IProps> = props => {
       recentItem => Object.values(recentItem)[0]
     )
     const recentViewedItems = recentItemsId.map(recentItem =>
-      props.store.articleStore.articles.find(
+      store.articleStore.articles.find(
         article => article.identifier === recentItem
       )
     )
-    return recentViewedItems.length > props.itemsThreshold
-      ? recentViewedItems.slice(recentViewedItems.length - props.itemsThreshold)
+    return recentViewedItems.length > itemsThreshold
+      ? recentViewedItems.slice(recentViewedItems.length - itemsThreshold)
       : recentViewedItems
   }
 
@@ -39,15 +40,15 @@ const RecentlyViewed: React.FC<IProps> = props => {
     const articles = getArticlesFromRecentlyViewed()
     if (!areArticlesSet) {
       return recentItems
-        .slice(0, props.itemsThreshold)
-        .map((bookmark: IUserBookmark, idx) => (
-          <UserStorageItem key={`${bookmark.id}-${idx}`} />
+        .slice(0, itemsThreshold)
+        .map((bookmark: IUserBookmark) => (
+          <UserStorageItem key={`${bookmark.id}-${generateUuid()}`} />
         ))
     }
-    return articles.map((bookmark: ArticleModel, idx) => (
+    return articles.map((bookmark: ArticleModel) => (
       <UserStorageItem
         isActive
-        key={`${bookmark.identifier}-${idx}`}
+        key={`${bookmark.identifier}-${bookmark.type}`}
         style={{ backgroundImage: `url(${renderImage(bookmark)}` }}
         onClick={() => rootStore.articleStore.toggle(bookmark.identifier)}
         title={bookmark.name}

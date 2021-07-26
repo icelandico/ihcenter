@@ -16,7 +16,7 @@ import SvgIcon from "../../shared/SvgIcon/svgIcon"
 
 interface IProps {
   filterType: string
-  clickHandler: Function
+  clickHandler: () => void
   isActive: boolean
   noCross?: boolean
 }

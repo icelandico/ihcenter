@@ -34,7 +34,6 @@ const TimelineYearline: FunctionComponent<IProps> = ({
 }) => {
   const { currentYear } = store.articleStore
   const [timelineVal, setTimelineVal] = useState(0)
-  // const [scrollPos, setScrollPos] = useState(0)
 
   const containerRef = useRef(null)
   const previousVal = usePrevious(currentYear)
