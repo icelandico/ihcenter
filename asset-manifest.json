@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/ihcenter/static/css/main.db10f52a.chunk.css",
-    "main.js": "/ihcenter/static/js/main.c6449b36.chunk.js",
-    "main.js.map": "/ihcenter/static/js/main.c6449b36.chunk.js.map",
+    "main.js": "/ihcenter/static/js/main.87ba892e.chunk.js",
+    "main.js.map": "/ihcenter/static/js/main.87ba892e.chunk.js.map",
     "runtime-main.js": "/ihcenter/static/js/runtime-main.358888d6.js",
     "runtime-main.js.map": "/ihcenter/static/js/runtime-main.358888d6.js.map",
-    "static/js/2.66e64bf0.chunk.js": "/ihcenter/static/js/2.66e64bf0.chunk.js",
-    "static/js/2.66e64bf0.chunk.js.map": "/ihcenter/static/js/2.66e64bf0.chunk.js.map",
+    "static/js/2.d55dac2a.chunk.js": "/ihcenter/static/js/2.d55dac2a.chunk.js",
+    "static/js/2.d55dac2a.chunk.js.map": "/ihcenter/static/js/2.d55dac2a.chunk.js.map",
     "index.html": "/ihcenter/index.html",
     "static/css/main.db10f52a.chunk.css.map": "/ihcenter/static/css/main.db10f52a.chunk.css.map",
-    "static/js/2.66e64bf0.chunk.js.LICENSE.txt": "/ihcenter/static/js/2.66e64bf0.chunk.js.LICENSE.txt",
+    "static/js/2.d55dac2a.chunk.js.LICENSE.txt": "/ihcenter/static/js/2.d55dac2a.chunk.js.LICENSE.txt",
     "static/media/Default.6446924c.svg": "/ihcenter/static/media/Default.6446924c.svg",
     "static/media/LOGO_ALT.34d9fcdd.svg": "/ihcenter/static/media/LOGO_ALT.34d9fcdd.svg",
     "static/media/MODE_compare.svg": "/ihcenter/static/media/MODE_compare.d4253106.svg",
@@ -40,8 +40,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.358888d6.js",
-    "static/js/2.66e64bf0.chunk.js",
+    "static/js/2.d55dac2a.chunk.js",
     "static/css/main.db10f52a.chunk.css",
-    "static/js/main.c6449b36.chunk.js"
+    "static/js/main.87ba892e.chunk.js"
   ]
 }
