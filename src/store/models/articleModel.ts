@@ -17,6 +17,7 @@ export const ArticleModel = types.model("Article", {
   wikipediaLink: types.maybeNull(types.string),
   description: types.maybeNull(types.string),
   image: types.maybeNull(ImageDetails),
+  imageUrl: types.maybeNull(types.string),
   nationality: types.maybeNull(NationalityDetails),
   type: types.string,
   identifier: types.identifier,

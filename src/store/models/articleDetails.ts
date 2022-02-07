@@ -27,7 +27,7 @@ export const BaseInfoDetails = types.model("BaseInfoDetails", {
 export const WritingsDetails = types.model("WritingsDetails", {
   id: types.identifierNumber,
   title: types.string,
-  description: types.string,
+  description: types.maybeNull(types.string),
   publicated: types.maybeNull(types.string),
   fragments: types.maybeNull(types.string)
 })
